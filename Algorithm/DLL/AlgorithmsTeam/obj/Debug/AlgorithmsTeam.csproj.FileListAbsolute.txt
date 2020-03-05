@@ -1,0 +1,10 @@
+/home/lisa/Applications/RiderProjects/Algorithms/AlgorithmsTeam/obj/Debug/AlgorithmsTeam.csprojAssemblyReference.cache
+/home/lisa/Applications/RiderProjects/Algorithms/AlgorithmsTeam/obj/Debug/AlgorithmsTeam.csproj.CoreCompileInputs.cache
+/home/lisa/Applications/RiderProjects/Algorithms/AlgorithmsTeam/bin/Debug/AlgorithmsTeam.pdb
+/home/lisa/Applications/RiderProjects/Algorithms/AlgorithmsTeam/bin/Debug/UnityEngine.dll
+/home/lisa/Applications/RiderProjects/Algorithms/AlgorithmsTeam/bin/Debug/UnityEngine.dll.mdb
+/home/lisa/Applications/RiderProjects/Algorithms/AlgorithmsTeam/bin/Debug/UnityEngine.xml
+/home/lisa/Applications/RiderProjects/Algorithms/AlgorithmsTeam/obj/Debug/AlgorithmsTeam.csproj.CopyComplete
+/home/lisa/Applications/RiderProjects/Algorithms/AlgorithmsTeam/obj/Debug/AlgorithmsTeam.dll
+/home/lisa/Applications/RiderProjects/Algorithms/AlgorithmsTeam/obj/Debug/AlgorithmsTeam.pdb
+/home/lisa/Applications/RiderProjects/Algorithms/AlgorithmsTeam/bin/Debug/AlgorithmsTeam.dll
