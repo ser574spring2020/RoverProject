@@ -17,7 +17,7 @@
 - Go to console and you will see the selected sensor as well as the distance between the two cubes. 
 - As you move the cubes, the distance will change.
 
-Sensors.dll
+Sensors1.dll
 
 ```
 class Sensors
