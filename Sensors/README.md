@@ -3,7 +3,7 @@
 ## Rover Simulation - Sensors
 
 ## How to use (for UI Team)
-- `Sensors.dll` can be found [here](https://github.com/aneeshdalvi/SER574_sensors/tree/master/Assets/Scenes)
+- `Sensors1.dll` can be found [here](https://github.com/ser574spring2020/RoverProject/tree/master/Sensors/Assets/Scenes)
 - Copy it into the `Assets` folder of your Unity Project 
 
 ## How to run only our component in Unity (for Grader)
