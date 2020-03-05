@@ -14,7 +14,6 @@ namespace AlgorithmsTeam
 #### Windows Build
 - Windows Build for the simulation can be found [here](/Unity3D/WindowsBuild) - *(RoverSimulation-AlgorithmsTeam.exe)*
 
-
 ## Contributors
 - Amit Pandey
 - Jonathan Bush
