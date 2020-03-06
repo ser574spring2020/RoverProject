@@ -2,7 +2,7 @@
 
 ## How to use?
 #### AlgorithmsTeam.dll
-- `AlgorithmsTeam.dll` can be found [here](/DLL/AlgorithmsTeam/bin/Debug) 
+- `AlgorithmsTeam.dll` can be found [here](/Algorithm/DLL/AlgorithmsTeam/bin/Debug) 
 
   - Copy it into the assets folder of your Unity Project
   
