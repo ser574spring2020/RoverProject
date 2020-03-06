@@ -11,8 +11,8 @@ namespace AlgorithmsTeam
   └── class Algorithms
         └── public string HelloWorld()
 ```
-#### Windows Build
-- Windows Build for the simulation can be found [here](/Unity3D/WindowsBuild) - *(RoverSimulation-AlgorithmsTeam.exe)*
+#### Windows Build - Maze Generator and Visualizer
+- Windows Build for the simulation can be found [here](/Algorithm/Map%20Generator/WindowsBuild) - *(RoverSimulation-AlgorithmsTeam.exe)*
 
 ## Contributors
 - Amit Pandey
