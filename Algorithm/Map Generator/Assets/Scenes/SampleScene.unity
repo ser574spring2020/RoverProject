@@ -317,6 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87808a80796000acc978642248558513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  placementThreshold: 0.2
   wallPrefab: {fileID: 7769298651037248627, guid: 56fad5bba1a43ff6a910acfa0e50fc73,
     type: 3}
   endPointPrefab: {fileID: 7789077774077131029, guid: 7e847a25e552e6caea1e3f7f764506d3,
@@ -330,7 +331,6 @@ MonoBehaviour:
   createMaze: {fileID: 1927391375}
   mazeHeight: 20
   mazeWidth: 20
-  sparsity: 0
 --- !u!4 &535144066
 Transform:
   m_ObjectHideFlags: 0
