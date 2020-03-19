@@ -667,8 +667,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 85, y: -120}
-  m_SizeDelta: {x: 180, y: 30}
+  m_AnchoredPosition: {x: 110, y: -120}
+  m_SizeDelta: {x: 230, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &199907886
 MonoBehaviour:
@@ -715,17 +715,17 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Type1
+    - m_Text: Gyroscope Sensor
       m_Image: {fileID: 0}
-    - m_Text: Type2
+    - m_Text: Accelerometer Sensor
       m_Image: {fileID: 0}
-    - m_Text: Type3
+    - m_Text: Proximity Sensor
       m_Image: {fileID: 0}
-    - m_Text: Type4
+    - m_Text: GPS Sensor
       m_Image: {fileID: 0}
-    - m_Text: Type5
+    - m_Text: LiDar Sensor
       m_Image: {fileID: 0}
-    - m_Text: Type6
+    - m_Text: Ambient Temperature Sensor
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2570,8 +2570,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 85, y: 0}
-  m_SizeDelta: {x: 180, y: 30}
+  m_AnchoredPosition: {x: 110, y: 0}
+  m_SizeDelta: {x: 230, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &835296799
 MonoBehaviour:
@@ -4337,7 +4337,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Type1
+  m_text: Gyroscope Sensor
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4406,10 +4406,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1374212560}
-    characterCount: 5
+    characterCount: 16
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -5378,8 +5378,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 85, y: -40}
-  m_SizeDelta: {x: 180, y: 30}
+  m_AnchoredPosition: {x: 110, y: -40}
+  m_SizeDelta: {x: 230, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1843356549
 MonoBehaviour:
@@ -6027,8 +6027,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 85, y: -80}
-  m_SizeDelta: {x: 180, y: 30}
+  m_AnchoredPosition: {x: 110, y: -80}
+  m_SizeDelta: {x: 230, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2090702718
 MonoBehaviour:
