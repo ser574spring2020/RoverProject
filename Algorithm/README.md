@@ -14,6 +14,9 @@ namespace AlgorithmsTeam
 #### Windows Build - Maze Generator and Visualizer
 - Windows Build for the simulation can be found [here](/Algorithm/Map%20Generator/WindowsBuild) - *(RoverSimulation-AlgorithmsTeam.exe)*
 
+## Links
+- [Sprint 1 - Youtube Video](https://www.youtube.com/watch?v=gztgx2QT6So)
+
 ## Contributors
 - Amit Pandey
 - Jonathan Bush
