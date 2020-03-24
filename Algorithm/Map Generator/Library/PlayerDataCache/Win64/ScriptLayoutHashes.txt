@@ -1,12 +1,12 @@
 Win64
 PlayerPath?
-/home/lisa/Git/RoverProject/Algorithm/Map Generator/WindowsBuild/RoverSimulation-AlgorithmsTeam.exe
+/home/lisa/Applications/Git/RoverProject/Algorithm/Map Generator/WindowsBuild/RoverSimulation-AlgorithmsTeam.exe
 SceneListBegin?
 Assets/Scenes/SampleScene.unity
 SceneListEnd?
 3c08375166df118bd1801438fc36b92f Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 77c21079ace8d76ce6e941d3dabbfe6e Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
-fad8ec559d9ee33551bd21b8726e83f1 Assembly-CSharp.dll:.MazeManager
+7545e5e590ea2870d6af85eee5b79b7f Assembly-CSharp.dll:.AlgorithmsSimulation
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 06f0fef534ca4c1d6064fd77a26bf722 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 780e8f682b3221346c034a6712a0fd25 UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
@@ -115,6 +115,7 @@ ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networki
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 303ad70ce203ad874efe2965d0fbcff9 Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsEventTracker
 7fb9de8dcf73854b6b328eca1f7a6e6d Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsTracker
+71bb6a6b6c8f052f948db64c7dd3ca4f Algorithms.dll:Algorithms.MazeGenerator
 b8a5e8091ab0b8861d2add371082c5e0 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
 b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.Analytics.Editor.dll:UnityEditor.Analytics.AnalyticsEventTrackerEditor
