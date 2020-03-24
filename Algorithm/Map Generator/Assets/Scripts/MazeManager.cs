@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MazeGenerator;
 using UnityEngine.UI;
 
 public class MazeManager : MonoBehaviour
@@ -23,45 +24,15 @@ public class MazeManager : MonoBehaviour
 
     void createMazeButtonListener(){
         destroyMaze();
-        maze = FromDimensions(mazeHeight,mazeWidth);
+        maze = MazeGenerator.MonoBehaviour1.FromDimensions(mazeHeight,mazeWidth,placementThreshold);
         buildMaze();
     }
 
-    public int[,] FromDimensions(int sizeRows, int sizeCols)    // 2
-    {
-        int[,] maze = new int[sizeRows, sizeCols];
-
-        for (int i = 0; i < sizeRows; i++)
-        {
-            for (int j = 0; j < sizeCols; j++)
-            {
-                if (i == 0 || j == 0 || i == sizeRows-1 || j == sizeCols-1)
-                {
-                    maze[i, j] = 1;
-                }
-
-                else if (i % 2 == 0 && j % 2 == 0)
-                {
-                    if (Random.value > placementThreshold)
-                    {
-                        //3
-                        maze[i, j] = 1;
-
-                        int a = Random.value < .5 ? 0 : (Random.value < .5 ? -1 : 1);
-                        int b = a != 0 ? 0 : (Random.value < .5 ? -1 : 1);
-                        maze[i + a, j + b] = 1;
-                    }
-                }
-            }
-        }
-        maze[1,1]=2;
-        maze[sizeRows-2,sizeCols-2] = 3;
-        return maze;
-    }
-
+    
     void buildMaze(){
         for(int i =0;  i<mazeHeight; i++){
                   for(int j=0; j<mazeWidth; j++){
+                      Debug.Log(maze[i,j]);
                       Vector3 tempVector = new Vector3(xStart + (xSpace*i),0,yStart+(j*ySpace));
                       if(maze[i,j]==0){
                           mazeObjects[counter++] = Instantiate(floorPrefab, tempVector, Quaternion.identity);
