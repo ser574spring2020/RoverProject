@@ -6,8 +6,9 @@ public class AlgorithmsSimulation : MonoBehaviour
     float xStart = 0, yStart = 0;
     float xSpace = 0.5f, ySpace = 0.5f;
     public float placementThreshold;
+    public Text sensorData;
     public GameObject wallPrefab, endPointPrefab, startPointPrefab, floorPrefab, flagPrefab, visitedFloorPrefab;
-    public Button createMaze, moveNorthButton, moveEastButton, moveWestButton, moveSouthButton;
+    public Button createMaze, moveNorthButton, moveEastButton, moveWestButton, moveSouthButton, sensorDataButton;
     public int mazeHeight, mazeWidth;
     GameObject[] mazeObjects;
     int counter = 0;
@@ -23,9 +24,10 @@ public class AlgorithmsSimulation : MonoBehaviour
         moveEastButton.onClick.AddListener(() => move(-1, 0));
         moveWestButton.onClick.AddListener(() => move(1, 0));
         moveSouthButton.onClick.AddListener(() => move(0, -1));
-
+        sensorDataButton.onClick.AddListener(updateSensorsData);
     }
 
+    //Create the initial maze
     void createMazeButtonListener()
     {
         if (mazeCreated == false)
@@ -37,16 +39,18 @@ public class AlgorithmsSimulation : MonoBehaviour
         }
     }
 
+    //move the robot by 'x' steps west and 'y' steps north
     void move(int x, int y)
     {
         maze[currentX, currentY] = 4;
+        if (maze[currentX + x, currentY + y] == 1) return;
         currentX += x;
         currentY += y;
         maze[currentX, currentY] = 2;
         updateUI();
     }
 
-
+    //update the maze in the UI
     void updateUI()
     {
         //Destroy UI
@@ -83,6 +87,49 @@ public class AlgorithmsSimulation : MonoBehaviour
                 }
             }
         }
+    }
+
+    // Update the sensors data text on the screen
+    void updateSensorsData()
+    {
+        int[,] tempData = getSensorsData();
+        sensorData.text = "";
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                sensorData.text += tempData[i, j] + " ";
+            }
+            sensorData.text += "\n";
+        }
+    }
+
+    int[,] getSensorsData()
+    {
+        int[,] result = new int[3, 3];
+
+        //fetching the array as a 1D array of length 9
+        int[] tempArray = new int[9];
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++)
+                tempArray[i * 3 + j] = maze[currentX - 1 + i, currentY - 1 + j];
+
+        //adjusting the fetched data (rotating the array anti-clockwise if you think of that as a 3x3 array)
+        int[] tempArrayClone = new int[9];
+        int a = 0;
+        for (int j = 2; j >= 0; j--)
+            for (int i = 0; i < 3; i++)
+                tempArrayClone[a++] = tempArray[j + 3 * i];
+
+        //creating a 3x3 2D array from the 1D array
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                result[i, j] = tempArrayClone[i * 3 + j];
+            }
+        }
+        return result;
     }
 
     void Update()
