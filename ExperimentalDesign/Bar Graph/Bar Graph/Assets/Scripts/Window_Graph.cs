@@ -15,6 +15,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Window_Graph : MonoBehaviour {
 
@@ -22,6 +23,7 @@ public class Window_Graph : MonoBehaviour {
     private RectTransform graphContainer;
     private RectTransform labelTemplateX;
     private RectTransform labelTemplateY;
+    public TMPro.TMP_Dropdown yAxis;
    // private RectTransform dashTemplateX;
     //private RectTransform dashTemplateY;
     private List<GameObject> gameObjectList;
@@ -38,11 +40,81 @@ public class Window_Graph : MonoBehaviour {
         List<int> valueList = new List<int>(15);
 
         System.Random randNum = new System.Random();
-        for (int i = 0; i < 15; i++)
+        yAxis = GameObject.Find("yAxis").GetComponent<TMPro.TMP_Dropdown>();
+        string yAxisValue = yAxis.captionText.text;
+        print(yAxisValue);
+       
+    }
+
+    public void onDropDownChange()
+    {
+        string yAxisValue = yAxis.captionText.text;
+        List<int> valueList = new List<int>(15);
+        System.Random randNum = new System.Random();
+
+
+
+        
+            switch (yAxisValue)
+            {
+            case "Time":
+                for (int i = 0; i < 15; i++)
+                {
+                    valueList.Add(randNum.Next(1, 120));
+                }
+                ShowGraph(valueList, -1, (int _i) => "", (float _f) => Mathf.RoundToInt(_f) + " Minutes");
+                break;
+            case "Points":
+                for (int i = 0; i < 15; i++)
+                {
+                    valueList.Add(randNum.Next(1000, 2000));
+                }
+                ShowGraph(valueList, -1, (int _i) => "", (float _f) => Mathf.RoundToInt(_f) + " Points");
+                break;
+            case "Objects Collected":
+                for (int i = 0; i < 15; i++)
+                {
+                    valueList.Add(randNum.Next(0, 50));
+                }
+                ShowGraph(valueList, -1, (int _i) => "", (float _f) => Mathf.RoundToInt(_f) + " Objects");
+                break;
+            case "Maze Coverage":
+                for (int i = 0; i < 15; i++)
+                {
+                    valueList.Add(randNum.Next(0, 100));
+                }
+                ShowGraph(valueList, -1, (int _i) => "", (float _f) => Mathf.RoundToInt(_f) + "% ");
+                break;
+            case "Drone Life":
+                for (int i = 0; i < 15; i++)
+                {
+                    valueList.Add(randNum.Next(0, 100));
+                }
+                ShowGraph(valueList, -1, (int _i) => "", (float _f) => Mathf.RoundToInt(_f) + "% Drone Life");
+                break;
+            default:
+                    Debug.LogError("Improper command given!");
+                break;
+            }
+        
+
+        /*
+        if (yAxisValue.Equals("Time")) {
+            for (int i = 0; i < 15; i++)
+            {
+                valueList.Add(randNum.Next(1, 120));
+            }
+            ShowGraph(valueList, -1, (int _i) => "", (float _f) => Mathf.RoundToInt(_f) + " Minutes");
+        } else if (yAxisValue.Equals("Points"))
         {
-            valueList.Add(randNum.Next(1, 120));
-        }
-        ShowGraph(valueList, -1, (int _i) => "Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " Minutes");
+            for (int i = 0; i < 15; i++)
+            {
+                valueList.Add(randNum.Next(1000, 2000));
+            }
+            ShowGraph(valueList, -1, (int _i) => "", (float _f) => Mathf.RoundToInt(_f) + " Points");
+        } */
+
+
     }
 
     private void ShowGraph(List<int> valueList, int maxVisibleValueAmount = -1, Func<int, string> getAxisLabelX = null, Func<float, string> getAxisLabelY = null) {
