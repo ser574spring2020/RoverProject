@@ -144,6 +144,19 @@ public class MazeExplorationMap
         this.moveHistory.CopyTo(moves);
         return moves;
     }
+
+    public List<MazeCell> GetUnvisitedCells()
+    {
+        List<MazeCell> unvisited = new List<MazeCell>();
+        foreach (MazeCell cell in this.cells)
+        {
+            if (!cell.IsVisited())
+            {
+                unvisited.Add(cell);
+            }
+        }
+        return unvisited;
+    }
 }
 
 public class MazeCell
