@@ -6,16 +6,16 @@ using System;
 
 public class MazeExplorationMap
 {
-    MazeCell start;
-    MazeCell current;
+    Vector2Int robotPosition;
     List<MazeCell> cells;
     List<Vector2Int> moveHistory;
+    MazeCell[,] mazeMap;
 
-    public MazeExplorationMap()
+    public MazeExplorationMap(Vector2Int mazeDimension, Vector2Int robotPosition)
     {
+        mazeMap = new MazeCell[mazeDimension.x, mazeDimension.y];
+        this.robotPosition = new Vector2Int(robotPosition.x, robotPosition.y);
         this.cells = new List<MazeCell>();
-        this.start = new MazeCell(0, 0);
-        this.current = this.start;
         this.moveHistory = new List<Vector2Int>();
     }
 
@@ -24,7 +24,7 @@ public class MazeExplorationMap
      */
     public Vector2Int GetCurrentPosition()
     {
-        return this.current.position;
+        return new Vector2Int(robotPosition.x, robotPosition.y);
     }
 
     /**
@@ -34,9 +34,7 @@ public class MazeExplorationMap
      * 
      * For example, the following array indicates a cell with three open adjacent cells,
      * in the +x and -x directions and the +y direction
-     * {{F, T, F},
-     *  {T, F, F},
-     *  {F, T, F}}
+     * {{F, T, F}, {T, F, F}, {F, T, F}}
      * 
      * For each newly discovered adjacent cell, and unvisited cell is added to the map
      * with its corresponding absolute position (position relative to the start cell)
@@ -48,7 +46,24 @@ public class MazeExplorationMap
     {
         if (sensorReading.GetLength(0) == 3 && sensorReading.GetLength(1) == 3)
         {
-            this.cells.AddRange(current.Visit(sensorReading));
+            for (int x = 0; x < 3; x++)
+            {
+                for (int y = 0; y < 3; y++)
+                {
+                    if (x == 1 && y == 1)
+                    {
+                        continue;   // skip the the center, which is this cell
+                    }
+                    if (sensorReading[x, y] == true && this.mazeMap[x, y] == null)
+                    {
+                        int xMaze = robotPosition.x + x - 1;
+                        int yMaze = robotPosition.y + y - 1;
+                        MazeCell neighbor = new MazeCell(xMaze, yMaze);   // create 
+                        mazeMap[xMaze, yMaze] = neighbor;
+                        cells.Add(neighbor);
+                    }
+                }
+            }
             return true;
         } else
         {
@@ -56,12 +71,31 @@ public class MazeExplorationMap
         }
     }
 
+    private bool CheckAbsolutePosition(Vector2Int position)
+    {
+        return position.x >= 0
+                && position.x < mazeMap.GetLength(0)
+                && position.y >= 0
+                && position.y < mazeMap.GetLength(1);
+    }
+
+    private bool CheckMoveBounds(Vector2Int relativeMove)
+    {
+        Vector2Int newPosition = robotPosition + relativeMove;
+        return CheckAbsolutePosition(newPosition);
+    }
+
     /**
      * Check if it is possible to move in the relative direction 
      */
     public bool CheckOpening(Vector2Int relativeMove)
     {
-        return (this.current.GetNeighbor(relativeMove) != null);
+        if (CheckMoveBounds(relativeMove))
+        {
+            Vector2Int newPosition = robotPosition + relativeMove;
+            return mazeMap[newPosition.x, newPosition.y] != null;
+        }
+        return false;
     }
 
     /**
@@ -69,7 +103,12 @@ public class MazeExplorationMap
      */
     public bool CheckVisited(Vector2Int relativeMove)
     {
-        return this.current.GetNeighbor(relativeMove).IsVisited();
+        if (CheckMoveBounds(relativeMove))
+        {
+            Vector2Int newPosition = robotPosition + relativeMove;
+            return mazeMap[newPosition.x, newPosition.y].IsVisited();
+        }
+        return false;
     }
 
     /**
@@ -80,13 +119,23 @@ public class MazeExplorationMap
      */
     public bool MoveRelative(Vector2Int relativeMove)
     {
-        MazeCell nextCell = this.current.GetNeighbor(relativeMove);
-        if (nextCell != null)
+        if (CheckMoveBounds(relativeMove))
         {
-            this.current = nextCell;
+            Vector2Int newPosition = robotPosition + relativeMove;
+            robotPosition = newPosition;
+            moveHistory.Add(relativeMove);
             return true;
         }
         return false;
+    }
+
+    public MazeCell GetCell(Vector2Int absolutePosition)
+    {
+        if (CheckAbsolutePosition(absolutePosition))
+        {
+            return mazeMap[absolutePosition.x, absolutePosition.y];
+        }
+        return null;
     }
 
     public Vector2Int[] GetMoveHistoryArray()
@@ -101,60 +150,25 @@ public class MazeCell
 {
     internal Vector2Int position;
     bool visited;
-    MazeCell[,] neighbors;
 
     public MazeCell(int x, int y)
     {
         this.position = new Vector2Int(x, y);
         this.visited = false;
-        this.neighbors = new MazeCell[3, 3];
     }
 
-    /**
-     * Visit this cell, adding adjacent cells to the maze
-     * Returns a list containing any new cells that were found
-     */
-    public List<MazeCell> Visit(bool[,] sensorReading)
+    public void Visit()
     {
-        List<MazeCell> newNeighbors = new List<MazeCell>();
-        this.visited = true;
-        for (int x = 0; x < 3; x++)
-        {
-            for (int y = 0; y < 3; y++)
-            {
-                if (x == 1 && y == 1)
-                {
-                    continue;   // skip the the center, which is this cell
-                }
-                if (sensorReading[x, y] == true && this.neighbors[x, y] == null)
-                {
-                    MazeCell neighbor = new MazeCell(position.x + x - 1, position.y + y - 1);   // create 
-                    this.neighbors[x, y] = neighbor;
-                    neighbor.neighbors[2 - x, 2 - y] = this;
-                    newNeighbors.Add(neighbor);
-                }
-            }
-        }
-        return newNeighbors;
-    }
-
-    /**
-     * 
-     */
-    public MazeCell GetNeighbor(Vector2Int relativePosition)
-    {
-        try
-        {
-            return this.neighbors[relativePosition.x + 1, relativePosition.y + 1];
-        } catch (IndexOutOfRangeException e)
-        {
-            Console.WriteLine("Invalid neighbor relative position: \n" + e);
-            return null;
-        }
+        visited = true;
     }
 
     public bool IsVisited()
     {
         return this.visited;
+    }
+
+    public Vector2Int GetPosition()
+    {
+        return new Vector2Int(position.x, position.y);
     }
 }
