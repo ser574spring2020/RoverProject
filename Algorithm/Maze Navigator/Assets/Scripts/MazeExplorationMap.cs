@@ -9,14 +9,19 @@ public class MazeExplorationMap
     MazeCell start;
     MazeCell current;
     List<MazeCell> cells;
+    List<Vector2Int> moveHistory;
 
     public MazeExplorationMap()
     {
         this.cells = new List<MazeCell>();
         this.start = new MazeCell(0, 0);
         this.current = this.start;
+        this.moveHistory = new List<Vector2Int>();
     }
 
+    /**
+     * <returns>A Vector2Int representation of the robot's current position</returns>
+     */
     public Vector2Int GetCurrentPosition()
     {
         return this.current.position;
@@ -36,6 +41,8 @@ public class MazeExplorationMap
      * For each newly discovered adjacent cell, and unvisited cell is added to the map
      * with its corresponding absolute position (position relative to the start cell)
      *
+     * <param name="sensorReading">The sensor reading for the current robot position.</param>
+     * <returns>true if the sensor reading was successfully applied</returns>
      */
     public bool ProcessSensor(bool[,] sensorReading)
     {
@@ -68,7 +75,8 @@ public class MazeExplorationMap
     /**
      * Executes the given relative move, a cell exists at that position
      * The cell will not be marked as visited until ProcessSensor is called
-     * on the new position
+     * on the new position.
+     * Returns true if the move was successful, false if failed
      */
     public bool MoveRelative(Vector2Int relativeMove)
     {
@@ -79,6 +87,13 @@ public class MazeExplorationMap
             return true;
         }
         return false;
+    }
+
+    public Vector2Int[] GetMoveHistoryArray()
+    {
+        Vector2Int[] moves = new Vector2Int[this.moveHistory.Count];
+        this.moveHistory.CopyTo(moves);
+        return moves;
     }
 }
 
@@ -97,6 +112,7 @@ public class MazeCell
 
     /**
      * Visit this cell, adding adjacent cells to the maze
+     * Returns a list containing any new cells that were found
      */
     public List<MazeCell> Visit(bool[,] sensorReading)
     {
