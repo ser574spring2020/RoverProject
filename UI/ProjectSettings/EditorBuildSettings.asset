@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Karting/Scenes/SampleScene.unity
-    guid: f8c7069e6d9b2124b861144ca83d31e8
+    path: Assets/Scenes/SampleScene.unity
+    guid: b118e955d281d4640901ba6caf662c56
   m_configObjects: {}
