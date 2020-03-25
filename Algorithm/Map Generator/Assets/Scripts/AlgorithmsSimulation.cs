@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System;
+using System.IO;
+using System.Text;
+using Algorithms;
 
 public class AlgorithmsSimulation : MonoBehaviour
 {
@@ -7,24 +11,25 @@ public class AlgorithmsSimulation : MonoBehaviour
     float xSpace = 0.5f, ySpace = 0.5f;
     public float placementThreshold;
     public Text sensorData;
-    public GameObject wallPrefab, endPointPrefab, startPointPrefab, floorPrefab, flagPrefab, visitedFloorPrefab;
-    public Button createMaze, moveNorthButton, moveEastButton, moveWestButton, moveSouthButton, sensorDataButton;
+    public GameObject wallPrefab, endPointPrefab, robotPrefab, floorPrefab, flagPrefab, visitedFloorPrefab;
+    public Button createMaze, sensorDataButton, nextCommandButton;
     public int mazeHeight, mazeWidth;
     GameObject[] mazeObjects;
     int counter = 0;
+    // string path = @"/home/lisa/new.csv";
     int[,] maze;
     System.Random rand = new System.Random();
     bool mazeCreated = false;
     int currentX = 1, currentY = 1;
+    static MazeGenerator mazeGenerator = new MazeGenerator();
+    static Exploration exploration;
     void Start()
     {
         mazeObjects = new GameObject[mazeHeight * mazeWidth];
         createMaze.onClick.AddListener(createMazeButtonListener);
-        moveNorthButton.onClick.AddListener(() => move(0, 1));
-        moveEastButton.onClick.AddListener(() => move(-1, 0));
-        moveWestButton.onClick.AddListener(() => move(1, 0));
-        moveSouthButton.onClick.AddListener(() => move(0, -1));
         sensorDataButton.onClick.AddListener(updateSensorsData);
+        nextCommandButton.onClick.AddListener(getNextCommand);
+        exploration = new Exploration(mazeHeight,mazeWidth);
     }
 
     //Create the initial maze
@@ -32,10 +37,30 @@ public class AlgorithmsSimulation : MonoBehaviour
     {
         if (mazeCreated == false)
         {
-            maze = Algorithms.MazeGenerator.GenerateMaze(mazeHeight, mazeWidth, placementThreshold);
+            maze = mazeGenerator.GenerateMaze(mazeHeight, mazeWidth, placementThreshold);
             maze[currentX, currentY] = 2;
             updateUI();
             mazeCreated = true;
+        }
+    }
+
+    void getNextCommand(){
+        string nextCommand = exploration.GetNextCommand(getSensorsData());
+        moveInDirection(nextCommand);
+    }
+
+    void moveInDirection(string direction){
+        if(direction=="North"){
+            move(0,1);
+        }
+        if(direction=="East"){
+            move(1,0);
+        }
+        if(direction=="West"){
+            move(-1,0);
+        }
+        if(direction=="South"){
+            move(0,-1);
         }
     }
 
@@ -75,7 +100,7 @@ public class AlgorithmsSimulation : MonoBehaviour
                 }
                 else if (maze[i, j] == 2)
                 {
-                    mazeObjects[counter++] = Instantiate(startPointPrefab, tempVector, Quaternion.identity);
+                    mazeObjects[counter++] = Instantiate(robotPrefab, tempVector, Quaternion.identity);
                 }
                 else if (maze[i, j] == 3)
                 {
@@ -126,7 +151,11 @@ public class AlgorithmsSimulation : MonoBehaviour
         {
             for (int j = 0; j < 3; j++)
             {
-                result[i, j] = tempArrayClone[i * 3 + j];
+                // result[i, j] = tempArrayClone[i * 3 + j];
+                if (tempArrayClone[i * 3 + j] == 1)
+                    result[i, j] = 1;
+                else
+                    result[i, j] = 0;
             }
         }
         return result;
@@ -139,4 +168,18 @@ public class AlgorithmsSimulation : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A)) move(-1, 0);       //West  - A Key
         if (Input.GetKeyDown(KeyCode.S)) move(0, -1);       //South - S Key
     }
+
+
+    /*void saveAsCSV(int[,] arr)
+        {
+            for (int i = 0; i < 30; i++)
+            {
+                for (int j = 0; j < 30; j++)
+                {
+                    File.AppendAllText(path, arr[j, i].ToString() + ",", Encoding.UTF8);
+                }
+                File.AppendAllText(path, Environment.NewLine);
+            }
+            File.AppendAllText(path, Environment.NewLine);
+        }*/
 }
