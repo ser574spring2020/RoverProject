@@ -54,16 +54,17 @@ public class MazeExplorationMap
                     {
                         continue;   // skip the the center, which is this cell
                     }
-                    if (sensorReading[x, y] == true && this.mazeMap[x, y] == null)
+                    int xMaze = robotPosition.x + x - 1;
+                    int yMaze = robotPosition.y + y - 1;
+                    if (sensorReading[x, y] == true && this.mazeMap[xMaze, yMaze] == null)
                     {
-                        int xMaze = robotPosition.x + x - 1;
-                        int yMaze = robotPosition.y + y - 1;
                         MazeCell neighbor = new MazeCell(xMaze, yMaze);   // create 
                         mazeMap[xMaze, yMaze] = neighbor;
                         cells.Add(neighbor);
                     }
                 }
             }
+            mazeMap[robotPosition.x, robotPosition.y].Visit();
             return true;
         } else
         {
