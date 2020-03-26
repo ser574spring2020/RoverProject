@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -504,7 +504,7 @@ RectTransform:
   m_LocalScale: {x: 0.8414609, y: 0.96281254, z: 1}
   m_Children: []
   m_Father: {fileID: 511350226}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -529,7 +529,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Experimental Design UI
+  m_text: Maze Runner Inputs
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -598,7 +598,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: -241.82516, w: 0}
   m_textInfo:
     textComponent: {fileID: 198154138}
-    characterCount: 22
+    characterCount: 18
     spriteCount: 0
     spaceCount: 2
     wordCount: 3
@@ -663,7 +663,7 @@ RectTransform:
   - {fileID: 1073690392}
   - {fileID: 1208362114}
   m_Father: {fileID: 511350226}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1762,7 +1762,6 @@ RectTransform:
   - {fileID: 1194880234}
   - {fileID: 1843356548}
   - {fileID: 703994948}
-  - {fileID: 2090702717}
   - {fileID: 718084367}
   - {fileID: 199907885}
   - {fileID: 1300446367}
@@ -2220,9 +2219,10 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2090702717}
   m_Father: {fileID: 511350226}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3984,7 +3984,7 @@ RectTransform:
   m_Children:
   - {fileID: 1509201622}
   m_Father: {fileID: 511350226}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5777,7 +5777,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 511350226}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6106,12 +6106,12 @@ RectTransform:
   - {fileID: 385426063}
   - {fileID: 679207115}
   - {fileID: 1978152965}
-  m_Father: {fileID: 511350226}
-  m_RootOrder: 5
+  m_Father: {fileID: 718084367}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 110, y: -80}
+  m_AnchoredPosition: {x: 182, y: 36}
   m_SizeDelta: {x: 230, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2090702718

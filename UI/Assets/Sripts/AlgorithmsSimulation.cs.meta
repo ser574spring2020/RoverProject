@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: 968673b1a3bdfd84f9897200f90664d4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - wallPrefab: {fileID: 7769298651037248627, guid: 56fad5bba1a43ff6a910acfa0e50fc73,
+      type: 3}
+  - endPointPrefab: {fileID: 7789077774077131029, guid: 7e847a25e552e6caea1e3f7f764506d3,
+      type: 3}
+  - startPointPrefab: {fileID: 6471085518038749886, guid: d7ef3befacdeba2f0837d72f136d3c9c,
+      type: 3}
+  - floorPrefab: {fileID: 4644764722218825896, guid: 5690b349a5fb4267ab5a34868bc052d6,
+      type: 3}
+  - flagPrefab: {fileID: 9134769853145301215, guid: cd2e766e7c399249fabd936de36dcdeb,
+      type: 3}
+  - visitedFloorPrefab: {fileID: 4644764722218825896, guid: 69c02f810bbdb317c98285ff0440c83e,
+      type: 3}
+  - createMaze: {instanceID: 0}
+  - moveNorthButton: {instanceID: 0}
+  - moveEastButton: {instanceID: 0}
+  - moveWestButton: {instanceID: 0}
+  - moveSouthButton: {instanceID: 0}
+  - sensorDataButton: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
