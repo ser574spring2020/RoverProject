@@ -29,7 +29,7 @@
     <property name="Rider.SolutionExplorerActivator" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="web.server" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -38,10 +38,10 @@
       <option name="pid" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="9351">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="9351" />
+      <option name="pid" />
       <method v="2" />
     </configuration>
   </component>
@@ -56,7 +56,9 @@
       <option name="presentableId" value="Default" />
       <updated>1585116230431</updated>
       <workItem from="1585116231825" duration="6735000" />
-      <workItem from="1585159922547" duration="8438000" />
+      <workItem from="1585159922547" duration="13977000" />
+      <workItem from="1585181401366" duration="14521000" />
+      <workItem from="1585203825511" duration="174000" />
     </task>
     <servers />
   </component>
@@ -142,13 +144,13 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="455" y="212" key="Rider.ProjectTemplateDialog.Size/0.0.1920.1080@0.0.1920.1080" timestamp="1585116230555" />
-    <state x="0" y="87" width="1299" height="906" key="SettingsEditor" timestamp="1585121846460">
+    <state x="0" y="87" width="1299" height="906" key="SettingsEditor" timestamp="1585194714826">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="0" y="87" width="1299" height="906" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1585121846460" />
-    <state x="492" y="125" width="936" height="830" key="find.popup" timestamp="1585119299980">
+    <state x="0" y="87" width="1299" height="906" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1585194714826" />
+    <state x="492" y="125" width="1154" height="940" key="find.popup" timestamp="1585172976989">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="492" y="125" width="936" height="830" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1585119299980" />
+    <state x="492" y="125" width="1154" height="940" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1585172976989" />
   </component>
 </project>
