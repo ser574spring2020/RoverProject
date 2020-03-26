@@ -17,7 +17,7 @@ Sensors.dll
 
 ```
 class Sensors
-  └── void String printSensors()
+  └── void String chooseSensor()
   ```
   
 ## Contributors
