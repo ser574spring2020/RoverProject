@@ -1,4 +1,4 @@
 sceneSetups:
-- path: D:/Masters/Semester - 3/SER 574/AR-Assist-master/AR-Assist-master/Assets/CodeMonkey_Graph/GameScene_Graph.unity
+- path: Assets/Scenes/Graph_scene.unity
   isLoaded: 1
   isActive: 1
