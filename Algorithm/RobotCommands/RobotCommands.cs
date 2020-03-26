@@ -17,23 +17,27 @@ public class RobotCommands
         if ((sensorData[1,2])] == 0) && (dataBaseMatrix[right] != 4))
         {
 			nextCommandList.Add("East");
-			saveSensorData(sensorData);
-		
+			// update the current movement in DB and then save the sensor data 
+			saveSensorData(sensorData,1,2);
+			
         }
-        else if ((sensorData[1,2])] == 0) && (dataBaseMatrix[Left] != 4))
+        else if ((sensorData[1,0])] == 0) && (dataBaseMatrix[Left] != 4))
         {
             nextCommandList.Add("West");
-			saveSensorData(sensorData);
+			// update the current movement in DB and then save the sensor data 
+			saveSensorData(sensorData,1,0);
         }
-        else if ((sensorData[1,2])] == 0) && (dataBaseMatrix[North] != 4))
+        else if ((sensorData[0,1])] == 0) && (dataBaseMatrix[North] != 4))
         {
 			nextCommandList.Add("North");
-			saveSensorData(sensorData);
+			// update the current movement in DB and then save the sensor data 
+			saveSensorData(sensorData,0,1);
         }
-        else if ((sensorData[1,2])] == 0) && (dataBaseMatrix[South] != 4))
+        else if ((sensorData[2,1])] == 0) && (dataBaseMatrix[South] != 4))
         {
 			nextCommandList.Add("South");
-			saveSensorData(sensorData);
+			// update the current movement in DB and then save the sensor data 
+			saveSensorData(sensorData,2,1);
         }
         else
         {
@@ -43,9 +47,10 @@ public class RobotCommands
 		return nextCommandList;
 	}
 	
-	public void saveSensorData(int[,] sensorData, int currentPosition)
+	public void saveSensorData(int[,] sensorData, int rowPosition,int columnPosition)
 	{
-		
+		//	save sensor data as it is
+		// update the rowPosition and columnPosition with 4 
 		
 	}
 }
