@@ -4,7 +4,7 @@ using Algorithms;
 
 public class AlgorithmsSimulation : MonoBehaviour
 {
-    float xStart = 0, yStart = 0;
+    float xStart = -5, yStart = 0;
     float xSpace = 0.5f, ySpace = 1.0f;
     public float placementThreshold;
     public GameObject wallPrefab, endPointPrefab, startPointPrefab, floorPrefab, flagPrefab, visitedFloorPrefab;
@@ -18,20 +18,23 @@ public class AlgorithmsSimulation : MonoBehaviour
     int currentX = 1, currentY = 1;
     void Start()
     {
-        mazeObjects = new GameObject[mazeHeight * mazeWidth];
-        createMaze.onClick.AddListener(createMazeButtonListener);
+            mazeObjects = new GameObject[mazeHeight * mazeWidth];
+            maze = Algorithms.MazeGenerator.GenerateMaze(mazeHeight, mazeWidth, placementThreshold);
+            maze[currentX, currentY] = 2;
+            updateUI();
+            mazeCreated = true;
+       // createMaze.onClick.AddListener(createMazeButtonListener);
     }
 
     //Create the initial maze
     void createMazeButtonListener()
     {
-        if (mazeCreated == false)
-        {
-            maze = Algorithms.MazeGenerator.GenerateMaze(mazeHeight, mazeWidth, placementThreshold);
-            maze[currentX, currentY] = 2;
-            updateUI();
-            mazeCreated = true;
-        }
+        //if (mazeCreated == false)
+        //{
+//            maze = Algorithms.MazeGenerator.GenerateMaze(mazeHeight, mazeWidth, placementThreshold);
+ //           maze[currentX, currentY] = 2;
+  //          updateUI();
+   //         mazeCreated = true;
     }
 
     //move the robot by 'x' steps west and 'y' steps north
@@ -62,23 +65,47 @@ public class AlgorithmsSimulation : MonoBehaviour
                 Vector3 tempVector = new Vector3(xStart + (xSpace * i), 0, yStart + (j * ySpace));
                 if (maze[i, j] == 0)
                 {
-                    mazeObjects[counter++] = Instantiate(floorPrefab, tempVector, Quaternion.identity);
+                    GameObject temp = Instantiate(floorPrefab, tempVector, Quaternion.identity);
+                    //temp.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+                    //GameObject parent = temp.transform.parent.gameObject;
+                    //parent.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+                    mazeObjects[counter++] = temp;
                 }
                 else if (maze[i, j] == 1)
                 {
-                    mazeObjects[counter++] = Instantiate(wallPrefab, tempVector, Quaternion.identity);
+                    GameObject temp = Instantiate(wallPrefab, tempVector, Quaternion.identity);
+                    //temp.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+                    //GameObject parent = temp.transform.parent.gameObject;
+                    //parent.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+                    
+                    mazeObjects[counter++] = temp;
                 }
                 else if (maze[i, j] == 2)
                 {
-                    mazeObjects[counter++] = Instantiate(startPointPrefab, tempVector, Quaternion.identity);
+                    GameObject temp = Instantiate(startPointPrefab, tempVector, Quaternion.identity);
+                    //temp.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+                    //GameObject parent = temp.transform.parent.gameObject;
+                    //parent.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+                    
+                    mazeObjects[counter++] = temp;
                 }
                 else if (maze[i, j] == 3)
                 {
-                    mazeObjects[counter++] = Instantiate(endPointPrefab, tempVector, Quaternion.identity);
+                    GameObject temp = Instantiate(endPointPrefab, tempVector, Quaternion.identity);
+                    //temp.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+                    //GameObject parent = temp.transform.parent.gameObject;
+                    //parent.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+                    
+                    mazeObjects[counter++] = temp;
                 }
                 else if (maze[i, j] == 4)
                 {
-                    mazeObjects[counter++] = Instantiate(visitedFloorPrefab, tempVector, Quaternion.identity);
+                    GameObject temp = Instantiate(visitedFloorPrefab, tempVector, Quaternion.identity);
+                    //temp.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+                    //GameObject parent = temp.transform.parent.gameObject;
+                    //parent.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+                    
+                    mazeObjects[counter++] = temp;
                 }
             }
         }
