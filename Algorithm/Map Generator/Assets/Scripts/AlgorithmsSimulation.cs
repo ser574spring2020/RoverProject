@@ -18,18 +18,23 @@ public class AlgorithmsSimulation : MonoBehaviour
     int counter = 0;
     // string path = @"/home/lisa/new.csv";
     int[,] maze;
+    Vector2Int currentPosition;
     System.Random rand = new System.Random();
     bool mazeCreated = false;
-    int currentX = 1, currentY = 1;
+
     static MazeGenerator mazeGenerator = new MazeGenerator();
-    static Exploration exploration;
+    //static Exploration exploration;
+    static MazeExplorationMap explorationMap;
+
     void Start()
     {
         mazeObjects = new GameObject[mazeHeight * mazeWidth];
         createMaze.onClick.AddListener(createMazeButtonListener);
         sensorDataButton.onClick.AddListener(updateSensorsData);
         nextCommandButton.onClick.AddListener(getNextCommand);
-        exploration = new Exploration(mazeHeight,mazeWidth);
+        //exploration = new Exploration(mazeHeight,mazeWidth);
+        explorationMap = new MazeExplorationMap(new Vector2Int(mazeWidth, mazeHeight), new Vector2Int(1, 1));
+        currentPosition = explorationMap.GetCurrentPosition();
     }
 
     //Create the initial maze
@@ -38,41 +43,67 @@ public class AlgorithmsSimulation : MonoBehaviour
         if (mazeCreated == false)
         {
             maze = mazeGenerator.GenerateMaze(mazeHeight, mazeWidth, placementThreshold);
-            maze[currentX, currentY] = 2;
+            maze[currentPosition.x, currentPosition.y] = 2;
             updateUI();
             mazeCreated = true;
         }
     }
 
     void getNextCommand(){
-        string nextCommand = exploration.GetNextCommand(getSensorsData());
+        string nextCommand;
+        bool[,] sensorData = getSensorsData();
+        explorationMap.ProcessSensor(sensorData);
+        if (sensorData[1, 2])
+        {
+            nextCommand = "South";
+        }
+        else if (sensorData[2, 1])
+        {
+            nextCommand = "East";
+        }
+        else if (sensorData[1, 0])
+        {
+            nextCommand = "North";
+        }
+        else
+        {
+            nextCommand = "West";
+        }
         moveInDirection(nextCommand);
     }
 
     void moveInDirection(string direction){
         if(direction=="North"){
-            move(0,1);
+            move(Vector2Int.down);
         }
         if(direction=="East"){
-            move(1,0);
+            move(Vector2Int.right);
         }
         if(direction=="West"){
-            move(-1,0);
+            move(Vector2Int.left);
         }
         if(direction=="South"){
-            move(0,-1);
+            move(Vector2Int.up);
         }
     }
 
     //move the robot by 'x' steps west and 'y' steps north
-    void move(int x, int y)
+    void move(Vector2Int command)
     {
-        maze[currentX, currentY] = 4;
-        if (maze[currentX + x, currentY + y] == 1) return;
-        currentX += x;
-        currentY += y;
-        maze[currentX, currentY] = 2;
-        updateUI();
+        bool success = explorationMap.CheckOpening(command);
+        if (success)
+        {
+            maze[currentPosition.x, currentPosition.y] = 4;
+            explorationMap.MoveRelative(command);
+            currentPosition = explorationMap.GetCurrentPosition();
+
+            maze[currentPosition.x, currentPosition.y] = 2;
+            updateUI();
+        } else
+        {
+            print("Move failed: " + command);
+            print(explorationMap);
+        }
     }
 
     //update the maze in the UI
@@ -114,59 +145,52 @@ public class AlgorithmsSimulation : MonoBehaviour
         }
     }
 
+    public enum CellType : int
+    {
+        floor,
+        wall,
+        robot,
+        endPoint,
+        visitedFloor
+    }
+
     // Update the sensors data text on the screen
     void updateSensorsData()
     {
-        int[,] tempData = getSensorsData();
+        bool[,] tempData = getSensorsData();
         sensorData.text = "";
-        for (int i = 0; i < 3; i++)
+        for (int y = 2; y >= 0; y--)
         {
-            for (int j = 0; j < 3; j++)
+            for (int x = 0; x < 3; x++)
             {
-                sensorData.text += tempData[i, j] + " ";
+                sensorData.text += (tempData[x, y] ? "T" : "F") + " ";
             }
             sensorData.text += "\n";
         }
     }
 
-    int[,] getSensorsData()
+    bool[,] getSensorsData()
     {
-        int[,] result = new int[3, 3];
+        bool[,] result = new bool[3, 3];
+        Vector2Int current = explorationMap.GetCurrentPosition();
 
-        //fetching the array as a 1D array of length 9
-        int[] tempArray = new int[9];
-        for (int i = 0; i < 3; i++)
-            for (int j = 0; j < 3; j++)
-                tempArray[i * 3 + j] = maze[currentX - 1 + i, currentY - 1 + j];
-
-        //adjusting the fetched data (rotating the array anti-clockwise if you think of that as a 3x3 array)
-        int[] tempArrayClone = new int[9];
-        int a = 0;
-        for (int j = 2; j >= 0; j--)
-            for (int i = 0; i < 3; i++)
-                tempArrayClone[a++] = tempArray[j + 3 * i];
-
-        //creating a 3x3 2D array from the 1D array
-        for (int i = 0; i < 3; i++)
+        for (int x = 0; x < 3; x++)
         {
-            for (int j = 0; j < 3; j++)
+            for (int y = 0; y < 3; y++)
             {
-                // result[i, j] = tempArrayClone[i * 3 + j];
-                if (tempArrayClone[i * 3 + j] == 1)
-                    result[i, j] = 1;
-                else
-                    result[i, j] = 0;
+                result[x, y] = maze[current.x + x - 1, current.y + y - 1] != 1;
             }
         }
+
         return result;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W)) move(0, 1);        //North - W Key
-        if (Input.GetKeyDown(KeyCode.D)) move(1, 0);        //East  - D Key
-        if (Input.GetKeyDown(KeyCode.A)) move(-1, 0);       //West  - A Key
-        if (Input.GetKeyDown(KeyCode.S)) move(0, -1);       //South - S Key
+        if (Input.GetKeyDown(KeyCode.W)) move(Vector2Int.up);        //North - W Key
+        if (Input.GetKeyDown(KeyCode.D)) move(Vector2Int.left);        //East  - D Key
+        if (Input.GetKeyDown(KeyCode.A)) move(Vector2Int.right);       //West  - A Key
+        if (Input.GetKeyDown(KeyCode.S)) move(Vector2Int.down);       //South - S Key
     }
 
 
