@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System;
 using System.IO;
 using System.Text;
+using System.Collections.Generic;
 using Algorithms;
 
 public class AlgorithmsSimulation : MonoBehaviour
@@ -53,16 +54,19 @@ public class AlgorithmsSimulation : MonoBehaviour
     {
         string[] nextCommands = exploration.GetNextCommand(getSensorsData());
         updateExplored();
-        // int tempCounter =0;
-        // while (nextCommands[tempCounter]!=null)
-        // {
-        //     moveInDirection(nextCommands[tempCounter]);
-        //     tempCounter++;
-        // }
+        int[,] tempMaze = new int[30, 30];
+        for (int i = 0; i < 30; i++)
+            for (int j = 0; j < 30; j++)
+                if (maze[i, j] == 1)
+                    tempMaze[j, i] = 1;
+                else
+                    tempMaze[j, i] = 0;
+        List<String> final_list = exploration.FindPath(tempMaze, currentX,currentY, 20, 20);
+        foreach (String x in final_list)
+        {
+            moveInDirection(x);
+        }
     }
-
-
-    //move the robot by 'x' steps west and 'y' steps north
 
     //update the maze in the UI
     void updateMaze()
@@ -76,7 +80,7 @@ public class AlgorithmsSimulation : MonoBehaviour
         for (int i = 0; i < mazeHeight; i++)
             for (int j = 0; j < mazeWidth; j++)
             {
-                Vector3 tempVector = new Vector3(xStart + (xSpace * i), 0, yStart - (j * ySpace));
+                Vector3 tempVector = new Vector3(xStart + (xSpace * j), 0, yStart - (ySpace * i));
                 if (maze[i, j] == 0)
                     mazeObjects[counter++] = Instantiate(floorPrefab, tempVector, Quaternion.identity);
                 else if (maze[i, j] == 1)
@@ -101,7 +105,7 @@ public class AlgorithmsSimulation : MonoBehaviour
         for (int i = 0; i < mazeHeight; i++)
             for (int j = 0; j < mazeWidth; j++)
             {
-                Vector3 tempVector = new Vector3(xStart + (xSpace * i), 100, yStart - (j * ySpace));
+                Vector3 tempVector = new Vector3(xStart + (xSpace * j), 100, yStart - (ySpace * i));
                 if (exploredMaze[i, j] == 0)
                     exploredMazeObjects[counter++] = Instantiate(floorPrefab, tempVector, Quaternion.identity);
                 else if (exploredMaze[i, j] == 1)
@@ -121,9 +125,11 @@ public class AlgorithmsSimulation : MonoBehaviour
         int[,] tempData = getSensorsData();
         sensorData.text = "";
         for (int i = 0; i < 3; i++)
+        {
             for (int j = 0; j < 3; j++)
                 sensorData.text += tempData[i, j] + " ";
-        sensorData.text += "\n";
+            sensorData.text += "\n";
+        }
     }
 
     int[,] getSensorsData()
@@ -151,20 +157,20 @@ public class AlgorithmsSimulation : MonoBehaviour
 
     void moveInDirection(string direction)
     {
-        if (direction == "North") move(0, -1);
-        if (direction == "East") move(1, 0);
-        if (direction == "West") move(-1, 0);
-        if (direction == "South") move(0, 1);
+        if (direction == "North") move(-1, 0);
+        if (direction == "East") move(0, 1);
+        if (direction == "West") move(0, -1);
+        if (direction == "South") move(1, 0);
     }
 
     void move(int x, int y)
     {
-        maze[currentX, currentY] = 4;
         if (maze[currentX + x, currentY + y] == 1) return;
+        maze[currentX, currentY] = 4;
         currentX += x;
         currentY += y;
         maze[currentX, currentY] = 2;
-        exploration.setPosition(x, y);
+        // exploration.setPosition(x, y);
         updateMaze();
     }
 

@@ -863,7 +863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87808a80796000acc978642248558513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementThreshold: 0.2
+  placementThreshold: 0.8
   sensorData: {fileID: 531963387}
   wallPrefab: {fileID: 7769298651037248627, guid: 56fad5bba1a43ff6a910acfa0e50fc73,
     type: 3}
@@ -883,7 +883,7 @@ MonoBehaviour:
   nextCommandButton: {fileID: 313702399}
   exploredMazeButton: {fileID: 34586494}
   mazeButton: {fileID: 1759679152}
-  mazeHeight: 30
+  mazeHeight: 4030
   mazeWidth: 30
 --- !u!4 &535144066
 Transform:
@@ -1124,7 +1124,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1232378871}
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 7, y: 9, z: -10}
+  m_LocalPosition: {x: 7.2, y: 9, z: -25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
