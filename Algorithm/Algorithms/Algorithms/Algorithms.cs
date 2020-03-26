@@ -16,6 +16,7 @@ namespace Algorithms
             for (int i = 0; i < sizeRows; i++)
             for (int j = 0; j < sizeCols; j++)
                 exploredMaze[i, j] = -1;
+            exploredMaze[currentX, currentY] = 2;
         }
 
         public int[,] GetExploredMaze()
@@ -23,52 +24,122 @@ namespace Algorithms
             return exploredMaze;
         }
 
+
         public List<String> GetNextCommand(int[,] sensorData)
         {
             List<String> commands = new List<string>();
             SaveSensorData((sensorData));
-            int north = sensorData[0, 1];
-            int south = sensorData[2, 1];
-            int east = sensorData[1, 2];
-            int west = sensorData[1, 0];
-            
+            int north = exploredMaze[currentX - 1, currentY];
+            int south = exploredMaze[currentX + 1, currentY];
+            int east = exploredMaze[currentX, currentY + 1];
+            int west = exploredMaze[currentX, currentY - 1];
             if (south == 0)
             {
+                exploredMaze[currentX, currentY] = 4;
                 commands.Add("South");
-                Debug.Log("Moving South from" + currentX + ", " + currentY);
                 currentX += 1;
             }
             else if (east == 0)
             {
+                exploredMaze[currentX, currentY] = 4;
                 commands.Add("East");
-                Debug.Log("Moving East from" + currentX + ", " + currentY);
                 currentY += 1;
             }
-            
-            else if(west == 0)
+
+            else if (west == 0)
             {
+                exploredMaze[currentX, currentY] = 4;
                 commands.Add("West");
-                Debug.Log("Moving West from" + currentX + ", " + currentY);
                 currentY -= 1;
             }
             else if (north == 0)
             {
+                exploredMaze[currentX, currentY] = 4;
                 commands.Add("North");
-                Debug.Log("Moving North from" + currentX + ", " + currentY);
                 currentX -= 1;
             }
             else
             {
-                
+                int[] flag = getAnyFlag();
+                int i = flag[0];
+                int j = flag[1];
+                int[,] tempMaze = new int[30, 30];
+                for (int x = 0; x < 30; x++)
+                {
+                    for (int y = 0; y < 30; y++)
+                    {
+                        if (exploredMaze[i, j] == 1)
+                        {
+                            tempMaze[i, j] = 1;
+                        }
+                        else if (exploredMaze[i, j] == -1)
+                        {
+                            tempMaze[i, j] = -1;
+                        }
+                        else
+                        {
+                            tempMaze[i, j] = 0;
+                        }
+                    }
+                }
+                List<string> path = FindPath(tempMaze, currentX, currentY, i, j);
+                foreach (string VARIABLE in path)
+                {
+                    updateMazeWithPath(VARIABLE);
+                }
+                return path;
             }
-            
 
-            Debug.Log(currentX + ", " + currentY);
+            void updateMazeWithPath(string direction)
+            {
+                int x=0, y=0;
+                if (direction == "North")
+                {
+                    x = -1;
+                    y = 0;
+                }
+                else if (direction == "East")
+                {
+                    x = 0;
+                    y = 1;
+                }
+                else if (direction == "West")
+                {
+                    x = 0;
+                    y = -1;
+                }
+                else if (direction == "South")
+                {
+                    x = 1;
+                    y = 0;
+                }
+                if (exploredMaze[currentX + x, currentY + y] == 1) return;
+                exploredMaze[currentX, currentY] = 4;
+                currentX += x;
+                currentY += y;
+                exploredMaze[currentX, currentY] = 2;
+                setPosition(currentX, currentY);
+                Debug.Log(currentX + "," + currentY);
+            }
+            exploredMaze[currentX, currentY] = 2;
             return commands;
         }
 
-        public void addFlags()
+        private int[] getAnyFlag()
         {
+            for (int i = 0; (i) < 30; (i)++)
+            {
+                for (int j = 0; j < 30; j++)
+                {
+                    if (exploredMaze[i, j] == 0)
+                    {
+                        Debug.Log(i+" "+j);
+                        return new int[] {i, j};
+                    }
+                }
+            }
+
+            return new int[] { };
         }
 
         private void SaveSensorData(int[,] sensorData)

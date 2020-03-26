@@ -863,7 +863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87808a80796000acc978642248558513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementThreshold: 0.2
+  placementThreshold: 0.5
   sensorData: {fileID: 531963387}
   wallPrefab: {fileID: 7769298651037248627, guid: 56fad5bba1a43ff6a910acfa0e50fc73,
     type: 3}

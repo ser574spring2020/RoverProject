@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System;
-using System.IO;
-using System.Text;
+
 using System.Collections.Generic;
 using Algorithms;
 
@@ -110,6 +109,8 @@ public class AlgorithmsSimulation : MonoBehaviour
                     exploredMazeObjects[counter++] = Instantiate(wallPrefab, tempVector, Quaternion.identity);
                 else if (exploredMaze[i, j] == 2)
                     exploredMazeObjects[counter++] = Instantiate(robotPrefab, tempVector, Quaternion.identity);
+                else if (exploredMaze[i, j] == 4)
+                    exploredMazeObjects[counter++] = Instantiate(visitedFloorPrefab, tempVector, Quaternion.identity);
             }
     }
 
