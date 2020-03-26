@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine;
 using System;
 
 /*
@@ -22,7 +22,8 @@ public class RobotCommands
         sensorData[2, 1] = 1;
         sensorData[2, 2] = 1;
         sensorData[2, 0] = 1;
-		RobotCommands obj=new RobotCommands();
+        RobotCommands obj = new RobotCommands();
+
         foreach (var item in obj.computeDirection(sensorData))
         {
             Console.WriteLine("The nodes are:" + item);
@@ -31,49 +32,47 @@ public class RobotCommands
 
     public List<String> computeDirection(int[,] sensorData)
     {
-        // For unit testing
-        int[] dataBaseMatrix = new int[1];
-        int Left, North, South;
-        int right = Left = North = South = 0;
-        dataBaseMatrix[right] = 0;
+		Vector2Int East =1,2;
+        Vector2Int West =1,0;
+        Vector2Int North =0,1;
+        Vector2Int South =2,1;
 
+		MazeCell dataBaseMatrix=new MazeCell();
         List<String> nextCommandList = new List<String>();
 
-        if ((sensorData[1, 2] == 0) && (dataBaseMatrix[right] != 4))
+        if ((sensorData[1, 2] == 0) && (dataBaseMatrix.GetCell(East).isVisited()) == false)
         {
             nextCommandList.Add("East");
-            // update the current movement in DB and then save the sensor data 
             saveSensorData(sensorData, 1, 2);
         }
-        else if ((sensorData[1, 0] == 0) && (dataBaseMatrix[Left] != 4))
+        else if ((sensorData[1, 0] == 0) && (dataBaseMatrix.GetCell(West).isVisited()) == false)
         {
             nextCommandList.Add("West");
-            // update the current movement in DB and then save the sensor data 
             saveSensorData(sensorData, 1, 0);
         }
-        else if ((sensorData[0, 1] == 0) && (dataBaseMatrix[North] != 4))
+        else if ((sensorData[0, 1] == 0) && (dataBaseMatrix.GetCell(North).isVisited()) == false)
         {
             nextCommandList.Add("North");
-            // update the current movement in DB and then save the sensor data 
             saveSensorData(sensorData, 0, 1);
         }
-        else if ((sensorData[2, 1] == 0) && (dataBaseMatrix[South] != 4))
+        else if ((sensorData[2, 1] == 0) && (dataBaseMatrix.GetCell(South).isVisited()) == false)
         {
             nextCommandList.Add("South");
-            // update the current movement in DB and then save the sensor data 
             saveSensorData(sensorData, 2, 1);
         }
         else
         {
-            // DepthFirstSearch findPath=new DepthFirstSearch();
-            // nextCommandList=findPath.findPathAdapter();
+            DepthFirstSearch findPath = new DepthFirstSearch();
+            nextCommandList = findPath.findPathAdapter();
         }
         return nextCommandList;
     }
 
     public void saveSensorData(int[,] sensorData, int rowPosition, int columnPosition)
     {
-        //	save sensor data as it is
-        // update the rowPosition and columnPosition with 4 
+        MazeExplorationMap saveSensorData = new MazeExplorationMap();
+        // Current movement is updated and then sensor data stored 
+        sensorData[rowPosition, columnPosition] = 4;
+        saveSensorData.ProcessSensor(sensorData);
     }
 }
