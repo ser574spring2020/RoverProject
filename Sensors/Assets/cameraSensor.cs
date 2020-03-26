@@ -7,12 +7,14 @@ public class cameraSensor : MonoBehaviour
 
     public int resWidth = 2550;
     public int resHeight = 3300;
+    public GameObject drone;
+    private Vector3 offset;
 
     private bool takeHiResShot = false;
     // Start is called before the first frame update
     void Start()
     {
-
+        offset = transform.position - drone.transform.position;
     }
 
     // Update is called once per frame
@@ -20,6 +22,8 @@ public class cameraSensor : MonoBehaviour
     {
 
     }
+
+   
 
     public static string ScreenShotName(int width, int height)
     {
@@ -36,6 +40,7 @@ public class cameraSensor : MonoBehaviour
 
     void LateUpdate()
     {
+        transform.position = drone.transform.position + offset;
         Camera camera = GameObject.Find("Main Camera").GetComponent<Camera>();
         takeHiResShot |= Input.GetKeyDown("k");
         if (takeHiResShot)

@@ -12,11 +12,118 @@ public class proximitySensor : MonoBehaviour
     private float newTime;
     private float newVelocity;
     private float oldVelocity;
+
+    [Header("Sensors")]
+    public float sensorLength = 3f;
+    //public float frontSensorPos = 0.5f;
+    public float sideSensorPos = 0.2f;
+    public float frontSensorAngle = 45;
+    private static int[,] proximityMatrix;
+
     void Start()
+    {
+        proximityMatrix = new int[,] { { 1, 0, 1 }, { 0, -1, 0 }, { 1, 0, 1 } };
+
+    } 
+
+    private int[,] getProximityMatrixFromSensor()
+    {
+        RaycastHit hit;
+
+        Ray leftRay = new Ray(Cube.transform.position, Cube.transform.TransformDirection(transform.forward));        
+
+        if (Physics.Raycast(leftRay, out hit, sensorLength))
+        {
+            Debug.Log("found forward obstacle");
+            Debug.DrawLine(leftRay.origin, hit.point);
+            proximityMatrix[1, 0] = 1;
+            testProximityMatrix(proximityMatrix);
+        }
+        else
+        {
+            proximityMatrix[1, 0] = 0;            
+        }
+
+
+        Ray frontRay = new Ray(Cube.transform.position, Cube.transform.TransformDirection(transform.right));
+        if (Physics.Raycast(frontRay, out hit, sensorLength))
+        {
+            Debug.Log("found front obstacle");
+            Debug.DrawLine(frontRay.origin, hit.point);
+            proximityMatrix[0, 1] = 1;
+            testProximityMatrix(proximityMatrix);
+        }
+        else
+        {
+            proximityMatrix[0, 1] = 0;            
+        }
+
+        var direction = Quaternion.AngleAxis(45, transform.up) * transform.forward;
+        Ray frontleftRay = new Ray(Cube.transform.position, Cube.transform.TransformDirection(direction));
+        if (Physics.Raycast(frontleftRay, out hit, sensorLength))
+        {
+            Debug.Log("found frontleftRay obstacle");
+            Debug.DrawLine(frontleftRay.origin, hit.point);
+            //proximityMatrix[0, 1] = 1;
+            //testProximityMatrix(proximityMatrix);
+        }
+        else
+        {
+            //proximityMatrix[0, 1] = 0;
+        }
+
+
+        Ray backRay = new Ray(Cube.transform.position, Cube.transform.TransformDirection(-transform.right));
+        if (Physics.Raycast(backRay, out hit, sensorLength))
+        {
+            Debug.Log("found back obstacle");
+            Debug.DrawLine(backRay.origin, hit.point);
+            proximityMatrix[2, 1] = 1;
+            testProximityMatrix(proximityMatrix);
+        }
+        else
+        {
+            proximityMatrix[2, 1] = 0;            
+        }
+
+
+        Ray rightRay = new Ray(Cube.transform.position, Cube.transform.TransformDirection(-transform.forward));
+       if (Physics.Raycast(rightRay, out hit, sensorLength))
+       {
+            Debug.Log("found right obstacle");            
+           Debug.DrawLine(rightRay.origin, hit.point);
+            proximityMatrix[1, 2] = 1;
+            testProximityMatrix(proximityMatrix);
+        }
+        else
+        {
+            proximityMatrix[1, 2] = 0;
+            
+        }
+
+        // print matrix
+        //testProximityMatrix(proximityMatrix);
+
+        return proximityMatrix;
+       
+    }
+
+    private void testProximityMatrix(int[,] matrix)
     {
 
         
-    } 
+         foreach(var eachrow in matrix)
+        {
+            Debug.Log(eachrow);
+        }
+
+    }
+
+    private void FixedUpdate()
+    {
+        getProximityMatrixFromSensor();
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -35,7 +142,7 @@ public class proximitySensor : MonoBehaviour
         if (Cube != null && Cube1 != null)
         {
             Distance = getDataFromProximitySensor();
-            Debug.Log(string.Format("Distance between {0} and {1} is: {2}", Cube, Cube1, Distance));
+            //Debug.Log(string.Format("Distance between {0} and {1} is: {2}", Cube, Cube1, Distance));
         }
         
 
