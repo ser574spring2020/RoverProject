@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 ﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":true,"showMaterialUpdate":false,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true},"in2DMode":false,"pivot":{"x":954.8499755859375,"y":244.5,"z":3.4000015258789064},"rotation":{"x":0.0,"y":0.0,"z":0.0,"w":-1.0},"size":718.1448974609375,"orthographic":false}
+=======
+﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":true,"showMaterialUpdate":false,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true},"in2DMode":false,"pivot":{"x":10.5712890625,"y":110.141357421875,"z":-24.9599609375},"rotation":{"x":0.21699738502502442,"y":0.047422174364328387,"z":-0.010555457323789597,"w":0.9749625325202942},"size":4.469022750854492,"orthographic":true}
+>>>>>>> Algorithms
