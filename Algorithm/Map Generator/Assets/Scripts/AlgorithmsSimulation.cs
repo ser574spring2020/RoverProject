@@ -52,17 +52,15 @@ public class AlgorithmsSimulation : MonoBehaviour
 
     void getNextCommand()
     {
-        string[] nextCommands = exploration.GetNextCommand(getSensorsData());
-        updateExplored();
-        int[,] tempMaze = new int[30, 30];
-        for (int i = 0; i < 30; i++)
-            for (int j = 0; j < 30; j++)
-                if (maze[i, j] == 1)
-                    tempMaze[j, i] = 1;
-                else
-                    tempMaze[j, i] = 0;
-        List<String> final_list = exploration.FindPath(tempMaze, currentX,currentY, 20, 20);
-        foreach (String x in final_list)
+        // CALL TO SAVE SENSOR DATA
+        // string[] nextCommands = exploration.GetNextCommand(getSensorsData());
+        // updateExplored();
+
+        List<String> robotCommand = exploration.GetNextCommand(getSensorsData());
+
+        // MAYANK RAWAT
+        // List<String> final_list = exploration.FindPath(tempMaze, currentX,currentY, 20, 20);
+        foreach (String x in robotCommand)
         {
             moveInDirection(x);
         }
@@ -72,10 +70,9 @@ public class AlgorithmsSimulation : MonoBehaviour
     void updateMaze()
     {
         //Destroy UI
-        for (int i = 0; i < counter; i++)
+        for (int i = 0; i < mazeObjects.Length; i++)
             Destroy(mazeObjects[i]);
         counter = 0;
-
         //Recreate UI
         for (int i = 0; i < mazeHeight; i++)
             for (int j = 0; j < mazeWidth; j++)
@@ -87,8 +84,6 @@ public class AlgorithmsSimulation : MonoBehaviour
                     mazeObjects[counter++] = Instantiate(wallPrefab, tempVector, Quaternion.identity);
                 else if (maze[i, j] == 2)
                     mazeObjects[counter++] = Instantiate(robotPrefab, tempVector, Quaternion.identity);
-                else if (maze[i, j] == 3)
-                    mazeObjects[counter++] = Instantiate(endPointPrefab, tempVector, Quaternion.identity);
                 else if (maze[i, j] == 4)
                     mazeObjects[counter++] = Instantiate(visitedFloorPrefab, tempVector, Quaternion.identity);
             }
@@ -97,7 +92,7 @@ public class AlgorithmsSimulation : MonoBehaviour
     void updateExplored()
     {
         exploredMaze = exploration.GetExploredMaze();
-        for (int i = 0; i < counter; i++)
+        for (int i = 0; i < exploredMazeObjects.Length; i++)
             Destroy(exploredMazeObjects[i]);
         counter = 0;
 
@@ -112,10 +107,6 @@ public class AlgorithmsSimulation : MonoBehaviour
                     exploredMazeObjects[counter++] = Instantiate(wallPrefab, tempVector, Quaternion.identity);
                 else if (exploredMaze[i, j] == 2)
                     exploredMazeObjects[counter++] = Instantiate(robotPrefab, tempVector, Quaternion.identity);
-                else if (exploredMaze[i, j] == 3)
-                    exploredMazeObjects[counter++] = Instantiate(endPointPrefab, tempVector, Quaternion.identity);
-                else if (exploredMaze[i, j] == 4)
-                    exploredMazeObjects[counter++] = Instantiate(visitedFloorPrefab, tempVector, Quaternion.identity);
             }
     }
 
@@ -137,14 +128,12 @@ public class AlgorithmsSimulation : MonoBehaviour
         int[,] result = new int[3, 3];
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++)
-                if (maze[currentX - 1 + j, currentY - 1 + i] == 1)
+                if (maze[currentX - 1 + i, currentY - 1 + j] == 1)
                     result[i, j] = 1;
                 else
                     result[i, j] = 0;
         return result;
     }
-
-
 
     void Update()
     {
@@ -154,13 +143,12 @@ public class AlgorithmsSimulation : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S)) moveInDirection("South");       //South - S Key
     }
 
-
     void moveInDirection(string direction)
     {
         if (direction == "North") move(-1, 0);
-        if (direction == "East") move(0, 1);
-        if (direction == "West") move(0, -1);
-        if (direction == "South") move(1, 0);
+        else if (direction == "East") move(0, 1);
+        else if (direction == "West") move(0, -1);
+        else if (direction == "South") move(1, 0);
     }
 
     void move(int x, int y)
@@ -170,7 +158,7 @@ public class AlgorithmsSimulation : MonoBehaviour
         currentX += x;
         currentY += y;
         maze[currentX, currentY] = 2;
-        // exploration.setPosition(x, y);
+        exploration.setPosition(currentX, currentY);
         updateMaze();
     }
 
@@ -180,7 +168,7 @@ public class AlgorithmsSimulation : MonoBehaviour
     {
         updateExplored();
         Vector3 position = camera.transform.position;
-        position.y += 100;
+        position.y = 109;
         camera.transform.position = position;
     }
 
@@ -188,7 +176,7 @@ public class AlgorithmsSimulation : MonoBehaviour
     void moveToOriginalMaze()
     {
         Vector3 position = camera.transform.position;
-        position.y -= 100;
+        position.y = 9;
         camera.transform.position = position;
     }
 }
