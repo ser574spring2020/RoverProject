@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScreen : MonoBehaviour
 {
-   public void MainScene()
+   
+    public void MainScene()
     {
         SceneManager.LoadScene("MainUI", LoadSceneMode.Single);
-        
         
     }
 }
