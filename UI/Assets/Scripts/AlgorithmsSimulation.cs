@@ -49,7 +49,13 @@ public class AlgorithmsSimulation : MonoBehaviour
         if (mazeCreated == false)
         {
             mazeAlgo = mazeGenerator.GenerateMaze(mazeHeight, mazeWidth, placementThreshold);
-            mazeUser = mazeGenerator.GenerateMaze(mazeHeight, mazeWidth, placementThreshold);
+            mazeUser = new int[mazeHeight, mazeWidth];
+            for(int i = 0; i < mazeHeight; i++){
+                for(int j = 0; j < mazeWidth; j++){
+                    mazeUser[i, j] = mazeAlgo[i, j];
+                }
+            }
+
             mazeAlgo[currentX, currentY] = 2;
             mazeUser[currentX1, currentY1] = 2;
             updateUI();
