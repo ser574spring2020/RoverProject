@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using Algorithms;
 using System.Collections.Generic;
+using Sensors1;
 
 public class AlgorithmsSimulation : MonoBehaviour
 {
@@ -26,7 +27,8 @@ public class AlgorithmsSimulation : MonoBehaviour
     int currentX = 1, currentY = 1;
     static MazeGenerator mazeGenerator = new MazeGenerator();
     static Exploration exploration;
-    
+    static Sensors1.Sensors sensor;
+
     void Start()
     {
         mazeObjects = new GameObject[mazeHeight * mazeWidth];
@@ -34,6 +36,9 @@ public class AlgorithmsSimulation : MonoBehaviour
         sensorDataButton.onClick.AddListener(updateSensorsData);
         nextCommandButton.onClick.AddListener(getNextCommand);
         exploration = new Exploration(mazeHeight,mazeWidth);
+        sensor = new Sensors1.Sensors();
+        String sensorChosen = sensor.chooseSensor(1);
+        Debug.Log(sensorChosen);
     }
 
     //Create the initial maze
@@ -112,8 +117,8 @@ public class AlgorithmsSimulation : MonoBehaviour
                 }
                 else if (maze[i, j] == 2)
                 {
-                    mazeObjects[counter] = Instantiate(robotPrefab, tempVector1, Quaternion.identity);
                     mazeObjects[counter] = Instantiate(robotPrefab, tempVector, Quaternion.identity);
+                    mazeObjects[counter] = Instantiate(robotPrefab, tempVector1, Quaternion.identity);
                     counter++;
                 }
                 else if (maze[i, j] == 3)
@@ -149,6 +154,8 @@ public class AlgorithmsSimulation : MonoBehaviour
 
     int[,] getSensorsData()
     {
+        return sensor.getSensorData(maze, currentX, currentY);
+        /*
         int[,] result = new int[3, 3];
 
         //fetching the array as a 1D array of length 9
@@ -177,6 +184,7 @@ public class AlgorithmsSimulation : MonoBehaviour
             }
         }
         return result;
+        */
     }
 
     void Update()
