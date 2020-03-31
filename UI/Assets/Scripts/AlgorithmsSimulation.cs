@@ -20,7 +20,6 @@ public class AlgorithmsSimulation : MonoBehaviour
     public int mazeHeight, mazeWidth;
     GameObject[] mazeObjects;
     int counter = 0;
-    // string path = @"/home/lisa/new.csv";
     int[,] mazeUser, mazeAlgo;
     System.Random rand = new System.Random();
     bool mazeCreated = false;
@@ -32,7 +31,6 @@ public class AlgorithmsSimulation : MonoBehaviour
     void Start()
     {
         mazeObjects = new GameObject[mazeHeight * mazeWidth];
-        //mazeObjects1 = new GameObject[mazeHeight * mazeWidth];
         createMaze.onClick.AddListener(createMazeButtonListener);
         sensorDataButton.onClick.AddListener(updateSensorsData);
         nextCommandButton.onClick.AddListener(getNextCommand);
@@ -60,7 +58,7 @@ public class AlgorithmsSimulation : MonoBehaviour
             mazeUser[currentX1, currentY1] = 2;
             updateUI();
             mazeCreated = true;
-            InvokeRepeating("getNextCommand", 1f, 2f);
+            InvokeRepeating("getNextCommand", 2f, 2f);
         }
     }
 
@@ -123,36 +121,25 @@ public class AlgorithmsSimulation : MonoBehaviour
             for (int j = 0; j < mazeWidth; j++)
             {
                 Vector3 tempVector = new Vector3(xStart + (xSpace * j), 0, yStart - (i * ySpace));
-                //Vector3 tempVector1 = new Vector3(xStart1 + (xSpace * j), 0, yStart1 - (i * ySpace));
                 if (mazeAlgo[i, j] == 0)
                 {
-                    mazeObjects[counter] = Instantiate(floorPrefab, tempVector, Quaternion.identity);
-                    //mazeObjects[counter] = Instantiate(floorPrefab, tempVector1, Quaternion.identity);
-                    counter++;
+                    mazeObjects[counter++] = Instantiate(floorPrefab, tempVector, Quaternion.identity);
                 }
                 else if (mazeAlgo[i, j] == 1)
                 {
-                    mazeObjects[counter] = Instantiate(wallPrefab, tempVector, Quaternion.identity);
-                    //mazeObjects[counter] = Instantiate(wallPrefab, tempVector1, Quaternion.identity);
-                    counter++;
+                    mazeObjects[counter++] = Instantiate(wallPrefab, tempVector, Quaternion.identity);
                 }
                 else if (mazeAlgo[i, j] == 2)
                 {
-                    mazeObjects[counter] = Instantiate(robotPrefab, tempVector, Quaternion.identity);
-                    //mazeObjects[counter] = Instantiate(robotPrefab, tempVector1, Quaternion.identity);
-                    counter++;
+                    mazeObjects[counter++] = Instantiate(robotPrefab, tempVector, Quaternion.identity);
                 }
                 else if (mazeAlgo[i, j] == 3)
                 {
-                    mazeObjects[counter] = Instantiate(endPointPrefab, tempVector, Quaternion.identity);
-                    //mazeObjects[counter] = Instantiate(endPointPrefab, tempVector1, Quaternion.identity);
-                    counter++;
+                    mazeObjects[counter++] = Instantiate(endPointPrefab, tempVector, Quaternion.identity);
                 }
                 else if (mazeAlgo[i, j] == 4)
                 {
-                    mazeObjects[counter] = Instantiate(visitedFloorPrefab, tempVector, Quaternion.identity);
-                    //mazeObjects[counter] = Instantiate(visitedFloorPrefab, tempVector1, Quaternion.identity);
-                    counter++;
+                    mazeObjects[counter++] = Instantiate(visitedFloorPrefab, tempVector, Quaternion.identity);
                 }
             }
         }
@@ -161,37 +148,26 @@ public class AlgorithmsSimulation : MonoBehaviour
         {
             for (int j = 0; j < mazeWidth; j++)
             {
-                //Vector3 tempVector = new Vector3(xStart1 + (xSpace * j), 0, yStart1 - (i * ySpace));
                 Vector3 tempVector1 = new Vector3(xStart1 + (xSpace * j), 0, yStart1 - (i * ySpace));
                 if (mazeUser[i, j] == 0)
                 {
-                    //mazeObjects[counter] = Instantiate(floorPrefab, tempVector, Quaternion.identity);
-                    mazeObjects[counter] = Instantiate(floorPrefab, tempVector1, Quaternion.identity);
-                    counter++;
+                    mazeObjects[counter++] = Instantiate(floorPrefab, tempVector1, Quaternion.identity);
                 }
                 else if (mazeUser[i, j] == 1)
                 {
-                    //mazeObjects[counter] = Instantiate(wallPrefab, tempVector, Quaternion.identity);
-                    mazeObjects[counter] = Instantiate(wallPrefab, tempVector1, Quaternion.identity);
-                    counter++;
+                    mazeObjects[counter++] = Instantiate(wallPrefab, tempVector1, Quaternion.identity);
                 }
                 else if (mazeUser[i, j] == 2)
                 {
-                    //mazeObjects[counter] = Instantiate(robotPrefab, tempVector, Quaternion.identity);
-                    mazeObjects[counter] = Instantiate(robotPrefab, tempVector1, Quaternion.identity);
-                    counter++;
+                    mazeObjects[counter++] = Instantiate(robotPrefab, tempVector1, Quaternion.identity);
                 }
                 else if (mazeUser[i, j] == 3)
                 {
-                    //mazeObjects[counter] = Instantiate(endPointPrefab, tempVector, Quaternion.identity);
-                    mazeObjects[counter] = Instantiate(endPointPrefab, tempVector1, Quaternion.identity);
-                    counter++;
+                    mazeObjects[counter++] = Instantiate(endPointPrefab, tempVector1, Quaternion.identity);
                 }
                 else if (mazeUser[i, j] == 4)
                 {
-                    //mazeObjects[counter] = Instantiate(visitedFloorPrefab, tempVector, Quaternion.identity);
-                    mazeObjects[counter] = Instantiate(visitedFloorPrefab, tempVector1, Quaternion.identity);
-                    counter++;
+                    mazeObjects[counter++] = Instantiate(visitedFloorPrefab, tempVector1, Quaternion.identity);
                 }
             }
         }
