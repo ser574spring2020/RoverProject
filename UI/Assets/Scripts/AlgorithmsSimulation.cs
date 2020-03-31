@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Text;
 using Algorithms;
+using System.Collections.Generic;
 
 public class AlgorithmsSimulation : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class AlgorithmsSimulation : MonoBehaviour
     int currentX = 1, currentY = 1;
     static MazeGenerator mazeGenerator = new MazeGenerator();
     static Exploration exploration;
+    
     void Start()
     {
         mazeObjects = new GameObject[mazeHeight * mazeWidth];
@@ -47,8 +49,11 @@ public class AlgorithmsSimulation : MonoBehaviour
     }
 
     void getNextCommand(){
-        string nextCommand = exploration.GetNextCommand(getSensorsData());
-        moveInDirection(nextCommand);
+        List<String> robotCommand = exploration.GetNextCommand(getSensorsData());
+        foreach (String x in robotCommand)
+        {
+            moveInDirection(x);
+        }
     }
 
     void moveInDirection(string direction){
@@ -107,8 +112,8 @@ public class AlgorithmsSimulation : MonoBehaviour
                 }
                 else if (maze[i, j] == 2)
                 {
-                    mazeObjects[counter] = Instantiate(robotPrefab, tempVector, Quaternion.identity);
                     mazeObjects[counter] = Instantiate(robotPrefab, tempVector1, Quaternion.identity);
+                    mazeObjects[counter] = Instantiate(robotPrefab, tempVector, Quaternion.identity);
                     counter++;
                 }
                 else if (maze[i, j] == 3)
