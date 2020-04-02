@@ -14,3 +14,10 @@ The Hierarchy should contain sameplescene only, click on run button on top.
 ## Documentation Link
 - [Google Drive](https://drive.google.com/drive/u/1/folders/179mMU8yw6jKtETn6Q0-5lH5IkhCP958J)
 - [Taiga](https://tree.taiga.io/project/gmatti1-ser574roverprojectui/timeline)
+
+## Team Members
+- Amanjoth Singh
+- Sneha L
+- Palak Chugh
+- Vaibhai B
+- Gangadhara Matti
