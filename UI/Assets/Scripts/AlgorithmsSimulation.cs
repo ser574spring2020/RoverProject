@@ -10,9 +10,7 @@ using Sensors1;
 public class AlgorithmsSimulation : MonoBehaviour
 {
     float xStart = 14, yStart = 0;
-    float xStart1 = -2, yStart1 = 0;
     float xSpace = 0.5f, ySpace = 0.5f;
-    float xSpace1 = 0.5f, ySpace1 = 0.5f;
     public float placementThreshold;
     public Text sensorData;
     public GameObject wallPrefab, endPointPrefab, robotPrefab, floorPrefab, flagPrefab, visitedFloorPrefab;
@@ -23,7 +21,7 @@ public class AlgorithmsSimulation : MonoBehaviour
     int[,] mazeUser, mazeAlgo;
     System.Random rand = new System.Random();
     bool mazeCreated = false;
-    int currentX = 1, currentY = 1, currentX1 = 1, currentY1 = 1;
+    int currentX = 1, currentY = 1;
     static MazeGenerator mazeGenerator = new MazeGenerator();
     static Exploration exploration;
     static Sensors1.Sensors sensor;
@@ -38,7 +36,6 @@ public class AlgorithmsSimulation : MonoBehaviour
         sensor = new Sensors1.Sensors();
         String sensorChosen = sensor.chooseSensor(1);
         Debug.Log(sensorChosen);
-        InvokeRepeating("getNextCommand", 1f, 2f);
     }
 
     //Create the initial maze
@@ -47,15 +44,7 @@ public class AlgorithmsSimulation : MonoBehaviour
         if (mazeCreated == false)
         {
             mazeAlgo = mazeGenerator.GenerateMaze(mazeHeight, mazeWidth, placementThreshold);
-            mazeUser = new int[mazeHeight, mazeWidth];
-            for(int i = 0; i < mazeHeight; i++){
-                for(int j = 0; j < mazeWidth; j++){
-                    mazeUser[i, j] = mazeAlgo[i, j];
-                }
-            }
-
             mazeAlgo[currentX, currentY] = 2;
-            mazeUser[currentX1, currentY1] = 2;
             updateUI();
             mazeCreated = true;
             InvokeRepeating("getNextCommand", 2f, 2f);
@@ -68,6 +57,7 @@ public class AlgorithmsSimulation : MonoBehaviour
         {
             moveInDirection(x);
         }
+        updateUI();
     }
 
     void moveInDirection(string direction){
@@ -93,16 +83,6 @@ public class AlgorithmsSimulation : MonoBehaviour
         currentX += x;
         currentY += y;
         mazeAlgo[currentX, currentY] = 2;
-        updateUI();
-    }
-
-    void moveUser(int x, int y)
-    {
-        mazeUser[currentX1, currentY1] = 4;
-        if (mazeUser[currentX1 + x, currentY1 + y] == 1) return;
-        currentX1 += x;
-        currentY1 += y;
-        mazeUser[currentX1, currentY1] = 2;
         updateUI();
     }
 
@@ -140,34 +120,6 @@ public class AlgorithmsSimulation : MonoBehaviour
                 else if (mazeAlgo[i, j] == 4)
                 {
                     mazeObjects[counter++] = Instantiate(visitedFloorPrefab, tempVector, Quaternion.identity);
-                }
-            }
-        }
-        counter = 0;
-        for (int i = 0; i < mazeHeight; i++)
-        {
-            for (int j = 0; j < mazeWidth; j++)
-            {
-                Vector3 tempVector1 = new Vector3(xStart1 + (xSpace * j), 0, yStart1 - (i * ySpace));
-                if (mazeUser[i, j] == 0)
-                {
-                    mazeObjects[counter++] = Instantiate(floorPrefab, tempVector1, Quaternion.identity);
-                }
-                else if (mazeUser[i, j] == 1)
-                {
-                    mazeObjects[counter++] = Instantiate(wallPrefab, tempVector1, Quaternion.identity);
-                }
-                else if (mazeUser[i, j] == 2)
-                {
-                    mazeObjects[counter++] = Instantiate(robotPrefab, tempVector1, Quaternion.identity);
-                }
-                else if (mazeUser[i, j] == 3)
-                {
-                    mazeObjects[counter++] = Instantiate(endPointPrefab, tempVector1, Quaternion.identity);
-                }
-                else if (mazeUser[i, j] == 4)
-                {
-                    mazeObjects[counter++] = Instantiate(visitedFloorPrefab, tempVector1, Quaternion.identity);
                 }
             }
         }
@@ -225,9 +177,9 @@ public class AlgorithmsSimulation : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D)) moveUser(0, 1);        //North - W Key
-        if (Input.GetKeyDown(KeyCode.S)) moveUser(1, 0);        //East  - D Key
-        if (Input.GetKeyDown(KeyCode.W)) moveUser(-1, 0);       //West  - A Key
-        if (Input.GetKeyDown(KeyCode.A)) moveUser(0, -1);       //South - S Key
+        if (Input.GetKeyDown(KeyCode.D)) move(0, 1);        //North - W Key
+        if (Input.GetKeyDown(KeyCode.S)) move(1, 0);        //East  - D Key
+        if (Input.GetKeyDown(KeyCode.W)) move(-1, 0);       //West  - A Key
+        if (Input.GetKeyDown(KeyCode.A)) move(0, -1);       //South - S Key
     }
 }
