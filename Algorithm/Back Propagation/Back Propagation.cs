@@ -34,4 +34,38 @@
       this.rnd = new Random(0);
       this.InitializeWeights(); // all weights and biases
     } // ctor
+	
+	private static double[][] MakeMatrix(int rows,
+      int cols, double v) // helper for ctor, Train
+    {
+      double[][] result = new double[rows][];
+      for (int r = 0; r < result.Length; ++r)
+        result[r] = new double[cols];
+      for (int i = 0; i < rows; ++i)
+        for (int j = 0; j < cols; ++j)
+          result[i][j] = v;
+      return result;
+    }
+	
+	private void InitializeWeights() // helper for ctor
+    {
+	
+	}
+	
+	
+	public void SetWeights(double[] weights)
+    {
+		
+	}
+
+	public double[] GetWeights()
+    {
+	
+	}
+	
+	public double[] ComputeOutputs(double[] xValues)
+    {
+		
+	}
+
   }
