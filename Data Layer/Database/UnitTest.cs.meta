@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Data Layer/Database/UnitTest.cs.meta
 guid: 41611243836c9414da86010401bea875
+=======
+guid: d4ef26aa386b44923b61c9c4b505a67c
+>>>>>>> fbaba141fa674f96ec45968b1f50e40b04da82fc:Sensors/AmbientSensor/Library/PackageCache/com.unity.collab-proxy@1.2.15/Editor/AssemblyInfo.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
