@@ -17,7 +17,7 @@ public class MazeExplorationMap
         this.robotPosition = new Vector2Int(robotPosition.x, robotPosition.y);
         this.cells = new List<MazeCell>();
         this.moveHistory = new List<Vector2Int>();
-        this.mazeMap[robotPosition.x, robotPosition.y] = new MazeCell(robotPosition);
+        this.mazeMap[robotPosition.x, robotPosition.y] = new MazeCell(robotPosition, false);
     }
 
     /**
@@ -30,12 +30,12 @@ public class MazeExplorationMap
 
     /**
      * Applies sensor readings to the current cell
-     * Sensor values are indicated by a 3x3 bool array indicating open adjacent cells
+     * Sensor values are indicated by a 3x3 int array indicating the wall distances
      * Axis 0 corresponds to the X direction, and axis 1 corresponds to the Y direction
      * 
      * For example, the following array indicates a cell with three open adjacent cells,
      * in the +x and -x directions and the +y direction
-     * {{F, T, F}, {T, F, F}, {F, T, F}}
+     * {{0, 1, 0}, {1, 0, 0}, {0, 1, 0}}
      * 
      * For each newly discovered adjacent cell, and unvisited cell is added to the map
      * with its corresponding absolute position (position relative to the start cell)
@@ -43,25 +43,38 @@ public class MazeExplorationMap
      * <param name="sensorReading">The sensor reading for the current robot position.</param>
      * <returns>true if the sensor reading was successfully applied</returns>
      */
-    public bool ProcessSensor(bool[,] sensorReading)
+    public bool ProcessSensor(int[,] sensorReading)
     {
         if (sensorReading.GetLength(0) == 3 && sensorReading.GetLength(1) == 3)
         {
-            for (int x = 0; x < 3; x++)
+            Vector2Int[] sensorDirections =
             {
-                for (int y = 0; y < 3; y++)
+                Vector2Int.left, Vector2Int.right, Vector2Int.up, Vector2Int.down   // directions of valid sensor readings
+            };
+            foreach (Vector2Int direction in sensorDirections)
+            {
+                int distance = sensorReading[1 + direction.x, 1 + direction.y];
+                Vector2Int position = new Vector2Int(this.robotPosition.x, this.robotPosition.y);
+                for (int i = 0; i < distance; i++)
                 {
-                    if (x == 1 && y == 1)
+                    position += direction;
+                    if (CheckAbsolutePosition(position))
                     {
-                        continue;   // skip the the center, which is this cell
+                        if (mazeMap[position.x, position.y] == null)    // prevents already visited cells from being reset
+                        {
+                            mazeMap[position.x, position.y] = new MazeCell(position, false);
+                        }
+                    } else
+                    {
+                        break;
                     }
-                    int xMaze = robotPosition.x + x - 1;
-                    int yMaze = robotPosition.y + y - 1;
-                    if (sensorReading[x, y] == true && this.mazeMap[xMaze, yMaze] == null)
+                }
+                position += direction;
+                if (CheckAbsolutePosition(position))
+                {
+                    if (mazeMap[position.x, position.y] == null)
                     {
-                        MazeCell neighbor = new MazeCell(xMaze, yMaze);   // create 
-                        mazeMap[xMaze, yMaze] = neighbor;
-                        cells.Add(neighbor);
+                        mazeMap[position.x, position.y] = new MazeCell(position, true);
                     }
                 }
             }
@@ -180,17 +193,13 @@ public class MazeCell
 {
     internal Vector2Int position;
     bool visited;
+    bool isWall;
 
-    public MazeCell(int x, int y)
-    {
-        this.position = new Vector2Int(x, y);
-        this.visited = false;
-    }
-
-    public MazeCell(Vector2Int position)
+    public MazeCell(Vector2Int position, bool isWall)
     {
         this.position = new Vector2Int(position.x, position.y);
-        this.visited = false;
+        this.visited = isWall;  // Walls should not be included in the list of unvisited cells
+        this.isWall = isWall;
     }
 
     public void Visit()
@@ -201,6 +210,11 @@ public class MazeCell
     public bool IsVisited()
     {
         return this.visited;
+    }
+
+    public bool IsWall()
+    {
+        return this.isWall;
     }
 
     public Vector2Int GetPosition()
