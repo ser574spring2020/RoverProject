@@ -15,6 +15,7 @@ public class AlgorithmsSimulation : MonoBehaviour
     public Text sensorData;
     public GameObject wallPrefab, endPointPrefab, robotPrefab, floorPrefab, flagPrefab, visitedFloorPrefab;
     public Button createMaze, sensorDataButton, nextCommandButton;
+    public Button leftButton, rightButton, upButton, downButton, slowDownButton, speedupButton;
     public int mazeHeight, mazeWidth;
     GameObject[] mazeObjects;
     int counter = 0;
@@ -32,6 +33,10 @@ public class AlgorithmsSimulation : MonoBehaviour
         createMaze.onClick.AddListener(createMazeButtonListener);
         sensorDataButton.onClick.AddListener(updateSensorsData);
         nextCommandButton.onClick.AddListener(getNextCommand);
+        leftButton.onClick.AddListener(moveLeft);//move(0, -1));
+        rightButton.onClick.AddListener(moveRight);//move(0, 1));
+        upButton.onClick.AddListener(moveUp);//(-1, 0));
+        downButton.onClick.AddListener(moveDown);//move(1, 0));
         exploration = new Exploration(mazeHeight,mazeWidth);
         sensor = new Sensors1.Sensors();
         String sensorChosen = sensor.chooseSensor(1);
@@ -75,6 +80,18 @@ public class AlgorithmsSimulation : MonoBehaviour
         }
     }
 
+    void moveLeft(){
+        moveInDirection("South");
+    }
+    void moveRight(){
+        moveInDirection("North");
+    }
+    void moveUp(){
+        moveInDirection("West");
+    }
+    void moveDown(){
+        moveInDirection("East");
+    }
     //move the robot by 'x' steps west and 'y' steps north
     void move(int x, int y)
     {
@@ -177,9 +194,9 @@ public class AlgorithmsSimulation : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D)) move(0, 1);        //North - W Key
-        if (Input.GetKeyDown(KeyCode.S)) move(1, 0);        //East  - D Key
-        if (Input.GetKeyDown(KeyCode.W)) move(-1, 0);       //West  - A Key
-        if (Input.GetKeyDown(KeyCode.A)) move(0, -1);       //South - S Key
+        if (Input.GetKeyDown(KeyCode.D)) move(0, 1);
+        if (Input.GetKeyDown(KeyCode.S)) move(1, 0);
+        if (Input.GetKeyDown(KeyCode.W)) move(-1, 0);
+        if (Input.GetKeyDown(KeyCode.A)) move(0, -1);
     }
 }
