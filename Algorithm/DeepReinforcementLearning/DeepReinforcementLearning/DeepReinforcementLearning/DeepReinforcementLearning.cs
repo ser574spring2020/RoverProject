@@ -9,6 +9,7 @@ namespace Algorithms
 {
     public class Exploration : MonoBehaviour
     {
+
         private List<String> commands = new List<string>() {"West", "North", "East", "South"};
 
         public List<String> GetNextCommand(int[,] sensorData)
@@ -17,16 +18,19 @@ namespace Algorithms
             RandomSystem r = new RandomSystem();
             List<String> possibleDirections = GetAvailableDirections(sensorData);
             int x = r.Next(0, possibleDirections.Count+1);
+
             String command = possibleDirections[x];
             Debug.Log(command);
             commands.Add(command);
+
             return commands;
         }
 
         public Exploration(int sizeRows, int sizeCols)
         {
+
             ExploredMap exploredMap = new ExploredMap(new Vector2Int(30,30),new Vector2Int(1,1) );
-            
+
         }
 
         private List<String> GetAvailableDirections(int[,] sensorData)
@@ -215,6 +219,7 @@ namespace Algorithms
                 }
             }
             return maze;
+
         }
     }
 }
