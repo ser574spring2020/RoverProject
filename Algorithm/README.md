@@ -17,3 +17,39 @@
 - Mayank Batra
 - Mayank Rawat
 - Ria Mehta
+
+## File Structure (For team use only)
+Algorithm (Root)
+
+```
+├── algofind.cs                                                                   (AMIT PANDEY)
+│
+├── Back Propagation
+│   └── Back Propagation.cs
+│
+├── DeepReinforcementLearning
+│   └── DeepReinforcementLearning
+│       └── DeepReinforcementLearning
+│           └── DeepReinforcementLearning.cs                                      (FOR DEEP REINFORCEMENT LEARNING)
+│
+├── Map Generator                                                                 (MAIN UNITY PROJECT)
+│   └── Assets
+│       ├── Scenes
+│       │   └── SampleScene.unity                                                 (DEFAULT SCENE)
+│       └── Scripts
+│           └── AlgorithmsSimulation.cs
+│
+├── Maze Navigator
+│   └── Assets
+│       └── Scripts
+│           └── MazeExplorationMap.cs                                             (OBJECT ORIENTED STRUCTURE FOR MAZE - JONATHAN)
+│
+├── maze_sol.py                                                                   (AMIT PANDEY)
+│
+├── README.md
+│
+├── RobotCommands
+│   └── RobotCommands.cs                                                          (MAYANK BATRA)
+│
+└── ShortestPathBfs.cs                                                            (MAYANK RAWAT)
+```

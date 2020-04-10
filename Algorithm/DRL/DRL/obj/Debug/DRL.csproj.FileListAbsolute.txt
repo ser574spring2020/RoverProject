@@ -1,0 +1,10 @@
+/home/karandeep/RiderProjects/Applications/UnityProjects/DRL/DRL/bin/Debug/DRL.dll
+/home/karandeep/RiderProjects/Applications/UnityProjects/DRL/DRL/bin/Debug/DRL.pdb
+/home/karandeep/RiderProjects/Applications/UnityProjects/DRL/DRL/bin/Debug/UnityEngine.dll
+/home/karandeep/RiderProjects/Applications/UnityProjects/DRL/DRL/bin/Debug/UnityEngine.dll.mdb
+/home/karandeep/RiderProjects/Applications/UnityProjects/DRL/DRL/bin/Debug/UnityEngine.xml
+/home/karandeep/RiderProjects/Applications/UnityProjects/DRL/DRL/obj/Debug/DRL.csprojAssemblyReference.cache
+/home/karandeep/RiderProjects/Applications/UnityProjects/DRL/DRL/obj/Debug/DRL.csproj.CoreCompileInputs.cache
+/home/karandeep/RiderProjects/Applications/UnityProjects/DRL/DRL/obj/Debug/DRL.csproj.CopyComplete
+/home/karandeep/RiderProjects/Applications/UnityProjects/DRL/DRL/obj/Debug/DRL.dll
+/home/karandeep/RiderProjects/Applications/UnityProjects/DRL/DRL/obj/Debug/DRL.pdb
