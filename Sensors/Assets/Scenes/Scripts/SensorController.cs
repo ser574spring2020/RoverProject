@@ -22,13 +22,22 @@ public class SensorController : MonoBehaviour
     private static int[,] proximityMatrix;
     private static int[,] rangeMatrix;
     private static int[,] lidarMatrix;
+    private static int sensorType;
 
     void Start()
     {
         
     }
 
-    
+    public void setSensorType(int value)
+    {
+        sensorType = value;
+    }
+
+    private int getSensorType()
+    {
+        return sensorType;
+    }
 
     private void testProximityMatrix(int[,] matrix)
     {
@@ -60,7 +69,7 @@ public class SensorController : MonoBehaviour
 
         // this how you call our API component
         Sensors1.Sensors sensor = new Sensors1.Sensors();
-        Debug.Log(sensor.chooseSensor(3));
+        Debug.Log(sensor.chooseSensor(getSensorType()));
         int[,] matrix = sensor.getSensorData(Cube);
         testProximityMatrix(matrix);
 

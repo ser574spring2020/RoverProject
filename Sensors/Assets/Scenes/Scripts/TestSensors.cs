@@ -21,9 +21,12 @@ public class TestSensors : MonoBehaviour
     public void callSensorLibrary()
     {        
         int val = sensorInput.value;
-        Debug.Log("Chosen value from drop down : "+(val+1));
+        int sensorType = val + 1;
+        Debug.Log("Chosen value from drop down : "+sensorType);
         Sensors1.Sensors sensor = new Sensors1.Sensors();
-        Debug.Log(sensor.chooseSensor(val+1));
+        SensorController sc = new SensorController();
+        sc.setSensorType(sensorType);
+        Debug.Log(sensor.chooseSensor(sensorType));
         SceneManager.LoadScene("SensorTest");
     }
 }
