@@ -7,8 +7,7 @@ using System;
 public class SensorController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject Cube;
-    public GameObject Cube1;
+    public GameObject Cube;    
     private float Distance;
     private float oldTime;
     private float newTime;
@@ -64,7 +63,7 @@ public class SensorController : MonoBehaviour
 
         //int[,] rangeMatrix = getMatrixFromRangeSensor(Cube);
 
-        //int[,] rangeMatrix = getMatrixFromLiDARSensor(Cube);
+        //int[,] lidarMatrix = getMatrixFromLiDARSensor(Cube);
         //testProximityMatrix(rangeMatrix);
 
         // this how you call our API component
@@ -88,25 +87,25 @@ public class SensorController : MonoBehaviour
 
 
         // calculate acceleration of the gameobject
-        float acceleration = getDataFromAccelerometer();       
+        //float acceleration = getDataFromAccelerometer();       
         //Debug.Log(string.Format("Acceration of {0} is {1}", Cube, acceleration));
         
 
         //proximity sensor
-        if (Cube != null && Cube1 != null)
+        /*if (Cube != null && Cube1 != null)
         {
             Distance = getDataFromProximitySensor();
             //Debug.Log(string.Format("Distance between {0} and {1} is: {2}", Cube, Cube1, Distance));
-        }
+        }*/
 
     }
 
     
 
-    private float getDataFromProximitySensor()
+   /* private float getDataFromProximitySensor()
     { 
           return Vector3.Distance(Cube.transform.position, Cube1.transform.position);
-    }
+    }*/
 
 
     private float getAcceleration(Rigidbody cube)
@@ -147,7 +146,6 @@ public class SensorController : MonoBehaviour
 
     // from here will be the implementations for diferent sensors functions
 
-
     /// <summary>
     /// This function sets lidar matrix which has a 5 X 5 dimensions
     /// It detects object only in front of it. It detects the distance 
@@ -160,106 +158,50 @@ public class SensorController : MonoBehaviour
         // initial position for every step before checking for potential collisions
         // 5X5 matrix is taken for this sensor
         // -1 : don't know; setting distance of collision to object in range of (1f-2f)
-        lidarMatrix = new int[,] { { -1, -1, -1, -1, -1 }, { -1, -1, -1, -1, -1 }, { -1, -1, 2, -1, -1 }, { -1, -1, -1, -1, -1 }, { -1, -1, -1, -1, -1 } };
+        lidarMatrix = new int[,] {{ -1, -1, -1, -1, -1 }, 
+                                  { -1, -1, -1, -1, -1 }, 
+                                  { -1, -1,  2, -1, -1 }, 
+                                  { -1, -1, -1, -1, -1 }, 
+                                  { -1, -1, -1, -1, -1 }};
 
-        RaycastHit hit;
-        Vector3 origin = gObj.transform.position;
+        checkObstacle(gObj.transform.position, 
+                      Vector3.forward, 
+                      gObj, 0, "Front", 
+                      new int[] { 0, 2 }, 
+                      new int[] { 1, 2 },
+                      lidarMatrix);
 
+        checkObstacle(gObj.transform.position, 
+                      Quaternion.AngleAxis(45, Vector3.up) * gObj.transform.forward, 
+                      gObj, 45, "45 Degrees Front Right",
+                      new int[] { 0, 4 }, 
+                      new int[] { 1, 3 },
+                      lidarMatrix);
 
-        Ray frontRay = new Ray(origin, gObj.transform.TransformDirection(Vector3.forward));
-        if (Physics.Raycast(frontRay, out hit, sensorLength))
-        {
-            Debug.Log("found front obstacle");
+        checkObstacle(gObj.transform.position, 
+                      Quaternion.AngleAxis(25, Vector3.up) * gObj.transform.forward, 
+                      gObj, 25, "25 Degrees Front Right",
+                      new int[] { 0, 3 },
+                      new int[] { 1, 3 },
+                      lidarMatrix);
 
+        checkObstacle(gObj.transform.position,
+                      Quaternion.AngleAxis(-45, Vector3.up) * gObj.transform.forward,
+                      gObj, -45, "45 Degrees Front Left",
+                      new int[] { 0, 0 },
+                      new int[] { 1, 1 },
+                      lidarMatrix);
 
-            if (hit.distance > 2.0f)
-            {
-                Debug.DrawLine(frontRay.origin, hit.point, Color.green);
-                lidarMatrix[0, 2] = (int)hit.distance;
-            }
-            else
-            {
-                Debug.DrawLine(frontRay.origin, hit.point, Color.red);
-                lidarMatrix[1, 2] = (int)hit.distance;
-            }
-        }
-
-
-        // for angled degrees directions 
-        var right_45_direction = Quaternion.AngleAxis(45, Vector3.up) * gObj.transform.forward;
-        Ray frontRight_45_Ray = new Ray(origin, right_45_direction);
-        if (Physics.Raycast(frontRight_45_Ray, out hit, sensorLength))
-        {
-            Debug.Log("found frontRightRay obstacle at 45 deg");
-
-            if (hit.distance > 2.0f)
-            {
-                Debug.DrawLine(frontRight_45_Ray.origin, hit.point, Color.green);
-                lidarMatrix[0, 4] = (int)hit.distance;
-            }
-            else
-            {
-                Debug.DrawLine(frontRight_45_Ray.origin, hit.point, Color.red);
-                lidarMatrix[1, 3] = (int)hit.distance;
-            }
-        }
-
-        var right_25_direction = Quaternion.AngleAxis(25, Vector3.up) * gObj.transform.forward;
-        Ray frontRight_25_Ray = new Ray(origin, right_25_direction);
-        if (Physics.Raycast(frontRight_25_Ray, out hit, sensorLength))
-        {
-            Debug.Log("found frontRightRay obstacle at 25 deg");
-
-            if (hit.distance > 2.0f)
-            {
-                Debug.DrawLine(frontRight_25_Ray.origin, hit.point, Color.green);
-                lidarMatrix[0, 4] = (int)hit.distance;
-            }
-            else
-            {
-                Debug.DrawLine(frontRight_25_Ray.origin, hit.point, Color.red);
-                lidarMatrix[1, 3] = (int)hit.distance;
-            }
-        }
-
-        var left_45_direction = Quaternion.AngleAxis(-45, Vector3.up) * gObj.transform.forward;
-        Ray frontLeft_45_Ray = new Ray(origin, left_45_direction);
-        if (Physics.Raycast(frontLeft_45_Ray, out hit, sensorLength))
-        {
-            Debug.Log("found frontLeftRay obstacle at 45 deg");
-
-            if (hit.distance > 2.0f)
-            {
-                Debug.DrawLine(frontLeft_45_Ray.origin, hit.point, Color.green);
-                lidarMatrix[0, 0] = (int)hit.distance;
-            }
-            else
-            {
-                Debug.DrawLine(frontLeft_45_Ray.origin, hit.point, Color.red);
-                lidarMatrix[1, 1] = (int)hit.distance;
-            }
-        }
-
-        var left_25_direction = Quaternion.AngleAxis(-25, Vector3.up) * gObj.transform.forward;
-        Ray frontLeft_25_Ray = new Ray(origin, left_25_direction);
-        if (Physics.Raycast(frontLeft_25_Ray, out hit, sensorLength))
-        {
-            Debug.Log("found frontLeftRay obstacle at 25 deg");
-
-            if (hit.distance > 2.0f)
-            {
-                Debug.DrawLine(frontLeft_25_Ray.origin, hit.point, Color.green);
-                lidarMatrix[0, 0] = (int)hit.distance;
-            }
-            else
-            {
-                Debug.DrawLine(frontLeft_25_Ray.origin, hit.point, Color.red);
-                lidarMatrix[1, 1] = (int)hit.distance;
-            }
-        }
+        checkObstacle(gObj.transform.position, 
+                      Quaternion.AngleAxis(-25, Vector3.up) * gObj.transform.forward, 
+                      gObj, -25, "25 Degrees Front Left",
+                      new int[] { 0, 1 },
+                      new int[] { 1, 1 },
+                      lidarMatrix);
 
         return lidarMatrix;
     }
+
 
     /// <summary>
     /// This function gets a range matrix which has a 5 X 5 dimensions
@@ -272,157 +214,69 @@ public class SensorController : MonoBehaviour
         sensorLength = 4f;
         // initial position for every step before checking for potential collisions
         // 5X5 matrix is taken for this sensor
-        rangeMatrix = new int[,] { { -1, -1, -1, -1, -1 }, { -1, -1, -1, -1, -1 }, { -1, -1, 2, -1, -1 }, { -1, -1, -1, -1, -1 }, { -1, -1, -1, -1, -1 } };
-
-        RaycastHit hit;
+        rangeMatrix = new int[,] { { -1, -1, -1, -1, -1 }, 
+                                   { -1, -1, -1, -1, -1 }, 
+                                   { -1, -1,  2, -1, -1 }, 
+                                   { -1, -1, -1, -1, -1 }, 
+                                   { -1, -1, -1, -1, -1 }};
         Vector3 origin = gObj.transform.position;
 
-        Ray rightRay = new Ray(origin, gObj.transform.TransformDirection(Vector3.right));
-        if (Physics.Raycast(rightRay, out hit, sensorLength))
-        {
-            Debug.Log("found right obstacle");
+        checkObstacle(origin,
+                      Vector3.right,
+                      gObj, 0, "Right",
+                      new int[] { 2, 4 },
+                      new int[] { 2, 3 },
+                      rangeMatrix);
 
-            if (hit.distance > 2.0f)
-            {
-                Debug.DrawLine(rightRay.origin, hit.point);
-                rangeMatrix[2, 4] = 1;
-            }
-            else
-            {
-                Debug.DrawLine(rightRay.origin, hit.point, Color.red);
-                rangeMatrix[2, 3] = 1;
-            }
-        }
+        checkObstacle(origin,
+                      Vector3.forward,
+                      gObj, 0, "Front",
+                      new int[] { 0, 2 },
+                      new int[] { 1, 2 },
+                      rangeMatrix);
 
-        Ray frontRay = new Ray(origin, gObj.transform.TransformDirection(Vector3.forward));
-        if (Physics.Raycast(frontRay, out hit, sensorLength))
-        {
-            Debug.Log("found front obstacle");
+        checkObstacle(origin,
+                      -Vector3.forward,
+                      gObj, 0, "Back",
+                      new int[] { 4, 2 },
+                      new int[] { 3, 2 },
+                      rangeMatrix);
+        
+        checkObstacle(origin,
+                      -Vector3.right,
+                      gObj, 0, "Left",
+                      new int[] { 2, 0 },
+                      new int[] { 2, 1 },
+                      rangeMatrix);
 
+        checkObstacle(origin,
+                      Quaternion.AngleAxis(45, Vector3.up) * gObj.transform.forward,
+                      gObj, 45, "45 Degrees Front Right",
+                      new int[] { 0, 4 },
+                      new int[] { 1, 3 },
+                      rangeMatrix);
 
-            if (hit.distance > 2.0f)
-            {
-                Debug.DrawLine(frontRay.origin, hit.point);
-                rangeMatrix[0, 2] = 1;
-            }
-            else
-            {
-                Debug.DrawLine(frontRay.origin, hit.point, Color.red);
-                rangeMatrix[1, 2] = 1;
-            }
-        }
+        
+        checkObstacle(origin,
+                      Quaternion.AngleAxis(-45, Vector3.up) * gObj.transform.forward,
+                      gObj, -45, "45 Degrees Front Left",
+                      new int[] { 0, 0 },
+                      new int[] { 1, 1 },
+                      rangeMatrix);
 
-        Ray backRay = new Ray(origin, gObj.transform.TransformDirection(-Vector3.forward));
-        if (Physics.Raycast(backRay, out hit, sensorLength))
-        {
-            Debug.Log("found back obstacle");
+        checkObstacle(origin,
+                      Quaternion.AngleAxis(45, Vector3.up) * gObj.transform.right,
+                      gObj, 45, "45 Degrees Back Right",
+                      new int[] { 4, 4 },
+                      new int[] { 3, 3 },
+                      rangeMatrix);
 
-
-            if (hit.distance > 2.0f)
-            {
-                Debug.DrawLine(backRay.origin, hit.point);
-                rangeMatrix[4, 2] = 1;
-            }
-            else
-            {
-                Debug.DrawLine(backRay.origin, hit.point, Color.red);
-                rangeMatrix[3, 2] = 1;
-            }
-        }
-
-
-        Ray leftRay = new Ray(origin, gObj.transform.TransformDirection(-Vector3.right));
-        if (Physics.Raycast(leftRay, out hit, sensorLength))
-        {
-            Debug.Log("found left obstacle");
-
-
-            if (hit.distance > 2.0f)
-            {
-                Debug.DrawLine(leftRay.origin, hit.point);
-                rangeMatrix[2, 0] = 1;
-            }
-            else
-            {
-                Debug.DrawLine(leftRay.origin, hit.point, Color.red);
-                rangeMatrix[2, 1] = 1;
-            }
-        }
-
-        // for four 45 degrees directions 
-        var rightdirection = Quaternion.AngleAxis(45, Vector3.up) * gObj.transform.forward;
-        Ray frontRightRay = new Ray(origin, rightdirection);
-        if (Physics.Raycast(frontRightRay, out hit, sensorLength))
-        {
-            Debug.Log("found frontRightRay obstacle");
-
-            if (hit.distance > 2.0f)
-            {
-                Debug.DrawLine(frontRightRay.origin, hit.point);
-                rangeMatrix[0, 4] = 1;
-            }
-            else
-            {
-                Debug.DrawLine(frontRightRay.origin, hit.point, Color.red);
-                rangeMatrix[1, 3] = 1;
-            }
-        }
-
-        var leftdirection = Quaternion.AngleAxis(-45, Vector3.up) * gObj.transform.forward;
-        Ray frontLeftRay = new Ray(origin, leftdirection);
-        if (Physics.Raycast(frontLeftRay, out hit, sensorLength))
-        {
-            Debug.Log("found frontLeftRay obstacle");
-
-            if (hit.distance > 2.0f)
-            {
-                Debug.DrawLine(frontLeftRay.origin, hit.point);
-                rangeMatrix[0, 0] = 1;
-            }
-            else
-            {
-                Debug.DrawLine(frontLeftRay.origin, hit.point, Color.red);
-                rangeMatrix[1, 1] = 1;
-            }
-        }
-
-        var backrightdirection = Quaternion.AngleAxis(45, Vector3.up) * gObj.transform.right;
-        Ray backRightRay = new Ray(origin, backrightdirection);
-
-        if (Physics.Raycast(backRightRay, out hit, sensorLength))
-        {
-            Debug.Log("found backRightRay obstacle");
-
-            if (hit.distance > 2.0f)
-            {
-                Debug.DrawLine(backRightRay.origin, hit.point);
-                rangeMatrix[4, 4] = 1;
-            }
-            else
-            {
-                Debug.DrawLine(backRightRay.origin, hit.point, Color.red);
-                rangeMatrix[3, 3] = 1;
-            }
-        }
-
-        var backleftdirection = Quaternion.AngleAxis(-45, Vector3.up) * -gObj.transform.right;
-        Ray backLeftRay = new Ray(origin, backleftdirection);
-
-        if (Physics.Raycast(backLeftRay, out hit, sensorLength))
-        {
-            Debug.Log("found backLeftRay obstacle");
-
-            if (hit.distance > 2.0f)
-            {
-                Debug.DrawLine(backLeftRay.origin, hit.point);
-                rangeMatrix[4, 0] = 1;
-            }
-            else
-            {
-                Debug.DrawLine(backLeftRay.origin, hit.point, Color.red);
-                rangeMatrix[3, 1] = 1;
-            }
-        }
+        checkObstacle(origin,
+                      Quaternion.AngleAxis(-45, Vector3.up) * -gObj.transform.right,
+                      gObj, -45,"45 Degrees Back Left",
+                      new int[] { 4, 0 }, 
+                      new int[] { 3, 1 },
+                      rangeMatrix);
 
         return rangeMatrix;
     }
@@ -438,65 +292,137 @@ public class SensorController : MonoBehaviour
         sensorLength = 1.5f;
         // initial position for every step before checking for potential collisions
         // 3X3 matrix is passed here
-        proximityMatrix = new int[,] { { 1, 0, 1 }, { 0, 2, 0 }, { 1, 0, 1 } };
+        proximityMatrix = new int[,] {{ 1, 0, 1 }, 
+                                      { 0, 2, 0 }, 
+                                      { 1, 0, 1 }};
 
         RaycastHit hit;
         Vector3 origin = gObj.transform.position;
 
-        Debug.DrawLine(origin, origin + Vector3.forward * sensorLength, Color.red);
-        Ray frontRay = new Ray(origin, gObj.transform.TransformDirection(Vector3.forward));
-        if (Physics.Raycast(frontRay, out hit, sensorLength))
-        {
-            //Debug.Log("found forward obstacle" + leftRay.origin + " " + hit.point);
-            Debug.Log("found front obstacle");
-            Debug.DrawLine(frontRay.origin, hit.point);
-            proximityMatrix[1, 0] = 1;
-        }
-        else
-        {
-            proximityMatrix[1, 0] = 0;
-        }
+        checkObstacle(gObj.transform.position,
+                      Vector3.forward,
+                      gObj, 0, "Front",
+                      new int[] { 0, 1 },
+                      new int[] { 0, 1 },
+                      proximityMatrix);
 
-        Debug.DrawLine(origin, origin + Vector3.right * sensorLength, Color.red);
-        Ray rightRay = new Ray(origin, gObj.transform.TransformDirection(Vector3.right));
-        if (Physics.Raycast(rightRay, out hit, sensorLength))
-        {
-            Debug.Log("found right obstacle");
-            Debug.DrawLine(rightRay.origin, hit.point);
-            proximityMatrix[0, 1] = 1;
-        }
-        else
-        {
-            proximityMatrix[0, 1] = 0;
-        }
+        checkObstacle(gObj.transform.position,
+                      Vector3.right,
+                      gObj, 0, "Right",
+                      new int[] { 1, 2},
+                      new int[] { 1, 2},
+                      proximityMatrix);
 
-        Debug.DrawLine(origin, origin + (-Vector3.right) * sensorLength, Color.red);
-        Ray leftRay = new Ray(origin, gObj.transform.TransformDirection(-Vector3.right));
-        if (Physics.Raycast(leftRay, out hit, sensorLength))
-        {
-            Debug.Log("found left obstacle");
-            Debug.DrawLine(leftRay.origin, hit.point);
-            proximityMatrix[2, 1] = 1;
-        }
-        else
-        {
-            proximityMatrix[2, 1] = 0;
-        }
+        checkObstacle(gObj.transform.position,
+                      -Vector3.right,
+                      gObj, 0, "Left",
+                      new int[] { 1, 0 },
+                      new int[] { 1, 0 },
+                      proximityMatrix);
 
-        Debug.DrawLine(origin, origin + (-Vector3.forward) * sensorLength, Color.red);
-        Ray backRay = new Ray(origin, gObj.transform.TransformDirection(-Vector3.forward));
-        if (Physics.Raycast(backRay, out hit, sensorLength))
-        {
-            Debug.Log("found right obstacle");
-            Debug.DrawLine(backRay.origin, hit.point);
-            proximityMatrix[1, 2] = 1;
-        }
-        else
-        {
-            proximityMatrix[1, 2] = 0;
-        }
+        checkObstacle(gObj.transform.position,
+                      -Vector3.forward,
+                      gObj, 0, "Back",
+                      new int[] { 2, 1 },
+                      new int[] { 2, 1 },
+                      proximityMatrix);
 
         return proximityMatrix;
+    }
+
+    /// <summary>
+    /// This is a helper function to check Obstacle in the direction given
+    /// by using a concept called Raycasting
+    /// </summary>
+    /// <params>
+    /// requires rover game object, direction of ray, origin of gameobject, String which is displayed on console
+    /// and the indexes which are set with that particular ray
+    /// </params>
+    /// <returns></returns>
+    private void checkObstacle(Vector3 origin, Vector3 direction, GameObject gObj, 
+                               int angle, String obstacleToBeFound, int[] outRangeIndexes, 
+                               int[] inRangeIndexes, int[,] resultantMatrix)
+    {
+        RaycastHit hit;
+        Ray ray;
+
+        if (angle != 0)
+        {
+            ray = new Ray(origin, direction);
+        }
+        else // for 0
+        {
+            ray = new Ray(origin, gObj.transform.TransformDirection(direction));
+        }
+        
+
+        int result = 1;
+
+        if (Physics.Raycast(ray, out hit, sensorLength))
+        {
+            Debug.Log("found " + obstacleToBeFound + " obstacle");
+
+            if (getSensorType() == 1)
+            {
+                drawRayOnRover(ray, hit, "");
+                resultantMatrix[outRangeIndexes[0], outRangeIndexes[1]] = result;
+            }
+            else
+            {
+                // for LiDAR
+                if (getSensorType() == 3) result = (int)hit.distance;
+                
+                if (hit.distance > 2.0f)
+                {
+                    drawRayOnRover(ray, hit, "out");
+                    resultantMatrix[outRangeIndexes[0], outRangeIndexes[1]] = result;
+                }
+                else
+                {
+                    drawRayOnRover(ray, hit, "in");
+                    resultantMatrix[inRangeIndexes[0], inRangeIndexes[1]] = result;
+                }
+            }
+        }
+
+    }
+
+
+    /// <summary>
+    /// This is a helper function to draw a ray
+    /// </summary>
+    /// <param>
+    /// requires ray, hit RaycastHit object and String for distinguishing range   
+    /// </param>
+    /// <returns></returns>
+    private void drawRayOnRover(Ray ray, RaycastHit hit, String range)
+    {
+        if (getSensorType() == 3) // LiDAR
+        {
+            if (range.Equals("out"))
+            {
+                Debug.DrawLine(ray.origin, hit.point, Color.green);
+            }
+            else
+            {
+                Debug.DrawLine(ray.origin, hit.point, Color.red);
+            }
+        }
+        else if (getSensorType() == 2) // Range
+        {
+            if (range.Equals("out"))
+            {
+                Debug.DrawLine(ray.origin, hit.point);
+            }
+            else
+            {
+                Debug.DrawLine(ray.origin, hit.point, Color.red);
+            }
+        }
+        else  // Proximity
+        {
+            Debug.DrawLine(ray.origin, hit.point);
+        }
 
     }
 
