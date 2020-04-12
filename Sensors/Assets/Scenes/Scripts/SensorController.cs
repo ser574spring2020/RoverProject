@@ -37,7 +37,7 @@ public class SensorController : MonoBehaviour
 
     private void testProximityMatrix(int[,] matrix)
     {
-
+        // Debug.Log(matrix);
         Debug.Log("-- Printing Matrix : -- ");
         
         for (int i = 0; i < matrix.GetLength(0); i++)
@@ -64,7 +64,6 @@ public class SensorController : MonoBehaviour
 
         int[,] radarMatrix = getMatrixFromRadarSensor(Cube);
 
-        //testProximityMatrix(rangeMatrix);
 
         // this how you call our API component
         /*        
@@ -204,6 +203,19 @@ public class SensorController : MonoBehaviour
         return lidarMatrix;
     }
 
+    // Draw circle on XZ plane
+    private void DrawCircle(Vector3 position, float radius, Color color)
+    {
+        var increment = 10;
+        for (int angle = 0; angle < 360; angle = angle + increment)
+        {
+            var heading = Vector3.forward - position;
+            var direction = heading / heading.magnitude;
+            var point = position + Quaternion.Euler(0, angle, 0) * Vector3.forward * radius;
+            var point2 = position + Quaternion.Euler(0, angle + increment, 0) * Vector3.forward * radius;
+            Debug.DrawLine(point, point2, color);
+        }
+    }
 
     /// <summary>
     /// This function sets radar matrix which has a 5 X 5 outer radius and 3x3 inner radius
@@ -214,22 +226,20 @@ public class SensorController : MonoBehaviour
     /// <returns>Returns a 5X5 matrix of the surrounding of rover</returns>
     private int[,] getMatrixFromRadarSensor(GameObject gObj)
     {
-
+        //.......change
         // initial position for every step before checking for potential collisions
         // 5X5 matrix is taken for this sensor
         // -1 : don't know; setting distance of collision to object in range of (1f-2f)
+        sensorLength = 4f;
+        DrawCircle(gObj.transform.position, sensorLength, Color.blue);
+        DrawCircle(gObj.transform.position, sensorLength-2, Color.red);
+
+
         radarMatrix = new int[,] {{ -1, -1, -1, -1, -1 },
                                   { -1, -1, -1, -1, -1 },
                                   { -1, -1,  2, -1, -1 },
                                   { -1, -1, -1, -1, -1 },
                                   { -1, -1, -1, -1, -1 }};
-/*
-        lidarMatrix = new int[,] {{ -0, -1, -1, -1, -0 },
-                                  { -1, -1, -1, -1, -1 },
-                                  { -1, -1,  2, -1, -1 },
-                                  { -1, -1, -1, -1, -1 },
-                                  { -0, -1, -1, -1, -0 }};
-*/
 
         // Straight Lines
         checkObstacle(gObj.transform.position,
@@ -341,7 +351,6 @@ public class SensorController : MonoBehaviour
 
         return radarMatrix;
     }
-
 
     /// <summary>
     /// This function gets a range matrix which has a 5 X 5 dimensions
