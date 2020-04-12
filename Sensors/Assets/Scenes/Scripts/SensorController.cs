@@ -223,12 +223,13 @@ public class SensorController : MonoBehaviour
                                   { -1, -1,  2, -1, -1 },
                                   { -1, -1, -1, -1, -1 },
                                   { -1, -1, -1, -1, -1 }};
-
+/*
         lidarMatrix = new int[,] {{ -0, -1, -1, -1, -0 },
                                   { -1, -1, -1, -1, -1 },
                                   { -1, -1,  2, -1, -1 },
                                   { -1, -1, -1, -1, -1 },
                                   { -0, -1, -1, -1, -0 }};
+*/
 
         // Straight Lines
         checkObstacle(gObj.transform.position,
@@ -255,6 +256,8 @@ public class SensorController : MonoBehaviour
                       new int[] { 2, 0 },
                       new int[] { 2, 1 },
                       radarMatrix);
+
+
 
 
 
@@ -296,9 +299,7 @@ public class SensorController : MonoBehaviour
                       new int[] { 0, 1 },
                       radarMatrix);
 
-
-
-        // 25 Degree Angle Lines
+        
         checkObstacle(gObj.transform.position,
                       Quaternion.AngleAxis(-25, Vector3.up) * gObj.transform.right,
                       gObj, -25, "25 Degrees Right Up",
@@ -508,8 +509,8 @@ public class SensorController : MonoBehaviour
             }
             else
             {
-                // for LiDAR
-                if (getSensorType() == 3) result = (int)hit.distance;
+                // for LiDAR and Radar
+                if (getSensorType() == 3 || getSensorType() == 4) result = (int)hit.distance;
                 
                 if (hit.distance > 2.0f)
                 {
@@ -541,6 +542,17 @@ public class SensorController : MonoBehaviour
             if (range.Equals("out"))
             {
                 Debug.DrawLine(ray.origin, hit.point, Color.green);
+            }
+            else
+            {
+                Debug.DrawLine(ray.origin, hit.point, Color.red);
+            }
+        }
+        else if (getSensorType() == 4) // Radar
+        {
+            if (range.Equals("out"))
+            {
+                Debug.DrawLine(ray.origin, hit.point, Color.blue);
             }
             else
             {
