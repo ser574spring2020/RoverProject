@@ -21,12 +21,9 @@ public class SensorController : MonoBehaviour
     private static int[,] proximityMatrix;
     private static int[,] rangeMatrix;
     private static int[,] lidarMatrix;
+    private static int[,] radarMatrix;
     private static int sensorType;
 
-    void Start()
-    {
-        
-    }
 
     public void setSensorType(int value)
     {
@@ -64,17 +61,22 @@ public class SensorController : MonoBehaviour
         //int[,] rangeMatrix = getMatrixFromRangeSensor(Cube);
 
         //int[,] lidarMatrix = getMatrixFromLiDARSensor(Cube);
+
+        int[,] radarMatrix = getMatrixFromRadarSensor(Cube);
+
         //testProximityMatrix(rangeMatrix);
 
         // this how you call our API component
-        Sensors1.Sensors sensor = new Sensors1.Sensors();
-        Debug.Log(sensor.chooseSensor(getSensorType()));
-        int[,] matrix = sensor.getSensorData(Cube);
-        testProximityMatrix(matrix);
-
+        /*        
+                Sensors1.Sensors sensor = new Sensors1.Sensors();
+                Debug.Log(sensor.chooseSensor(getSensorType()));
+                int[,] matrix = sensor.getSensorData(Cube);
+                testProximityMatrix(matrix);
+        */
     }
 
-    
+
+
 
 
     // Update is called once per frame
@@ -143,7 +145,7 @@ public class SensorController : MonoBehaviour
             Cube.transform.Rotate(0, 1, 0);
     }
 
-
+    
     // from here will be the implementations for diferent sensors functions
 
     /// <summary>
@@ -200,6 +202,143 @@ public class SensorController : MonoBehaviour
                       lidarMatrix);
 
         return lidarMatrix;
+    }
+
+
+    /// <summary>
+    /// This function sets radar matrix which has a 5 X 5 outer radius and 3x3 inner radius
+    /// It detects object only in circle within given radius. It detects the distance 
+    /// from the potential collision to rover        
+    /// </summary>
+    /// <param name="gObj">requires rover game object</param>
+    /// <returns>Returns a 5X5 matrix of the surrounding of rover</returns>
+    private int[,] getMatrixFromRadarSensor(GameObject gObj)
+    {
+
+        // initial position for every step before checking for potential collisions
+        // 5X5 matrix is taken for this sensor
+        // -1 : don't know; setting distance of collision to object in range of (1f-2f)
+        radarMatrix = new int[,] {{ -1, -1, -1, -1, -1 },
+                                  { -1, -1, -1, -1, -1 },
+                                  { -1, -1,  2, -1, -1 },
+                                  { -1, -1, -1, -1, -1 },
+                                  { -1, -1, -1, -1, -1 }};
+
+        lidarMatrix = new int[,] {{ -0, -1, -1, -1, -0 },
+                                  { -1, -1, -1, -1, -1 },
+                                  { -1, -1,  2, -1, -1 },
+                                  { -1, -1, -1, -1, -1 },
+                                  { -0, -1, -1, -1, -0 }};
+
+        // Straight Lines
+        checkObstacle(gObj.transform.position,
+                      Vector3.forward,
+                      gObj, 0, "Front",
+                      new int[] { 0, 2 },
+                      new int[] { 1, 2 },
+                      radarMatrix);
+        checkObstacle(gObj.transform.position,
+                      -Vector3.forward,
+                      gObj, 0, "Back",
+                      new int[] { 4, 2 },
+                      new int[] { 3, 2 },
+                      radarMatrix);
+        checkObstacle(gObj.transform.position,
+                      Vector3.right,
+                      gObj, 0, "Right",
+                      new int[] { 2, 4 },
+                      new int[] { 2, 3 },
+                      radarMatrix);
+        checkObstacle(gObj.transform.position,
+                      -Vector3.right,
+                      gObj, 0, "Left",
+                      new int[] { 2, 0 },
+                      new int[] { 2, 1 },
+                      radarMatrix);
+
+
+
+        // 45 Degree Angle Lines
+        checkObstacle(gObj.transform.position,
+                      Quaternion.AngleAxis(45, Vector3.up) * gObj.transform.forward,
+                      gObj, 45, "45 Degrees Front Right",
+                      new int[] { 1, 3 },
+                      new int[] { 1, 3 },
+                      radarMatrix);
+        checkObstacle(gObj.transform.position,
+                      Quaternion.AngleAxis(-45, Vector3.up) * gObj.transform.forward,
+                      gObj, -45, "45 Degrees Front Left",
+                      new int[] { 1, 1 },
+                      new int[] { 1, 1 },
+                      radarMatrix);
+        checkObstacle(gObj.transform.position,
+                      Quaternion.AngleAxis(-45, Vector3.up) * (-gObj.transform.forward),
+                      gObj, -45, "45 Degrees Back Left",
+                      new int[] { 3, 1 },
+                      new int[] { 3, 1 },
+                      radarMatrix);
+        checkObstacle(gObj.transform.position,
+                      Quaternion.AngleAxis(45, Vector3.up) * (-gObj.transform.forward),
+                      gObj, 45, "45 Degrees Back Right",
+                      new int[] { 3, 3 },
+                      new int[] { 3, 3 },
+                      radarMatrix);
+        checkObstacle(gObj.transform.position,
+                      Quaternion.AngleAxis(25, Vector3.up) * gObj.transform.forward,
+                      gObj, 25, "25 Degrees Front Right",
+                      new int[] { 0, 3 },
+                      new int[] { 0, 3 },
+                      radarMatrix);
+        checkObstacle(gObj.transform.position,
+                      Quaternion.AngleAxis(-25, Vector3.up) * gObj.transform.forward,
+                      gObj, -25, "25 Degrees Front Left",
+                      new int[] { 0, 1 },
+                      new int[] { 0, 1 },
+                      radarMatrix);
+
+
+
+        // 25 Degree Angle Lines
+        checkObstacle(gObj.transform.position,
+                      Quaternion.AngleAxis(-25, Vector3.up) * gObj.transform.right,
+                      gObj, -25, "25 Degrees Right Up",
+                      new int[] { 1, 4 },
+                      new int[] { 1, 4 },
+                      radarMatrix);
+        checkObstacle(gObj.transform.position,
+                      Quaternion.AngleAxis(25, Vector3.up) * gObj.transform.right,
+                      gObj, 25, "25 Degrees Right Down",
+                      new int[] { 3, 4 },
+                      new int[] { 3, 4 },
+                      radarMatrix);
+
+        checkObstacle(gObj.transform.position,
+                      Quaternion.AngleAxis(25, Vector3.up) * (-gObj.transform.right),
+                      gObj, 25, "25 Degrees left Up",
+                      new int[] { 1, 0 },
+                      new int[] { 1, 0 },
+                      radarMatrix);
+        checkObstacle(gObj.transform.position,
+                      Quaternion.AngleAxis(-25, Vector3.up) * (-gObj.transform.right),
+                      gObj, -25, "25 Degrees left Down",
+                      new int[] { 3, 0 },
+                      new int[] { 3, 0 },
+                      radarMatrix);
+
+        checkObstacle(gObj.transform.position,
+                      Quaternion.AngleAxis(25, Vector3.up) * (-gObj.transform.forward),
+                      gObj, -25, "25 Degrees Back Right",
+                      new int[] { 4, 3 },
+                      new int[] { 4, 3 },
+                      radarMatrix);
+        checkObstacle(gObj.transform.position,
+                      Quaternion.AngleAxis(-25, Vector3.up) * (-gObj.transform.forward),
+                      gObj, 25, "25 Degrees Back Left",
+                      new int[] { 1, 3 },
+                      new int[] { 1, 3 },
+                      radarMatrix);
+
+        return radarMatrix;
     }
 
 
