@@ -1,3 +1,10 @@
+/*
+    Author   : Aneesh Dalvi, Sumanth Paranjape
+    Function : Implements Functionality for Proximity Sensor
+    Version  : V1
+    Email    : adalvi1@asu.edu | Arizona State University.
+*/
+
 using UnityEngine;
 class ProximitySensor : Sensors
 {
@@ -5,9 +12,6 @@ class ProximitySensor : Sensors
         this.obstacle_matrix = new int[,] {{ 1, 0, 1 }, 
                                       { 0, 2, 0 }, 
                                       { 1, 0, 1 }};
-
-        RaycastHit hit;
-        Vector3 origin = gObj.transform.position;
 
         //Checks obstacles in 4 directions.
         checkObstacle(gObj.transform.position,

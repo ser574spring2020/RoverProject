@@ -1,3 +1,10 @@
+/*
+    Author   : Aneesh Dalvi
+    Function : Implements Functionality for Lidar Sensor
+    Version  : V1
+    Email    : adalvi1@asu.edu | Arizona State University.
+*/
+
 using UnityEngine;
 class LidarSensor : Sensors
 {

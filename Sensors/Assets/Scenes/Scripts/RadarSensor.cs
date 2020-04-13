@@ -1,3 +1,11 @@
+
+/*
+    Author   : Aneesh Dalvi, Vaibhav Singhal
+    Function : Implements Functionality for Radar Sensor
+    Version  : V1
+    Email    : adalvi1@asu.edu | Arizona State University.
+*/
+
 using UnityEngine;
 class RadarSensor : Sensors
 {

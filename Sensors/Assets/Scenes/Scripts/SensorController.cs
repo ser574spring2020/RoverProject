@@ -217,6 +217,16 @@ public class SensorController : MonoBehaviour
         }
     }
 
+    // Draw rotating line over Radar
+    private void DrawRotatingLine(GameObject gObj, Color red)
+    {        
+        Quaternion q = Quaternion.AngleAxis(100 * Time.time, Vector3.up);        
+        Vector3 direction = q * gObj.transform.forward * sensorLength;
+        Debug.DrawLine(gObj.transform.position,
+        gObj.transform.position + direction);
+        
+    }
+
     /// <summary>
     /// This function sets radar matrix which has a 5 X 5 outer radius and 3x3 inner radius
     /// It detects object only in circle within given radius. It detects the distance 
@@ -234,6 +244,8 @@ public class SensorController : MonoBehaviour
         DrawCircle(gObj.transform.position, sensorLength, Color.blue);
         DrawCircle(gObj.transform.position, sensorLength-2, Color.red);
 
+        DrawRotatingLine(gObj, Color.red); 
+        
 
         radarMatrix = new int[,] {{ -1, -1, -1, -1, -1 },
                                   { -1, -1, -1, -1, -1 },
@@ -266,9 +278,6 @@ public class SensorController : MonoBehaviour
                       new int[] { 2, 0 },
                       new int[] { 2, 1 },
                       radarMatrix);
-
-
-
 
 
         // 45 Degree Angle Lines
@@ -352,6 +361,7 @@ public class SensorController : MonoBehaviour
         return radarMatrix;
     }
 
+    
     /// <summary>
     /// This function gets a range matrix which has a 5 X 5 dimensions
     /// It detects object at twice the range of proximity matrix        
@@ -503,7 +513,7 @@ public class SensorController : MonoBehaviour
         {
             ray = new Ray(origin, gObj.transform.TransformDirection(direction));
         }
-        
+
 
         int result = 1;
 
