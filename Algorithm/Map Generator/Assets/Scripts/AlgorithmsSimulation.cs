@@ -95,21 +95,19 @@ public class AlgorithmsSimulation : MonoBehaviour
             for (int j = 0; j < mazeWidth; j++)
             {
                 Vector3 tempVector = new Vector3(xStart + (xSpace * j), 100, yStart - (ySpace * i));
-                // Debug.Log(exploredMaze.GetCell(new Vector2Int(i,j)));
                 MazeCell mazeCell = exploredMaze.GetCell(new Vector2Int(i,j));
                 if(mazeCell == null)
                     continue;
-                if (mazeCell.isWallCell()==false)
-                    exploredMazeObjects[counter++] = Instantiate(floorPrefab, tempVector, Quaternion.identity);
-                else if (mazeCell.isWallCell()==true)
+                if (mazeCell.isWallCell()==true)
                     exploredMazeObjects[counter++] = Instantiate(wallPrefab, tempVector, Quaternion.identity);
-                // else if (exploredMaze.GetCell(new Vector2Int(i,j)).IsVisited())
-                //     exploredMazeObjects[counter++] = Instantiate(wallPrefab, tempVector, Quaternion.identity);
-        //         // else if (exploredMaze[i, j] == 2)
-        //         //     exploredMazeObjects[counter++] = Instantiate(robotPrefab, tempVector, Quaternion.identity);
-        //         // else if (exploredMaze[i, j] == 4)
-        //         //     exploredMazeObjects[counter++] = Instantiate(visitedFloorPrefab, tempVector, Quaternion.identity);
+                else if (mazeCell.IsVisited()==false)
+                    exploredMazeObjects[counter++] = Instantiate(floorPrefab, tempVector, Quaternion.identity);
+                else if (exploredMaze.GetCell(new Vector2Int(i,j)).IsVisited())
+                    exploredMazeObjects[counter++] = Instantiate(visitedFloorPrefab, tempVector, Quaternion.identity);
             }
+        Vector2Int vector = exploredMaze.GetCurrentPosition();
+        Vector3 robotPosition = new Vector3(xStart + (xSpace * vector.y), 100, yStart - (ySpace * vector.x));
+        exploredMazeObjects[counter++] = Instantiate(robotPrefab, robotPosition, Quaternion.identity);
     }
 
     public enum CellType : int
@@ -366,28 +364,25 @@ public class Exploration : MonoBehaviour
                 {
                     for (int y = 0; y < 3; y++)
                     {
-                        if (x == 1 && y == 1)
-                        {
-                            continue; // skip the the center, which is this cell
-                        }
                         int xMaze = robotPosition.x + x -1 ;
-                        int yMaze = robotPosition.y + y -1;                        
+                        int yMaze = robotPosition.y + y -1;
+                        if(mazeMap[xMaze,yMaze]!=null) {
+                            if (x == 1 && y == 1)
+                            {
+                                mazeMap[x,y].Visit();   
+                            }
+                            continue;
+                        }                      
+                        MazeCell neighbor = new MazeCell(xMaze, yMaze); // create 
+                        mazeMap[xMaze, yMaze] = neighbor;
+                        cells.Add(neighbor);
                         if (sensorReading[x, y]==1)
                         {
-                            MazeCell neighbor = new MazeCell(xMaze, yMaze); // create 
                             neighbor.makeWall();
-                            mazeMap[xMaze, yMaze] = neighbor;
-                            cells.Add(neighbor);
-                        }
-                        if (sensorReading[x, y]==0)
-                        {
-                            MazeCell neighbor = new MazeCell(xMaze, yMaze); // create 
-                            mazeMap[xMaze, yMaze] = neighbor;
-                            cells.Add(neighbor);
                         }
                     }
                 }
-                // mazeMap[robotPosition.x, robotPosition.y].Visit();
+                mazeMap[robotPosition.x, robotPosition.y].Visit();
                 return true;
             }
 
