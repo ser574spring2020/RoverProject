@@ -375,8 +375,8 @@ public class Exploration : MonoBehaviour
                         if (sensorReading[x, y]==1)
                         {
                             MazeCell neighbor = new MazeCell(xMaze, yMaze); // create 
+                            neighbor.makeWall();
                             mazeMap[xMaze, yMaze] = neighbor;
-                            neighbor.isWallCell();
                             cells.Add(neighbor);
                         }
                         if (sensorReading[x, y]==0)
@@ -462,7 +462,7 @@ public class Exploration : MonoBehaviour
     {
         Vector2Int position;
         bool visited;
-        bool isWall = true;
+        bool isWall = false;
 
         public MazeCell(int x, int y)
         {

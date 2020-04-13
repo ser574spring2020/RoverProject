@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3190075-b6a2-4f67-a30a-e421f721dd90" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Map Generator/Assets/Scripts/AlgorithmsSimulation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Map Generator/Assets/Scripts/AlgorithmsSimulation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +15,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/DRLTesting/Tests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TestProject1/Tests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Map Generator/Assets/Scripts/AlgorithmsSimulation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DRL/DRLTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DRL/DRL.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -73,7 +74,7 @@
       <workItem from="1586492358632" duration="82000" />
       <workItem from="1586492750926" duration="4604000" />
       <workItem from="1586542116627" duration="1285000" />
-      <workItem from="1586751328345" duration="4437000" />
+      <workItem from="1586751328345" duration="4783000" />
     </task>
     <servers />
   </component>
