@@ -22,6 +22,7 @@ public class SensorController : MonoBehaviour
     private static int[,] rangeMatrix;
     private static int[,] lidarMatrix;
     private static int[,] radarMatrix;
+    private static int[,] bumperMatrix;
     private static int sensorType;
 
 
@@ -62,7 +63,9 @@ public class SensorController : MonoBehaviour
 
         //int[,] lidarMatrix = getMatrixFromLiDARSensor(Cube);
 
-        int[,] radarMatrix = getMatrixFromRadarSensor(Cube);
+        //int[,] radarMatrix = getMatrixFromRadarSensor(Cube);
+
+        int[,] bumperMatrix = getMatrixFromBumperSensor(Cube);
 
 
         // this how you call our API component
@@ -203,8 +206,85 @@ public class SensorController : MonoBehaviour
         return lidarMatrix;
     }
 
-    // Draw circle on XZ plane
-    private void DrawCircle(Vector3 position, float radius, Color color)
+
+
+    /// <summary>
+    /// This function sets lidar matrix which has a 5 X 5 dimensions
+    /// It detects object only in front of it. It detects the distance 
+    /// from the potential collision to rover        
+    /// </summary>
+    /// <param name="gObj">requires rover game object</param>
+    /// <returns>Returns a 5X5 matrix of the surrounding of rover</returns>
+    private int[,] getMatrixFromBumperSensor(GameObject gObj)
+    {
+        sensorLength = 1f;
+
+        bumperMatrix = new int[,] {{ 0, 0, 0 },
+                                   { 0, 2, 0 },
+                                   { 0, 0, 0 }};
+
+
+        checkObstacle(gObj.transform.position,
+                      Vector3.forward,
+                      gObj, 0, "Front",
+                      new int[] { 0, 1 },
+                      new int[] { 0, 1 },
+                      bumperMatrix);
+
+        checkObstacle(gObj.transform.position,
+                      Vector3.right,
+                      gObj, 0, "Right",
+                      new int[] { 1, 2 },
+                      new int[] { 1, 2 },
+                      bumperMatrix);
+
+        checkObstacle(gObj.transform.position,
+                      -Vector3.right,
+                      gObj, 0, "Left",
+                      new int[] { 1, 0 },
+                      new int[] { 1, 0 },
+                      bumperMatrix);
+
+        checkObstacle(gObj.transform.position,
+                      -Vector3.forward,
+                      gObj, 0, "Back",
+                      new int[] { 2, 1 },
+                      new int[] { 2, 1 },
+                      bumperMatrix);
+
+
+        // 45 Degree Angle Lines
+        checkObstacle(gObj.transform.position,
+                      Quaternion.AngleAxis(45, Vector3.up) * gObj.transform.forward,
+                      gObj, 45, "45 Degrees Front Right",
+                      new int[] { 0, 0 },
+                      new int[] { 0, 0 },
+                      bumperMatrix);
+        checkObstacle(gObj.transform.position,
+                      Quaternion.AngleAxis(-45, Vector3.up) * gObj.transform.forward,
+                      gObj, -45, "45 Degrees Front Left",
+                      new int[] { 0, 2 },
+                      new int[] { 0, 2 },
+                      bumperMatrix);
+        checkObstacle(gObj.transform.position,
+                      Quaternion.AngleAxis(-45, Vector3.up) * (-gObj.transform.forward),
+                      gObj, -45, "45 Degrees Back Left",
+                      new int[] { 2, 2 },
+                      new int[] { 2, 2 },
+                      bumperMatrix);
+        checkObstacle(gObj.transform.position,
+                      Quaternion.AngleAxis(45, Vector3.up) * (-gObj.transform.forward),
+                      gObj, 45, "45 Degrees Back Right",
+                      new int[] { 2, 0 },
+                      new int[] { 2, 0 },
+                      bumperMatrix);
+
+
+        return bumperMatrix;
+    }
+
+        // Draw circle on XZ plane
+        private void DrawCircle(Vector3 position, float radius, Color color)
     {
         var increment = 10;
         for (int angle = 0; angle < 360; angle = angle + increment)
@@ -305,6 +385,8 @@ public class SensorController : MonoBehaviour
                       new int[] { 3, 3 },
                       new int[] { 3, 3 },
                       radarMatrix);
+
+
         checkObstacle(gObj.transform.position,
                       Quaternion.AngleAxis(25, Vector3.up) * gObj.transform.forward,
                       gObj, 25, "25 Degrees Front Right",
@@ -317,8 +399,6 @@ public class SensorController : MonoBehaviour
                       new int[] { 0, 1 },
                       new int[] { 0, 1 },
                       radarMatrix);
-
-        
         checkObstacle(gObj.transform.position,
                       Quaternion.AngleAxis(-25, Vector3.up) * gObj.transform.right,
                       gObj, -25, "25 Degrees Right Up",
@@ -331,7 +411,6 @@ public class SensorController : MonoBehaviour
                       new int[] { 3, 4 },
                       new int[] { 3, 4 },
                       radarMatrix);
-
         checkObstacle(gObj.transform.position,
                       Quaternion.AngleAxis(25, Vector3.up) * (-gObj.transform.right),
                       gObj, 25, "25 Degrees left Up",
@@ -448,16 +527,14 @@ public class SensorController : MonoBehaviour
     /// <returns>returns a 2d 3X3 matrix which consists of obstacles set in it</returns>
     private int[,] getMatrixFromProximitySensor(GameObject gObj)
     {
-        sensorLength = 1.5f;
+        sensorLength = 2f;
         // initial position for every step before checking for potential collisions
         // 3X3 matrix is passed here
         proximityMatrix = new int[,] {{ 1, 0, 1 }, 
                                       { 0, 2, 0 }, 
                                       { 1, 0, 1 }};
 
-        RaycastHit hit;
-        Vector3 origin = gObj.transform.position;
-
+        
         checkObstacle(gObj.transform.position,
                       Vector3.forward,
                       gObj, 0, "Front",
@@ -521,7 +598,8 @@ public class SensorController : MonoBehaviour
         {
             Debug.Log("found " + obstacleToBeFound + " obstacle");
 
-            if (getSensorType() == 1)
+            // for Proximity, Bumper
+            if (getSensorType() == 1 || getSensorType() == 5)
             {
                 drawRayOnRover(ray, hit, "");
                 resultantMatrix[outRangeIndexes[0], outRangeIndexes[1]] = result;
@@ -530,7 +608,8 @@ public class SensorController : MonoBehaviour
             {
                 // for LiDAR and Radar
                 if (getSensorType() == 3 || getSensorType() == 4) result = (int)hit.distance;
-                
+
+                // for LiDAR, Radar, Range
                 if (hit.distance > 2.0f)
                 {
                     drawRayOnRover(ray, hit, "out");
@@ -588,6 +667,10 @@ public class SensorController : MonoBehaviour
             {
                 Debug.DrawLine(ray.origin, hit.point, Color.red);
             }
+        }
+        else if (getSensorType() == 5) // Bumper
+        {
+            // no ray required.
         }
         else  // Proximity
         {
