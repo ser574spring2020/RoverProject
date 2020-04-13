@@ -1,4 +1,4 @@
-﻿﻿using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Random = UnityEngine.Random;
@@ -9,7 +9,6 @@ namespace Algorithms
 {
     public class Exploration : MonoBehaviour
     {
-
         private List<String> commands = new List<string>() {"West", "North", "East", "South"};
 
         public List<String> GetNextCommand(int[,] sensorData)
@@ -17,7 +16,7 @@ namespace Algorithms
             List<String> commands = new List<string>();
             RandomSystem r = new RandomSystem();
             List<String> possibleDirections = GetAvailableDirections(sensorData);
-            int x = r.Next(0, possibleDirections.Count+1);
+            int x = r.Next(0, possibleDirections.Count + 1);
 
             String command = possibleDirections[x];
             Debug.Log(command);
@@ -28,12 +27,15 @@ namespace Algorithms
 
         public Exploration(int sizeRows, int sizeCols)
         {
-
-            ExploredMap exploredMap = new ExploredMap(new Vector2Int(30,30),new Vector2Int(1,1) );
-
+            ExploredMap exploredMap = new ExploredMap(new Vector2Int(30, 30), new Vector2Int(1, 1));
+        }
+        
+        public int Add(int a, int b)
+        {
+            return a + b;
         }
 
-        private List<String> GetAvailableDirections(int[,] sensorData)
+        public List<String> GetAvailableDirections(int[,] sensorData)
         {
             List<string> possibleDirections = new List<string>();
             if (sensorData[0, 1] == 0)
@@ -42,7 +44,7 @@ namespace Algorithms
                 possibleDirections.Add("East");
             if (sensorData[2, 1] == 0)
                 possibleDirections.Add("South");
-            if (sensorData[1,0] == 0)
+            if (sensorData[1, 0] == 0)
                 possibleDirections.Add("West");
             return possibleDirections;
         }
@@ -195,6 +197,10 @@ namespace Algorithms
         public int[,] GenerateMaze(int sizeRows, int sizeCols, float placementThreshold)
         {
             int[,] maze = new int[sizeRows, sizeCols];
+            if (sizeRows < 3 || sizeCols < 3)
+            {
+                return null;
+            }
 
             for (int i = 0; i < sizeRows; i++)
             {
@@ -218,8 +224,8 @@ namespace Algorithms
                     }
                 }
             }
-            return maze;
 
+            return maze;
         }
     }
 }
