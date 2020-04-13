@@ -1,0 +1,14 @@
+/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRLTesting/bin/Debug/DRLTesting.dll
+/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRLTesting/bin/Debug/DRLTesting.pdb
+/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRLTesting/bin/Debug/DRL.dll
+/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRLTesting/bin/Debug/nunit.framework.dll
+/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRLTesting/bin/Debug/UnityEngine.dll
+/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRLTesting/bin/Debug/DRL.pdb
+/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRLTesting/bin/Debug/nunit.framework.xml
+/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRLTesting/bin/Debug/UnityEngine.dll.mdb
+/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRLTesting/bin/Debug/UnityEngine.xml
+/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRLTesting/obj/Debug/DRLTesting.csprojAssemblyReference.cache
+/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRLTesting/obj/Debug/DRLTesting.csproj.CoreCompileInputs.cache
+/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRLTesting/obj/Debug/DRLTesting.csproj.CopyComplete
+/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRLTesting/obj/Debug/DRLTesting.dll
+/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRLTesting/obj/Debug/DRLTesting.pdb
