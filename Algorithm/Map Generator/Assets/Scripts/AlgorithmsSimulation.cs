@@ -50,7 +50,7 @@ public class AlgorithmsSimulation : MonoBehaviour
             maze[currentX, currentY] = 2;
             updateMaze();
             mazeCreated = true;
-            InvokeRepeating("getNextCommand", 1f, 0.2f);
+            InvokeRepeating("getNextCommand", 0.1f, 0.01f);
         }
     }
 
@@ -311,6 +311,15 @@ public class Exploration : MonoBehaviour
         private List<String> GetAvailableDirections(int[,] sensorData)
         {
             List<string> possibleDirections = new List<string>();
+            Vector2Int robotPosition = exploredMap.GetCurrentPosition();
+            if (sensorData[0, 1] == 0 && exploredMap.GetCell(new Vector2Int(robotPosition.x-1,robotPosition.y)).IsVisited()==false)
+                possibleDirections.Add("North");
+            if (sensorData[1, 2] == 0 && exploredMap.GetCell(new Vector2Int(robotPosition.x,robotPosition.y+1)).IsVisited()==false)
+                possibleDirections.Add("East");
+            if (sensorData[2, 1] == 0 && exploredMap.GetCell(new Vector2Int(robotPosition.x+1,robotPosition.y)).IsVisited()==false)
+                possibleDirections.Add("South");
+            if (sensorData[1,0] == 0 && exploredMap.GetCell(new Vector2Int(robotPosition.x,robotPosition.y-1)).IsVisited()==false)
+                possibleDirections.Add("West");
             if (sensorData[0, 1] == 0)
                 possibleDirections.Add("North");
             if (sensorData[1, 2] == 0)
@@ -367,10 +376,10 @@ public class Exploration : MonoBehaviour
                         int xMaze = robotPosition.x + x -1 ;
                         int yMaze = robotPosition.y + y -1;
                         if(mazeMap[xMaze,yMaze]!=null) {
-                            if (x == 1 && y == 1)
-                            {
-                                mazeMap[x,y].Visit();   
-                            }
+                            // if (x == 1 && y == 1)
+                            // {
+                            //     mazeMap[x,y].Visit();   
+                            // }
                             continue;
                         }                      
                         MazeCell neighbor = new MazeCell(xMaze, yMaze); // create 
