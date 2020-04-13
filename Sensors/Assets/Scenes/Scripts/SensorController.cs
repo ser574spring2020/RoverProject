@@ -23,7 +23,7 @@ public class SensorController : MonoBehaviour
     private static int[,] lidarMatrix;
     private static int[,] radarMatrix;
     private static int[,] bumperMatrix;
-    private static int sensorType;
+    private static int sensorType;    
 
 
     public void setSensorType(int value)
@@ -63,9 +63,9 @@ public class SensorController : MonoBehaviour
 
         //int[,] lidarMatrix = getMatrixFromLiDARSensor(Cube);
 
-        //int[,] radarMatrix = getMatrixFromRadarSensor(Cube);
+        int[,] radarMatrix = getMatrixFromRadarSensor(Cube);
 
-        int[,] bumperMatrix = getMatrixFromBumperSensor(Cube);
+        //int[,] bumperMatrix = getMatrixFromBumperSensor(Cube);
 
 
         // this how you call our API component
@@ -580,7 +580,7 @@ public class SensorController : MonoBehaviour
                                int[] inRangeIndexes, int[,] resultantMatrix)
     {
         RaycastHit hit;
-        Ray ray;
+        Ray ray;        
 
         if (angle != 0)
         {
@@ -611,21 +611,22 @@ public class SensorController : MonoBehaviour
 
                 // for LiDAR, Radar, Range
                 if (hit.distance > 2.0f)
-                {
+                {                    
                     drawRayOnRover(ray, hit, "out");
-                    resultantMatrix[outRangeIndexes[0], outRangeIndexes[1]] = result;
+                    resultantMatrix[outRangeIndexes[0], outRangeIndexes[1]] = result;                    
                 }
                 else
                 {
+                    
                     drawRayOnRover(ray, hit, "in");
                     resultantMatrix[inRangeIndexes[0], inRangeIndexes[1]] = result;
                 }
             }
         }
-
+        
     }
 
-
+    
     /// <summary>
     /// This is a helper function to draw a ray
     /// </summary>
@@ -649,7 +650,7 @@ public class SensorController : MonoBehaviour
         else if (getSensorType() == 4) // Radar
         {
             if (range.Equals("out"))
-            {
+            {                                
                 Debug.DrawLine(ray.origin, hit.point, Color.blue);
             }
             else
@@ -678,8 +679,18 @@ public class SensorController : MonoBehaviour
         }
 
     }
+    
+    /*private void highlightCollider(GameObject gObj)
+    {
+        Renderer r = gObj.GetComponent(typeof(Renderer)) as Renderer;
+        oldColor = r.material.GetColor("_Color");
+        Color newColor = new Color(oldColor.r + 0.2f, oldColor.g + 0.2f, oldColor.b + 0.2f, oldColor.a);
+        r.material.SetColor("_Color", newColor);
+    }
 
-
-
-
+    private void restoreColor(GameObject gObj)
+    {
+        Renderer r = gObj.GetComponent(typeof(Renderer)) as Renderer;
+        r.material.SetColor("_Color", oldColor);
+    }*/
 }
