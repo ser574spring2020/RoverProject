@@ -95,12 +95,16 @@ public class AlgorithmsSimulation : MonoBehaviour
             for (int j = 0; j < mazeWidth; j++)
             {
                 Vector3 tempVector = new Vector3(xStart + (xSpace * j), 100, yStart - (ySpace * i));
-        //         if (exploredMaze.GetCell(new Vector2Int(i,j))!=null)
-        //             exploredMazeObjects[counter++] = Instantiate(floorPrefab, tempVector, Quaternion.identity);
-        //         else if (exploredMaze.GetCell(new Vector2Int(i,j)).isWallCell())
-        //             exploredMazeObjects[counter++] = Instantiate(wallPrefab, tempVector, Quaternion.identity);
-        //         else if (exploredMaze.GetCell(new Vector2Int(i,j)).IsVisited())
-        //             exploredMazeObjects[counter++] = Instantiate(wallPrefab, tempVector, Quaternion.identity);
+                // Debug.Log(exploredMaze.GetCell(new Vector2Int(i,j)));
+                MazeCell mazeCell = exploredMaze.GetCell(new Vector2Int(i,j));
+                if(mazeCell == null)
+                    continue;
+                if (mazeCell.isWallCell()==false)
+                    exploredMazeObjects[counter++] = Instantiate(floorPrefab, tempVector, Quaternion.identity);
+                else if (mazeCell.isWallCell()==true)
+                    exploredMazeObjects[counter++] = Instantiate(wallPrefab, tempVector, Quaternion.identity);
+                // else if (exploredMaze.GetCell(new Vector2Int(i,j)).IsVisited())
+                //     exploredMazeObjects[counter++] = Instantiate(wallPrefab, tempVector, Quaternion.identity);
         //         // else if (exploredMaze[i, j] == 2)
         //         //     exploredMazeObjects[counter++] = Instantiate(robotPrefab, tempVector, Quaternion.identity);
         //         // else if (exploredMaze[i, j] == 4)
@@ -173,7 +177,7 @@ public class AlgorithmsSimulation : MonoBehaviour
     //Move camera to explore maze
     void moveToExploredMaze()
     {
-        // updateExplored();
+        updateExplored();
         Vector3 position = camera.transform.position;
         position.y = 109;
         camera.transform.position = position;
@@ -368,23 +372,21 @@ public class Exploration : MonoBehaviour
                         }
                         int xMaze = robotPosition.x + x -1 ;
                         int yMaze = robotPosition.y + y -1;                        
-                        // Debug.Log(x+" "+y+">>>"+xMaze+" "+yMaze);
-                        // if (sensorReading[x, y]==1)
-                        // {
-                        //     MazeCell neighbor = new MazeCell(xMaze, yMaze); // create 
-                        //     mazeMap[xMaze, yMaze] = neighbor;
-                        //     neighbor.isWallCell();
-                        //     cells.Add(neighbor);
-                        // }
-                        // if (sensorReading[x, y]==0)
-                        // {
-                        //     MazeCell neighbor = new MazeCell(xMaze, yMaze); // create 
-                        //     mazeMap[xMaze, yMaze] = neighbor;
-                        //     cells.Add(neighbor);
-                        // }
+                        if (sensorReading[x, y]==1)
+                        {
+                            MazeCell neighbor = new MazeCell(xMaze, yMaze); // create 
+                            neighbor.makeWall();
+                            mazeMap[xMaze, yMaze] = neighbor;
+                            cells.Add(neighbor);
+                        }
+                        if (sensorReading[x, y]==0)
+                        {
+                            MazeCell neighbor = new MazeCell(xMaze, yMaze); // create 
+                            mazeMap[xMaze, yMaze] = neighbor;
+                            cells.Add(neighbor);
+                        }
                     }
                 }
-
                 // mazeMap[robotPosition.x, robotPosition.y].Visit();
                 return true;
             }
@@ -469,16 +471,16 @@ public class Exploration : MonoBehaviour
         }
 
         public void makeWall(){
-            isWall = true;
+            this.isWall = true;
         }
 
         public bool isWallCell(){
-            return isWall;
+            return this.isWall;
         }
 
         public void Visit()
         {
-            visited = true;
+            this.visited = true;
         }
 
         public bool IsVisited()
