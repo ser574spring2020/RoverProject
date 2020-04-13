@@ -605,7 +605,7 @@ public class SensorController : MonoBehaviour
                 resultantMatrix[outRangeIndexes[0], outRangeIndexes[1]] = result;
             }
             else
-            {
+            {                
                 // for LiDAR and Radar
                 if (getSensorType() == 3 || getSensorType() == 4) result = (int)hit.distance;
 
@@ -649,14 +649,7 @@ public class SensorController : MonoBehaviour
         }
         else if (getSensorType() == 4) // Radar
         {
-            if (range.Equals("out"))
-            {                                
-                Debug.DrawLine(ray.origin, hit.point, Color.blue);
-            }
-            else
-            {
-                Debug.DrawLine(ray.origin, hit.point, Color.red);
-            }
+            // no ray required to show. 
         }
         else if (getSensorType() == 2) // Range
         {
@@ -671,7 +664,7 @@ public class SensorController : MonoBehaviour
         }
         else if (getSensorType() == 5) // Bumper
         {
-            // no ray required.
+            // no ray required to show.
         }
         else  // Proximity
         {
