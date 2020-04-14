@@ -1,5 +1,5 @@
 /*
-    Authors   : Sumanth Paranjape
+    Authors   : Sumanth Paranjape, Aneesh Dalvi
     Function  : Factory Pattern for creating different Sensors. Inherits Sensors.
     Version   : V2
     Email     : sparanj2@asu.edu | Arizona State University.
@@ -29,7 +29,13 @@ public class SensorFactory : Sensors{
                 case 3: _sensor = new LidarSensor();
                         break;
 
-                default: Debug.Log("The chosen sensor doesn't exist!");
+                case 4: _sensor = new RadarSensor();
+                    break;
+
+                case 5: _sensor = new BumperSensor();
+                    break;
+
+            default: Debug.Log("The chosen sensor doesn't exist!");
                          _sensor = new ProximitySensor();
                          break;
             }
