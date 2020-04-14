@@ -226,10 +226,17 @@ namespace Algorithms
 
     public class MazeGenerator
     {
+        public float GenerateRandomNumber()
+        {
+            RandomSystem r = new RandomSystem();
+            float temp = r.Next(0, 10);
+            return temp/10f;
+        }
         public int[,] GenerateMaze(int sizeRows, int sizeCols, float placementThreshold)
         {
+            if (sizeCols < 3 || sizeRows < 3 || placementThreshold <= 0f || placementThreshold >= 1f)
+                return null;
             int[,] maze = new int[sizeRows, sizeCols];
-
             for (int i = 0; i < sizeRows; i++)
             {
                 for (int j = 0; j < sizeCols; j++)
@@ -241,12 +248,11 @@ namespace Algorithms
 
                     else if (i % 2 == 0 && j % 2 == 0)
                     {
-                        if (Random.value > placementThreshold)
+                        if ( GenerateRandomNumber()> placementThreshold)
                         {
                             maze[i, j] = 1;
-
-                            int a = Random.value < .5 ? 0 : (Random.value < .5 ? -1 : 1);
-                            int b = a != 0 ? 0 : (Random.value < .5 ? -1 : 1);
+                            int a = GenerateRandomNumber() < .5 ? 0 : (GenerateRandomNumber() < .5 ? -1 : 1);
+                            int b = a != 0 ? 0 : (GenerateRandomNumber() < .5 ? -1 : 1);
                             maze[i + a, j + b] = 1;
                         }
                     }
