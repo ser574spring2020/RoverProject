@@ -31,13 +31,14 @@ public class AlgorithmsSimulation : MonoBehaviour
         createMaze.onClick.AddListener(createMazeButtonListener);
         sensorDataButton.onClick.AddListener(updateSensorsData);
         nextCommandButton.onClick.AddListener(getNextCommand);
-        exploration = new Exploration(mazeHeight, mazeWidth);
     }
 
 
     //Create the initial maze
     void createMazeButtonListener()
     {
+
+        exploration = new Exploration(mazeHeight, mazeWidth);
         if (mazeCreated == false)
         {
             maze = mazeGenerator.GenerateMaze(mazeHeight, mazeWidth, placementThreshold);

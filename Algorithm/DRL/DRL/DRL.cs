@@ -15,6 +15,11 @@ namespace Algorithms
 
         ExploredMap exploredMap;
 
+        public Exploration(int sizeRows, int sizeCols)
+        {
+            exploredMap = new ExploredMap(new Vector2Int(30, 30), new Vector2Int(1, 1));
+        }
+
         public String GetNextCommand(int[,] sensorData)
         {
             String robotCommand;
@@ -25,11 +30,6 @@ namespace Algorithms
             robotCommand = possibleDirections[x];
             exploredMap.MoveRelative(vectorCommands[commands.IndexOf(robotCommand)]);
             return robotCommand;
-        }
-
-        public Exploration(int sizeRows, int sizeCols)
-        {
-            exploredMap = new ExploredMap(new Vector2Int(30, 30), new Vector2Int(1, 1));
         }
 
         public ExploredMap GetExploredMap()
@@ -102,16 +102,11 @@ namespace Algorithms
                         int yMaze = robotPosition.y + y - 1;
                         if (mazeMap[xMaze, yMaze] != null)
                         {
-                            // if (x == 1 && y == 1)
-                            // {
-                            //     mazeMap[x,y].Visit();   
-                            // }
                             continue;
                         }
-
                         MazeCell neighbor = new MazeCell(xMaze, yMaze); // create 
                         mazeMap[xMaze, yMaze] = neighbor;
-                        cells.Add(neighbor);
+
                         if (sensorReading[x, y] == 1)
                         {
                             neighbor.makeWall();
@@ -202,12 +197,12 @@ namespace Algorithms
             this.visited = false;
         }
 
-        public void makeWall()
+        public void MakeWall()
         {
             this.isWall = true;
         }
 
-        public bool isWallCell()
+        public bool IsWallCell()
         {
             return this.isWall;
         }
