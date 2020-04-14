@@ -1,5 +1,5 @@
 /*
-    Authors   : Sumanth Paranjape, Aneesh Dalvi
+    Authors  : Sumanth Paranjape, Aneesh Dalvi
     Function : Implements Inheritance where Base class is Sensor
                and derived classes are ProximitySensor | RangeSensor | 
                LidarSensor | RadarSensor and notifies clients using 
