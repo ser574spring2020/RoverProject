@@ -27,10 +27,11 @@ Algorithm (Root)
 ├── Back Propagation
 │   └── Back Propagation.cs
 │
-├── DeepReinforcementLearning
-│   └── DeepReinforcementLearning
-│       └── DeepReinforcementLearning
-│           └── DeepReinforcementLearning.cs                                      (FOR DEEP REINFORCEMENT LEARNING)
+├── DRL
+│   └── DRL
+│       └── bin
+│           └── Debug
+│                  └── DRL.dll                                                   (FOR DEEP REINFORCEMENT LEARNING)
 │
 ├── Map Generator                                                                 (MAIN UNITY PROJECT)
 │   └── Assets
