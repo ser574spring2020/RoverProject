@@ -1,8 +1,9 @@
 # Algorithms Team
 
 
-#### Windows Build - Maze Generator and Visualizer
-- Windows Build for the simulation can be found [here](/Algorithm/Map%20Generator/WindowsBuild) - *(RoverSimulation-AlgorithmsTeam.exe)*
+#### How to run?
+- [Windows Build](/Algorithm/Map%20Generator/WindowsBuild) - *(RoverSimulation-AlgorithmsTeam.exe)*
+- [Linux Build](/Algorithm/Map%20Generator/LinuxBuild) - *( 	LinuxBuild.x86_64)*
 
 ## Links
 - [Documents](https://drive.google.com/open?id=1gdqUG-G0XlVtYJZFXqgZue7gCKFo_VYj)
