@@ -57,7 +57,8 @@ public class SensorController : MonoBehaviour
     }
 
     void Start(){
-        sensor = Sensors.getInstance(sensorType, Cube);
+         sensor = SensorFactory.getInstance(sensorType, Cube);
+        //sensor = Sensors.getInstance(sensorType, Cube);
     }
     private void FixedUpdate()
     {
@@ -135,7 +136,6 @@ public class SensorController : MonoBehaviour
     </summary>
     <param name="gObj">requires rover game object</param>
     <returns>Returns a 5X5 matrix of the surrounding of rover</returns>*/
-
     private int[,] getMatrixFromLiDARSensor(GameObject gObj)
     {
         // initial position for every step before checking for potential collisions

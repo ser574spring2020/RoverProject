@@ -10,13 +10,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Sensors1;
 using System;
 
-class Sensors : MonoBehaviour
+public class Sensors : MonoBehaviour
 {
-    private static Sensors sensors;
-    private static GameObject Cube;    
+    protected static Sensors sensors;
+    protected static GameObject Cube;    
     protected float Distance;
     protected float oldTime;
     protected float newTime;
@@ -24,16 +23,15 @@ class Sensors : MonoBehaviour
     protected float oldVelocity;
 
     [Header("Sensors")]
-    public float sensorLength;
-    public float sideSensorPos;
-    public float frontSensorAngle = 45;
+    protected float sensorLength;
+    protected float sideSensorPos;
+    protected float frontSensorAngle = 45;
 
     protected static int sensorType;
 
     protected static int[,] obstacle_matrix;
 
-    private List<Observer> observers = new List<Observer>();
-
+    //Interface for updating matrix     
     public virtual void update_Obstacles(GameObject gameObj){
 
     }
@@ -42,43 +40,9 @@ class Sensors : MonoBehaviour
         sensors.update_Obstacles(Cube);
     }
 
-    /*
-        Singleton Design Pattern.
-        Only one instance of the class can be generated.
-        Same instance is used by both GUI and Algo modules.
-    */
+    
+    //Singleton Pattern. Only one instance allowed.
     protected Sensors(){
-    }
-
-    /*
-        Uses Factory pattern and polymorphism to return the desired 
-        Sensor type.
-    */
-    public static Sensors getInstance(int sensorType, GameObject gObj){
-
-        Cube = gObj;
-
-        switch (sensorType)
-            {
-                case 1: sensors = new ProximitySensor();
-                        break;
-
-                case 2: sensors = new RangeSensor();
-                        break;
-
-                case 3: sensors = new LidarSensor();
-                        break;
-
-                default: Debug.Log("The chosen sensor doesn't exist!");
-                         sensors = new ProximitySensor();
-                         break;
-            }
-
-            return sensors;
-    }
-
-    public static Sensors getInstance(){
-        return sensors;
     }
 
     public int[,] get_Obstacle_Matrix(){
