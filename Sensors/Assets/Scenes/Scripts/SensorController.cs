@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Sensors1;
+using Sensors;
 using System;
 
 public class SensorController : MonoBehaviour
@@ -23,10 +23,9 @@ public class SensorController : MonoBehaviour
     private static int[,] lidarMatrix;
     private static int[,] radarMatrix;
     private static int[,] bumperMatrix;
-    private static int sensorType;    
+    private static int sensorType;
 
-    private static Sensors sensor;
-
+    private static Sensors.Sensors sensor;
 
     public void setSensorType(int value)
     {
