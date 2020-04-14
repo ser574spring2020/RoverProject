@@ -1,5 +1,5 @@
 /*
-    Author   : Sumanth Paranjape
+    Authors   : Sumanth Paranjape, Aneesh Dalvi
     Function : Implements Inheritance where Base class is Sensor
                and derived classes are ProximitySensor | RangeSensor | 
                LidarSensor | RadarSensor and notifies clients using 
@@ -7,7 +7,6 @@
     Version  : V1
     Email    : sparanj2@asu.edu | Arizona State University.
 */
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,8 +15,8 @@ using System;
 
 class Sensors : MonoBehaviour
 {
-    private Sensors sensors;
-    public GameObject Cube;    
+    private static Sensors sensors;
+    private static GameObject Cube;    
     protected float Distance;
     protected float oldTime;
     protected float newTime;
@@ -31,12 +30,16 @@ class Sensors : MonoBehaviour
 
     protected static int sensorType;
 
-    protected int[,] obstacle_matrix;
+    protected static int[,] obstacle_matrix;
 
     private List<Observer> observers = new List<Observer>();
 
     public virtual void update_Obstacles(GameObject gameObj){
 
+    }
+
+    public void update(){
+        sensors.update_Obstacles(Cube);
     }
 
     /*
@@ -45,31 +48,37 @@ class Sensors : MonoBehaviour
         Same instance is used by both GUI and Algo modules.
     */
     protected Sensors(){
-
-    }
-
-    public Sensors getInstance(){
-        if(sensors == null)
-            sensors = new Sensors();
-        return sensors;
     }
 
     /*
-        Observer Design Pattern.
-        Notifed by the User Interface at each update method and
-        notifcation sent to all observers ie. the GUI and the 
-        ML Algorithms modules.
+        Uses Factory pattern and polymorphism to return the desired 
+        Sensor type.
     */
-    public void Notify()
-    {
-        for (int i = 0; i < observers.Count; i++){
-            observers[i].OnNotify();
-        }
+    public static Sensors getInstance(int sensorType, GameObject gObj){
+
+        Cube = gObj;
+
+        switch (sensorType)
+            {
+                case 1: sensors = new ProximitySensor();
+                        break;
+
+                case 2: sensors = new RangeSensor();
+                        break;
+
+                case 3: sensors = new LidarSensor();
+                        break;
+
+                default: Debug.Log("The chosen sensor doesn't exist!");
+                         sensors = new ProximitySensor();
+                         break;
+            }
+
+            return sensors;
     }
 
-     public void AddObserver(Observer observer)
-    {
-        observers.Add(observer);
+    public static Sensors getInstance(){
+        return sensors;
     }
 
     public int[,] get_Obstacle_Matrix(){
@@ -116,7 +125,7 @@ class Sensors : MonoBehaviour
 
     protected void checkObstacle(Vector3 origin, Vector3 direction, GameObject gObj, 
                                int angle, String obstacleToBeFound, int[] outRangeIndexes, 
-                               int[] inRangeIndexes, int[,] resultantMatrix)
+                               int[] inRangeIndexes)
     {
         RaycastHit hit;
         Ray ray;
@@ -140,7 +149,7 @@ class Sensors : MonoBehaviour
             if (getSensorType() == 1)
             {
                 drawRayOnRover(ray, hit, "");
-                resultantMatrix[outRangeIndexes[0], outRangeIndexes[1]] = result;
+                obstacle_matrix[outRangeIndexes[0], outRangeIndexes[1]] = result;
             }
             else
             {
@@ -150,12 +159,12 @@ class Sensors : MonoBehaviour
                 if (hit.distance > 2.0f)
                 {
                     drawRayOnRover(ray, hit, "out");
-                    resultantMatrix[outRangeIndexes[0], outRangeIndexes[1]] = result;
+                    obstacle_matrix[outRangeIndexes[0], outRangeIndexes[1]] = result;
                 }
                 else
                 {
                     drawRayOnRover(ray, hit, "in");
-                    resultantMatrix[inRangeIndexes[0], inRangeIndexes[1]] = result;
+                    obstacle_matrix[inRangeIndexes[0], inRangeIndexes[1]] = result;
                 }
             }
         }

@@ -25,6 +25,8 @@ public class SensorController : MonoBehaviour
     private static int[,] bumperMatrix;
     private static int sensorType;    
 
+    private static Sensors sensor;
+
 
     public void setSensorType(int value)
     {
@@ -38,7 +40,6 @@ public class SensorController : MonoBehaviour
 
     private void testProximityMatrix(int[,] matrix)
     {
-        // Debug.Log(matrix);
         Debug.Log("-- Printing Matrix : -- ");
         
         for (int i = 0; i < matrix.GetLength(0); i++)
@@ -55,6 +56,9 @@ public class SensorController : MonoBehaviour
 
     }
 
+    void Start(){
+        sensor = Sensors.getInstance(sensorType, Cube);
+    }
     private void FixedUpdate()
     {
         //int[,] proximityMatrix = getMatrixFromProximitySensor(Cube);
@@ -63,7 +67,7 @@ public class SensorController : MonoBehaviour
 
         //int[,] lidarMatrix = getMatrixFromLiDARSensor(Cube);
 
-        int[,] radarMatrix = getMatrixFromRadarSensor(Cube);
+        //int[,] radarMatrix = getMatrixFromRadarSensor(Cube);
 
         //int[,] bumperMatrix = getMatrixFromBumperSensor(Cube);
 
@@ -77,40 +81,15 @@ public class SensorController : MonoBehaviour
         */
     }
 
-
-
-
-
     // Update is called once per frame
     void Update()
     {
-
-        
-        // changes the position of Rover
         changePosRover();
-
-
-        // calculate acceleration of the gameobject
-        //float acceleration = getDataFromAccelerometer();       
-        //Debug.Log(string.Format("Acceration of {0} is {1}", Cube, acceleration));
-        
-
-        //proximity sensor
-        /*if (Cube != null && Cube1 != null)
-        {
-            Distance = getDataFromProximitySensor();
-            //Debug.Log(string.Format("Distance between {0} and {1} is: {2}", Cube, Cube1, Distance));
-        }*/
-
+        sensor.update_Obstacles(Cube);
+        int[,] matrix = sensor.get_Obstacle_Matrix();
+        //int[,] matrix = Sensors.obstacle_matrix;
+        Debug.Log("Getting matrix of Size:"+matrix.Length);
     }
-
-    
-
-   /* private float getDataFromProximitySensor()
-    { 
-          return Vector3.Distance(Cube.transform.position, Cube1.transform.position);
-    }*/
-
 
     private float getAcceleration(Rigidbody cube)
     {
@@ -148,15 +127,15 @@ public class SensorController : MonoBehaviour
     }
 
     
-    // from here will be the implementations for diferent sensors functions
+    /*From here will be the implementations for diferent sensors functions
+    <summary>
+    This function sets lidar matrix which has a 5 X 5 dimensions
+    It detects object only in front of it. It detects the distance 
+    from the potential collision to rover        
+    </summary>
+    <param name="gObj">requires rover game object</param>
+    <returns>Returns a 5X5 matrix of the surrounding of rover</returns>*/
 
-    /// <summary>
-    /// This function sets lidar matrix which has a 5 X 5 dimensions
-    /// It detects object only in front of it. It detects the distance 
-    /// from the potential collision to rover        
-    /// </summary>
-    /// <param name="gObj">requires rover game object</param>
-    /// <returns>Returns a 5X5 matrix of the surrounding of rover</returns>
     private int[,] getMatrixFromLiDARSensor(GameObject gObj)
     {
         // initial position for every step before checking for potential collisions
