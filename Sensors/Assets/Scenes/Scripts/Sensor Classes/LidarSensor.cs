@@ -6,15 +6,19 @@
 */
 
 using UnityEngine;
+
+/// <summary>
+/// This class implements functionality for Lidar Sensor
+/// </summary>
 class LidarSensor : Sensors
 {
     public LidarSensor(){
-        sensorLength = 5f;
+        sensorLength = 4f;
         obstacle_matrix = new int[,] {{ -1, -1, -1, -1, -1 }, 
-                                  { -1, -1, -1, -1, -1 }, 
-                                  { -1, -1,  2, -1, -1 }, 
-                                  { -1, -1, -1, -1, -1 }, 
-                                  { -1, -1, -1, -1, -1 }};
+                                      { -1, -1, -1, -1, -1 }, 
+                                      { -1, -1,  2, -1, -1 }, 
+                                      { -1, -1, -1, -1, -1 }, 
+                                      { -1, -1, -1, -1, -1 }};
     }
     public override void update_Obstacles(GameObject gObj){
         /* initial position for every step before checking for potential collisions

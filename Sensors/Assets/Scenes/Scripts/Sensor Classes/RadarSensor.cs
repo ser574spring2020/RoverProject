@@ -1,4 +1,3 @@
-
 /*
     Author   : Aneesh Dalvi, Vaibhav Singhal
     Function : Implements Functionality for Radar Sensor
@@ -7,15 +6,19 @@
 */
 
 using UnityEngine;
+
+/// <summary>
+/// This class implements functionality for Radar Sensor
+/// </summary>
 class RadarSensor : Sensors
 {
     public RadarSensor(){
         sensorLength = 4f;
         obstacle_matrix = new int[,] {{ -1, -1, -1, -1, -1 },
-                                  { -1, -1, -1, -1, -1 },
-                                  { -1, -1,  2, -1, -1 },
-                                  { -1, -1, -1, -1, -1 },
-                                  { -1, -1, -1, -1, -1 }};
+                                      { -1, -1, -1, -1, -1 },
+                                      { -1, -1,  2, -1, -1 },
+                                      { -1, -1, -1, -1, -1 },
+                                      { -1, -1, -1, -1, -1 }};
     }
     public override void update_Obstacles(GameObject gObj){
         /*.......change
@@ -25,6 +28,8 @@ class RadarSensor : Sensors
     
         DrawCircle(gObj.transform.position, sensorLength, Color.blue);
         DrawCircle(gObj.transform.position, sensorLength-2, Color.red);
+
+        DrawRotatingLine(gObj, Color.white);
 
         // Straight Lines
         checkObstacle(gObj.transform.position,

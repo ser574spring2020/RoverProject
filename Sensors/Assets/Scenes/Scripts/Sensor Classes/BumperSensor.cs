@@ -6,6 +6,10 @@
 */
 
 using UnityEngine;
+
+/// <summary>
+/// This class implements the Bumper Sensor
+/// </summary>
 public class BumperSensor : Sensors
 {
     // Start is called before the first frame update
@@ -13,8 +17,8 @@ public class BumperSensor : Sensors
     {
         sensorLength = 1f;
         obstacle_matrix = new int[,] {{ 0, 0, 0 },
-                                   { 0, 2, 0 },
-                                   { 0, 0, 0 }};
+                                      { 0, 2, 0 },
+                                      { 0, 0, 0 }};
     }
 
     public override void update_Obstacles(GameObject gObj)

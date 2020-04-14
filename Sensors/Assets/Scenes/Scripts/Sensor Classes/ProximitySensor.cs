@@ -6,10 +6,16 @@
 */
 
 using UnityEngine;
+
+/// <summary>
+/// This class implements functionality for Proximity Sensor
+/// </summary>
 class ProximitySensor : Sensors
 {
     public ProximitySensor(){
-        obstacle_matrix = new int[,] {{ 1, 0, 1 }, { 0, 2, 0 }, { 1, 0, 1 }};
+        obstacle_matrix = new int[,] {{ 1, 0, 1 }, 
+                                      { 0, 2, 0 }, 
+                                      { 1, 0, 1 }};
         sensorLength = 2f;
     }
     public override void update_Obstacles(GameObject gObj){

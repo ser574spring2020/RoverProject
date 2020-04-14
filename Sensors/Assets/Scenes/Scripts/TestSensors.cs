@@ -1,11 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿/*
+    Author   : Aneesh Dalvi, Sumanth Paranjape
+    Function : Implements Functionality for Proximity Sensor
+    Version  : V1
+    Email    : adalvi1@asu.edu | Arizona State University.
+*/
+
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 using UnityEngine.SceneManagement;
 
-
+/// <summary>
+/// This class is associated with the User Interface dropdown
+/// and chooses the sensor and passes on to the Controller class.
+/// </summary>
 public class TestSensors : MonoBehaviour
 {
 

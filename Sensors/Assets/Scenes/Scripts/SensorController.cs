@@ -1,24 +1,42 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿/*
+    Author   : Aneesh Dalvi, Sumanth Paranjape
+    Function : Implements Functionality for Proximity Sensor
+    Version  : V1
+    Email    : adalvi1@asu.edu | Arizona State University.
+*/
+
 using UnityEngine;
-using System;
+
+/// <summary>
+/// This class is the controller class for all the sensors.
+/// </summary>
 
 public class SensorController : MonoBehaviour
 {
-    private static Sensors sensor;
+    // for dll; for normal execution comment this
+    private static SensorsComponent.Sensors sensor;
+
+    // for normal unity execution uncomment this
+    //private static Sensors sensor;
+
     private static int sensorType;
     public GameObject Cube;
     void Start(){
-         sensor = SensorFactory.getInstance(sensorType, Cube);
+        sensor = SensorsComponent.SensorFactory.GetInstance(getSensorType(), Cube);
+        Debug.Log(sensor.GetCurrentSensor());
     }
 
     // Update is called once per frame
     void Update()
     {
         changePosRover();
-        sensor.update_Obstacles(Cube);
-        int[,] matrix = sensor.get_Obstacle_Matrix();
-        Debug.Log("Getting matrix of Size:"+matrix.Length);
+        sensor.Update_Obstacles(Cube);        
+        sensor.SetSensorType(getSensorType());
+        int[,] matrix = sensor.Get_Obstacle_Matrix();
+        
+
+        //Debug.Log("Getting matrix of Size:"+matrix.Length);
+
     }
 
     private void changePosRover()
@@ -39,7 +57,7 @@ public class SensorController : MonoBehaviour
 
     public void setSensorType(int value)
     {
-        sensorType = value;
+        sensorType = value;        
     }
 
     private int getSensorType()
