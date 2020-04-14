@@ -93,7 +93,7 @@ public class AlgorithmsSimulation : MonoBehaviour
                 MazeCell mazeCell = exploredMaze.GetCell(new Vector2Int(i,j));
                 if(mazeCell == null)
                     continue;
-                if (mazeCell.isWallCell()==true)
+                if (mazeCell.IsWallCell()==true)
                     exploredMazeObjects[counter++] = Instantiate(wallPrefab, tempVector, Quaternion.identity);
                 else if (mazeCell.IsVisited()==false)
                     exploredMazeObjects[counter++] = Instantiate(floorPrefab, tempVector, Quaternion.identity);
