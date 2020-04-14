@@ -2,16 +2,18 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="$USER_HOME$/.Rider2019.3/system/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/.Rider2019.3/system/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_DRL.181293937.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/.Rider2019.3/system/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_DRL.926155670.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="DRL" t="IncludeRecursive">
         <e p="DRL.cs" t="Include" />
         <e p="DRL.csproj" t="IncludeRecursive" />
+        <e p="DRL_Tests.cs" t="Include" />
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
       </e>
       <e p="DRL.sln" t="IncludeFlat" />
       <e p="packages" t="ExcludeRecursive" />

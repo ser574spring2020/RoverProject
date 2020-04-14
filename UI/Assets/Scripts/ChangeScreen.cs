@@ -7,9 +7,9 @@ using UnityEngine.SceneManagement;
 public class ChangeScreen : MonoBehaviour
 {
    
-    public void MainScene()
+    public void ChangeScene(string SceneName)
     {
-        SceneManager.LoadScene("Main", LoadSceneMode.Single);
+        SceneManager.LoadScene(SceneName, LoadSceneMode.Single);
         
     }
 }
