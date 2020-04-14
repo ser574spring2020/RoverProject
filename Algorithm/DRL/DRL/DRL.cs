@@ -109,7 +109,7 @@ namespace Algorithms
 
                         if (sensorReading[x, y] == 1)
                         {
-                            neighbor.makeWall();
+                            neighbor.MakeWall();
                         }
                     }
                 }

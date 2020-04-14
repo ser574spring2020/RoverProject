@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d3190075-b6a2-4f67-a30a-e421f721dd90" name="Default Changelist" comment="">
+    <list default="true" id="0f8fcbe5-ca5c-4200-92f3-14e366af565a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/DRL.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/DRL.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/Properties/AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/Properties/AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/NUnit.3.5.0/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/NUnit.3.5.0/CHANGES.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/NUnit.3.5.0/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/NUnit.3.5.0/NOTICES.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/NUnit.3.5.0/NUnit.3.5.0.nupkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/NUnit.3.5.0/lib/dotnet/nunit.framework.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/NUnit.3.5.0/lib/dotnet/nunit.framework.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/NUnit.3.5.0/lib/net20/NUnit.System.Linq.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/NUnit.3.5.0/lib/net20/nunit.framework.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/NUnit.3.5.0/lib/net20/nunit.framework.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/NUnit.3.5.0/lib/net35/nunit.framework.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/NUnit.3.5.0/lib/net35/nunit.framework.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/NUnit.3.5.0/lib/net40/nunit.framework.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/NUnit.3.5.0/lib/net40/nunit.framework.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/NUnit.3.5.0/lib/net45/nunit.framework.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/NUnit.3.5.0/lib/net45/nunit.framework.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/NUnit.3.5.0/lib/portable-net45+win8+wp8+wpa81+Xamarin.Mac+MonoAndroid10+MonoTouch10+Xamarin.iOS10/nunit.framework.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/NUnit.3.5.0/lib/portable-net45+win8+wp8+wpa81+Xamarin.Mac+MonoAndroid10+MonoTouch10+Xamarin.iOS10/nunit.framework.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Map Generator/Assets/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Map Generator/Assets/DRL.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,23 +40,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/../Map Generator/Assets/Scripts/AlgorithmsSimulation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DRL/DRL.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/DRL/MonoBehaviour1.cs" />
-        <option value="$PROJECT_DIR$/DRL.sln" />
-        <option value="$PROJECT_DIR$/TestProject1/Tests.cs" />
-        <option value="$PROJECT_DIR$/DRLTesting/Tests.cs" />
-        <option value="$PROJECT_DIR$/DRL/Tests.cs" />
-        <option value="$PROJECT_DIR$/DRL/DRLTests.cs" />
-        <option value="$PROJECT_DIR$/DRL/DRL.cs" />
       </list>
     </option>
   </component>
-  <component name="ProjectId" id="1aKlq3b9J58K1aYJB7jTWIZwpPF" />
+  <component name="ProjectId" id="1aXdHCZ0OuzWOkzHxsyLtSjV5Z4" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -43,12 +57,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="Rider.SolutionExplorerActivator" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TWShift.3" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="RiderNUnitUnitTestingPageId" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -69,19 +81,13 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d3190075-b6a2-4f67-a30a-e421f721dd90" name="Default Changelist" comment="" />
-      <created>1586492354230</created>
+      <changelist id="0f8fcbe5-ca5c-4200-92f3-14e366af565a" name="Default Changelist" comment="" />
+      <created>1586885782397</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1586492354230</updated>
-      <workItem from="1586492358632" duration="82000" />
-      <workItem from="1586492750926" duration="4604000" />
-      <workItem from="1586542116627" duration="1285000" />
-      <workItem from="1586751328345" duration="4783000" />
-      <workItem from="1586811967679" duration="429000" />
-      <workItem from="1586813298225" duration="902000" />
-      <workItem from="1586822799179" duration="140000" />
-      <workItem from="1586823424649" duration="943000" />
+      <updated>1586885782397</updated>
+      <workItem from="1586885783980" duration="99000" />
+      <workItem from="1586886180700" duration="293000" />
     </task>
     <servers />
   </component>
@@ -90,35 +96,4 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="459" y="317" width="991" height="442" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586493045276">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="459" y="317" width="991" height="442" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1586493045276" />
-    <state x="455" y="212" width="1000" height="651" key="Rider.ProjectTemplateDialog.Size" timestamp="1586493349496">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="455" y="212" width="1000" height="651" key="Rider.ProjectTemplateDialog.Size/0.0.1920.1080@0.0.1920.1080" timestamp="1586493349496" />
-    <state x="295" y="87" key="SettingsEditor" timestamp="1586493116726">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="295" y="87" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1586493116726" />
-    <state x="540" y="244" key="run.anything.popup" timestamp="1586495994830">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="540" y="244" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1586495994830" />
-  </component>
 </project>
