@@ -189,7 +189,7 @@ exploredMap = exploration.GetExploredMap();
 
 ***
 
-## ExploratedMap : Class
+## ExploredMap : Class
 
 Namespace	:	Algorithms
 
@@ -227,7 +227,7 @@ Used to store all the data about the maze explored by the robot.
 
 
 
-### ExploratedMap.GetCurrentPosition : Method
+### ExploredMap.GetCurrentPosition : Method
 
 Returns the current position of the robot.
 
@@ -275,7 +275,7 @@ Debug.Log(exploredMap.GetCurrentPosition();
 
 
 
-### ExploratedMap.MoveRelative : Method
+### ExploredMap.MoveRelative : Method
 
 Moves the robot in the specified direction.
 
@@ -332,7 +332,7 @@ Debug.Log(exploredMap.GetCurrentPosition);    // Prints  (1,1)
 
 
 
-### ExploratedMap.GetMoveHistory : Method
+### ExploredMap.GetMoveHistory : Method
 
 Moves the robot in the specified direction.
 
