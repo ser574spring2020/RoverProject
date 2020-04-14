@@ -10,6 +10,7 @@ using Sensors1;
 public class AlgorithmsSimulation : MonoBehaviour
 {
     float xStart = -3, yStart = 0;
+    float xStart1 = -3, yStart1 = -10;
     float xSpace = 0.5f, ySpace = 0.5f;
     public float placementThreshold;
     public Text sensorData;
@@ -26,6 +27,7 @@ public class AlgorithmsSimulation : MonoBehaviour
     bool mazeCreated = false;
     MazeGenerator mazeGenerator = new MazeGenerator();
     Exploration exploration;
+    Sensors1.Sensors sensor;
 
     void Start()
     {
@@ -35,6 +37,9 @@ public class AlgorithmsSimulation : MonoBehaviour
         sensorDataButton.onClick.AddListener(updateSensorsData);
         nextCommandButton.onClick.AddListener(getNextCommand);
         exploration = new Exploration(mazeHeight, mazeWidth);
+        sensor = new Sensors1.Sensors();
+        String sensorChosen = sensor.chooseSensor(1);
+        Debug.Log(sensorChosen);
     }
 
 
@@ -47,7 +52,7 @@ public class AlgorithmsSimulation : MonoBehaviour
             maze[currentX, currentY] = 2;
             updateMaze();
             mazeCreated = true;
-            InvokeRepeating("getNextCommand", 0.1f, 0.1f);
+            InvokeRepeating("getNextCommand", 0.5f, 0.5f);
         }
     }
 
@@ -68,15 +73,27 @@ public class AlgorithmsSimulation : MonoBehaviour
         for (int i = 0; i < mazeHeight; i++)
             for (int j = 0; j < mazeWidth; j++)
             {
-                Vector3 tempVector = new Vector3(xStart + (xSpace * j), 0, yStart - (ySpace * i));
-                if (maze[i, j] == 0)
-                    mazeObjects[counter++] = Instantiate(floorPrefab, tempVector, Quaternion.identity);
-                else if (maze[i, j] == 1)
-                    mazeObjects[counter++] = Instantiate(wallPrefab, tempVector, Quaternion.identity);
-                else if (maze[i, j] == 2)
-                    mazeObjects[counter++] = Instantiate(robotPrefab, tempVector, Quaternion.identity);
-                else if (maze[i, j] == 4)
-                    mazeObjects[counter++] = Instantiate(visitedFloorPrefab, tempVector, Quaternion.identity);
+                Vector3 tempVector = new Vector3(xStart1 + ((xSpace-0.4f) * j), -0.4f, yStart1 - ((ySpace-0.4f) * i));
+                if (maze[i, j] == 0){
+                	GameObject tempFloor = Instantiate(floorPrefab, tempVector, Quaternion.identity);
+                    tempFloor.transform.localScale += new Vector3(-0.4f, -0.4f, -0.4f);
+                    mazeObjects[counter++] = tempFloor;
+                }
+                else if (maze[i, j] == 1){
+                	GameObject tempWall = Instantiate(wallPrefab, tempVector, Quaternion.identity);
+                    tempWall.transform.localScale += new Vector3(-0.4f, -0.4f, -0.4f);
+                    mazeObjects[counter++] = tempWall;
+                }
+                // else if (maze[i, j] == 2){
+                // 	GameObject temp = Instantiate(robotPrefab, tempVector, Quaternion.identity);
+                //     temp.transform.localScale += new Vector3(-0.4f, -0.4f, -0.4f);
+                //     mazeObjects[counter++] = temp;
+                // }
+                else if (maze[i, j] == 4){
+                	GameObject tempVisitedFloor = Instantiate(visitedFloorPrefab, tempVector, Quaternion.identity);
+                    tempVisitedFloor.transform.localScale += new Vector3(-0.4f, -0.4f, -0.4f);
+                    mazeObjects[counter++] = tempVisitedFloor;
+                }
             }
     }
 
@@ -131,14 +148,7 @@ public class AlgorithmsSimulation : MonoBehaviour
 
     int[,] getSensorsData()
     {
-        int[,] result = new int[3, 3];
-        for (int i = 0; i < 3; i++)
-            for (int j = 0; j < 3; j++)
-                if (maze[currentX - 1 + i, currentY - 1 + j] == 1)
-                    result[i, j] = 1;
-                else
-                    result[i, j] = 0;
-        return result;
+        return sensor.getSensorData(maze, currentX, currentY);
     }
 
     void Update()
@@ -161,9 +171,11 @@ public class AlgorithmsSimulation : MonoBehaviour
     {
         if (maze[currentX + x, currentY + y] == 1) return;
         maze[currentX, currentY] = 4;
+        // exploredMaze[currentX, currentY] = 4;
         currentX += x;
         currentY += y;
         maze[currentX, currentY] = 2;
+        // exploredMaze[currentX, currentY] = 2;
         updateMaze();
         updateExplored();
     }
