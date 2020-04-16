@@ -5,6 +5,10 @@ namespace Algorithms
 {
     public class MazeGenerator
     {
+        //Returns an integer array maze
+        // @param sizeRows - Number of rows in the maze
+        // @param sizeCols - Number of cols in the maze
+        // @param placementThreshold - Threshold of wall placement
         public int[,] GenerateMaze(int sizeRows, int sizeCols, float placementThreshold)
         {
             if (sizeCols < 3 || sizeRows < 3 || placementThreshold <= 0f || placementThreshold >= 1f)

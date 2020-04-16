@@ -1,6 +1,9 @@
-﻿    using UnityEngine;
+﻿using UnityEngine;
+using System.Text;
+using System.Collections;
 using UnityEngine.UI;
 using System;
+using System.IO;
 using Algorithms;
 
 public class AlgorithmsSimulation : MonoBehaviour
@@ -11,7 +14,7 @@ public class AlgorithmsSimulation : MonoBehaviour
     public Text sensorData;
     public GameObject wallPrefab, endPointPrefab, robotPrefab, floorPrefab, flagPrefab, visitedFloorPrefab;
     public GameObject camera;
-    public Button createMaze, sensorDataButton, nextCommandButton;
+    public Button createMaze, automateButton, manualButton;
     public int mazeHeight, mazeWidth;
     GameObject[] mazeObjects, exploredMazeObjects;
     int counter = 0;
@@ -29,8 +32,12 @@ public class AlgorithmsSimulation : MonoBehaviour
         mazeObjects = new GameObject[mazeHeight * mazeWidth];
         exploredMazeObjects = new GameObject[mazeHeight * mazeWidth];
         createMaze.onClick.AddListener(createMazeButtonListener);
-        sensorDataButton.onClick.AddListener(updateSensorsData);
-        nextCommandButton.onClick.AddListener(getNextCommand);
+        automateButton.onClick.AddListener(automate);
+        manualButton.onClick.AddListener(getNextCommand);
+    }
+
+    void automate(){
+        InvokeRepeating("getNextCommand", 0.1f, 0.1f);
     }
 
 
@@ -45,7 +52,6 @@ public class AlgorithmsSimulation : MonoBehaviour
             maze[currentX, currentY] = 2;
             updateMaze();
             mazeCreated = true;
-            InvokeRepeating("getNextCommand", 0.1f, 0.05f);
         }
     }
 
@@ -153,6 +159,8 @@ public class AlgorithmsSimulation : MonoBehaviour
         else if (direction == "East") move(0, 1);
         else if (direction == "West") move(0, -1);
         else if (direction == "South") move(1, 0);
+        updateSensorsData();  
+        writeSensorDataToCSV(direction);  
     }
 
     void move(int x, int y)
@@ -164,5 +172,18 @@ public class AlgorithmsSimulation : MonoBehaviour
         maze[currentX, currentY] = 2;
         updateMaze();
         updateExplored();
+    }
+
+    void writeSensorDataToCSV(string direction){
+        var path = Directory.GetCurrentDirectory();
+        string filePath = path + "/Datasets/Dataset.csv";
+        int[,] sensorData = getSensorsData();
+        foreach (var item in sensorData)
+        {
+            File.AppendAllText(filePath,item.ToString(),Encoding.UTF8);
+            File.AppendAllText(filePath,",",Encoding.UTF8);
+        }
+        File.AppendAllText(filePath,direction+",",Encoding.UTF8);
+        File.AppendAllText(filePath, Environment.NewLine, Encoding.UTF8);
     }
 }

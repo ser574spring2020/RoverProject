@@ -14,7 +14,7 @@ namespace DRL
             Vector2Int robotPosition = exploration.GetExploredMap().GetCurrentPosition();
             int[,] mazeArray = exploration.GetExploredMap().GetMazeArray();
             Assert.That(robotPosition, Is.EqualTo(new Vector2Int(1, 1)));
-        
+            
         }
     }
 }

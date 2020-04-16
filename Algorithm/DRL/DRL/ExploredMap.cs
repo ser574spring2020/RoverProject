@@ -4,30 +4,29 @@ using RandomSystem = System.Random;
 
 namespace Algorithms
 {
+    //Contains all the methods used to access the explored map
     public class ExploredMap
     {
         private List<MazeCell> _cells;
         private MazeCell[,] _mazeMap;
         private List<Vector2Int> _moveHistory;
         private Vector2Int _robotPosition;
-
+        
         public ExploredMap(Vector2Int mazeDimension, Vector2Int robotPosition)
         {
             _mazeMap = new MazeCell[mazeDimension.x, mazeDimension.y];
-            this._robotPosition = new Vector2Int(robotPosition.x, robotPosition.y);
+            _robotPosition = new Vector2Int(robotPosition.x, robotPosition.y);
             _cells = new List<MazeCell>();
             _moveHistory = new List<Vector2Int>();
         }
 
-        /**
-        * <returns>A Vector2Int representation of the robot's current position</returns>
-        */
+        //Returns the current position of the robot
         public Vector2Int GetCurrentPosition()
         {
             return new Vector2Int(_robotPosition.x, _robotPosition.y);
         }
 
-
+        //saves the sensor reading to the explored map
         public bool ProcessSensor(int[,] sensorReading)
         {
             if (sensorReading.GetLength(0) == 3 && sensorReading.GetLength(1) == 3)
@@ -52,6 +51,7 @@ namespace Algorithms
             return false;
         }
 
+        //Returns the integer array
         public int[,] GetMazeArray()
         {
             var intArray = new int[_mazeMap.GetLength(0), _mazeMap.GetLength(1)];
@@ -68,6 +68,7 @@ namespace Algorithms
             return intArray;
         }
 
+        //Checks if the position is valid or not
         private bool CheckAbsolutePosition(Vector2Int position)
         {
             return position.x >= 0
@@ -76,12 +77,14 @@ namespace Algorithms
                    && position.y < _mazeMap.GetLength(1);
         }
 
+        //checks if the robot can move in the given direction
         private bool CheckMoveBounds(Vector2Int relativeMove)
         {
             var newPosition = _robotPosition + relativeMove;
             return CheckAbsolutePosition(newPosition);
         }
 
+        //checks if the robot can move in the given direction
         public bool CheckOpening(Vector2Int relativeMove)
         {
             if (!CheckMoveBounds(relativeMove)) return false;
@@ -89,6 +92,7 @@ namespace Algorithms
             return _mazeMap[newPosition.x, newPosition.y] != null;
         }
 
+        //checks if the cell in the given direction is visited or not
         public bool CheckVisited(Vector2Int relativeMove)
         {
             if (!CheckMoveBounds(relativeMove)) return false;
@@ -96,6 +100,7 @@ namespace Algorithms
             return _mazeMap[newPosition.x, newPosition.y].IsVisited();
         }
 
+        //
         public bool MoveRelative(Vector2Int relativeMove)
         {
             if (!CheckMoveBounds(relativeMove)) return false;

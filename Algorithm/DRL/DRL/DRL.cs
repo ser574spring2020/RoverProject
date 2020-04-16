@@ -5,6 +5,10 @@ using RandomSystem = System.Random;
 
 namespace Algorithms
 {
+    /*
+        Main Class for Exploration
+        Contains all the methods related to Exploration
+     */
     public class Exploration
     {
         private List<String> commands = new List<string>() {"West", "North", "East", "South"};
@@ -13,12 +17,14 @@ namespace Algorithms
             {Vector2Int.down, Vector2Int.left, Vector2Int.up, Vector2Int.right};
 
         ExploredMap exploredMap;
-
+        
         public Exploration(int rows, int cols)
         {
             exploredMap = new ExploredMap(new Vector2Int(rows, cols), new Vector2Int(1, 1));
         }
 
+        //Returns the next command for the robot
+        // @param SensorData - Used to compute the next command
         public String GetNextCommand(int[,] sensorData)
         {
             String robotCommand;
@@ -31,11 +37,13 @@ namespace Algorithms
             return robotCommand;
         }
 
+        //Returns the explored map
         public ExploredMap GetExploredMap()
         {
             return exploredMap;
         }
 
+        //Computes all the available directions
         private List<String> GetAvailableDirections(int[,] sensorData)
         {
             List<string> possibleDirections = new List<string>();
@@ -63,7 +71,6 @@ namespace Algorithms
                 if (sensorData[1, 0] == 0)
                     possibleDirections.Add("West");
             }
-
             return possibleDirections;
         }
     }
