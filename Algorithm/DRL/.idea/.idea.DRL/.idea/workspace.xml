@@ -26,11 +26,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d2b1866-4d73-4983-a7b9-a2498a08b6c6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/DRL/ExploredMap.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL/MazeCell.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL/MazeGenerator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL/TestExploration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL/TestMazeGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/DRL.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/DRL.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/DRL.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/DRL.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/DRLTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/DRLTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/DRL_Tests.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Map Generator/Assets/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Map Generator/Assets/DRL.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,14 +53,29 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/DRL/MazeCell.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DRL/DRL.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DRL/DRL_Tests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/TestMazeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/DRLTests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/packages.config" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/MazeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/TestExploration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/ExploredMap.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/DRL/DRL_Tests.cs" />
+        <option value="$PROJECT_DIR$/DRL/MazeGeneratorTests.cs" />
+        <option value="$PROJECT_DIR$/DRL/ExplorationTests.cs" />
+        <option value="$PROJECT_DIR$/DRL/DRLTests.cs" />
         <option value="$PROJECT_DIR$/DRL/DRL.cs" />
+        <option value="$PROJECT_DIR$/DRL/Exploration.cs" />
+        <option value="$PROJECT_DIR$/DRL/MazeGenerator.cs" />
+        <option value="$PROJECT_DIR$/DRL/TestMazeGenerator.cs" />
+        <option value="$PROJECT_DIR$/DRL/TestExploration.cs" />
+        <option value="$PROJECT_DIR$/DRL/ExploredMap.cs" />
+        <option value="$PROJECT_DIR$/DRL/MazeCell.cs" />
       </list>
     </option>
   </component>
@@ -63,6 +90,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -91,6 +119,7 @@
       <workItem from="1587052499401" duration="490000" />
       <workItem from="1587053226042" duration="742000" />
       <workItem from="1587059978482" duration="3506000" />
+      <workItem from="1587063562191" duration="2864000" />
     </task>
     <servers />
   </component>
@@ -109,8 +138,19 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="455" y="212" width="1000" height="651" key="Rider.ProjectTemplateDialog.Size" timestamp="1587067300146">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="455" y="212" width="1000" height="651" key="Rider.ProjectTemplateDialog.Size/0.0.1920.1080@0.0.1920.1080" timestamp="1587067300146" />
+    <state x="294" y="87" key="SettingsEditor" timestamp="1587067463517">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="294" y="87" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1587067463517" />
   </component>
 </project>

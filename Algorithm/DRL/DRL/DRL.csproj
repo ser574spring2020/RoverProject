@@ -46,7 +46,11 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="DRL.cs" />
-        <Compile Include="DRL_Tests.cs" />
+        <Compile Include="ExploredMap.cs" />
+        <Compile Include="MazeGenerator.cs" />
+        <Compile Include="TestExploration.cs" />
+        <Compile Include="MazeCell.cs" />
+        <Compile Include="TestMazeGenerator.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>

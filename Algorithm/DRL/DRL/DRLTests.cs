@@ -3,10 +3,8 @@ using Algorithms;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace DRL
-{
-    [TestFixture(30, 30, 0.5f)]
-    [TestFixture(30, 30, 0.5f)]
+
+    [TestFixture]
     public class DrlTests
     {
         private int _rows, _cols;
@@ -38,4 +36,3 @@ namespace DRL
         }
         
     }
-}

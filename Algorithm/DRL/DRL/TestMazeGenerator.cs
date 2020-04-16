@@ -1,12 +1,17 @@
+using Algorithms;
 using NUnit.Framework;
 
-namespace Algorithms
+namespace DRL
 {
     [TestFixture]
     public class MazeGeneratorTests
     {
-        //Tests for MazeGenerator.GenerateMaze
-        private MazeGenerator _mazeGenerator = new MazeGenerator();
+        private MazeGenerator _mazeGenerator;
+
+        public MazeGeneratorTests()
+        {
+            _mazeGenerator = new MazeGenerator();
+        }
 
         // [Test]
         // public void GenerateMaze_Return_Maze_WhenRowsColsThreshPositive()
