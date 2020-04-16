@@ -45,7 +45,7 @@ public class AlgorithmsSimulation : MonoBehaviour
             maze[currentX, currentY] = 2;
             updateMaze();
             mazeCreated = true;
-            InvokeRepeating("getNextCommand", 0.1f, 0.1f);
+            InvokeRepeating("getNextCommand", 0.1f, 0.05f);
         }
     }
 
