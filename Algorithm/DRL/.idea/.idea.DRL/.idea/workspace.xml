@@ -28,7 +28,9 @@
     <list default="true" id="7d2b1866-4d73-4983-a7b9-a2498a08b6c6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/DRL.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/DRL.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/DRL_Tests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/DRL_Tests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,8 +47,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/DRL/DRL.cs" />
         <option value="$PROJECT_DIR$/DRL/DRL_Tests.cs" />
+        <option value="$PROJECT_DIR$/DRL/DRL.cs" />
       </list>
     </option>
   </component>
@@ -88,7 +90,7 @@
       <updated>1587052491770</updated>
       <workItem from="1587052499401" duration="490000" />
       <workItem from="1587053226042" duration="742000" />
-      <workItem from="1587059978482" duration="3293000" />
+      <workItem from="1587059978482" duration="3506000" />
     </task>
     <servers />
   </component>
