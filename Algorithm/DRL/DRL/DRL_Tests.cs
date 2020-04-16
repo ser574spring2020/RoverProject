@@ -7,7 +7,7 @@ namespace Algorithms
     {
         //Tests for MazeGenerator.GenerateMaze
         private MazeGenerator _mazeGenerator = new MazeGenerator();
-        
+
         // [Test]
         // public void GenerateMaze_Return_Maze_WhenRowsColsThreshPositive()
         // {
@@ -42,7 +42,7 @@ namespace Algorithms
             var maze = _mazeGenerator.GenerateMaze(-30, -30, -0.5f);
             Assert.That(maze, Is.Null);
         }
-        
+
         //Tests for MazeGenerator.GenerateRandomNumber
         [Test]
         public void GenerateRandomNumber_Return_RandomNumberBetweenZeroAndOne()
