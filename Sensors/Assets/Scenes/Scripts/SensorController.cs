@@ -48,7 +48,6 @@ public class SensorController : MonoBehaviour
         {
         changePosRover();
         sensor.Update_Obstacles(Cube);
-        sensor.SetSensorType(getSensorType());
         int[,] matrix = sensor.Get_Obstacle_Matrix();
         testProximityMatrix(matrix);
 

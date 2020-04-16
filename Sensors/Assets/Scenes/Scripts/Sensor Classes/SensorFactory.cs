@@ -21,13 +21,13 @@ public class SensorFactory : Sensors{
         switch (sensorType)
             {
                 case 1: _sensor = new ProximitySensor();
-                        break;
+                    break;
 
                 case 2: _sensor = new RangeSensor();
-                        break;
+                    break;
 
                 case 3: _sensor = new LidarSensor();
-                        break;
+                    break;
 
                 case 4: _sensor = new RadarSensor();
                     break;
@@ -36,8 +36,8 @@ public class SensorFactory : Sensors{
                     break;
 
             default: Debug.Log("The chosen sensor doesn't exist!");
-                         _sensor = new ProximitySensor();
-                         break;
+                    _sensor = new ProximitySensor();
+                    break;
             }
             sensors = _sensor;
             return sensors;
