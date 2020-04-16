@@ -65,11 +65,29 @@ namespace Algorithms
             this.moveHistory = new List<Vector2Int>();
         }
 
+        /**
+        * <returns>A Vector2Int representation of the robot's current position</returns>
+        */
         public Vector2Int GetCurrentPosition()
         {
             return new Vector2Int(robotPosition.x, robotPosition.y);
         }
 
+        /**
+         * Applies sensor readings to the current cell
+         * Sensor values are indicated by a 3x3 bool array indicating open adjacent cells
+         * Axis 0 corresponds to the X direction, and axis 1 corresponds to the Y direction
+         * 
+         * For example, the following array indicates a cell with three open adjacent cells,
+         * in the +x and -x directions and the +y direction
+         * {{F, T, F}, {T, F, F}, {F, T, F}}
+         * 
+         * For each newly discovered adjacent cell, and unvisited cell is added to the map
+         * with its corresponding absolute position (position relative to the start cell)
+         *
+         * <param name="sensorReading">The sensor reading for the current robot position.</param>
+         * <returns>true if the sensor reading was successfully applied</returns>
+         */
         public bool ProcessSensor(bool[,] sensorReading)
         {
             if (sensorReading.GetLength(0) == 3 && sensorReading.GetLength(1) == 3)
@@ -99,6 +117,29 @@ namespace Algorithms
             }
 
             return false;
+        }
+
+        public int[,] GetMazeArray()
+        {
+            int[,] intArray = new int[mazeMap.GetLength(0), mazeMap.GetLength(1)];
+            for (int i = 0; i < mazeMap.GetLength(0); i++)
+            {
+                for (int j = 0; j < mazeMap.GetLength(1); j++)
+                {
+                    if (mazeMap[i, j] == null)
+                    {
+                        intArray[i, j] = -1;    // unexplored
+                    } else if (mazeMap[i, j].isWallCell)
+                    {
+                        intArray[i, j] = 1;     // wall
+                    } else
+                    {
+                        intArray[i, j] = 0;     // open
+                    }
+                }
+            }
+            intArray[robotPosition.x, robotPosition.y] = 2; // robot position
+            return intArray;
         }
 
         private bool CheckAbsolutePosition(Vector2Int position)
@@ -169,6 +210,7 @@ namespace Algorithms
     {
         Vector2Int position;
         bool visited;
+        bool isWall = false;
 
         public MazeCell(int x, int y)
         {
@@ -176,9 +218,19 @@ namespace Algorithms
             this.visited = false;
         }
 
+        public void makeWall()
+        {
+            this.isWall = true;
+        }
+
+        public bool isWallCell()
+        {
+            return this.isWall;
+        }
+
         public void Visit()
         {
-            visited = true;
+            this.visited = true;
         }
 
         public bool IsVisited()
@@ -190,9 +242,8 @@ namespace Algorithms
         {
             return new Vector2Int(position.x, position.y);
         }
-    }
 
-    public class MazeGenerator
+        public class MazeGenerator
     {
         public int[,] GenerateMaze(int sizeRows, int sizeCols, float placementThreshold)
         {
