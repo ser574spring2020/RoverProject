@@ -1,8 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3190075-b6a2-4f67-a30a-e421f721dd90" name="Default Changelist" comment="">
+    <list default="true" id="7d2b1866-4d73-4983-a7b9-a2498a08b6c6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/DRL.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/DRL.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/DRL_Tests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/DRL_Tests.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,39 +39,28 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/DRLTesting/Tests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TestProject1/Tests.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Map Generator/Assets/Scripts/AlgorithmsSimulation.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DRL/DRLTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DRL/DRL.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/DRL_Tests.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/DRL/MonoBehaviour1.cs" />
-        <option value="$PROJECT_DIR$/DRL.sln" />
-        <option value="$PROJECT_DIR$/TestProject1/Tests.cs" />
-        <option value="$PROJECT_DIR$/DRLTesting/Tests.cs" />
-        <option value="$PROJECT_DIR$/DRL/Tests.cs" />
         <option value="$PROJECT_DIR$/DRL/DRL.cs" />
-        <option value="$PROJECT_DIR$/DRL/DRLTests.cs" />
+        <option value="$PROJECT_DIR$/DRL/DRL_Tests.cs" />
       </list>
     </option>
   </component>
-  <component name="ProjectId" id="1aKlq3b9J58K1aYJB7jTWIZwpPF" />
+  <component name="ProjectId" id="1ad5B61BzrIyRZWTBAgRxNLdh3V" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="Rider.SolutionExplorerActivator" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="TWShift.3" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="RiderNUnitUnitTestingPageId" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -66,20 +81,19 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d3190075-b6a2-4f67-a30a-e421f721dd90" name="Default Changelist" comment="" />
-      <created>1586492354230</created>
+      <changelist id="7d2b1866-4d73-4983-a7b9-a2498a08b6c6" name="Default Changelist" comment="" />
+      <created>1587052491770</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1586492354230</updated>
-      <workItem from="1586492358632" duration="82000" />
-      <workItem from="1586492750926" duration="4604000" />
-      <workItem from="1586542116627" duration="1285000" />
-      <workItem from="1586751328345" duration="4783000" />
+      <updated>1587052491770</updated>
+      <workItem from="1587052499401" duration="490000" />
+      <workItem from="1587053226042" duration="742000" />
+      <workItem from="1587059978482" duration="3293000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
@@ -88,30 +102,13 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
   </component>
-  <component name="WindowStateProjectService">
-    <state x="459" y="317" width="991" height="442" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586493045276">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="459" y="317" width="991" height="442" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1586493045276" />
-    <state x="455" y="212" width="1000" height="651" key="Rider.ProjectTemplateDialog.Size" timestamp="1586493349496">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="455" y="212" width="1000" height="651" key="Rider.ProjectTemplateDialog.Size/0.0.1920.1080@0.0.1920.1080" timestamp="1586493349496" />
-    <state x="295" y="87" key="SettingsEditor" timestamp="1586493116726">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="295" y="87" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1586493116726" />
-    <state x="540" y="244" key="run.anything.popup" timestamp="1586495994830">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="540" y="244" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1586495994830" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
 </project>

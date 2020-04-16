@@ -4,51 +4,71 @@ using System;
 using Random = UnityEngine.Random;
 using RandomSystem = System.Random;
 
-
 namespace Algorithms
 {
-    public class Exploration : MonoBehaviour
+    public class Exploration
     {
         private List<String> commands = new List<string>() {"West", "North", "East", "South"};
 
-        public List<String> GetNextCommand(int[,] sensorData)
-        {
-            List<String> commands = new List<string>();
-            RandomSystem r = new RandomSystem();
-            List<String> possibleDirections = GetAvailableDirections(sensorData);
-            int x = r.Next(0, possibleDirections.Count + 1);
+        private List<Vector2Int> vectorCommands = new List<Vector2Int>()
+            {Vector2Int.down, Vector2Int.left, Vector2Int.up, Vector2Int.right};
 
-            String command = possibleDirections[x];
-            Debug.Log(command);
-            commands.Add(command);
-
-            return commands;
-        }
+        ExploredMap exploredMap;
 
         public Exploration(int sizeRows, int sizeCols)
         {
-            ExploredMap exploredMap = new ExploredMap(new Vector2Int(30, 30), new Vector2Int(1, 1));
-        }
-        
-        public int Add(int a, int b)
-        {
-            return a + b;
+            exploredMap = new ExploredMap(new Vector2Int(30, 30), new Vector2Int(1, 1));
         }
 
-        public List<String> GetAvailableDirections(int[,] sensorData)
+        public String GetNextCommand(int[,] sensorData)
+        {
+            String robotCommand;
+            RandomSystem r = new RandomSystem();
+            exploredMap.ProcessSensor(sensorData);
+            List<String> possibleDirections = GetAvailableDirections(sensorData);
+            int x = r.Next(0, possibleDirections.Count);
+            robotCommand = possibleDirections[x];
+            exploredMap.MoveRelative(vectorCommands[commands.IndexOf(robotCommand)]);
+            return robotCommand;
+        }
+
+        public ExploredMap GetExploredMap()
+        {
+            return exploredMap;
+        }
+
+        private List<String> GetAvailableDirections(int[,] sensorData)
         {
             List<string> possibleDirections = new List<string>();
-            if (sensorData[0, 1] == 0)
+            Vector2Int robotPosition = exploredMap.GetCurrentPosition();
+            if (sensorData[0, 1] == 0 &&
+                exploredMap.GetCell(new Vector2Int(robotPosition.x - 1, robotPosition.y)).IsVisited() == false)
                 possibleDirections.Add("North");
-            if (sensorData[1, 2] == 0)
+            if (sensorData[1, 2] == 0 &&
+                exploredMap.GetCell(new Vector2Int(robotPosition.x, robotPosition.y + 1)).IsVisited() == false)
                 possibleDirections.Add("East");
-            if (sensorData[2, 1] == 0)
+            if (sensorData[2, 1] == 0 &&
+                exploredMap.GetCell(new Vector2Int(robotPosition.x + 1, robotPosition.y)).IsVisited() == false)
                 possibleDirections.Add("South");
-            if (sensorData[1, 0] == 0)
+            if (sensorData[1, 0] == 0 &&
+                exploredMap.GetCell(new Vector2Int(robotPosition.x, robotPosition.y - 1)).IsVisited() == false)
                 possibleDirections.Add("West");
+            if (possibleDirections.Count == 0)
+            {
+                if (sensorData[0, 1] == 0)
+                    possibleDirections.Add("North");
+                if (sensorData[1, 2] == 0)
+                    possibleDirections.Add("East");
+                if (sensorData[2, 1] == 0)
+                    possibleDirections.Add("South");
+                if (sensorData[1, 0] == 0)
+                    possibleDirections.Add("West");
+            }
+
             return possibleDirections;
         }
     }
+
 
     public class ExploredMap
     {
@@ -73,22 +93,8 @@ namespace Algorithms
             return new Vector2Int(robotPosition.x, robotPosition.y);
         }
 
-        /**
-         * Applies sensor readings to the current cell
-         * Sensor values are indicated by a 3x3 bool array indicating open adjacent cells
-         * Axis 0 corresponds to the X direction, and axis 1 corresponds to the Y direction
-         * 
-         * For example, the following array indicates a cell with three open adjacent cells,
-         * in the +x and -x directions and the +y direction
-         * {{F, T, F}, {T, F, F}, {F, T, F}}
-         * 
-         * For each newly discovered adjacent cell, and unvisited cell is added to the map
-         * with its corresponding absolute position (position relative to the start cell)
-         *
-         * <param name="sensorReading">The sensor reading for the current robot position.</param>
-         * <returns>true if the sensor reading was successfully applied</returns>
-         */
-        public bool ProcessSensor(bool[,] sensorReading)
+
+        public bool ProcessSensor(int[,] sensorReading)
         {
             if (sensorReading.GetLength(0) == 3 && sensorReading.GetLength(1) == 3)
             {
@@ -96,18 +102,19 @@ namespace Algorithms
                 {
                     for (int y = 0; y < 3; y++)
                     {
-                        if (x == 1 && y == 1)
-                        {
-                            continue; // skip the the center, which is this cell
-                        }
-
                         int xMaze = robotPosition.x + x - 1;
                         int yMaze = robotPosition.y + y - 1;
-                        if (sensorReading[x, y] && mazeMap[xMaze, yMaze] == null)
+                        if (mazeMap[xMaze, yMaze] != null)
                         {
-                            MazeCell neighbor = new MazeCell(xMaze, yMaze); // create 
-                            mazeMap[xMaze, yMaze] = neighbor;
-                            cells.Add(neighbor);
+                            continue;
+                        }
+
+                        MazeCell neighbor = new MazeCell(xMaze, yMaze); // create 
+                        mazeMap[xMaze, yMaze] = neighbor;
+
+                        if (sensorReading[x, y] == 1)
+                        {
+                            neighbor.MakeWall();
                         }
                     }
                 }
@@ -128,16 +135,19 @@ namespace Algorithms
                 {
                     if (mazeMap[i, j] == null)
                     {
-                        intArray[i, j] = -1;    // unexplored
-                    } else if (mazeMap[i, j].isWallCell)
+                        intArray[i, j] = -1; // unexplored
+                    }
+                    else if (mazeMap[i, j].IsWallCell())
                     {
-                        intArray[i, j] = 1;     // wall
-                    } else
+                        intArray[i, j] = 1; // wall
+                    }
+                    else
                     {
-                        intArray[i, j] = 0;     // open
+                        intArray[i, j] = 0; // open
                     }
                 }
             }
+
             intArray[robotPosition.x, robotPosition.y] = 2; // robot position
             return intArray;
         }
@@ -218,12 +228,12 @@ namespace Algorithms
             this.visited = false;
         }
 
-        public void makeWall()
+        public void MakeWall()
         {
             this.isWall = true;
         }
 
-        public bool isWallCell()
+        public bool IsWallCell()
         {
             return this.isWall;
         }
@@ -242,17 +252,15 @@ namespace Algorithms
         {
             return new Vector2Int(position.x, position.y);
         }
+    }
 
-        public class MazeGenerator
+    public class MazeGenerator
     {
         public int[,] GenerateMaze(int sizeRows, int sizeCols, float placementThreshold)
         {
-            int[,] maze = new int[sizeRows, sizeCols];
-            if (sizeRows < 3 || sizeCols < 3)
-            {
+            if (sizeCols < 3 || sizeRows < 3 || placementThreshold <= 0f || placementThreshold >= 1f)
                 return null;
-            }
-
+            int[,] maze = new int[sizeRows, sizeCols];
             for (int i = 0; i < sizeRows; i++)
             {
                 for (int j = 0; j < sizeCols; j++)
@@ -267,7 +275,6 @@ namespace Algorithms
                         if (Random.value > placementThreshold)
                         {
                             maze[i, j] = 1;
-
                             int a = Random.value < .5 ? 0 : (Random.value < .5 ? -1 : 1);
                             int b = a != 0 ? 0 : (Random.value < .5 ? -1 : 1);
                             maze[i + a, j + b] = 1;

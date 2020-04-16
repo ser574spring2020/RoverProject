@@ -9,137 +9,128 @@ using Sensors1;
 
 public class AlgorithmsSimulation : MonoBehaviour
 {
-    float xStart = 14, yStart = 0;
+    float xStart = -3, yStart = 0;
+    float xStart1 = -3, yStart1 = -10;
     float xSpace = 0.5f, ySpace = 0.5f;
     public float placementThreshold;
     public Text sensorData;
     public GameObject wallPrefab, endPointPrefab, robotPrefab, floorPrefab, flagPrefab, visitedFloorPrefab;
     public Button createMaze, sensorDataButton, nextCommandButton;
-    public Button leftButton, rightButton, upButton, downButton, slowDownButton, speedupButton;
     public int mazeHeight, mazeWidth;
-    GameObject[] mazeObjects;
+    GameObject[] mazeObjects, exploredMazeObjects;
     int counter = 0;
-    int[,] mazeUser, mazeAlgo;
+    int currentX=1,currentY=1;
+    // string path = @"/home/lisa/new.csv";
+    int[,] maze;
+    ExploredMap exploredMaze;
     System.Random rand = new System.Random();
     bool mazeCreated = false;
-    int currentX = 1, currentY = 1;
-    static MazeGenerator mazeGenerator = new MazeGenerator();
-    static Exploration exploration;
-    static Sensors1.Sensors sensor;
+    MazeGenerator mazeGenerator = new MazeGenerator();
+    Exploration exploration;
+    Sensors1.Sensors sensor;
 
     void Start()
     {
         mazeObjects = new GameObject[mazeHeight * mazeWidth];
+        exploredMazeObjects = new GameObject[mazeHeight * mazeWidth];
         createMaze.onClick.AddListener(createMazeButtonListener);
         sensorDataButton.onClick.AddListener(updateSensorsData);
         nextCommandButton.onClick.AddListener(getNextCommand);
-        leftButton.onClick.AddListener(moveLeft);//move(0, -1));
-        rightButton.onClick.AddListener(moveRight);//move(0, 1));
-        upButton.onClick.AddListener(moveUp);//(-1, 0));
-        downButton.onClick.AddListener(moveDown);//move(1, 0));
-        exploration = new Exploration(mazeHeight,mazeWidth);
+        exploration = new Exploration(mazeHeight, mazeWidth);
         sensor = new Sensors1.Sensors();
         String sensorChosen = sensor.chooseSensor(1);
         Debug.Log(sensorChosen);
     }
+
 
     //Create the initial maze
     void createMazeButtonListener()
     {
         if (mazeCreated == false)
         {
-            mazeAlgo = mazeGenerator.GenerateMaze(mazeHeight, mazeWidth, placementThreshold);
-            mazeAlgo[currentX, currentY] = 2;
-            updateUI();
+            maze = mazeGenerator.GenerateMaze(mazeHeight, mazeWidth, placementThreshold);
+            maze[currentX, currentY] = 2;
+            updateMaze();
             mazeCreated = true;
-            InvokeRepeating("getNextCommand", 2f, 2f);
+            InvokeRepeating("getNextCommand", 0.5f, 0.5f);
         }
     }
 
-    void getNextCommand(){
-        List<String> robotCommand = exploration.GetNextCommand(getSensorsData());
-        foreach (String x in robotCommand)
-        {
-            moveInDirection(x);
-        }
-        updateUI();
-    }
-
-    void moveInDirection(string direction){
-        if(direction=="North"){
-            move(0,1);
-        }
-        if(direction=="East"){
-            move(1,0);
-        }
-        if(direction=="West"){
-            move(-1,0);
-        }
-        if(direction=="South"){
-            move(0,-1);
-        }
-    }
-
-    void moveLeft(){
-        moveInDirection("South");
-    }
-    void moveRight(){
-        moveInDirection("North");
-    }
-    void moveUp(){
-        moveInDirection("West");
-    }
-    void moveDown(){
-        moveInDirection("East");
-    }
-    //move the robot by 'x' steps west and 'y' steps north
-    void move(int x, int y)
+    void getNextCommand()
     {
-        mazeAlgo[currentX, currentY] = 4;
-        if (mazeAlgo[currentX + x, currentY + y] == 1) return;
-        currentX += x;
-        currentY += y;
-        mazeAlgo[currentX, currentY] = 2;
-        updateUI();
+        String robotCommand = exploration.GetNextCommand(getSensorsData());
+        moveInDirection(robotCommand);
     }
 
     //update the maze in the UI
-    void updateUI()
+    void updateMaze()
     {
         //Destroy UI
-        for (int i = 0; i < counter; i++)
-        {
+        for (int i = 0; i < mazeObjects.Length; i++)
             Destroy(mazeObjects[i]);
-        }
         counter = 0;
         //Recreate UI
         for (int i = 0; i < mazeHeight; i++)
-        {
             for (int j = 0; j < mazeWidth; j++)
             {
-                Vector3 tempVector = new Vector3(xStart + (xSpace * j), 0, yStart - (i * ySpace));
-                if (mazeAlgo[i, j] == 0)
-                {
-                    mazeObjects[counter++] = Instantiate(floorPrefab, tempVector, Quaternion.identity);
+                Vector3 tempVector = new Vector3(xStart1 + ((xSpace-0.4f) * j), -0.4f, yStart1 - ((ySpace-0.4f) * i));
+                if (maze[i, j] == 0){
+                	GameObject tempFloor = Instantiate(floorPrefab, tempVector, Quaternion.identity);
+                    tempFloor.transform.localScale += new Vector3(-0.4f, -0.4f, -0.4f);
+                    mazeObjects[counter++] = tempFloor;
                 }
-                else if (mazeAlgo[i, j] == 1)
-                {
-                    mazeObjects[counter++] = Instantiate(wallPrefab, tempVector, Quaternion.identity);
+                else if (maze[i, j] == 1){
+                	GameObject tempWall = Instantiate(wallPrefab, tempVector, Quaternion.identity);
+                    tempWall.transform.localScale += new Vector3(-0.4f, -0.4f, -0.4f);
+                    mazeObjects[counter++] = tempWall;
                 }
-                else if (mazeAlgo[i, j] == 2)
-                {
-                    mazeObjects[counter++] = Instantiate(robotPrefab, tempVector, Quaternion.identity);
-                }
-                else if (mazeAlgo[i, j] == 3)
-                {
-                    mazeObjects[counter++] = Instantiate(endPointPrefab, tempVector, Quaternion.identity);
-                }
-                else if (mazeAlgo[i, j] == 4)
-                {
-                    mazeObjects[counter++] = Instantiate(visitedFloorPrefab, tempVector, Quaternion.identity);
+                // else if (maze[i, j] == 2){
+                // 	GameObject temp = Instantiate(robotPrefab, tempVector, Quaternion.identity);
+                //     temp.transform.localScale += new Vector3(-0.4f, -0.4f, -0.4f);
+                //     mazeObjects[counter++] = temp;
+                // }
+                else if (maze[i, j] == 4){
+                	GameObject tempVisitedFloor = Instantiate(visitedFloorPrefab, tempVector, Quaternion.identity);
+                    tempVisitedFloor.transform.localScale += new Vector3(-0.4f, -0.4f, -0.4f);
+                    mazeObjects[counter++] = tempVisitedFloor;
                 }
             }
-        }
+    }
+
+    void updateExplored()
+    {
+        exploredMaze = exploration.GetExploredMap();
+        for (int i = 0; i < exploredMazeObjects.Length; i++)
+            Destroy(exploredMazeObjects[i]);
+        counter = 0;
+
+        // // //Recreate UI
+        for (int i = 0; i < mazeHeight; i++)
+            for (int j = 0; j < mazeWidth; j++)
+            {
+                Vector3 tempVector = new Vector3(xStart + (xSpace * j)+18, 0, yStart - (ySpace * i));
+                MazeCell mazeCell = exploredMaze.GetCell(new Vector2Int(i,j));
+                if(mazeCell == null)
+                    continue;
+                if (mazeCell.isWallCell()==true)
+                    exploredMazeObjects[counter++] = Instantiate(wallPrefab, tempVector, Quaternion.identity);
+                else if (mazeCell.IsVisited()==false)
+                    exploredMazeObjects[counter++] = Instantiate(floorPrefab, tempVector, Quaternion.identity);
+                else if (exploredMaze.GetCell(new Vector2Int(i,j)).IsVisited())
+                    exploredMazeObjects[counter++] = Instantiate(visitedFloorPrefab, tempVector, Quaternion.identity);
+            }
+        Vector2Int vector = exploredMaze.GetCurrentPosition();
+        Vector3 robotPosition = new Vector3(xStart + (xSpace * vector.y)+18,0, yStart - (ySpace * vector.x));
+        exploredMazeObjects[counter++] = Instantiate(robotPrefab, robotPosition, Quaternion.identity);
+    }
+
+    public enum CellType : int
+    {
+        floor,
+        wall,
+        robot,
+        endPoint,
+        visitedFloor
     }
 
     // Update the sensors data text on the screen
@@ -147,56 +138,45 @@ public class AlgorithmsSimulation : MonoBehaviour
     {
         int[,] tempData = getSensorsData();
         sensorData.text = "";
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i <3; i++)
         {
             for (int j = 0; j < 3; j++)
-            {
                 sensorData.text += tempData[i, j] + " ";
-            }
             sensorData.text += "\n";
         }
     }
 
     int[,] getSensorsData()
     {
-        return sensor.getSensorData(mazeAlgo, currentX, currentY);
-        /*
-        int[,] result = new int[3, 3];
-
-        //fetching the array as a 1D array of length 9
-        int[] tempArray = new int[9];
-        for (int i = 0; i < 3; i++)
-            for (int j = 0; j < 3; j++)
-                tempArray[i * 3 + j] = maze[currentX - 1 + i, currentY - 1 + j];
-
-        //adjusting the fetched data (rotating the array anti-clockwise if you think of that as a 3x3 array)
-        int[] tempArrayClone = new int[9];
-        int a = 0;
-        for (int j = 2; j >= 0; j--)
-            for (int i = 0; i < 3; i++)
-                tempArrayClone[a++] = tempArray[j + 3 * i];
-
-        //creating a 3x3 2D array from the 1D array
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 3; j++)
-            {
-                // result[i, j] = tempArrayClone[i * 3 + j];
-                if (tempArrayClone[i * 3 + j] == 1)
-                    result[i, j] = 1;
-                else
-                    result[i, j] = 0;
-            }
-        }
-        return result;
-        */
+        return sensor.getSensorData(maze, currentX, currentY);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D)) move(0, 1);
-        if (Input.GetKeyDown(KeyCode.S)) move(1, 0);
-        if (Input.GetKeyDown(KeyCode.W)) move(-1, 0);
-        if (Input.GetKeyDown(KeyCode.A)) move(0, -1);
+        if (Input.GetKeyDown(KeyCode.W)) moveInDirection("North");          //North - W Key
+        if (Input.GetKeyDown(KeyCode.D)) moveInDirection("East");           //East  - D Key
+        if (Input.GetKeyDown(KeyCode.A)) moveInDirection("West");           //West  - A Key
+        if (Input.GetKeyDown(KeyCode.S)) moveInDirection("South");          //South - S Key
+    }
+
+    void moveInDirection(string direction)
+    {
+        if (direction == "North") move(-1, 0);
+        else if (direction == "East") move(0, 1);
+        else if (direction == "West") move(0, -1);
+        else if (direction == "South") move(1, 0);
+    }
+
+    void move(int x, int y)
+    {
+        if (maze[currentX + x, currentY + y] == 1) return;
+        maze[currentX, currentY] = 4;
+        // exploredMaze[currentX, currentY] = 4;
+        currentX += x;
+        currentY += y;
+        maze[currentX, currentY] = 2;
+        // exploredMaze[currentX, currentY] = 2;
+        updateMaze();
+        updateExplored();
     }
 }
