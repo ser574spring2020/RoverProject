@@ -1,11 +1,15 @@
 # Algorithms Team
 
+#### Latest DLL
+- [DRL.dll](/Algorithm/DRL/DRL/bin/Debug)
 
-#### Windows Build - Maze Generator and Visualizer
-- Windows Build for the simulation can be found [here](/Algorithm/Map%20Generator/WindowsBuild) - *(RoverSimulation-AlgorithmsTeam.exe)*
+#### How to run?
+- [Windows Build](/Algorithm/Map%20Generator/WindowsBuild) - *(RoverSimulation-AlgorithmsTeam.exe)*
+- [Linux Build](/Algorithm/Map%20Generator/LinuxBuild) - *( 	LinuxBuild.x86_64)*
 
 ## Links
 - [Documents](https://drive.google.com/open?id=1gdqUG-G0XlVtYJZFXqgZue7gCKFo_VYj)
+- [API Document - Github](https://github.com/ser574spring2020/RoverProject/tree/master/Algorithm/API%20Docs)
 - [Sprint 1 - Youtube Video](https://www.youtube.com/watch?v=gztgx2QT6So)
 - [Sprint 2 - Youtube Video](https://www.youtube.com/watch?v=kdmzKdTH5-k)
 
@@ -27,10 +31,11 @@ Algorithm (Root)
 ├── Back Propagation
 │   └── Back Propagation.cs
 │
-├── DeepReinforcementLearning
-│   └── DeepReinforcementLearning
-│       └── DeepReinforcementLearning
-│           └── DeepReinforcementLearning.cs                                      (FOR DEEP REINFORCEMENT LEARNING)
+├── DRL
+│   └── DRL
+│       └── bin
+│           └── Debug
+│                  └── DRL.dll                                                   (FOR DEEP REINFORCEMENT LEARNING)
 │
 ├── Map Generator                                                                 (MAIN UNITY PROJECT)
 │   └── Assets

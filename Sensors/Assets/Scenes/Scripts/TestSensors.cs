@@ -1,11 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿/*
+    Author   : Aneesh Dalvi, Sumanth Paranjape
+    Function : Implements Functionality for Proximity Sensor
+    Version  : V1
+    Email    : adalvi1@asu.edu | Arizona State University.
+*/
+
 using UnityEngine;
 using UnityEngine.UI;
-using Sensors1;
-using System;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// This class is associated with the User Interface dropdown
+/// and chooses the sensor and passes on to the Controller class.
+/// </summary>
 public class TestSensors : MonoBehaviour
 {
 
@@ -18,15 +25,15 @@ public class TestSensors : MonoBehaviour
         play.onClick.AddListener(callSensorLibrary);
     }
 
+   
     public void callSensorLibrary()
     {        
         int val = sensorInput.value;
         int sensorType = val + 1;
         Debug.Log("Chosen value from drop down : "+sensorType);
-        Sensors1.Sensors sensor = new Sensors1.Sensors();
+
         SensorController sc = new SensorController();
-        sc.setSensorType(sensorType);
-        Debug.Log(sensor.chooseSensor(sensorType));
+        sc.setSensorType(sensorType);        
         SceneManager.LoadScene("SensorTest");
     }
 }
