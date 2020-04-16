@@ -8,16 +8,3 @@
 /home/karandeep/RiderProjects/Applications/UnityProjects/DRL/DRL/obj/Debug/DRL.csproj.CopyComplete
 /home/karandeep/RiderProjects/Applications/UnityProjects/DRL/DRL/obj/Debug/DRL.dll
 /home/karandeep/RiderProjects/Applications/UnityProjects/DRL/DRL/obj/Debug/DRL.pdb
-/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRL/bin/Debug/DRL.dll
-/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRL/bin/Debug/DRL.pdb
-/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRL/bin/Debug/nunit.framework.dll
-/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRL/bin/Debug/UnityEngine.dll
-/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRL/bin/Debug/nunit.framework.pdb
-/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRL/bin/Debug/nunit.framework.xml
-/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRL/bin/Debug/UnityEngine.dll.mdb
-/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRL/bin/Debug/UnityEngine.xml
-/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRL/obj/Debug/DRL.csprojAssemblyReference.cache
-/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRL/obj/Debug/DRL.csproj.CoreCompileInputs.cache
-/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRL/obj/Debug/DRL.csproj.CopyComplete
-/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRL/obj/Debug/DRL.dll
-/home/karandeep/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRL/obj/Debug/DRL.pdb

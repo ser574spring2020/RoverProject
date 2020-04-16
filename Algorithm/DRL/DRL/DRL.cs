@@ -41,17 +41,13 @@ namespace Algorithms
         {
             List<string> possibleDirections = new List<string>();
             Vector2Int robotPosition = exploredMap.GetCurrentPosition();
-            if (sensorData[0, 1] == 0 &&
-                exploredMap.GetCell(new Vector2Int(robotPosition.x - 1, robotPosition.y)).IsVisited() == false)
+            if (sensorData[0, 1] == 0 )
                 possibleDirections.Add("North");
-            if (sensorData[1, 2] == 0 &&
-                exploredMap.GetCell(new Vector2Int(robotPosition.x, robotPosition.y + 1)).IsVisited() == false)
+            if (sensorData[1, 2] == 0 )
                 possibleDirections.Add("East");
-            if (sensorData[2, 1] == 0 &&
-                exploredMap.GetCell(new Vector2Int(robotPosition.x + 1, robotPosition.y)).IsVisited() == false)
+            if (sensorData[2, 1] == 0 )
                 possibleDirections.Add("South");
-            if (sensorData[1, 0] == 0 &&
-                exploredMap.GetCell(new Vector2Int(robotPosition.x, robotPosition.y - 1)).IsVisited() == false)
+            if (sensorData[1, 0] == 0 )
                 possibleDirections.Add("West");
             if (possibleDirections.Count == 0)
             {
@@ -248,11 +244,11 @@ namespace Algorithms
 
                     else if (i % 2 == 0 && j % 2 == 0)
                     {
-                        if ( GenerateRandomNumber()> placementThreshold)
+                        if ( Random.value> placementThreshold)
                         {
                             maze[i, j] = 1;
-                            int a = GenerateRandomNumber() < .5 ? 0 : (GenerateRandomNumber() < .5 ? -1 : 1);
-                            int b = a != 0 ? 0 : (GenerateRandomNumber() < .5 ? -1 : 1);
+                            int a = Random.value < .5 ? 0 : (Random.value < .5 ? -1 : 1);
+                            int b = a != 0 ? 0 : (Random.value < .5 ? -1 : 1);
                             maze[i + a, j + b] = 1;
                         }
                     }
