@@ -13,6 +13,12 @@
 - [Sprint 1 - Youtube Video](https://www.youtube.com/watch?v=gztgx2QT6So)
 - [Sprint 2 - Youtube Video](https://www.youtube.com/watch?v=kdmzKdTH5-k)
 
+## How to generate dataset?
+- Start the Unity Project
+- Click on *Create Maze*
+- Use the <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>d</kbd> to move north, west, south and east.
+- The dataset is saved at [/Datasets/Dataset.csv](https://github.com/ser574spring2020/RoverProject/tree/master/Algorithm/Map%20Generator/Datasets)
+
 
 ## Contributors
 - Amit Pandey
