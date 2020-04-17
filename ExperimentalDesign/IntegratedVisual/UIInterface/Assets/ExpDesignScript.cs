@@ -74,7 +74,7 @@ public class ExpDesignScript : MonoBehaviour
         string value1 = "";
         string value = "";
         double thresholdval = 2.0F;
-        double experimentVal = 0.0F;
+        int experimentVal = 0;
         InputAlgorithm = GameObject.Find("Algorithm").GetComponent<TMPro.TMP_Dropdown>();
         string InputAlgorithmValue = InputAlgorithm.captionText.text;
         MazeSize = GameObject.Find("MazeSize").GetComponent<TMPro.TMP_Dropdown>();
@@ -84,7 +84,7 @@ public class ExpDesignScript : MonoBehaviour
         try
         {
             value1 = NumberOfExperiments.text;
-            experimentVal = float.Parse(value1);
+            experimentVal = int.Parse(value1);
         }
         catch (FormatException fe)
         {
