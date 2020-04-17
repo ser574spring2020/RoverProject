@@ -26,17 +26,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d2b1866-4d73-4983-a7b9-a2498a08b6c6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/code-comments-settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/code-comments.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/DRL.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/DRL.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/ExploredMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/ExploredMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/MazeGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/MazeGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/TestExploration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/TestExploration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Map Generator/Assets/Scripts/AlgorithmsSimulation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Map Generator/Assets/Scripts/AlgorithmsSimulation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Map Generator/Datasets/Dataset.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../Map Generator/Datasets/Dataset.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,6 +114,7 @@
       <workItem from="1587068007489" duration="361000" />
       <workItem from="1587068389757" duration="194000" />
       <workItem from="1587068610999" duration="1332000" />
+      <workItem from="1587106498770" duration="34000" />
     </task>
     <servers />
   </component>

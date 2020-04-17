@@ -13,7 +13,6 @@ public class AlgorithmsSimulation : MonoBehaviour
     public float placementThreshold;
     public Text sensorData;
     public GameObject wallPrefab, endPointPrefab, robotPrefab, floorPrefab, flagPrefab, visitedFloorPrefab;
-    public GameObject camera;
     public Button createMaze, automateButton, manualButton;
     public int mazeHeight, mazeWidth;
     GameObject[] mazeObjects, exploredMazeObjects;
@@ -142,6 +141,7 @@ public class AlgorithmsSimulation : MonoBehaviour
                     result[i, j] = 1;
                 else
                     result[i, j] = 0;
+        result[1,1]=2;
         return result;
     }
 
