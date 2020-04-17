@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1262630624624019543, guid: 7e847a25e552e6caea1e3f7f764506d3,
+        type: 3}
+      propertyPath: m_SpotAngle
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 7789077774077131025, guid: 7e847a25e552e6caea1e3f7f764506d3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -62,15 +67,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7789077774077131027, guid: 7e847a25e552e6caea1e3f7f764506d3,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 02cf55bd46a36fa18941206dff67569c, type: 2}
     - target: {fileID: 7789077774077131029, guid: 7e847a25e552e6caea1e3f7f764506d3,
         type: 3}
       propertyPath: m_Name
-      value: StartPoint Variant
+      value: RobotPrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e847a25e552e6caea1e3f7f764506d3, type: 3}

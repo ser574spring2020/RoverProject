@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Runtime.InteropServices.ComTypes;
 using RandomSystem = System.Random;
 
 namespace Algorithms
@@ -12,9 +13,10 @@ namespace Algorithms
     public class Exploration
     {
         private List<String> commands = new List<string>() {"West", "North", "East", "South"};
-
         private List<Vector2Int> vectorCommands = new List<Vector2Int>()
             {Vector2Int.down, Vector2Int.left, Vector2Int.up, Vector2Int.right};
+
+        private int points;
 
         ExploredMap exploredMap;
         
@@ -37,6 +39,20 @@ namespace Algorithms
             return robotCommand;
         }
 
+        private void managePoints(Vector2Int direction)
+        {
+            var futurePosition = GetExploredMap().GetCurrentPosition() + direction;
+            if (exploredMap.GetCell(futurePosition).IsVisited() == false)
+            {
+                points += 10;
+            }
+            else
+            {
+                points -=2;
+            }
+            Debug.Log(points);
+        } 
+        
         //Returns the explored map
         public ExploredMap GetExploredMap()
         {
