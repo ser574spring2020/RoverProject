@@ -1,76 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d2b1866-4d73-4983-a7b9-a2498a08b6c6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Map Generator/Assets/Scripts/AlgorithmsSimulation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Map Generator/Assets/Scripts/AlgorithmsSimulation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Map Generator/Datasets/Dataset.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../Map Generator/Datasets/Dataset.csv" afterDir="false" />
-    </list>
+    <list default="true" id="e628e13a-4fd0-492c-8389-40d37d346689" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
-  </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/DRL/MazeCell.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DRL/DRL.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DRL/TestMazeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DRL/DRLTests.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DRL/packages.config" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/IL/E7FB4B55-BE6E-46DC-9875-DE663E8F1338/1d/b1ba40d4/02000004pdb.il" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DRL/MazeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DRL/TestExploration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DRL/ExploredMap.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/MazeCell.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/MazeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/TestsExploration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/TestsMazeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/TestsDRL.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/DRL/DRL_Tests.cs" />
-        <option value="$PROJECT_DIR$/DRL/MazeGeneratorTests.cs" />
-        <option value="$PROJECT_DIR$/DRL/ExplorationTests.cs" />
-        <option value="$PROJECT_DIR$/DRL/DRLTests.cs" />
-        <option value="$PROJECT_DIR$/DRL/Exploration.cs" />
-        <option value="$PROJECT_DIR$/DRL/MazeCell.cs" />
-        <option value="$PROJECT_DIR$/DRL/TestMazeGenerator.cs" />
-        <option value="$PROJECT_DIR$/DRL/TestExploration.cs" />
         <option value="$PROJECT_DIR$/DRL/DRL.cs" />
-        <option value="$PROJECT_DIR$/DRL/MazeGenerator.cs" />
         <option value="$PROJECT_DIR$/DRL/ExploredMap.cs" />
+        <option value="$PROJECT_DIR$/DRL/MazeCell.cs" />
+        <option value="$PROJECT_DIR$/DRL/MazeGenerator.cs" />
+        <option value="$PROJECT_DIR$/DRL/TestsExploration.cs" />
+        <option value="$PROJECT_DIR$/DRL/TestsMazeGenerator.cs" />
+        <option value="$PROJECT_DIR$/DRL/TestsDRL.cs" />
       </list>
     </option>
   </component>
-  <component name="ProjectId" id="1ad5B61BzrIyRZWTBAgRxNLdh3V" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1agFtHuygTocNuSgvLZzJdbRAk5" />
   <component name="ProjectViewState">
     <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -79,9 +38,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -102,50 +59,21 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7d2b1866-4d73-4983-a7b9-a2498a08b6c6" name="Default Changelist" comment="" />
-      <created>1587052491770</created>
+      <changelist id="e628e13a-4fd0-492c-8389-40d37d346689" name="Default Changelist" comment="" />
+      <created>1587149542673</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1587052491770</updated>
-      <workItem from="1587052499401" duration="490000" />
-      <workItem from="1587053226042" duration="742000" />
-      <workItem from="1587059978482" duration="3506000" />
-      <workItem from="1587063562191" duration="3301000" />
-      <workItem from="1587068007489" duration="361000" />
-      <workItem from="1587068389757" duration="194000" />
-      <workItem from="1587068610999" duration="1332000" />
-      <workItem from="1587106498770" duration="34000" />
+      <updated>1587149542673</updated>
+      <workItem from="1587149548268" duration="258000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="455" y="212" width="1000" height="651" key="Rider.ProjectTemplateDialog.Size" timestamp="1587067300146">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="455" y="212" width="1000" height="651" key="Rider.ProjectTemplateDialog.Size/0.0.1920.1080@0.0.1920.1080" timestamp="1587067300146" />
-    <state x="294" y="87" key="SettingsEditor" timestamp="1587068581419">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="294" y="87" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1587068581419" />
   </component>
 </project>
