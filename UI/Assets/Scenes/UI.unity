@@ -1860,7 +1860,7 @@ MonoBehaviour:
   sensorData: {fileID: 531963387}
   wallPrefab: {fileID: 8027592862836915392, guid: f7dd51d1e037e4abeaaa5a0586d2a6a6,
     type: 3}
-  robotPrefab: {fileID: 1962535428173666459, guid: 4c6fcb0a8627340aea602c4301b26f24,
+  robotPrefab: {fileID: 1348762673267017228, guid: 4c6fcb0a8627340aea602c4301b26f24,
     type: 3}
   createMaze: {fileID: 1927391375}
   sensorDataButton: {fileID: 0}
@@ -3287,7 +3287,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89648e202cfb446fd8a9413c26f0fdd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test: {fileID: 0}
 --- !u!4 &2089924353
 Transform:
   m_ObjectHideFlags: 0

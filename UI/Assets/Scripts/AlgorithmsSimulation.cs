@@ -127,7 +127,7 @@ public class AlgorithmsSimulation : MonoBehaviour
                 //     exploredMazeObjects[counter++] = Instantiate(visitedFloorPrefab, tempVector, Quaternion.identity);
             }
         Vector2Int vector = exploredMaze.GetCurrentPosition();
-        Vector3 robotPosition = new Vector3(yStart - (ySpace * vector.x)-100, 0, xStart + (xSpace * vector.y));
+        Vector3 robotPosition = new Vector3(yStart - (ySpace * vector.x)-100, 1.2f, xStart + (xSpace * vector.y));
         exploredMazeObjects[counter] = Instantiate(robotPrefab, robotPosition, Quaternion.identity);
         exploringRobot = exploredMazeObjects[counter++];  
     }
