@@ -85,7 +85,7 @@ public class updatemessage : MonoBehaviour
         if (!string.IsNullOrEmpty(value) && (thresholdval >= 0 && thresholdval <= 1))
         {
 
-            SceneManager.LoadScene("Main", LoadSceneMode.Single);
+            SceneManager.LoadScene("UI", LoadSceneMode.Single);
 
 
             // updatedmessage = "Simulation is running with " + InputAlgorithmValue + " as Algorithm Type, " + value + " as Threshold Value, " + MazeSizeValue + " as Maze Size, " + SensorTypeValue + " as sensors.";
