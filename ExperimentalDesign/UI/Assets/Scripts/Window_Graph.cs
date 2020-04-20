@@ -1,11 +1,9 @@
 ﻿/* 
     ------------------- Code Monkey -------------------
-
     Thank you for downloading this package
     I hope you find it useful in your projects
     If you have any questions let me know
     Cheers!
-
                unitycodemonkey.com
     --------------------------------------------------
  */
@@ -17,8 +15,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using CodeMonkey.Utils;
+using ExperimentalDesignDatabase;
 
-public class Window_Graph : MonoBehaviour {
+
+public class Window_Graph : MonoBehaviour
+{
 
     [SerializeField] private Sprite dotSprite;
     private RectTransform graphContainer;
@@ -32,8 +33,17 @@ public class Window_Graph : MonoBehaviour {
     //private Button_UI BarChart;
     //private Button_UI LineChart;
     private Boolean GraphFlag;
+    public Dropdown InputAlgorithm;
+    public Dropdown MazeSize;
+    public Dropdown SensorType;
+    public InputField Thresholdvalue;
+    public InputField Maxvalue;
+    public InputField MinValue;
+    public InputField AverageValue;
+    public TMPro.TMP_Text StatusText;
 
-    private void Awake() {
+    private void Awake()
+    {
         //BarChart = transform.Find("barChartBtn").GetComponent<Button_UI>();
         //LineChart = transform.Find("lineGraphBtn").GetComponent<Button_UI>();
 
@@ -42,7 +52,7 @@ public class Window_Graph : MonoBehaviour {
         labelTemplateY = graphContainer.Find("labelTemplateY").GetComponent<RectTransform>();
         //dashTemplateX = graphContainer.Find("dashTemplateX").GetComponent<RectTransform>();
         //dashTemplateY = graphContainer.Find("dashTemplateY").GetComponent<RectTransform>();
-        
+
         gameObjectList = new List<GameObject>();
 
         List<int> valueList = new List<int>(15);
@@ -52,16 +62,16 @@ public class Window_Graph : MonoBehaviour {
         string yAxisValue = yAxis.captionText.text;
         //print(yAxisValue);
 
-       // yAxis_1 = GameObject.Find("yAxis_1").GetComponent<TMPro.TMP_Dropdown>();
-       // string yAxisValue_1 = yAxis.captionText.text;
-       // print(yAxisValue_1);
+        // yAxis_1 = GameObject.Find("yAxis_1").GetComponent<TMPro.TMP_Dropdown>();
+        // string yAxisValue_1 = yAxis.captionText.text;
+        // print(yAxisValue_1);
         //GraphFlag = true;
 
 
-        
-        
 
-       
+
+
+
 
 
     }
@@ -71,7 +81,7 @@ public class Window_Graph : MonoBehaviour {
     {
 
         GraphFlag = true;
-        onDropDownChange();
+        onButtonClicked();
 
 
     }
@@ -79,61 +89,95 @@ public class Window_Graph : MonoBehaviour {
     public void onLineGraphButtonClick()
     {
         GraphFlag = false;
-        onDropDownChange();
+        onButtonClicked();
 
 
     }
 
-    public void goBack(String sceneName)
+    public void changeUIScene(string sceneName)
     {
         Application.LoadLevel(sceneName);
     }
 
-
-    public void onDropDownChange()
+    public void onButtonClicked()
     {
         string yAxisValue = yAxis.captionText.text;
+        print(yAxisValue);
         List<int> valueList = new List<int>(15);
         System.Random randNum = new System.Random();
 
+        string InputAlgorithmValue = InputAlgorithm.captionText.text;
+        string MazeSizeValue = MazeSize.captionText.text;
+        float Threshold = 0;
+        try
+        {
+            Threshold = float.Parse(Thresholdvalue.text);
+        }catch(Exception e)
+        {
+            StatusText.text = "Please enter a valid value for Threshold Frequency.";
+            return;
+        }
+        //print(Threshold);
+        string SensorTypeValue = SensorType.captionText.text;
+        database db = new database();
 
-        if (GraphFlag) {
+        // print(db.averagevalue(yAxisValue, InputAlgorithmValue, MazeSizeValue, Threshold, SensorTypeValue));
+        float average, minimum, maximum;
+        List<float> range;
+        List<int> scrambledWatermark = new List<int>(10) ;
+        try
+        {
+            average = db.averagevalue(yAxisValue, InputAlgorithmValue, MazeSizeValue, Threshold, SensorTypeValue);
+            minimum = db.minvalue(yAxisValue, InputAlgorithmValue, MazeSizeValue, Threshold, SensorTypeValue);
+            maximum = db.maxvalue(yAxisValue, InputAlgorithmValue, MazeSizeValue, Threshold, SensorTypeValue);
+            Maxvalue.text = maximum.ToString();
+            MinValue.text = minimum.ToString();
+            AverageValue.text = average.ToString();
+            range = db.selectValuesfromDB(yAxisValue, InputAlgorithmValue, MazeSizeValue, Threshold, SensorTypeValue);
+            scrambledWatermark = range.ConvertAll(Convert.ToInt32);
+        }
+        catch(Exception e)
+        {
+            average = 0.0F;
+            minimum = 0.0F;
+            maximum = 0.0F;
+            StatusText.text = "Sorry No Results stored in Database. Try again with different filters.";
+            return;
+        }
+        
+        
 
+
+        if (GraphFlag)
+        {
 
             switch (yAxisValue)
             {
-                case "Time":
-                    for (int i = 1; i <= 15; i++)
+                case "TimeTaken":
+                    foreach (int item in scrambledWatermark)
                     {
-                        valueList.Add(randNum.Next(1, 120));
+                        valueList.Add(item);
                     }
                     ShowGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " Minutes");
                     break;
-                case "Points":
-                    for (int i = 1; i <= 15; i++)
+                case "PointsScored":
+                    foreach (int item in scrambledWatermark)
                     {
-                        valueList.Add(randNum.Next(1000, 2000));
+                        valueList.Add(item);
                     }
                     ShowGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " Points");
                     break;
-                case "Objects Collected":
-                    for (int i = 1; i <= 15; i++)
+                case "MazeCoverage":
+                    foreach (int item in scrambledWatermark)
                     {
-                        valueList.Add(randNum.Next(0, 50));
-                    }
-                    ShowGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " Objects");
-                    break;
-                case "Maze Coverage":
-                    for (int i = 1; i <= 15; i++)
-                    {
-                        valueList.Add(randNum.Next(0, 100));
+                        valueList.Add(item);
                     }
                     ShowGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " % ");
                     break;
-                case "Drone Life":
-                    for (int i = 1; i <= 15; i++)
+                case "DroneLife":
+                    foreach (int item in scrambledWatermark)
                     {
-                        valueList.Add(randNum.Next(0, 100));
+                        valueList.Add(item);
                     }
                     ShowGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + "% Drone Life");
                     break;
@@ -148,38 +192,31 @@ public class Window_Graph : MonoBehaviour {
 
             switch (yAxisValue)
             {
-                case "Time":
-                    for (int i = 1; i <= 15; i++)
+                case "TimeTaken":
+                    foreach (int item in scrambledWatermark)
                     {
-                        valueList.Add(randNum.Next(1, 120));
+                        valueList.Add(item);
                     }
                     ShowLineGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " Minutes");
                     break;
-                case "Points":
-                    for (int i = 1; i <= 15; i++)
+                case "PointsScored":
+                    foreach (int item in scrambledWatermark)
                     {
-                        valueList.Add(randNum.Next(1000, 2000));
+                        valueList.Add(item);
                     }
                     ShowLineGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " Points");
                     break;
-                case "Objects Collected":
-                    for (int i = 1; i <= 15; i++)
+                case "MazeCoverage":
+                    foreach (int item in scrambledWatermark)
                     {
-                        valueList.Add(randNum.Next(0, 50));
-                    }
-                    ShowLineGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " Objects");
-                    break;
-                case "Maze Coverage":
-                    for (int i = 1; i <= 15; i++)
-                    {
-                        valueList.Add(randNum.Next(0, 100));
+                        valueList.Add(item);
                     }
                     ShowLineGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + "% ");
                     break;
-                case "Drone Life":
-                    for (int i = 1; i <= 15; i++)
+                case "DroneLife":
+                    foreach (int item in scrambledWatermark)
                     {
-                        valueList.Add(randNum.Next(0, 100));
+                        valueList.Add(item);
                     }
                     ShowLineGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " % Drone Life");
                     break;
@@ -189,9 +226,6 @@ public class Window_Graph : MonoBehaviour {
             }
 
         }
-
-
-
 
 
     }
@@ -266,41 +300,50 @@ public class Window_Graph : MonoBehaviour {
 
     }
 
-    private void ShowGraph(List<int> valueList, int maxVisibleValueAmount = -1, Func<int, string> getAxisLabelX = null, Func<float, string> getAxisLabelY = null) {
-        if (getAxisLabelX == null) {
+    private void ShowGraph(List<int> valueList, int maxVisibleValueAmount = -1, Func<int, string> getAxisLabelX = null, Func<float, string> getAxisLabelY = null)
+    {
+        if (getAxisLabelX == null)
+        {
             getAxisLabelX = delegate (int _i) { return _i.ToString(); };
         }
-        if (getAxisLabelY == null) {
+        if (getAxisLabelY == null)
+        {
             getAxisLabelY = delegate (float _f) { return Mathf.RoundToInt(_f).ToString(); };
         }
 
-        if (maxVisibleValueAmount <= 0) {
+        if (maxVisibleValueAmount <= 0)
+        {
             maxVisibleValueAmount = valueList.Count;
         }
 
-        foreach (GameObject gameObject in gameObjectList) {
+        foreach (GameObject gameObject in gameObjectList)
+        {
             Destroy(gameObject);
         }
         gameObjectList.Clear();
-        
+
         float graphWidth = graphContainer.sizeDelta.x;
         float graphHeight = graphContainer.sizeDelta.y;
 
         float yMaximum = valueList[0];
         float yMinimum = valueList[0];
-        
-        for (int i = Mathf.Max(valueList.Count - maxVisibleValueAmount, 0); i < valueList.Count; i++) {
+
+        for (int i = Mathf.Max(valueList.Count - maxVisibleValueAmount, 0); i < valueList.Count; i++)
+        {
             int value = valueList[i];
-            if (value > yMaximum) {
+            if (value > yMaximum)
+            {
                 yMaximum = value;
             }
-            if (value < yMinimum) {
+            if (value < yMinimum)
+            {
                 yMinimum = value;
             }
         }
 
         float yDifference = yMaximum - yMinimum;
-        if (yDifference <= 0) {
+        if (yDifference <= 0)
+        {
             yDifference = 5f;
         }
         yMaximum = yMaximum + (yDifference * 0.2f);
@@ -313,7 +356,8 @@ public class Window_Graph : MonoBehaviour {
         int xIndex = 0;
 
         //GameObject lastDotGameObject = null;
-        for (int i = Mathf.Max(valueList.Count - maxVisibleValueAmount, 0); i < valueList.Count; i++) {
+        for (int i = Mathf.Max(valueList.Count - maxVisibleValueAmount, 0); i < valueList.Count; i++)
+        {
             float xPosition = xSize + xIndex * xSize;
             float yPosition = ((valueList[i] - yMinimum) / (yMaximum - yMinimum)) * graphHeight;
             GameObject barGameObject = CreateBar(new Vector2(xPosition, yPosition), xSize * .9f);
@@ -345,7 +389,8 @@ public class Window_Graph : MonoBehaviour {
         }
 
         int separatorCount = 10;
-        for (int i = 0; i <= separatorCount; i++) {
+        for (int i = 0; i <= separatorCount; i++)
+        {
             RectTransform labelY = Instantiate(labelTemplateY);
             labelY.SetParent(graphContainer, false);
             labelY.gameObject.SetActive(true);
@@ -471,7 +516,8 @@ public class Window_Graph : MonoBehaviour {
         }
     }
 
-    private GameObject CreateDot(Vector2 anchoredPosition) {
+    private GameObject CreateDot(Vector2 anchoredPosition)
+    {
         GameObject gameObject = new GameObject("dot", typeof(Image));
         gameObject.transform.SetParent(graphContainer, false);
         gameObject.GetComponent<Image>().sprite = dotSprite;
@@ -483,7 +529,8 @@ public class Window_Graph : MonoBehaviour {
         return gameObject;
     }
 
-    private GameObject CreateDotConnection(Vector2 dotPositionA, Vector2 dotPositionB) {
+    private GameObject CreateDotConnection(Vector2 dotPositionA, Vector2 dotPositionB)
+    {
         GameObject gameObject = new GameObject("dotConnection", typeof(Image));
         gameObject.transform.SetParent(graphContainer, false);
         gameObject.GetComponent<Image>().color = new Color(1, 1, 1, .5f);
@@ -499,7 +546,8 @@ public class Window_Graph : MonoBehaviour {
         return gameObject;
     }
 
-    private GameObject CreateBar(Vector2 graphPosition, float barWidth) {
+    private GameObject CreateBar(Vector2 graphPosition, float barWidth)
+    {
         GameObject gameObject = new GameObject("bar", typeof(Image));
         gameObject.transform.SetParent(graphContainer, false);
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
