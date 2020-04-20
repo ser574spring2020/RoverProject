@@ -14,7 +14,7 @@ public class AlgorithmsSimulation : MonoBehaviour
     private float placementThreshold;
     public Text sensorData;//, sensorTeamData;
     public GameObject wallPrefab, robotPrefab;//;, floorPrefab, visitedFloorPrefab;
-    public Button createMaze, backButton;
+    public Button createMaze, backButton, manualButton, automaticButton;
     private int mazeHeight, mazeWidth;
     GameObject[] mazeObjects, exploredMazeObjects;
     int counter = 0;
@@ -36,6 +36,8 @@ public class AlgorithmsSimulation : MonoBehaviour
     {
         sensor = SensorsComponent.SensorFactory.GetInstance(1, robotPrefab);
         createMaze.onClick.AddListener(createMazeButtonListener);
+        manualButton.onClick.AddListener(manualButtonListener);
+        automaticButton.onClick.AddListener(automaticButtonListener);
         backButton.interactable = false;
     }
 
@@ -53,8 +55,15 @@ public class AlgorithmsSimulation : MonoBehaviour
             maze[currentX, currentY] = 2;
             updateMaze();
             mazeCreated = true;
-            InvokeRepeating("getNextCommand", 0.1f, 0.1f);
         }
+    }
+
+    void manualButtonListener(){
+        getNextCommand();
+    }
+
+    void automaticButtonListener(){
+        InvokeRepeating("getNextCommand", 0.1f, 0.1f);
     }
 
     private bool checkRunTimeStatus(){
