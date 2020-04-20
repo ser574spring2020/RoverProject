@@ -11,7 +11,7 @@ public class AlgorithmsSimulation : MonoBehaviour
     GameObject robot, exploringRobot;
     float xStart = 0, yStart = 1;
     float xSpace = 3.5f, ySpace = 3.5f;
-    public float placementThreshold;
+    private float placementThreshold;
     public Text sensorData;//, sensorTeamData;
     public GameObject wallPrefab, robotPrefab;//;, floorPrefab, visitedFloorPrefab;
     public Button createMaze, backButton;
@@ -39,13 +39,13 @@ public class AlgorithmsSimulation : MonoBehaviour
         exploredMazeObjects = new GameObject[mazeHeight * mazeWidth];
         createMaze.onClick.AddListener(createMazeButtonListener);
         backButton.interactable = false;
-        //UpdateParameters();
     }
 
     //Create the initial maze
     void createMazeButtonListener()
     {
         startTime = DateTime.Now.ToString("mm:ss");
+        UpdateParameters();
         exploration = new Exploration(mazeHeight, mazeWidth);
         if (mazeCreated == false)
         {
@@ -79,9 +79,10 @@ public class AlgorithmsSimulation : MonoBehaviour
 
     private void UpdateParameters()
     {
+        // Debug.Log("VALUE IN METHOD : " + GameObject.Find("MazeButton").GetComponentInChildren<Text>().text);
         // GameObject.Find("AlgoButton").GetComponentInChildren<Text>().text
-        // GameObject.Find("MazeButton").GetComponentInChildren<Text>().text
-        // placementThreshold = GameObject.Find("ThresholdButton").GetComponentInChildren<Text>().text.ToString();
+        placementThreshold = float.Parse(GameObject.Find("MazeButton").GetComponentInChildren<Text>().text);
+        // GameObject.Find("SizeButton").GetComponentInChildren<Text>().text.ToString();
         // GameObject.Find("SensorButton").GetComponentInChildren<Text>().text
     }
 
