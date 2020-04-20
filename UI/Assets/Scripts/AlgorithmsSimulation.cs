@@ -13,7 +13,7 @@ public class AlgorithmsSimulation : MonoBehaviour
     float xSpace = 3.5f, ySpace = 3.5f;
     private float placementThreshold;
     public Text sensorData;//, sensorTeamData;
-    public GameObject wallPrefab, robotPrefab;//;, floorPrefab, visitedFloorPrefab;
+    public GameObject wallPrefab, robotPrefab, floorPrefab, visitedFloorPrefab;
     public Button createMaze, backButton, manualButton, automaticButton;
     private int mazeHeight, mazeWidth;
     GameObject[] mazeObjects, exploredMazeObjects;
@@ -124,6 +124,9 @@ public class AlgorithmsSimulation : MonoBehaviour
     // range, radar - 5x5
     // lidar 3x5
     void updateSensorMaze(int[,] sensorMatrix, int[,] matrix){
+        
+        // int rows = sensorMatrix.GetLength(0);
+        // int cols = sensorMatrix.GetLength(1);
         for (int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){
                 if(sensorMatrix[i, j] != matrix[i, j]){
@@ -144,20 +147,17 @@ public class AlgorithmsSimulation : MonoBehaviour
         for (int i = 0; i < mazeHeight; i++)
             for (int j = 0; j < mazeWidth; j++)
             {
-                Vector3 tempVector = new Vector3(yStart - (ySpace * i)+10, 0f, xStart + (xSpace * j));
-                // if (maze[i, j] == 0){
-                //     mazeObjects[counter++] = Instantiate(floorPrefab, tempVector, Quaternion.identity);
-                // }
-                if (maze[i, j] == 1){
+                Vector3 tempVector = new Vector3(xStart + (xSpace * j), 0, yStart - (ySpace * i));
+                if (maze[i, j] == 0)
+                    mazeObjects[counter++] = Instantiate(floorPrefab, tempVector, Quaternion.identity);
+                if (maze[i, j] == 1)
                     mazeObjects[counter++] = Instantiate(wallPrefab, tempVector, Quaternion.identity);
-                }
                 else if (maze[i, j] == 2){
                     mazeObjects[counter] = Instantiate(robotPrefab, tempVector, Quaternion.identity);
                     robot = mazeObjects[counter++];
                 }
-                // else if (maze[i, j] == 4){
-                //     mazeObjects[counter++] = Instantiate(visitedFloorPrefab, tempVector, Quaternion.identity);
-                // }
+                else if (maze[i, j] == 4)
+                    mazeObjects[counter++] = Instantiate(visitedFloorPrefab, tempVector, Quaternion.identity);
             }
     }
 
@@ -172,21 +172,21 @@ public class AlgorithmsSimulation : MonoBehaviour
         for (int i = 0; i < mazeHeight; i++)
             for (int j = 0; j < mazeWidth; j++)
             {
-                Vector3 tempVector = new Vector3(yStart - (ySpace * i)-100, 0, xStart + (xSpace * j));
+                Vector3 tempVector = new Vector3(xStart + (xSpace * j)+140, 0, yStart - (ySpace * i));
                 MazeCell mazeCell = exploredMaze.GetCell(new Vector2Int(i,j));
                 if(mazeCell == null)
                     continue;
-                if (mazeCell.IsWallCell()==true)
+                if (mazeCell.IsWallCell() == true)
                     exploredMazeObjects[counter++] = Instantiate(wallPrefab, tempVector, Quaternion.identity);
-                // else if (mazeCell.IsVisited()==false)
-                //     exploredMazeObjects[counter++] = Instantiate(floorPrefab, tempVector, Quaternion.identity);
-                // else if (exploredMaze.GetCell(new Vector2Int(i,j)).IsVisited())
-                //     exploredMazeObjects[counter++] = Instantiate(visitedFloorPrefab, tempVector, Quaternion.identity);
+                else if (mazeCell.IsVisited() == false)
+                    exploredMazeObjects[counter++] = Instantiate(floorPrefab, tempVector, Quaternion.identity);
+                else if (exploredMaze.GetCell(new Vector2Int(i,j)).IsVisited())
+                    exploredMazeObjects[counter++] = Instantiate(visitedFloorPrefab, tempVector, Quaternion.identity);
             }
         Vector2Int vector = exploredMaze.GetCurrentPosition();
-        Vector3 robotPosition = new Vector3(yStart - (ySpace * vector.x)-100, 1.2f, xStart + (xSpace * vector.y));
+        Vector3 robotPosition = new Vector3(xStart + (xSpace * vector.y)+140,0, yStart - (ySpace * vector.x));
         exploredMazeObjects[counter] = Instantiate(robotPrefab, robotPosition, Quaternion.identity);
-        exploringRobot = exploredMazeObjects[counter++];  
+        exploringRobot = exploredMazeObjects[counter++];
     }
 
     public enum CellType : int
@@ -226,10 +226,10 @@ public class AlgorithmsSimulation : MonoBehaviour
     void Update()
     {
         // sensor.Update_Obstacles(robotPrefab);
-        if (Input.GetKeyDown(KeyCode.A)) moveInDirection("North");          //North - W Key
-        if (Input.GetKeyDown(KeyCode.S)) moveInDirection("East");           //East  - D Key
-        if (Input.GetKeyDown(KeyCode.W)) moveInDirection("West");           //West  - A Key
-        if (Input.GetKeyDown(KeyCode.D)) moveInDirection("South");          //South - S Key
+        if (Input.GetKeyDown(KeyCode.W)) moveInDirection("North");          //North - W Key
+        if (Input.GetKeyDown(KeyCode.D)) moveInDirection("East");           //East  - D Key
+        if (Input.GetKeyDown(KeyCode.A)) moveInDirection("West");           //West  - A Key
+        if (Input.GetKeyDown(KeyCode.S)) moveInDirection("South");          //South - S Key
     }
 
     void moveInDirection(string direction)
@@ -241,7 +241,7 @@ public class AlgorithmsSimulation : MonoBehaviour
             robot.transform.Rotate(0.0f, 270.0f, 0.0f, Space.Self);
             exploringRobot.transform.Rotate(0.0f, 270.0f, 0.0f, Space.Self);
         }
-        else if (direction == "East") 
+        else if (direction == "East")
         {
             move(0, 1);
             robot.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
