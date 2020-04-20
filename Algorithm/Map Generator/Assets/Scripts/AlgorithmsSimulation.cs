@@ -11,7 +11,7 @@ public class AlgorithmsSimulation : MonoBehaviour
     float xStart = 0, yStart = 0;
     float xSpace = 0.5f, ySpace = 0.5f;
     public float placementThreshold;
-    public Text sensorData, points;
+    public Text sensorData, points, coverage;
     public GameObject wallPrefab, endPointPrefab, robotPrefab, floorPrefab, flagPrefab, visitedFloorPrefab;
 
     GameObject robot, exploringRobot;
@@ -193,7 +193,8 @@ public class AlgorithmsSimulation : MonoBehaviour
             exploringRobot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
         } 
         updateSensorsData();
-        points.text = "Points:" + exploration.GetPoints().ToString();
+        points.text = "Points: " + exploration.GetPoints().ToString();
+        coverage.text = "Coverage: "+exploration.GetCoverage().ToString();
     }
 
     void move(int x, int y)

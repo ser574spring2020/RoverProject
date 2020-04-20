@@ -16,12 +16,14 @@ namespace Algorithms
         private List<Vector2Int> vectorCommands = new List<Vector2Int>()
             {Vector2Int.down, Vector2Int.left, Vector2Int.up, Vector2Int.right};
 
-        private int points;
+        private int points, rows, cols;
 
         ExploredMap exploredMap;
         
         public Exploration(int rows, int cols)
         {
+            this.rows = rows;
+            this.cols = cols;
             exploredMap = new ExploredMap(new Vector2Int(rows, cols), new Vector2Int(1, 1));
         }
 
@@ -62,6 +64,21 @@ namespace Algorithms
         public int GetPoints()
         {
             return points;
+        }
+
+        public int GetCoverage()
+        {
+            float coverage = 0, total = cols * rows;
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    if (exploredMap.GetCell(new Vector2Int(i, j)) != null)
+                        coverage+=1;
+                }
+            }
+            coverage = coverage/total * 100;
+            return (int) coverage;
         }
         
         //Returns the explored map

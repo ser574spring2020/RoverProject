@@ -28,15 +28,12 @@
     <list default="true" id="e628e13a-4fd0-492c-8389-40d37d346689" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/DRL.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/DRL.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/MazeGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/MazeGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Map Generator/Assets/Scripts/AlgorithmsSimulation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Map Generator/Assets/Scripts/AlgorithmsSimulation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Map Generator/Datasets/Dataset.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../Map Generator/Datasets/Dataset.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UI/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UI/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/ProjectSettings/ProjectVersion.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +106,7 @@
       <workItem from="1587149548268" duration="258000" />
       <workItem from="1587152709010" duration="1663000" />
       <workItem from="1587350181977" duration="1560000" />
-      <workItem from="1587359732751" duration="2308000" />
+      <workItem from="1587359732751" duration="5392000" />
     </task>
     <servers />
   </component>
@@ -142,5 +139,24 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="519" y="311" width="872" height="454" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1587362013607" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/DRL/ExploredMap.cs</url>
+          <line>96</line>
+          <properties documentPath="$PROJECT_DIR$/DRL/ExploredMap.cs" initialLine="96">
+            <startOffsets>
+              <option value="3527" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3528" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
