@@ -94,8 +94,10 @@ public class Window_Graph : MonoBehaviour
 
     }
 
-
-
+    public void changeUIScene(string sceneName)
+    {
+        Application.LoadLevel(sceneName);
+    }
 
     public void onButtonClicked()
     {
