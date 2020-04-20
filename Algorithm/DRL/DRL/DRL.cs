@@ -16,12 +16,14 @@ namespace Algorithms
         private List<Vector2Int> vectorCommands = new List<Vector2Int>()
             {Vector2Int.down, Vector2Int.left, Vector2Int.up, Vector2Int.right};
 
-        private int points;
+        private int points, rows, cols;
 
         ExploredMap exploredMap;
         
         public Exploration(int rows, int cols)
         {
+            this.rows = rows;
+            this.cols = cols;
             exploredMap = new ExploredMap(new Vector2Int(rows, cols), new Vector2Int(1, 1));
         }
 
@@ -35,11 +37,18 @@ namespace Algorithms
             List<String> possibleDirections = GetAvailableDirections(sensorData);
             int x = r.Next(0, possibleDirections.Count);
             robotCommand = possibleDirections[x];
+            ManagePoints(vectorCommands[commands.IndexOf(robotCommand)]);
             exploredMap.MoveRelative(vectorCommands[commands.IndexOf(robotCommand)]);
             return robotCommand;
         }
 
-        private void managePoints(Vector2Int direction)
+        public void MoveRobot(int[,] sensorData, string direction)
+        {
+            exploredMap.ProcessSensor(sensorData);
+            exploredMap.MoveRelative(vectorCommands[commands.IndexOf(direction)]);
+        }
+
+        private void ManagePoints(Vector2Int direction)
         {
             var futurePosition = GetExploredMap().GetCurrentPosition() + direction;
             if (exploredMap.GetCell(futurePosition).IsVisited() == false)
@@ -50,8 +59,27 @@ namespace Algorithms
             {
                 points -=2;
             }
-            Debug.Log(points);
-        } 
+        }
+
+        public int GetPoints()
+        {
+            return points;
+        }
+
+        public int GetCoverage()
+        {
+            float coverage = 0, total = cols * rows;
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    if (exploredMap.GetCell(new Vector2Int(i, j)) != null)
+                        coverage+=1;
+                }
+            }
+            coverage = coverage/total * 100;
+            return (int) coverage;
+        }
         
         //Returns the explored map
         public ExploredMap GetExploredMap()
