@@ -1,6 +1,9 @@
-﻿    using UnityEngine;
+﻿using UnityEngine;
+using System.Text;
+using System.Collections;
 using UnityEngine.UI;
 using System;
+using System.IO;
 using Algorithms;
 
 public class AlgorithmsSimulation : MonoBehaviour
@@ -10,8 +13,9 @@ public class AlgorithmsSimulation : MonoBehaviour
     public float placementThreshold;
     public Text sensorData;
     public GameObject wallPrefab, endPointPrefab, robotPrefab, floorPrefab, flagPrefab, visitedFloorPrefab;
-    public GameObject camera;
-    public Button createMaze, sensorDataButton, nextCommandButton;
+
+    GameObject robot, exploringRobot;
+    public Button createMaze, automateButton, manualButton;
     public int mazeHeight, mazeWidth;
     GameObject[] mazeObjects, exploredMazeObjects;
     int counter = 0;
@@ -29,8 +33,12 @@ public class AlgorithmsSimulation : MonoBehaviour
         mazeObjects = new GameObject[mazeHeight * mazeWidth];
         exploredMazeObjects = new GameObject[mazeHeight * mazeWidth];
         createMaze.onClick.AddListener(createMazeButtonListener);
-        sensorDataButton.onClick.AddListener(updateSensorsData);
-        nextCommandButton.onClick.AddListener(getNextCommand);
+        automateButton.onClick.AddListener(automate);
+        manualButton.onClick.AddListener(getNextCommand);
+    }
+
+    void automate(){
+        InvokeRepeating("getNextCommand", 0.1f, 0.5f);
     }
 
 
@@ -45,7 +53,6 @@ public class AlgorithmsSimulation : MonoBehaviour
             maze[currentX, currentY] = 2;
             updateMaze();
             mazeCreated = true;
-            InvokeRepeating("getNextCommand", 0.1f, 0.1f);
         }
     }
 
@@ -71,8 +78,10 @@ public class AlgorithmsSimulation : MonoBehaviour
                     mazeObjects[counter++] = Instantiate(floorPrefab, tempVector, Quaternion.identity);
                 else if (maze[i, j] == 1)
                     mazeObjects[counter++] = Instantiate(wallPrefab, tempVector, Quaternion.identity);
-                else if (maze[i, j] == 2)
-                    mazeObjects[counter++] = Instantiate(robotPrefab, tempVector, Quaternion.identity);
+                else if (maze[i, j] == 2){
+                    mazeObjects[counter] = Instantiate(robotPrefab, tempVector, Quaternion.identity);
+                    robot = mazeObjects[counter++];    
+                }
                 else if (maze[i, j] == 4)
                     mazeObjects[counter++] = Instantiate(visitedFloorPrefab, tempVector, Quaternion.identity);
             }
@@ -102,7 +111,8 @@ public class AlgorithmsSimulation : MonoBehaviour
             }
         Vector2Int vector = exploredMaze.GetCurrentPosition();
         Vector3 robotPosition = new Vector3(xStart + (xSpace * vector.y)+20,0, yStart - (ySpace * vector.x));
-        exploredMazeObjects[counter++] = Instantiate(robotPrefab, robotPosition, Quaternion.identity);
+        exploredMazeObjects[counter] = Instantiate(robotPrefab, robotPosition, Quaternion.identity);
+        exploringRobot = exploredMazeObjects[counter++];    
     }
 
     public enum CellType : int
@@ -136,6 +146,7 @@ public class AlgorithmsSimulation : MonoBehaviour
                     result[i, j] = 1;
                 else
                     result[i, j] = 0;
+        result[1,1]=2;
         return result;
     }
 
@@ -149,10 +160,31 @@ public class AlgorithmsSimulation : MonoBehaviour
 
     void moveInDirection(string direction)
     {
-        if (direction == "North") move(-1, 0);
-        else if (direction == "East") move(0, 1);
-        else if (direction == "West") move(0, -1);
-        else if (direction == "South") move(1, 0);
+        if (direction == "North") 
+        {
+            move(-1, 0);
+            robot.transform.Rotate(0.0f, 270.0f, 0.0f, Space.Self);
+            exploringRobot.transform.Rotate(0.0f, 270.0f, 0.0f, Space.Self);
+        }
+        else if (direction == "East") 
+        {
+            move(0, 1);
+            robot.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
+            exploringRobot.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
+        }
+        else if (direction == "West")
+        {
+            move(0, -1);
+            robot.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
+            exploringRobot.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
+        }
+        else if (direction == "South"){
+            move(1, 0);
+            robot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
+            exploringRobot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
+        } 
+        updateSensorsData();  
+        writeSensorDataToCSV(direction);  
     }
 
     void move(int x, int y)
@@ -164,5 +196,18 @@ public class AlgorithmsSimulation : MonoBehaviour
         maze[currentX, currentY] = 2;
         updateMaze();
         updateExplored();
+    }
+
+    void writeSensorDataToCSV(string direction){
+        var path = Directory.GetCurrentDirectory();
+        string filePath = path + "/Datasets/Dataset.csv";
+        int[,] sensorData = getSensorsData();
+        foreach (var item in sensorData)
+        {
+            File.AppendAllText(filePath,item.ToString(),Encoding.UTF8);
+            File.AppendAllText(filePath,",",Encoding.UTF8);
+        }
+        File.AppendAllText(filePath,direction+",",Encoding.UTF8);
+        File.AppendAllText(filePath, Environment.NewLine, Encoding.UTF8);
     }
 }
