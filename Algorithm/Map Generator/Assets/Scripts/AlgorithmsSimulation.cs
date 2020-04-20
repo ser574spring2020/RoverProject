@@ -11,7 +11,7 @@ public class AlgorithmsSimulation : MonoBehaviour
     float xStart = 0, yStart = 0;
     float xSpace = 0.5f, ySpace = 0.5f;
     public float placementThreshold;
-    public Text sensorData;
+    public Text sensorData, points;
     public GameObject wallPrefab, endPointPrefab, robotPrefab, floorPrefab, flagPrefab, visitedFloorPrefab;
 
     GameObject robot, exploringRobot;
@@ -38,7 +38,7 @@ public class AlgorithmsSimulation : MonoBehaviour
     }
 
     void automate(){
-        InvokeRepeating("getNextCommand", 0.1f, 0.5f);
+        InvokeRepeating("getNextCommand", 0.1f, 0.1f);
     }
 
 
@@ -152,10 +152,19 @@ public class AlgorithmsSimulation : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W)) moveInDirection("North");          //North - W Key
-        if (Input.GetKeyDown(KeyCode.D)) moveInDirection("East");           //East  - D Key
-        if (Input.GetKeyDown(KeyCode.A)) moveInDirection("West");           //West  - A Key
-        if (Input.GetKeyDown(KeyCode.S)) moveInDirection("South");          //South - S Key
+        if (Input.GetKeyDown(KeyCode.W)){
+            
+            moveInDirection("North");          //North - W Key
+        }
+        if (Input.GetKeyDown(KeyCode.D)){
+             moveInDirection("East");          //East  - D Key
+        }
+        if (Input.GetKeyDown(KeyCode.A)){
+            moveInDirection("West");           //West  - A Key
+        }
+        if (Input.GetKeyDown(KeyCode.S)){
+            moveInDirection("South");          //South - S Key
+        } 
     }
 
     void moveInDirection(string direction)
@@ -183,8 +192,8 @@ public class AlgorithmsSimulation : MonoBehaviour
             robot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
             exploringRobot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
         } 
-        updateSensorsData();  
-        writeSensorDataToCSV(direction);  
+        updateSensorsData();
+        points.text = "Points:" + exploration.GetPoints().ToString();
     }
 
     void move(int x, int y)
@@ -196,18 +205,5 @@ public class AlgorithmsSimulation : MonoBehaviour
         maze[currentX, currentY] = 2;
         updateMaze();
         updateExplored();
-    }
-
-    void writeSensorDataToCSV(string direction){
-        var path = Directory.GetCurrentDirectory();
-        string filePath = path + "/Datasets/Dataset.csv";
-        int[,] sensorData = getSensorsData();
-        foreach (var item in sensorData)
-        {
-            File.AppendAllText(filePath,item.ToString(),Encoding.UTF8);
-            File.AppendAllText(filePath,",",Encoding.UTF8);
-        }
-        File.AppendAllText(filePath,direction+",",Encoding.UTF8);
-        File.AppendAllText(filePath, Environment.NewLine, Encoding.UTF8);
     }
 }

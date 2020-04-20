@@ -35,11 +35,18 @@ namespace Algorithms
             List<String> possibleDirections = GetAvailableDirections(sensorData);
             int x = r.Next(0, possibleDirections.Count);
             robotCommand = possibleDirections[x];
+            ManagePoints(vectorCommands[commands.IndexOf(robotCommand)]);
             exploredMap.MoveRelative(vectorCommands[commands.IndexOf(robotCommand)]);
             return robotCommand;
         }
 
-        private void managePoints(Vector2Int direction)
+        public void MoveRobot(int[,] sensorData, string direction)
+        {
+            exploredMap.ProcessSensor(sensorData);
+            exploredMap.MoveRelative(vectorCommands[commands.IndexOf(direction)]);
+        }
+
+        private void ManagePoints(Vector2Int direction)
         {
             var futurePosition = GetExploredMap().GetCurrentPosition() + direction;
             if (exploredMap.GetCell(futurePosition).IsVisited() == false)
@@ -50,8 +57,12 @@ namespace Algorithms
             {
                 points -=2;
             }
-            Debug.Log(points);
-        } 
+        }
+
+        public int GetPoints()
+        {
+            return points;
+        }
         
         //Returns the explored map
         public ExploredMap GetExploredMap()
