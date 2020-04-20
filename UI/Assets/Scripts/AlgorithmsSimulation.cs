@@ -14,13 +14,13 @@ public class AlgorithmsSimulation : MonoBehaviour
     public float placementThreshold;
     public Text sensorData;//, sensorTeamData;
     public GameObject wallPrefab, robotPrefab;//;, floorPrefab, visitedFloorPrefab;
-    public Button createMaze, sensorDataButton;
+    public Button createMaze, backButton;
     public int mazeHeight, mazeWidth;
     GameObject[] mazeObjects, exploredMazeObjects;
     int counter = 0;
     int currentX=1,currentY=1;
     // string path = @"/home/lisa/new.csv";
-    int[,] maze;
+    int[,] maze, experimentalMaze;
     ExploredMap exploredMaze;
     System.Random rand = new System.Random();
     bool mazeCreated = false;
@@ -28,6 +28,9 @@ public class AlgorithmsSimulation : MonoBehaviour
     Exploration exploration;
     // Sensors1.Sensors sensor;
     private static SensorsComponent.Sensors sensor;
+    private String startTime, endTime;
+    private int batteryLife, mazeCoverage, allowedRunTime = 3600;
+    private String algorithmSelected, mazeSize, sensorSelected;
 
     void Start()
     {
@@ -35,12 +38,14 @@ public class AlgorithmsSimulation : MonoBehaviour
         mazeObjects = new GameObject[mazeHeight * mazeWidth];
         exploredMazeObjects = new GameObject[mazeHeight * mazeWidth];
         createMaze.onClick.AddListener(createMazeButtonListener);
+        backButton.interactable = false;
+        //UpdateParameters();
     }
-
 
     //Create the initial maze
     void createMazeButtonListener()
     {
+        startTime = DateTime.Now.ToString("mm:ss");
         exploration = new Exploration(mazeHeight, mazeWidth);
         if (mazeCreated == false)
         {
@@ -48,8 +53,36 @@ public class AlgorithmsSimulation : MonoBehaviour
             maze[currentX, currentY] = 2;
             updateMaze();
             mazeCreated = true;
-            InvokeRepeating("getNextCommand", 0.5f, 0.5f);
+            InvokeRepeating("getNextCommand", 0.1f, 0.1f);
         }
+    }
+
+    private bool checkRunTimeStatus(){
+        if(mazeCoverage >= 80 || batteryLife <= 0 || allowedRunTime <= 0){
+            //enable back button
+            backButton.interactable = true;
+            // get explored maze from algo dll
+
+            // calculate end time
+            endTime = DateTime.Now.ToString("mm:ss");
+            String runTime = calculateRunTime();
+            // store the info in DB
+            return false;
+        }
+        return true;
+    }
+
+    private String calculateRunTime(){
+        TimeSpan duration = DateTime.Parse(endTime).Subtract(DateTime.Parse(startTime));
+        return duration.ToString(@"mm\:ss");
+    }
+
+    private void UpdateParameters()
+    {
+        // GameObject.Find("AlgoButton").GetComponentInChildren<Text>().text
+        // GameObject.Find("MazeButton").GetComponentInChildren<Text>().text
+        // placementThreshold = GameObject.Find("ThresholdButton").GetComponentInChildren<Text>().text.ToString();
+        // GameObject.Find("SensorButton").GetComponentInChildren<Text>().text
     }
 
     void getNextCommand()
@@ -61,11 +94,23 @@ public class AlgorithmsSimulation : MonoBehaviour
         updateSensorMaze(sensorMatrix, matrix);
         String robotCommand = exploration.GetNextCommand(sensorMatrix);
         moveInDirection(robotCommand);
+        // if(checkRunTimeStatus()){
+        //     updateSensorsData(getSensorsData());
+        //     // updateSensorsTeamData();
+        //     int[,] sensorMatrix = sensor.Get_Obstacle_Matrix();
+        //     int[,] matrix = getSensorsData();
+        //     updateSensorMaze(sensorMatrix, matrix);
+        //     String robotCommand = exploration.GetNextCommand(sensorMatrix);
+        //     moveInDirection(robotCommand);
+        // }
+        // else{
+        //     CancelInvoke("getNextCommand");
+        // }
     }
 
-    // proximity, bumper
-    //range, radar - 5x5
-    //lidar 3x5
+    // proximity, bumper - 3x3
+    // range, radar - 5x5
+    // lidar 3x5
     void updateSensorMaze(int[,] sensorMatrix, int[,] matrix){
         for (int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){
@@ -177,6 +222,7 @@ public class AlgorithmsSimulation : MonoBehaviour
 
     void moveInDirection(string direction)
     {
+        allowedRunTime--;
         if (direction == "North")
         {
             move(-1, 0);
