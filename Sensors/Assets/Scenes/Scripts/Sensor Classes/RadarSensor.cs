@@ -2,7 +2,7 @@
     Author   : Aneesh Dalvi, Vaibhav Singhal
     Function : Implements Functionality for Radar Sensor
     Version  : V1
-    Email    : adalvi1@asu.edu | Arizona State University.
+    Email    : adalvi1@asu.edu | vsingha5@asu.edu
 */
 
 using UnityEngine;
