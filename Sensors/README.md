@@ -17,7 +17,7 @@
 [SensorsComponent.dll](/Sensors/Sensors/Assets/Scenes/)
 
 #### DLL C Sharp Project
-[DLL Project](/Sensors/Assets/Dll_Library_Project/)
+[DLL Project](/Sensors/Sensors/Assets/Dll_Library_Project/)
 
 #### DLL APIs
 ```
