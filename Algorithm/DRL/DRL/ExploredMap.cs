@@ -7,11 +7,11 @@ namespace Algorithms
     //Contains all the methods used to access the explored map
     public class ExploredMap
     {
-        private List<MazeCell> _cells;
-        private MazeCell[,] _mazeMap;
-        private List<Vector2Int> _moveHistory;
+        private readonly List<MazeCell> _cells;
+        private readonly MazeCell[,] _mazeMap;
+        private readonly List<Vector2Int> _moveHistory;
         private Vector2Int _robotPosition;
-        
+
         public ExploredMap(Vector2Int mazeDimension, Vector2Int robotPosition)
         {
             _mazeMap = new MazeCell[mazeDimension.x, mazeDimension.y];
@@ -26,10 +26,41 @@ namespace Algorithms
             return new Vector2Int(_robotPosition.x, _robotPosition.y);
         }
 
-        //saves the sensor reading to the explored map
-        public bool ProcessSensor(int[,] sensorReading)
+        public void getRobotPosition(int[,] sensorReading)
         {
+                int[,] array = new int[4,2];
+                Debug.Log(array.Rank);
+        }
+
+        //saves the sensor reading to the explored map
+        public bool ProcessRangeSensor(int[,] sensorReading)
+        {
+            getRobotPosition(sensorReading);
             if (sensorReading.GetLength(0) == 3 && sensorReading.GetLength(1) == 3)
+            {
+                for (var x = 0; x < 3; x++)
+                for (var y = 0; y < 3; y++)
+                {
+                    var xMaze = _robotPosition.x + x - 1;
+                    var yMaze = _robotPosition.y + y - 1;
+                    if (_mazeMap[xMaze, yMaze] != null) continue;
+
+                    var neighbor = new MazeCell(xMaze, yMaze); // create 
+                    _mazeMap[xMaze, yMaze] = neighbor;
+
+                    if (sensorReading[x, y] == 1) neighbor.MakeWall();
+                }
+
+                _mazeMap[_robotPosition.x, _robotPosition.y].Visit();
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool ProcessFiveSensor(int[,] sensorReading)
+        {
+            if (sensorReading.GetLength(0) == 5 && sensorReading.GetLength(1) == 5)
             {
                 for (var x = 0; x < 3; x++)
                 for (var y = 0; y < 3; y++)

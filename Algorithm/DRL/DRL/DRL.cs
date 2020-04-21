@@ -33,7 +33,7 @@ namespace Algorithms
         {
             String robotCommand;
             RandomSystem r = new RandomSystem();
-            exploredMap.ProcessSensor(sensorData);
+            exploredMap.ProcessRangeSensor(sensorData);
             List<String> possibleDirections = GetAvailableDirections(sensorData);
             int x = r.Next(0, possibleDirections.Count);
             robotCommand = possibleDirections[x];
@@ -44,7 +44,7 @@ namespace Algorithms
 
         public void MoveRobot(int[,] sensorData, string direction)
         {
-            exploredMap.ProcessSensor(sensorData);
+            exploredMap.ProcessRangeSensor(sensorData);
             exploredMap.MoveRelative(vectorCommands[commands.IndexOf(direction)]);
         }
 
