@@ -33,7 +33,7 @@ public class AlgorithmsSimulation : MonoBehaviour
     private String algorithmSelected, mazeSize, sensorSelected, pointsScoredStr, mazeCoverageStr;
     private float mazeOffset = 140;
     private static database expDB;
-    private DataBaseManager dbm;
+    // private DataBaseManager dbm;
     private bool isSimulationComplete = false;
     public Slider healthBar;
 
@@ -46,8 +46,8 @@ public class AlgorithmsSimulation : MonoBehaviour
         automaticButton.onClick.AddListener(automaticButtonListener);
         backButton.interactable = false;
 
-        dbm = new DataBaseManager();
-        dbm.ConnectToDB("Rover.db");
+        // dbm = new DataBaseManager();
+        // dbm.ConnectToDB("Rover.db");
     }
 
     //Create the initial maze
@@ -76,7 +76,7 @@ public class AlgorithmsSimulation : MonoBehaviour
     }
 
     private bool checkRunTimeStatus(){
-        return !(mazeCoverage >= 80 || batteryLife <= 0);
+        return !(mazeCoverage >= 70 || batteryLife <= 0);
     }
 
     private String calculateRunTime(){
