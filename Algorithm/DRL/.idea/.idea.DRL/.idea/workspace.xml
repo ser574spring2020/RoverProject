@@ -28,12 +28,11 @@
     <list default="true" id="e628e13a-4fd0-492c-8389-40d37d346689" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/DRL.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/DRL.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/ExploredMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/ExploredMap.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Map Generator/Assets/Scripts/AlgorithmsSimulation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Map Generator/Assets/Scripts/AlgorithmsSimulation.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +45,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/DRL/MazeCell.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DRL/DRL.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/Properties/AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DRL/TestsDRL.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DRL/TestsExploration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DRL/TestsMazeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
@@ -55,7 +55,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/DRL/ExploredMap.cs" />
         <option value="$PROJECT_DIR$/DRL/MazeCell.cs" />
         <option value="$PROJECT_DIR$/DRL/TestsExploration.cs" />
         <option value="$PROJECT_DIR$/DRL/TestsMazeGenerator.cs" />
@@ -63,6 +62,7 @@
         <option value="$PROJECT_DIR$/DRL/DatasetGenerator.cs" />
         <option value="$PROJECT_DIR$/DRL/MazeGenerator.cs" />
         <option value="$PROJECT_DIR$/DRL/DRL.cs" />
+        <option value="$PROJECT_DIR$/DRL/ExploredMap.cs" />
       </list>
     </option>
   </component>
@@ -107,6 +107,7 @@
       <workItem from="1587152709010" duration="1663000" />
       <workItem from="1587350181977" duration="1560000" />
       <workItem from="1587359732751" duration="5392000" />
+      <workItem from="1587426023465" duration="2873000" />
     </task>
     <servers />
   </component>
@@ -139,19 +140,23 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="519" y="311" width="872" height="454" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1587362013607" />
+    <state x="0" y="0" width="910" height="1080" key="find.popup" timestamp="1587428707323">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="0" y="0" width="910" height="1080" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1587428707323" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/DRL/ExploredMap.cs</url>
-          <line>96</line>
+          <line>127</line>
           <properties documentPath="$PROJECT_DIR$/DRL/ExploredMap.cs" initialLine="96">
             <startOffsets>
-              <option value="3527" />
+              <option value="4588" />
             </startOffsets>
             <endOffsets>
-              <option value="3528" />
+              <option value="4589" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
