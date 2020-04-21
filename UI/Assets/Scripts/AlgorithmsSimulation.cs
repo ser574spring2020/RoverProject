@@ -33,7 +33,9 @@ public class AlgorithmsSimulation : MonoBehaviour
     private String algorithmSelected, mazeSize, sensorSelected, pointsScoredStr, mazeCoverageStr;
     private float mazeOffset = 140;
     private static database expDB;
+    private DataBaseManager dbm;
     private bool isSimulationComplete = false;
+    
 
     void Start()
     {
@@ -43,6 +45,9 @@ public class AlgorithmsSimulation : MonoBehaviour
         manualButton.onClick.AddListener(manualButtonListener);
         automaticButton.onClick.AddListener(automaticButtonListener);
         backButton.interactable = false;
+
+        dbm = new DataBaseManager();
+        dbm.ConnectToDB("Rover.db");
     }
 
     //Create the initial maze
@@ -102,6 +107,13 @@ public class AlgorithmsSimulation : MonoBehaviour
             int[,] sensorMatrix = sensor.Get_Obstacle_Matrix();
             int[,] matrix = getSensorsData();
             updateSensorMaze(sensorMatrix, matrix);
+            Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+
+
+            // update SensorType here
+            //dbm.SetSensorMatrixById(unixTimestamp, 1, sensorMatrix);
+
+
             String robotCommand = exploration.GetNextCommand(sensorMatrix);
             moveInDirection(robotCommand);
         }

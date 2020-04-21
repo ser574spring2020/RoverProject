@@ -67,23 +67,12 @@ public class Window_Graph : MonoBehaviour
         // print(yAxisValue_1);
         //GraphFlag = true;
 
-
-
-
-
-
-
-
     }
 
     public void onBarGraphButtonClick()
-
     {
-
         GraphFlag = true;
         onButtonClicked();
-
-
     }
 
     public void onLineGraphButtonClick()
