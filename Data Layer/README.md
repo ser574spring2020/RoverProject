@@ -25,26 +25,68 @@ dbm.ConnectToDB("Rover.db");
 Step 3. Refer the belows functions for further usage.
 
 ### Docs
-Currently, **FOUR** APIs are provided for accessing database (mocking data for now).
-Please see inside the documentation folder for more detail. 
+Currently, **NINE**(7 Undone) APIs are provided for accessing database.
+Please see inside the documentation folder for more detail.
+
+#### Sensor Team
 1. 
 ```
-public string[][] GetMazeById(int id)
+public int SetSensorMatrixById(int timestamp, int sensorId, int[,] matrix)
+```
+For example:<br>
+```
+int[,] matrix = new int[4, 4] { 
+{ 1, 1, 1, 1 }, 
+{ 1, 0, 0, 1 }, 
+{ 1, 0, 0, 1 }, 
+{ 1, 1, 1, 1 } 
+};
+int resultCode = dbm.SetSensorMatrixById(20200420, 2, matrix);
 ```
 
 2. 
 ```
-public int InsertMazeRecord(int id, int[] nodes, string[, ] edges)
+public int[,] GetSensorMatrixById(int sensorId, int timestamp)
+```
+For example:<br>
+```
+int[,] matrix = dbm.GetSensorMatrixById(2, 20200420);
 ```
 
-3. 
+#### Algorithm Team
+3. **Unfinish**
 ```
-public int UpdateMazeDirection(int id, string[] edges)
+public int CreateExploredMaze(int mazeId, int[,] exploredMaze)
 ```
 
-4. 
+4. **Unfinish**
 ```
-public int DeleteMazeById(int id)
+public string[][] GetMazeById(int mazeId)
+```
+
+5. **Unfinish**
+```
+public int UpdateMaze(int[,] updatedMaze)
+```
+
+6. **Unfinish**
+```
+public int UpdateCoverage(float mazeCoverage)
+```
+
+7. **Unfinish**
+```
+public int UpdateTimeTaken(int second)
+```
+
+8. **Unfinish**
+```
+public int UpdateMoveHistory(String[] path)
+```
+
+9. **Unfinish**
+```
+public int UpdatePoints(int points)
 ```
 
 ### Demo
