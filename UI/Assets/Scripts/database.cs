@@ -40,8 +40,6 @@ public class database : MonoBehaviour
     {
         ExperimentalDesignDb expdb = new ExperimentalDesignDb();
         Start();
-        TestSuiteDatabase tsd = new TestSuiteDatabase();
-        tsd.TestSelectValuesfromDB(yAxisValue);
         List<float> range= new List<float>();
             range = expdb.Select(dbConnection, yAxisValue, InputAlgorithmValue, MazeSizeValue, Threshold, SensorTypeValue);
             return range;
@@ -52,8 +50,6 @@ public class database : MonoBehaviour
     {
         ExperimentalDesignDb expdb = new ExperimentalDesignDb();
         Start();
-        TestSuiteDatabase tsd = new TestSuiteDatabase();
-        tsd.TestSelectValuesfromDB(yAxisValue);
         float range = expdb.minimumvalue(dbConnection,yAxisValue, InputAlgorithmValue, MazeSizeValue, Threshold, SensorTypeValue);
         print(range);
         return range;
@@ -63,8 +59,6 @@ public class database : MonoBehaviour
     {
         ExperimentalDesignDb expdb = new ExperimentalDesignDb();
         Start();
-        TestSuiteDatabase tsd = new TestSuiteDatabase();
-        tsd.TestSelectValuesfromDB(yAxisValue);
         float range = expdb.maximumvalue(dbConnection,yAxisValue, InputAlgorithmValue, MazeSizeValue, Threshold, SensorTypeValue);
         return range;
 
@@ -73,8 +67,6 @@ public class database : MonoBehaviour
     {
         ExperimentalDesignDb expdb = new ExperimentalDesignDb();
         Start();
-        TestSuiteDatabase tsd = new TestSuiteDatabase();
-        tsd.TestSelectValuesfromDB(yAxisValue);
         float range = expdb.averagevalue(dbConnection,yAxisValue, InputAlgorithmValue, MazeSizeValue, Threshold, SensorTypeValue);
         return range;
 
@@ -88,19 +80,8 @@ public class database : MonoBehaviour
         {
             ExperimentalDesignDb expdb = new ExperimentalDesignDb();
             Start();
-            TestSuiteDatabase tsd = new TestSuiteDatabase();
-            if (tsd.testUpdateTimeTaken(dbConnection, "SELECT COUNT(ID) FROM experimental_results where TimeTaken = 0 ;"))
-            {
-                expdb.Update(dbConnection, "UPDATE experimental_results SET TimeTaken='" + TimeTaken + "' WHERE ID IN (SELECT Max(ID) FROM experimental_results);");
-
+            expdb.Update(dbConnection, "UPDATE experimental_results SET TimeTaken='" + TimeTaken + "' WHERE ID IN (SELECT Max(ID) FROM experimental_results);");
             statusCode = 200;
-
-        }
-        else
-        {
-            statusCode = 400;
-        }
-
     }
         catch (SqliteException sqlEx)
         {
@@ -119,18 +100,8 @@ public class database : MonoBehaviour
         {
             ExperimentalDesignDb expdb = new ExperimentalDesignDb();
             Start();
-            TestSuiteDatabase tsd = new TestSuiteDatabase();
-            if (tsd.testUpdatePointsScored(dbConnection, "SELECT COUNT(ID) FROM experimental_results where TimeTaken = 0 ;"))
-            {
-                expdb.Update(dbConnection, "UPDATE experimental_results SET PointsScored='" + PointsScored + "' WHERE ID IN (SELECT Max(ID) FROM experimental_results);");
-                statusCode = 200;
-
-            }
-            else
-            {
-                statusCode = 400;
-            }
-
+            expdb.Update(dbConnection, "UPDATE experimental_results SET PointsScored='" + PointsScored + "' WHERE ID IN (SELECT Max(ID) FROM experimental_results);");
+            statusCode = 200;
         }
         catch (SqliteException sqlEx)
         {
@@ -149,16 +120,8 @@ public class database : MonoBehaviour
         {
             ExperimentalDesignDb expdb = new ExperimentalDesignDb();
             Start();
-            TestSuiteDatabase tsd = new TestSuiteDatabase();
-            if (tsd.testUpdateMazeCoverage(dbConnection, "SELECT COUNT(ID) FROM experimental_results where TimeTaken = 0 ;"))
-            {
-                expdb.Update(dbConnection, "UPDATE experimental_results SET MazeCoverage='" + MazeCoverage + "' WHERE ID IN (SELECT Max(ID) FROM experimental_results);");
-                statusCode = 200;
-            }
-            else
-            {
-                statusCode = 400;
-            }
+            expdb.Update(dbConnection, "UPDATE experimental_results SET MazeCoverage='" + MazeCoverage + "' WHERE ID IN (SELECT Max(ID) FROM experimental_results);");
+            statusCode = 200;
         }
         catch (SqliteException sqlEx)
         {
@@ -175,18 +138,10 @@ public class database : MonoBehaviour
         int statusCode = 0;
         try
         {
-         ExperimentalDesignDb expdb = new ExperimentalDesignDb();
-        Start();
-            TestSuiteDatabase tsd = new TestSuiteDatabase();
-            if (tsd.testUpdateMazeCoverage(dbConnection, "SELECT COUNT(ID) FROM experimental_results where TimeTaken = 0 ;"))
-            {
-                expdb.Update(dbConnection,"UPDATE experimental_results SET DroneLife=" + DroneLife + " WHERE ID IN (SELECT Max(ID) FROM experimental_results);");
-                statusCode = 200;
-            }
-            else
-            {
-                statusCode = 400;
-            }
+            ExperimentalDesignDb expdb = new ExperimentalDesignDb();
+            Start();
+            expdb.Update(dbConnection,"UPDATE experimental_results SET DroneLife=" + DroneLife + " WHERE ID IN (SELECT Max(ID) FROM experimental_results);");
+            statusCode = 200;
         }
         catch (SqliteException sqlEx)
         {
