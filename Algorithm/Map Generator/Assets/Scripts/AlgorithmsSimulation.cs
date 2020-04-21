@@ -20,7 +20,6 @@ public class AlgorithmsSimulation : MonoBehaviour
     GameObject[] mazeObjects, exploredMazeObjects;
     int counter = 0;
     int currentX=1,currentY=1;
-    // string path = @"/home/lisa/new.csv";
     int[,] maze;
     ExploredMap exploredMaze;
     System.Random rand = new System.Random();
@@ -169,6 +168,7 @@ public class AlgorithmsSimulation : MonoBehaviour
 
     void moveInDirection(string direction)
     {
+        exploration.WriteSensorDataToCsv(getSensorsData(), direction);
         if (direction == "North") 
         {
             move(-1, 0);
@@ -193,8 +193,8 @@ public class AlgorithmsSimulation : MonoBehaviour
             exploringRobot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
         } 
         updateSensorsData();
-            points.text = "Points: " + exploration.GetPoints().ToString();
-            coverage.text = "Coverage: " + exploration.GetCoverage().ToString();
+        points.text = "Points: " + exploration.GetPoints().ToString();
+        coverage.text = "Coverage: " + exploration.GetCoverage().ToString();
     }
 
     void move(int x, int y)

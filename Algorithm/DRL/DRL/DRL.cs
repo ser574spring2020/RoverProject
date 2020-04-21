@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.IO;
 using System.Runtime.InteropServices.ComTypes;
+using System.Text;
 using RandomSystem = System.Random;
 
 namespace Algorithms
@@ -116,6 +118,18 @@ namespace Algorithms
                     possibleDirections.Add("West");
             }
             return possibleDirections;
+        }
+        
+        public void WriteSensorDataToCsv(int[,] sensorData, string direction){
+            var path = Directory.GetCurrentDirectory();
+            string filePath = path + "/Datasets/Dataset.csv";
+            foreach (var item in sensorData)
+            {
+                File.AppendAllText(filePath,item.ToString(),Encoding.UTF8);
+                File.AppendAllText(filePath,",",Encoding.UTF8);
+            }
+            File.AppendAllText(filePath,direction+",",Encoding.UTF8);
+            File.AppendAllText(filePath, Environment.NewLine, Encoding.UTF8);
         }
     }
 }
