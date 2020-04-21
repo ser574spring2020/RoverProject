@@ -33,6 +33,7 @@ public class AlgorithmsSimulation : MonoBehaviour
     private String algorithmSelected, mazeSize, sensorSelected, pointsScoredStr, mazeCoverageStr;
     private float mazeOffset = 140;
     private static database expDB;
+    private bool isSimulationComplete = false;
 
     void Start()
     {
@@ -106,6 +107,7 @@ public class AlgorithmsSimulation : MonoBehaviour
         }
         else{
             CancelInvoke("getNextCommand");
+            isSimulationComplete = true;
             endTime = DateTime.Now.ToString(@"hh\:mm\:ss");
             runTime = calculateRunTime();
             // Debug.Log("RUN TIME : " + calculateRunTime());
@@ -254,7 +256,7 @@ public class AlgorithmsSimulation : MonoBehaviour
 
     void moveInDirection(string direction)
     {
-        batteryLife -= 100;
+        batteryLife--;
         if (direction == "North")
         {
             move(-1, 0);
@@ -289,5 +291,9 @@ public class AlgorithmsSimulation : MonoBehaviour
         maze[currentX, currentY] = 2;
         updateMaze();
         updateExplored();
+    }
+
+    public bool getIsSimulationComplete(){
+        return isSimulationComplete;
     }
 }
