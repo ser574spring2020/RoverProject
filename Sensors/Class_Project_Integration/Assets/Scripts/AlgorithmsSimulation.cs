@@ -34,6 +34,10 @@ public class AlgorithmsSimulation : MonoBehaviour
     private float mazeOffset = 140;
     private static database expDB;
     private bool isSimulationComplete = false;
+    private DataBaseManager dbm;
+    private int resultcode = 0;
+    public Slider healthBar;
+
 
     void Start()
     {
@@ -43,6 +47,9 @@ public class AlgorithmsSimulation : MonoBehaviour
         manualButton.onClick.AddListener(manualButtonListener);
         automaticButton.onClick.AddListener(automaticButtonListener);
         backButton.interactable = false;
+
+        dbm = new DataBaseManager();
+        dbm.ConnectToDB("Rover.db");
     }
 
     //Create the initial maze
@@ -81,17 +88,18 @@ public class AlgorithmsSimulation : MonoBehaviour
 
     private void UpdateParameters()
     {
-        //Debug.Log("ALGORITHM SELECTED : " + GameObject.Find("AlgoButton").GetComponentInChildren<Text>().text);
+        Debug.Log("ALGORITHM SELECTED : " + GameObject.Find("AlgoButton").GetComponentInChildren<Text>().text);
         
         placementThreshold = float.Parse(GameObject.Find("MazeButton").GetComponentInChildren<Text>().text);
         String[] size = GameObject.Find("SizeButton").GetComponentInChildren<Text>().text.ToString().Split('X');
         mazeWidth = Int32.Parse(size[0].Trim());
         mazeHeight = Int32.Parse(size[1].Trim());
-        //Debug.Log("SENSOR SELECTED : " + GameObject.Find("SensorButton").GetComponentInChildren<Text>().text);
+        Debug.Log("SENSOR SELECTED : " + GameObject.Find("SensorButton").GetComponentInChildren<Text>().text);
     }
 
     void getNextCommand()
     {
+        healthBar.value = batteryLife;
         mazeCoverageStr = exploration.GetCoverage().ToString();
         pointsScoredStr = exploration.GetPoints().ToString();
         mazeCoverage = Int32.Parse(mazeCoverageStr);
@@ -102,6 +110,10 @@ public class AlgorithmsSimulation : MonoBehaviour
             int[,] sensorMatrix = sensor.Get_Obstacle_Matrix();
             int[,] matrix = getSensorsData();
             updateSensorMaze(sensorMatrix, matrix);
+
+            Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+            // update SensorType here
+            resultcode = dbm.SetSensorMatrixById(unixTimestamp, 1, sensorMatrix);            
             String robotCommand = exploration.GetNextCommand(sensorMatrix);
             moveInDirection(robotCommand);
         }
@@ -120,6 +132,15 @@ public class AlgorithmsSimulation : MonoBehaviour
             Debug.Log("Points : " + pointsScored);
             sendDateToExpDesign();
             Debug.Log("Maze Coverage : " + mazeCoverage);
+
+            if (resultcode == 1)
+            {
+                Debug.Log("Sensors Data has been successfully logged into rover.db");
+            }
+            else
+            {
+                Debug.LogError("Could not log Sensor Data to rover.db");
+            }
         }
     }
 
