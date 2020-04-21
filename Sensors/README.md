@@ -17,11 +17,18 @@
 [SensorsComponent.dll](/Sensors/Sensors/Assets/Scenes/)
 
 #### DLL C Sharp Project
-[DLL Project](/Sensors/Assets/Dll Library Project/)
+[DLL Project](/Sensors/Assets/Dll_Library_Project/)
 
+#### DLL APIs
 ```
 class SensorsComponent
-  └── void String printSensors()
+  └── class Sensors
+        └── int[,] Get_Obstacle_Matrix() 
+        └── string GetCurrentSensor()
+        └── void Update_Obstacles(GameObject gameObj)
+        └── class SensorFactory
+              └── Sensors GetInstance(int sensorType, GameObject gObj)
+              └── Sensors GetInstance() 
   ```
   
 ## Contributors
