@@ -28,9 +28,9 @@ public class AlgorithmsSimulation : MonoBehaviour
     Exploration exploration;
     // Sensors1.Sensors sensor;
     private static SensorsComponent.Sensors sensor;
-    private String startTime, endTime;
-    private int batteryLife, mazeCoverage, allowedRunTime = 3600;
-    private String algorithmSelected, mazeSize, sensorSelected;
+    private String startTime, endTime, runTime;
+    private int mazeCoverage, batteryLife = 3600, pointsScored;
+    private String algorithmSelected, mazeSize, sensorSelected, pointsScoredStr, mazeCoverageStr;
     private float mazeOffset = 140;
 
     void Start()
@@ -45,7 +45,6 @@ public class AlgorithmsSimulation : MonoBehaviour
     //Create the initial maze
     void createMazeButtonListener()
     {
-        startTime = DateTime.Now.ToString("mm:ss");
         UpdateParameters();
         mazeObjects = new GameObject[mazeHeight * mazeWidth];
         exploredMazeObjects = new GameObject[mazeHeight * mazeWidth];
@@ -64,61 +63,58 @@ public class AlgorithmsSimulation : MonoBehaviour
     }
 
     void automaticButtonListener(){
+        startTime = DateTime.Now.ToString(@"hh\:mm\:ss");
         InvokeRepeating("getNextCommand", 0.1f, 0.1f);
     }
 
     private bool checkRunTimeStatus(){
-        if(mazeCoverage >= 80 || batteryLife <= 0 || allowedRunTime <= 0){
-            //enable back button
-            backButton.interactable = true;
-            // get explored maze from algo dll
-
-            // calculate end time
-            endTime = DateTime.Now.ToString("mm:ss");
-            String runTime = calculateRunTime();
-            // store the info in DB
-            return false;
-        }
-        return true;
+        return !(mazeCoverage >= 80 || batteryLife <= 0);
     }
 
     private String calculateRunTime(){
         TimeSpan duration = DateTime.Parse(endTime).Subtract(DateTime.Parse(startTime));
-        return duration.ToString(@"mm\:ss");
+        return duration.ToString(@"hh\:mm\:ss");
     }
 
     private void UpdateParameters()
     {
-        Debug.Log("ALGORITHM SELECTED : " + GameObject.Find("AlgoButton").GetComponentInChildren<Text>().text);
+        //Debug.Log("ALGORITHM SELECTED : " + GameObject.Find("AlgoButton").GetComponentInChildren<Text>().text);
         
         placementThreshold = float.Parse(GameObject.Find("MazeButton").GetComponentInChildren<Text>().text);
         String[] size = GameObject.Find("SizeButton").GetComponentInChildren<Text>().text.ToString().Split('X');
         mazeWidth = Int32.Parse(size[0].Trim());
         mazeHeight = Int32.Parse(size[1].Trim());
-        Debug.Log("SENSOR SELECTED : " + GameObject.Find("SensorButton").GetComponentInChildren<Text>().text);
+        //Debug.Log("SENSOR SELECTED : " + GameObject.Find("SensorButton").GetComponentInChildren<Text>().text);
     }
 
     void getNextCommand()
     {
-        updateSensorsData(getSensorsData());
-        // updateSensorsTeamData();
-        int[,] sensorMatrix = sensor.Get_Obstacle_Matrix();
-        int[,] matrix = getSensorsData();
-        updateSensorMaze(sensorMatrix, matrix);
-        String robotCommand = exploration.GetNextCommand(sensorMatrix);
-        moveInDirection(robotCommand);
-        // if(checkRunTimeStatus()){
-        //     updateSensorsData(getSensorsData());
-        //     // updateSensorsTeamData();
-        //     int[,] sensorMatrix = sensor.Get_Obstacle_Matrix();
-        //     int[,] matrix = getSensorsData();
-        //     updateSensorMaze(sensorMatrix, matrix);
-        //     String robotCommand = exploration.GetNextCommand(sensorMatrix);
-        //     moveInDirection(robotCommand);
-        // }
-        // else{
-        //     CancelInvoke("getNextCommand");
-        // }
+        mazeCoverageStr = exploration.GetCoverage().ToString();
+        pointsScoredStr = exploration.GetPoints().ToString();
+        mazeCoverage = Int32.Parse(mazeCoverageStr);
+        pointsScored = Int32.Parse(pointsScoredStr);
+        if(checkRunTimeStatus()){
+            updateSensorsData(getSensorsData());
+            // updateSensorsTeamData();
+            int[,] sensorMatrix = sensor.Get_Obstacle_Matrix();
+            int[,] matrix = getSensorsData();
+            updateSensorMaze(sensorMatrix, matrix);
+            String robotCommand = exploration.GetNextCommand(sensorMatrix);
+            moveInDirection(robotCommand);
+        }
+        else{
+            CancelInvoke("getNextCommand");
+            endTime = DateTime.Now.ToString(@"hh\:mm\:ss");
+            Debug.Log("RUN TIME : " + calculateRunTime());
+            //enable back button
+            backButton.interactable = true;
+            // calculate end time
+            Debug.Log("END TIME : " + runTime);
+            // store the info in DB
+            Debug.Log("Battery Life : " + batteryLife);
+            Debug.Log("Points : " + pointsScored);
+            Debug.Log("Maze Coverage : " + mazeCoverage);
+        }
     }
 
     // proximity, bumper - 3x3
@@ -238,7 +234,7 @@ public class AlgorithmsSimulation : MonoBehaviour
 
     void moveInDirection(string direction)
     {
-        allowedRunTime--;
+        batteryLife--;
         if (direction == "North")
         {
             move(-1, 0);
