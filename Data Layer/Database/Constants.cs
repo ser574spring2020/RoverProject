@@ -31,5 +31,8 @@ namespace Assets.Scripts.Database {
         public static readonly string COLUMN_CONNECTTO = "ConnectTo";
         public static readonly string COLUMN_DIRECTION = "Direction";
         public static readonly string COLUMN_DESCRIPTION = "Description";
+
+        public static readonly string SENSOR_CONTENT = "Content";
+        public static readonly string SENSOR_TIMESTAMP = "TimeStamp";
     }
 }
