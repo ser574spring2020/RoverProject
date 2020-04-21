@@ -35,7 +35,7 @@ public class AlgorithmsSimulation : MonoBehaviour
     private static database expDB;
     private DataBaseManager dbm;
     private bool isSimulationComplete = false;
-    
+    public Slider healthBar;
 
     void Start()
     {
@@ -97,6 +97,7 @@ public class AlgorithmsSimulation : MonoBehaviour
 
     void getNextCommand()
     {
+        healthBar.value = batteryLife;
         mazeCoverageStr = exploration.GetCoverage().ToString();
         pointsScoredStr = exploration.GetPoints().ToString();
         mazeCoverage = Int32.Parse(mazeCoverageStr);
