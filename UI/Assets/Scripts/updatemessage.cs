@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-using TMPro;
 using ExperimentalDesign;
 using UnityEngine.SceneManagement;
 
 public class updatemessage : MonoBehaviour
 {
-    public TMPro.TMP_Dropdown InputAlgorithm;
-    public TMPro.TMP_Dropdown MazeSize;
-    public TMPro.TMP_Dropdown SensorType;
-    public TMPro.TMP_InputField Thresholdvalue;
+    public Dropdown InputAlgorithm;
+    public Dropdown MazeSize;
+    public Dropdown SensorType;
+    public InputField Thresholdvalue;
     public Text Result;
 
 
@@ -30,7 +29,7 @@ public class updatemessage : MonoBehaviour
         options_list = experimentalDesign.setAlgorithm();
         foreach (string algorithm in options_list)
         {
-            InputAlgorithm.options.Add(new TMP_Dropdown.OptionData() { text = algorithm });
+            InputAlgorithm.options.Add(new Dropdown.OptionData() { text = algorithm });
         }
         InputAlgorithm.value = 1;
         InputAlgorithm.value = 0;
@@ -41,7 +40,7 @@ public class updatemessage : MonoBehaviour
         options_list = experimentalDesign.setMazeSize();
         foreach (string maze_size in options_list)
         {
-            MazeSize.options.Add(new TMP_Dropdown.OptionData() { text = maze_size });
+            MazeSize.options.Add(new Dropdown.OptionData() { text = maze_size });
         }
         MazeSize.value = 1;
         MazeSize.value = 0;
@@ -50,7 +49,7 @@ public class updatemessage : MonoBehaviour
         options_list = experimentalDesign.setSensors();
         foreach (string sensor in options_list)
         {
-            SensorType.options.Add(new TMP_Dropdown.OptionData() { text = sensor });
+            SensorType.options.Add(new Dropdown.OptionData() { text = sensor });
         }
         SensorType.value = 1;
         SensorType.value = 0;
@@ -60,13 +59,12 @@ public class updatemessage : MonoBehaviour
         string value = "";
         float thresholdval = 2.0F;
 
-        InputAlgorithm = GameObject.Find("Algorithm").GetComponent<TMPro.TMP_Dropdown>();
+        InputAlgorithm = GameObject.Find("Algorithm").GetComponent<Dropdown>();
         string InputAlgorithmValue = InputAlgorithm.captionText.text;
-        MazeSize = GameObject.Find("MazeSize").GetComponent<TMPro.TMP_Dropdown>();
+        MazeSize = GameObject.Find("MazeSize").GetComponent<Dropdown>();
         string MazeSizeValue = MazeSize.captionText.text;
-        SensorType = GameObject.Find("SensorType").GetComponent<TMPro.TMP_Dropdown>();
+        SensorType = GameObject.Find("SensorType").GetComponent<Dropdown>();
         string SensorTypeValue = SensorType.captionText.text;
-        // result  =  GameObject.Find("Status_text").GetComponent<InputField>();
 
         try
         {
@@ -78,7 +76,7 @@ public class updatemessage : MonoBehaviour
             string alertmessage = "Kindly enter the value of Placement Threshold or Enter values in range 0 to 1";
             Result.text = alertmessage;
         }
-        SensorType = GameObject.Find("SensorType").GetComponent<TMPro.TMP_Dropdown>();
+        SensorType = GameObject.Find("SensorType").GetComponent<Dropdown>();
         SensorTypeValue = SensorType.captionText.text;
 
 
@@ -86,10 +84,6 @@ public class updatemessage : MonoBehaviour
         {
 
             SceneManager.LoadScene("UI", LoadSceneMode.Single);
-
-
-            // updatedmessage = "Simulation is running with " + InputAlgorithmValue + " as Algorithm Type, " + value + " as Threshold Value, " + MazeSizeValue + " as Maze Size, " + SensorTypeValue + " as sensors.";
-            //Result.text = updatedmessage;
         }
         else
         {

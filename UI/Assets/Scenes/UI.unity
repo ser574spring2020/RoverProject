@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1078,7 +1078,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 419258963}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 100, y: 200, z: -20}
+  m_LocalPosition: {x: 146, y: 200, z: -109}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2032,7 +2032,7 @@ Transform:
   m_GameObject: {fileID: 1048137418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 107.60609, y: 1.5, z: 27.888882}
+  m_LocalScale: {x: 110, y: 1, z: 110}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -2054,9 +2054,9 @@ MonoBehaviour:
     type: 3}
   robotPrefab: {fileID: 1348762673267017228, guid: 4c6fcb0a8627340aea602c4301b26f24,
     type: 3}
-  floorPrefab: {fileID: 8027592862836915392, guid: 2d47f564e4aab98ad9c468a68451094b,
+  floorPrefab: {fileID: 8027592862836915392, guid: a2b2e34b7cc7247989c7ea916dcc99c7,
     type: 3}
-  visitedFloorPrefab: {fileID: 8027592862836915392, guid: 43d5361e8ac4913bf9988ac694a7bae7,
+  visitedFloorPrefab: {fileID: 8027592862836915392, guid: 56dec61008ea443e6859425c8817c8f2,
     type: 3}
   createMaze: {fileID: 1927391375}
   backButton: {fileID: 1713630395}

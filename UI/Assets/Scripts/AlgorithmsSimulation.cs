@@ -31,6 +31,7 @@ public class AlgorithmsSimulation : MonoBehaviour
     private String startTime, endTime;
     private int batteryLife, mazeCoverage, allowedRunTime = 3600;
     private String algorithmSelected, mazeSize, sensorSelected;
+    private float mazeOffset = 140;
 
     void Start()
     {
@@ -88,13 +89,13 @@ public class AlgorithmsSimulation : MonoBehaviour
 
     private void UpdateParameters()
     {
-        // Debug.Log("VALUE IN METHOD : " + GameObject.Find("MazeButton").GetComponentInChildren<Text>().text);
-        // GameObject.Find("AlgoButton").GetComponentInChildren<Text>().text
+        Debug.Log("ALGORITHM SELECTED : " + GameObject.Find("AlgoButton").GetComponentInChildren<Text>().text);
+        
         placementThreshold = float.Parse(GameObject.Find("MazeButton").GetComponentInChildren<Text>().text);
         String[] size = GameObject.Find("SizeButton").GetComponentInChildren<Text>().text.ToString().Split('X');
-        mazeHeight = Int32.Parse(size[0].Trim());
-        mazeWidth = Int32.Parse(size[1].Trim());
-        // GameObject.Find("SensorButton").GetComponentInChildren<Text>().text
+        mazeWidth = Int32.Parse(size[0].Trim());
+        mazeHeight = Int32.Parse(size[1].Trim());
+        Debug.Log("SENSOR SELECTED : " + GameObject.Find("SensorButton").GetComponentInChildren<Text>().text);
     }
 
     void getNextCommand()
@@ -163,6 +164,9 @@ public class AlgorithmsSimulation : MonoBehaviour
 
     void updateExplored()
     {
+        if(mazeWidth == 50){
+            mazeOffset = 190;
+        }
         exploredMaze = exploration.GetExploredMap();
         for (int i = 0; i < exploredMazeObjects.Length; i++)
             Destroy(exploredMazeObjects[i]);
@@ -172,7 +176,7 @@ public class AlgorithmsSimulation : MonoBehaviour
         for (int i = 0; i < mazeHeight; i++)
             for (int j = 0; j < mazeWidth; j++)
             {
-                Vector3 tempVector = new Vector3(xStart + (xSpace * j)+140, 0, yStart - (ySpace * i));
+                Vector3 tempVector = new Vector3(xStart + (xSpace * j)+mazeOffset, 0, yStart - (ySpace * i));
                 MazeCell mazeCell = exploredMaze.GetCell(new Vector2Int(i,j));
                 if(mazeCell == null)
                     continue;
@@ -184,7 +188,7 @@ public class AlgorithmsSimulation : MonoBehaviour
                     exploredMazeObjects[counter++] = Instantiate(visitedFloorPrefab, tempVector, Quaternion.identity);
             }
         Vector2Int vector = exploredMaze.GetCurrentPosition();
-        Vector3 robotPosition = new Vector3(xStart + (xSpace * vector.y)+140,0, yStart - (ySpace * vector.x));
+        Vector3 robotPosition = new Vector3(xStart + (xSpace * vector.y)+mazeOffset,0, yStart - (ySpace * vector.x));
         exploredMazeObjects[counter] = Instantiate(robotPrefab, robotPosition, Quaternion.identity);
         exploringRobot = exploredMazeObjects[counter++];
     }

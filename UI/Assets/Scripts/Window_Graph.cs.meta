@@ -3,7 +3,17 @@ guid: 483de110839d6427590ceab3f7235198
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - dotSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  - yAxis: {instanceID: 0}
+  - InputAlgorithm: {instanceID: 0}
+  - MazeSize: {instanceID: 0}
+  - SensorType: {instanceID: 0}
+  - Thresholdvalue: {instanceID: 0}
+  - Maxvalue: {instanceID: 0}
+  - MinValue: {instanceID: 0}
+  - AverageValue: {instanceID: 0}
+  - StatusText: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
