@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Data Layer/Database/Constants.cs.meta
 guid: 67f00af6171b51041a6b8f48653dc56e
-=======
-guid: a5ebb11c6fc3a2f498bd89593f7744aa
->>>>>>> fbaba141fa674f96ec45968b1f50e40b04da82fc:Sensors/AmbientSensor/Library/PackageCache/com.unity.analytics@3.2.2/DataPrivacy/DataPrivacyButton.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
