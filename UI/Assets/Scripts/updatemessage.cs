@@ -57,7 +57,7 @@ public class updatemessage : MonoBehaviour
     public void updateText()
     {
         string value = "";
-        float thresholdval = 2.0F;
+        double thresholdval = 2.0F;
 
         InputAlgorithm = GameObject.Find("Algorithm").GetComponent<Dropdown>();
         string InputAlgorithmValue = InputAlgorithm.captionText.text;
@@ -82,7 +82,9 @@ public class updatemessage : MonoBehaviour
 
         if (!string.IsNullOrEmpty(value) && (thresholdval >= 0 && thresholdval <= 1))
         {
-
+            database db = new database();
+            thresholdval = Math.Round(thresholdval, 2);
+            db.Insert(InputAlgorithmValue, MazeSizeValue, thresholdval, SensorTypeValue, "Training");
             SceneManager.LoadScene("UI", LoadSceneMode.Single);
         }
         else

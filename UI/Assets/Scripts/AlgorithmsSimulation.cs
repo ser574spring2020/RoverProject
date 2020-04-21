@@ -32,11 +32,14 @@ public class AlgorithmsSimulation : MonoBehaviour
     private int mazeCoverage, batteryLife = 3600, pointsScored;
     private String algorithmSelected, mazeSize, sensorSelected, pointsScoredStr, mazeCoverageStr;
     private float mazeOffset = 140;
+    private static database expDB;
+    private bool isSimulationComplete = false;
 
     void Start()
     {
         sensor = SensorsComponent.SensorFactory.GetInstance(1, robotPrefab);
         createMaze.onClick.AddListener(createMazeButtonListener);
+        expDB = new database();
         manualButton.onClick.AddListener(manualButtonListener);
         automaticButton.onClick.AddListener(automaticButtonListener);
         backButton.interactable = false;
@@ -104,8 +107,10 @@ public class AlgorithmsSimulation : MonoBehaviour
         }
         else{
             CancelInvoke("getNextCommand");
+            isSimulationComplete = true;
             endTime = DateTime.Now.ToString(@"hh\:mm\:ss");
-            Debug.Log("RUN TIME : " + calculateRunTime());
+            runTime = calculateRunTime();
+            // Debug.Log("RUN TIME : " + calculateRunTime());
             //enable back button
             backButton.interactable = true;
             // calculate end time
@@ -113,8 +118,25 @@ public class AlgorithmsSimulation : MonoBehaviour
             // store the info in DB
             Debug.Log("Battery Life : " + batteryLife);
             Debug.Log("Points : " + pointsScored);
+            sendDateToExpDesign();
             Debug.Log("Maze Coverage : " + mazeCoverage);
         }
+    }
+
+    private float getTimeInSeconds(String time){
+        String[] timeSplit = time.Split(':');
+        int timeTaken = Int32.Parse(timeSplit[0].Trim())*3600
+            + Int32.Parse(timeSplit[1].Trim())*60
+            + Int32.Parse(timeSplit[2].Trim());
+        return (float) timeTaken;        
+    }
+
+    private void sendDateToExpDesign(){
+        expDB.UpdatePointsScored((float) pointsScored);
+        expDB.UpdateMazeCoverage((float) mazeCoverage);
+        expDB.UpdateDroneLife((float) batteryLife);
+        // getTimeInSeconds(runTime);
+        expDB.UpdateTimeTaken(getTimeInSeconds(runTime));
     }
 
     // proximity, bumper - 3x3
@@ -269,5 +291,9 @@ public class AlgorithmsSimulation : MonoBehaviour
         maze[currentX, currentY] = 2;
         updateMaze();
         updateExplored();
+    }
+
+    public bool getIsSimulationComplete(){
+        return isSimulationComplete;
     }
 }

@@ -15,6 +15,7 @@ public class SensorController : MonoBehaviour
 {
     // for dll; for normal execution comment this
     private static SensorsComponent.Sensors sensor;
+    private AlgorithmsSimulation algorithmsSimulation;
 
     // for normal unity execution uncomment this
     //private static Sensors sensor;
@@ -23,6 +24,7 @@ public class SensorController : MonoBehaviour
     public GameObject Cube;
     void Start(){
         sensor = SensorsComponent.SensorFactory.GetInstance(1, Cube);
+        algorithmsSimulation = new AlgorithmsSimulation();
         Debug.Log(sensor.GetCurrentSensor());
         
     }
@@ -31,7 +33,9 @@ public class SensorController : MonoBehaviour
     void Update()
     {
         // changePosRover();
-        sensor.Update_Obstacles(Cube);        
+        if(!algorithmsSimulation.getIsSimulationComplete()){
+            sensor.Update_Obstacles(Cube);
+        }
         // sensor.SetSensorType(1);
         // int[,] matrix = sensor.Get_Obstacle_Matrix();
         // testProximityMatrix(matrix);
