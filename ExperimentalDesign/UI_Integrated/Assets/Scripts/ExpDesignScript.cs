@@ -12,11 +12,13 @@ public class ExpDesignScript : MonoBehaviour
     public Dropdown InputAlgorithm;
     public Dropdown MazeSize;
     public Dropdown SensorType;
-    public InputField Thresholdvalue;
+    public Slider Thresholdvalue;
     public Dropdown ExperimentType;
-    public InputField NumberOfExperiments;
+    public Slider NumberOfExperiments;
     public Text Result;
     public String[] inputs;
+    public Text slidervalue;
+    public Text sliderval;
 
     // Start is called before the first frame update
 
@@ -67,6 +69,16 @@ public class ExpDesignScript : MonoBehaviour
         ExperimentType.value = 1;
         ExperimentType.value = 0;
     }
+    public void updateslider()
+    {
+        float updatedvalue=Thresholdvalue.value;
+        slidervalue.text = updatedvalue.ToString();
+    }
+    public void sliderupdate()
+    {
+        float updatedval = NumberOfExperiments.value;
+        sliderval.text = updatedval.ToString();
+    }
     public void updateText()
     {
 
@@ -83,7 +95,7 @@ public class ExpDesignScript : MonoBehaviour
 
         try
         {
-            value1 = NumberOfExperiments.text;
+            value1 = (NumberOfExperiments.value).ToString();
             experimentVal = int.Parse(value1);
         }
         catch (FormatException fe)
@@ -94,7 +106,7 @@ public class ExpDesignScript : MonoBehaviour
 
         try
         {
-            value = Thresholdvalue.text;
+            value = (Thresholdvalue.value).ToString();
             thresholdval = float.Parse(value);
 
         }
