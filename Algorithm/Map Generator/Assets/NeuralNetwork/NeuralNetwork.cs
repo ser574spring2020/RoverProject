@@ -1,6 +1,5 @@
-﻿using System;
-using System.Diagnostics;
-using UnityEngine;
+﻿using System.Diagnostics;
+using System.Linq;
 
 namespace NeuralNet
 {
@@ -15,10 +14,35 @@ namespace NeuralNet
     
         public string getNextCommands()
         {
-            return nextCommands=NeuralNetwork.NeuralNEtworkConnection();
+             nextCommands=NeuralNetwork.NeuralNEtworkConnection();
+            // Direction as per North
+            // If you are facing North then Left is West
+            // Right is East
+            
+            if (nextCommands.Contains('3'))
+            {
+                nextCommands = "South";
+            }
+            else if (nextCommands.Contains('4'))
+            {
+                nextCommands = "West";
+            }
+            else if (nextCommands.Contains('2'))
+            {
+                nextCommands = "East";
+            }
+            else if (nextCommands.Contains('1'))
+            {
+                nextCommands = "North";
+            }
+            else {
+                nextCommands = "Error";
+            }
+            
+            return nextCommands;
         }
         
-        static string NeuralNEtworkConnection()
+        public static string NeuralNEtworkConnection()
         {
            
             var psi = new ProcessStartInfo();
@@ -33,7 +57,7 @@ namespace NeuralNet
             psi.RedirectStandardOutput = true;
             psi.RedirectStandardError = true;
             var errors = "";
-            var results = "";
+            string results = "";
             using (var process = Process.Start(psi))
             {
                 errors = process.StandardError.ReadToEnd();
