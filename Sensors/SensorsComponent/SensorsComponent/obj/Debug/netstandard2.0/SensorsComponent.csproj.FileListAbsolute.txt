@@ -1,0 +1,11 @@
+C:\Users\adalvi1\source\repos\SensorsComponent\SensorsComponent\bin\Debug\netstandard2.0\SensorsComponent.deps.json
+C:\Users\adalvi1\source\repos\SensorsComponent\SensorsComponent\bin\Debug\netstandard2.0\SensorsComponent.dll
+C:\Users\adalvi1\source\repos\SensorsComponent\SensorsComponent\bin\Debug\netstandard2.0\SensorsComponent.pdb
+C:\Users\adalvi1\source\repos\SensorsComponent\SensorsComponent\bin\Debug\netstandard2.0\UnityEngine.dll
+C:\Users\adalvi1\source\repos\SensorsComponent\SensorsComponent\bin\Debug\netstandard2.0\UnityEngine.xml
+C:\Users\adalvi1\source\repos\SensorsComponent\SensorsComponent\obj\Debug\netstandard2.0\SensorsComponent.csprojAssemblyReference.cache
+C:\Users\adalvi1\source\repos\SensorsComponent\SensorsComponent\obj\Debug\netstandard2.0\SensorsComponent.AssemblyInfoInputs.cache
+C:\Users\adalvi1\source\repos\SensorsComponent\SensorsComponent\obj\Debug\netstandard2.0\SensorsComponent.AssemblyInfo.cs
+C:\Users\adalvi1\source\repos\SensorsComponent\SensorsComponent\obj\Debug\netstandard2.0\SensorsComponent.csproj.CopyComplete
+C:\Users\adalvi1\source\repos\SensorsComponent\SensorsComponent\obj\Debug\netstandard2.0\SensorsComponent.dll
+C:\Users\adalvi1\source\repos\SensorsComponent\SensorsComponent\obj\Debug\netstandard2.0\SensorsComponent.pdb

@@ -15,16 +15,17 @@ using UnityEngine;
 public class SensorController : MonoBehaviour
 {
     // for dll; for normal execution comment this
-    private static SensorsComponent.Sensors sensor;
+    //private static SensorsComponent.Sensors sensor;
 
     // for normal unity execution uncomment this
-    //private static Sensors sensor;
+    private  Sensors sensor;
 
     private static int sensorType;
     public GameObject Cube;
     void Start() {
-        sensor = SensorsComponent.SensorFactory.GetInstance(getSensorType(), Cube);
-        Debug.Log(sensor.GetCurrentSensor());
+        //sensor = SensorsComponent.SensorFactory.GetInstance(getSensorType(), Cube);
+        sensor = SensorFactory.GetInstance(getSensorType(), Cube);
+        //Debug.Log(sensor.GetCurrentSensor());
         
     }
 
@@ -76,7 +77,7 @@ public class SensorController : MonoBehaviour
             sensorType = value;
         }
 
-        private int getSensorType()
+        public int getSensorType()
         {
             return sensorType;
         }
