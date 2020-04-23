@@ -15,6 +15,7 @@
         </e>
         <e p="TestsDRL.cs" t="Include" />
         <e p="TestsExploration.cs" t="Include" />
+        <e p="TestsExploredMaze.cs" t="Include" />
         <e p="TestsMazeGenerator.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive" />
