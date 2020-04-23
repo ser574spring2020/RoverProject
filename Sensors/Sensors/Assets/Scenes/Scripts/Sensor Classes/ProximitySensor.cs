@@ -18,28 +18,28 @@ class ProximitySensor : Sensors
                                       { 1, 0, 1 }};
         sensorLength = 2f;
     }
-    public override void update_Obstacles(GameObject gObj){
+    public override void Update_Obstacles(GameObject gObj){
 
         //Checks obstacles in 4 directions.
-        checkObstacle(gObj.transform.position,
+        CheckObstacle(gObj.transform.position,
                       Vector3.forward,
                       gObj, 0, "Front",
                       new int[] { 0, 1 },
                       new int[] { 0, 1 });
 
-        checkObstacle(gObj.transform.position,
+        CheckObstacle(gObj.transform.position,
                       Vector3.right,
                       gObj, 0, "Right",
                       new int[] { 1, 2},
                       new int[] { 1, 2});
 
-        checkObstacle(gObj.transform.position,
+        CheckObstacle(gObj.transform.position,
                       -Vector3.right,
                       gObj, 0, "Left",
                       new int[] { 1, 0 },
                       new int[] { 1, 0 });
 
-        checkObstacle(gObj.transform.position,
+        CheckObstacle(gObj.transform.position,
                       -Vector3.forward,
                       gObj, 0, "Back",
                       new int[] { 2, 1 },
