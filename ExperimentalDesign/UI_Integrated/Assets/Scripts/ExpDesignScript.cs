@@ -147,10 +147,74 @@ public class ExpDesignScript : MonoBehaviour
         PlayerPrefs.SetString("Size", MazeSizeValue);
         PlayerPrefs.SetString("Sensor", SensorTypeValue);
         PlayerPrefs.SetInt("Iteration", experimentVal);
-        PlayerPrefs.SetString("Experiment", ExperimentType.captionText.text); 
+        PlayerPrefs.SetString("Experiment", ExperimentType.captionText.text);
         PlayerPrefs.Save();
+    }
 
 
+    public void saveValues()
+    {
+
+        string alertmessage = "";
+        string value1 = "";
+        string value = "";
+        double thresholdval = 2.0F;
+        int experimentVal = 0;
+        InputAlgorithm = GameObject.Find("Algorithm").GetComponent<Dropdown>();
+        string InputAlgorithmValue = InputAlgorithm.captionText.text;
+        MazeSize = GameObject.Find("MazeSize").GetComponent<Dropdown>();
+        string MazeSizeValue = MazeSize.captionText.text;
+        TestSuite ts = new TestSuite();
+        int mazecoverageval = Convert.ToInt32(MazeCoverage.value);
+
+        try
+        {
+            value1 = (NumberOfExperiments.value).ToString();
+            experimentVal = int.Parse(value1);
+        }
+        catch (FormatException fe)
+        {
+            alertmessage += "Kindly enter the value of Number of Experiments or Enter values in range 1 to 100";
+            Result.text = alertmessage;
+        }
+
+        try
+        {
+            value = (Thresholdvalue.value).ToString();
+            thresholdval = float.Parse(value);
+
+        }
+        catch (FormatException fe)
+        {
+            alertmessage += "Kindly enter the value of Placement Threshold or Enter values in range 0 to 1";
+            Result.text = alertmessage;
+        }
+        SensorType = GameObject.Find("SensorType").GetComponent<Dropdown>();
+        string SensorTypeValue = SensorType.captionText.text;
+
+        print(thresholdval);
+        if ((!string.IsNullOrEmpty(value) && (thresholdval > 0 && thresholdval < 1)) && !string.IsNullOrEmpty(value1) && (experimentVal >= 1 && experimentVal <= 100))
+        {
+            database db = new database();
+            thresholdval = Math.Round(thresholdval, 2);
+            //inputs = new string[] { InputAlgorithmValue, MazeSizeValue, SensorTypeValue, ExperimentType.captionText.text };
+            //ts.testUpdateText(inputs);
+            Result.text = "All Values are valid. Please click Create Maze";
+        }
+        else
+        {
+            alertmessage = "Kindly enter the valid Values";
+            Result.text = alertmessage;
+        }
+
+        PlayerPrefs.SetInt("MazeCoverage", mazecoverageval);
+        PlayerPrefs.SetString("Algo", InputAlgorithmValue);
+        PlayerPrefs.SetString("Maze", thresholdval.ToString());
+        PlayerPrefs.SetString("Size", MazeSizeValue);
+        PlayerPrefs.SetString("Sensor", SensorTypeValue);
+        PlayerPrefs.SetInt("Iteration", experimentVal);
+        PlayerPrefs.SetString("Experiment", ExperimentType.captionText.text);
+        PlayerPrefs.Save();
     }
 
     public void changeScene(String sceneName)

@@ -57,6 +57,10 @@ public class AlgorithmsSimulation : MonoBehaviour
         // dbm.ConnectToDB("Rover.db");
     }
 
+    public void resetValues()
+    {
+        expCounter = 0;
+    }
     public void Begin()
     {
         int expc = expCounter + 1;
@@ -101,7 +105,7 @@ public class AlgorithmsSimulation : MonoBehaviour
             if(arrayCounter == 0)
                 maze = mazeGenerator.GenerateMaze(mazeHeight, mazeWidth, placementThreshold);
             maze[currentX, currentY] = 2;
-            //updateMaze();
+           // updateMaze();
             mazeCreated = true;
         }
         //arrayOfGameObjects.Add(mazeObjects);
@@ -189,6 +193,8 @@ public class AlgorithmsSimulation : MonoBehaviour
             arrayCounter++;
             if (expCounter < PlayerPrefs.GetInt("Iteration"))
                 Begin();
+           /* if (expCounter == PlayerPrefs.GetInt("Iteration"))
+                expCounter = 0;*/
         }
     }
 
@@ -330,24 +336,24 @@ public class AlgorithmsSimulation : MonoBehaviour
         if (direction == "North")
         {
             move(-1, 0);
-           // robot.transform.Rotate(0.0f, 270.0f, 0.0f, Space.Self);
+           //robot.transform.Rotate(0.0f, 270.0f, 0.0f, Space.Self);
             //exploringRobot.transform.Rotate(0.0f, 270.0f, 0.0f, Space.Self);
         }
         else if (direction == "East")
         {
             move(0, 1);
-           // robot.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
+          // robot.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
             //exploringRobot.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
         }
         else if (direction == "West")
         {
             move(0, -1);
-           // robot.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
+          // robot.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
            // exploringRobot.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
         }
         else if (direction == "South"){
             move(1, 0);
-          //  robot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
+          //robot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
           //  exploringRobot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
         }
     }
@@ -359,7 +365,7 @@ public class AlgorithmsSimulation : MonoBehaviour
         currentX += x;
         currentY += y;
         maze[currentX, currentY] = 2;
-        //updateMaze();
+       // updateMaze();
        // updateExplored();
     }
 
