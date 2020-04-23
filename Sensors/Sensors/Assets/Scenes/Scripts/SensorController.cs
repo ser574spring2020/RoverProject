@@ -8,6 +8,8 @@
 using System;
 using UnityEngine;
 
+
+
 /// <summary>
 /// This class is the controller class for all the sensors.
 /// </summary>
@@ -15,17 +17,16 @@ using UnityEngine;
 public class SensorController : MonoBehaviour
 {
     // for dll; for normal execution comment this
-    //private static SensorsComponent.Sensors sensor;
+    private static SensorsComponent.Sensors sensor;
 
     // for normal unity execution uncomment this
-    private  Sensors sensor;
+    //private  Sensors sensor;
 
     private static int sensorType;
     public GameObject Cube;
     void Start() {
-        //sensor = SensorsComponent.SensorFactory.GetInstance(getSensorType(), Cube);
-        sensor = SensorFactory.GetInstance(getSensorType(), Cube);
-        //Debug.Log(sensor.GetCurrentSensor());
+        sensor = SensorsComponent.SensorFactory.GetInstance(getSensorType(), Cube);
+        //sensor = SensorFactory.GetInstance(getSensorType(), Cube);        
         
     }
 
