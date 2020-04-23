@@ -425,9 +425,11 @@ public class DataBaseManager {
         SqlEncap sql = new SqlEncap();
         List<string> selectvalue = new List<string>();
         selectvalue.Add(Constants.COLUMN_ID);
-        selectvalue.Add(Constants.COLUMN_NODE);
-        selectvalue.Add(Constants.COLUMN_CONNECTTO);
-        selectvalue.Add(Constants.COLUMN_DIRECTION);
+        selectvalue.Add(Constants.MAZE_MATRIX);
+        selectvalue.Add(Constants.MAZE_COVERAGE);
+        selectvalue.Add(Constants.MAZE_TIMETAKEN);
+        selectvalue.Add(Constants.MAZE_HISTORY);
+        selectvalue.Add(Constants.MAZE_POINTS);
 
         Dictionary<string, string> condition = new Dictionary<string, string>();
 
@@ -437,7 +439,7 @@ public class DataBaseManager {
         {
             if (dataReader.Read())
             {
-                res.Add(new string[4] { dataReader[Constants.COLUMN_ID].ToString(), dataReader[Constants.COLUMN_NODE].ToString(), dataReader[Constants.COLUMN_CONNECTTO].ToString(), dataReader[Constants.COLUMN_DIRECTION].ToString() });
+                res.Add(new string[6] { dataReader[Constants.COLUMN_ID].ToString(), dataReader[Constants.MAZE_MATRIX].ToString(), dataReader[Constants.MAZE_COVERAGE].ToString(), dataReader[Constants.MAZE_TIMETAKEN].ToString(), dataReader[Constants.MAZE_HISTORY].ToString(), dataReader[Constants.MAZE_POINTS].ToString() });
             }
         }
         return res.ToArray();
