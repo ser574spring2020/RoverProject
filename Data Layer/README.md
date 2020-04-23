@@ -1,14 +1,6 @@
 ## Drone-Data-Layer
 ## SER 574: Advanced Software Design
 
-### Team Member
-* Bingrui Feng (rheafeng)
-* Huijing Liang (MollyLiang)
-* Jiayan Wang (jywang0)
-* Meng-Ze Chen (meng-ze)
-* Xinkai Wang (w546296781)
-* Yu-Ting Tsao (vin20777)
-
 ### Purpose
 **Provide a data layer library for the other team to use.**
 
@@ -54,43 +46,98 @@ int[,] matrix = dbm.GetSensorMatrixById(2, 20200420);
 ```
 
 #### Algorithm Team
-3. **Unfinish**
+3.
 ```
 public int CreateExploredMaze(int mazeId, int[,] exploredMaze)
 ```
+For example:<br>
+```
+int mazeId = 3;
+int[,] exploredMaze = new int[5, 5] { 
+{ 1, 1, -1, -1 }, 
+{ 1, 0, 0, -1 }, 
+{ 1, 0, 0, 1 }, 
+{ 1, 1, 1, 1 } 
+};
+int resultCode = dbm.CreateExploredMaze(mazeId, exploredMaze);
+```
 
-4. **Unfinish**
+4.
 ```
 public string[][] GetMazeById(int mazeId)
 ```
+For example:<br>
+```
+int mazeId = 3;
+int[,] storedMaze = dbm.GetMazeById(mazeId);
+```
 
-5. **Unfinish**
+5.
 ```
 public int UpdateMaze(int[,] updatedMaze)
 ```
+For example:<br>
+```
+int mazeId = 3;
+int[,] updatedMaze = new int[5, 5] { 
+{ 1, 1, 1, 1 }, 
+{ 1, 0, 0, 1 }, 
+{ 1, 0, 0, 1 }, 
+{ 1, 1, 1, 1 } 
+};
+int resultCode = dbm.UpdateMaze(mazeId, updatedMaze);
+```
 
-6. **Unfinish**
+6.
 ```
 public int UpdateCoverage(float mazeCoverage)
 ```
+For example:<br>
+```
+float mazeCoverage = 0.4;
+int resultCode = dbm.UpdateCoverage(mazeCoverage);
+```
 
-7. **Unfinish**
+7.
 ```
 public int UpdateTimeTaken(int second)
 ```
+For example:<br>
+```
+int second = 101;
+int resultCode = dbm.UpdateTimeTaken(second);
+```
 
-8. **Unfinish**
+8.
 ```
 public int UpdateMoveHistory(String[] path)
 ```
+For example:<br>
+```
+String[] path = new String[5] { "East", "East", "North", "East", "South" };
+int resultCode = dbm.UpdateMoveHistory(path);
+```
 
-9. **Unfinish**
+9.
 ```
 public int UpdatePoints(int points)
 ```
+For example:<br>
+```
+int points = 999;
+int resultCode = dbm.UpdatePoints(points);
+```
+
+### Team Member
+* Bingrui Feng (rheafeng)
+* Huijing Liang (MollyLiang)
+* Jiayan Wang (jywang0)
+* Meng-Ze Chen (meng-ze)
+* Xinkai Wang (w546296781)
+* Yu-Ting Tsao (vin20777)
 
 ### Demo
-Please take a look at UnitTest.cs file or go our own GitHub Repo for the demo.<br>
+Please take a look at UnitTest.cs file or go our own GitHub Repo for the demo version.<br>
 https://github.com/vin20777/Drone-Data-Layer
 
 
