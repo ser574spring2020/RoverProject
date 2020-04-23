@@ -179,7 +179,7 @@ public class Window_Graph : MonoBehaviour
                     {
                         valueList.Add(item);
                     }
-                    ShowGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + "% Drone Life");
+                    ShowGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " Drone Life");
                     break;
                 default:
                     Debug.LogError("Improper command given!");
@@ -218,7 +218,7 @@ public class Window_Graph : MonoBehaviour
                     {
                         valueList.Add(item);
                     }
-                    ShowLineGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " % Drone Life");
+                    ShowLineGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " Drone Life");
                     break;
                 default:
                     Debug.LogError("Improper command given!");
@@ -273,7 +273,7 @@ public class Window_Graph : MonoBehaviour
                 {
                     valueList.Add(randNum.Next(0, 100));
                 }
-                ShowLineGraph(valueList, -1, (int _i) => "", (float _f) => Mathf.RoundToInt(_f) + "% Drone Life");
+                ShowLineGraph(valueList, -1, (int _i) => "", (float _f) => Mathf.RoundToInt(_f) + " Drone Life");
                 break;
             default:
                 Debug.LogError("Improper command given!");

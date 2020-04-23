@@ -117,7 +117,7 @@ public class AlgorithmsSimulation : MonoBehaviour
     }
 
     private bool checkRunTimeStatus(){
-        return !(mazeCoverage >= 70 || batteryLife <= 0);
+        return !(mazeCoverage >= PlayerPrefs.GetInt("MazeCoverage") || batteryLife <= 0);
     }
 
     private String calculateRunTime(){
@@ -326,7 +326,7 @@ public class AlgorithmsSimulation : MonoBehaviour
 
     void moveInDirection(string direction)
     {
-        batteryLife-=100;
+        batteryLife-=10;
         if (direction == "North")
         {
             move(-1, 0);

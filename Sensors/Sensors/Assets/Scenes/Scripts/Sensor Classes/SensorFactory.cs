@@ -4,8 +4,6 @@
     Version   : V2
     Email     : sparanj2@asu.edu | Arizona State University.
 */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SensorFactory : Sensors{
@@ -13,7 +11,7 @@ public class SensorFactory : Sensors{
         Uses Factory pattern and polymorphism to return the desired 
         Sensor type.
     */
-    public static Sensors getInstance(int sensorType, GameObject gObj){
+    public static Sensors GetInstance(int sensorType, GameObject gObj){
 
         Cube = gObj;
         Sensors _sensor;
@@ -43,7 +41,7 @@ public class SensorFactory : Sensors{
             return sensors;
     }
 
-    public static Sensors getInstance(){
+    public static Sensors GetInstance(){
         return sensors;
     }
 }

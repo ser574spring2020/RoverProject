@@ -19,6 +19,8 @@ public class ExpDesignScript : MonoBehaviour
     public String[] inputs;
     public Text slidervalue;
     public Text sliderval;
+    public Slider MazeCoverage;
+    public Text mazecoveragevalue;
 
     // Start is called before the first frame update
 
@@ -79,6 +81,11 @@ public class ExpDesignScript : MonoBehaviour
         float updatedval = NumberOfExperiments.value;
         sliderval.text = updatedval.ToString();
     }
+    public void slidermazecoverage()
+    {
+        int coveragevalue = Convert.ToInt32(MazeCoverage.value);
+        mazecoveragevalue.text = coveragevalue.ToString();
+    }
     public void updateText()
     {
 
@@ -92,6 +99,7 @@ public class ExpDesignScript : MonoBehaviour
         MazeSize = GameObject.Find("MazeSize").GetComponent<Dropdown>();
         string MazeSizeValue = MazeSize.captionText.text;
         TestSuite ts = new TestSuite();
+        int mazecoverageval = Convert.ToInt32(MazeCoverage.value);
 
         try
         {
@@ -121,14 +129,10 @@ public class ExpDesignScript : MonoBehaviour
         print(thresholdval);
         if ((!string.IsNullOrEmpty(value) && (thresholdval > 0 && thresholdval < 1)) && !string.IsNullOrEmpty(value1) && (experimentVal >= 1 && experimentVal <= 100))
         {
-
-            //string updatedmessage = "Simulation is running with " + InputAlgorithmValue + " as Algorithm Type, " + value + " as Threshold Value, " + MazeSizeValue + " as Maze Size, " + SensorTypeValue + " as sensors on" + ExperimentType.captionText.text + " with " + experimentVal + " Experiments";
-            //Result.text = updatedmessage;
             database db = new database();
             thresholdval = Math.Round(thresholdval, 2);
             inputs = new string[] { InputAlgorithmValue, MazeSizeValue, SensorTypeValue, ExperimentType.captionText.text };
             ts.testUpdateText(inputs);
-            //db.Insert(InputAlgorithmValue, MazeSizeValue, thresholdval, SensorTypeValue, ExperimentType.captionText.text);
             SceneManager.LoadScene("UI", LoadSceneMode.Single);
         }
         else
@@ -137,7 +141,7 @@ public class ExpDesignScript : MonoBehaviour
             Result.text = alertmessage;
         }
 
-
+        PlayerPrefs.SetInt("MazeCoverage", mazecoverageval);
         PlayerPrefs.SetString("Algo", InputAlgorithmValue);
         PlayerPrefs.SetString("Maze", thresholdval.ToString());
         PlayerPrefs.SetString("Size", MazeSizeValue);
