@@ -7,7 +7,7 @@ using Algorithms;
 using System.Collections.Generic;
 
 
-public class AlgorithmsSimulation : MonoBehaviour
+public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
 {
     GameObject robot, exploringRobot;
     float xStart = 0, yStart = 1;

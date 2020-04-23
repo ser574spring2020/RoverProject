@@ -16,9 +16,7 @@ public class SensorController : MonoBehaviour
     // for dll; for normal execution comment this
     private static SensorsComponent.Sensors sensor;
     private AlgorithmsSimulation algorithmsSimulation;
-    private AlgorithmsSimulation_ExpDesign algorithmsSimulation_expDesign;
-
-
+    private AlgorithmsSimulation_ExpDesign algorithmsSimulation_ED;
     // for normal unity execution uncomment this
     //private static Sensors sensor;
 
@@ -27,6 +25,7 @@ public class SensorController : MonoBehaviour
     void Start(){
         sensor = SensorsComponent.SensorFactory.GetInstance(1, Cube);
         algorithmsSimulation = new AlgorithmsSimulation();
+        algorithmsSimulation_ED = new AlgorithmsSimulation_ExpDesign();
         Debug.Log(sensor.GetCurrentSensor());
         
     }
@@ -36,6 +35,11 @@ public class SensorController : MonoBehaviour
     {
         // changePosRover();
         if(!algorithmsSimulation.getIsSimulationComplete()){
+            sensor.Update_Obstacles(Cube);
+        }
+
+        if (!algorithmsSimulation_ED.getIsSimulationComplete())
+        {
             sensor.Update_Obstacles(Cube);
         }
         // sensor.SetSensorType(1);
