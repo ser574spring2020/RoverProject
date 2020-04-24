@@ -35,10 +35,19 @@ public class AlgorithmsSimulation : MonoBehaviour
     private static database expDB;
     private bool isSimulationComplete= false;
     private GameObject robotMain;
+    private enum SensorType{
+        Proximity = 1,
+        Range = 2,
+        Lidar = 3,
+        Radar= 4,
+        Bumper=5
+    }
+    int currentSensor = (int)SensorType.Lidar;
+    String robotDirection = "East";
 
     void Start()
     {
-        sensor= SensorsComponent.SensorFactory.GetInstance(1, robotPrefab);
+        sensor= SensorsComponent.SensorFactory.GetInstance(currentSensor, robotPrefab);
         createMaze.onClick.AddListener(createMazeButtonListener);
         expDB= new database();
         manualButton.onClick.AddListener(manualButtonListener);
@@ -69,7 +78,11 @@ public class AlgorithmsSimulation : MonoBehaviour
         mazeCoverage= Int32.Parse(mazeCoverageStr);
         pointsScored= Int32.Parse(pointsScoredStr);
         if(checkRunTimeStatus()){
-            updateSensorsData(getMazeData(3));
+            int matrixSize = (currentSensor==1 || currentSensor == 5)? 3:5;
+            sensor.Update_Maze_Data(getMazeData(matrixSize),robotDirection);
+            int[,] sensorReading = sensor.Get_Obstacle_Matrix();
+            Debug.Log(sensorReading.GetLength(0)+ ", " + sensorReading.GetLength(1));
+            updateUISensorData(sensorReading);
         }
 
         else{
@@ -77,18 +90,39 @@ public class AlgorithmsSimulation : MonoBehaviour
             isSimulationComplete= true;
             endTime= DateTime.Now.ToString(@"hh\:mm\:ss");
             runTime= calculateRunTime();
-
-
             backButton.interactable= true;
-
             Debug.Log("END TIME : " + runTime);
-
             Debug.Log("Battery Life : " + batteryLife);
             Debug.Log("Points : " + pointsScored);
             sendDateToExpDesign();
             Debug.Log("Maze Coverage : " + mazeCoverage);
         }
     }
+
+    //get maze data around robot with a diameter ${size
+    int[,] getMazeData(int size)
+    {
+        int[,] result= new int[size, size];
+        for (int i= 0; i < size; i++)
+            for (int j= 0; j < size; j++)
+                result[i,j] = -1;
+
+        int position = (size==3)?1:2;
+        for (int i= 0; i < size; i++)
+            for (int j= 0; j < size; j++){
+                int x= currentX - position + i;
+                int y= currentY - position + j;
+                if(x<0 || x>mazeHeight || y<0 || y>mazeWidth)
+                    continue;
+                if (maze[x,y]== 1)
+                    result[i, j]= 1;
+                else
+                    result[i, j]= 0;
+            }
+        result[position,position]=2;
+        return result;
+    }
+
     public SensorsComponent.Sensors GetSensorsFromAlgorithmsSimulation(){
         return sensor;
     }
@@ -122,7 +156,6 @@ public class AlgorithmsSimulation : MonoBehaviour
         String[] size= GameObject.Find("SizeButton").GetComponentInChildren<Text>().text.ToString().Split('X');
         mazeWidth= Int32.Parse(size[0].Trim());
         mazeHeight= Int32.Parse(size[1].Trim());
-
     }
 
 
@@ -142,23 +175,7 @@ public class AlgorithmsSimulation : MonoBehaviour
         expDB.UpdateTimeTaken(getTimeInSeconds(runTime));
     }
 
-
-
-
-    void updateSensorMaze(int[,] sensorMatrix, int[,] matrix){
-
-
-
-        for (int i= 0; i < 3; i++){
-            for(int j= 0; j < 3; j++){
-                if(sensorMatrix[i, j] != matrix[i, j]){
-                    sensorMatrix[i, j]= matrix[i, j];
-                }
-            }
-        }
-    }
-
-
+    //Update original maze on UI
     void updateMaze()
     {
 
@@ -184,6 +201,7 @@ public class AlgorithmsSimulation : MonoBehaviour
             }
     }
 
+    //update explored maze on UI
     void updateExplored()
     {
         if(mazeWidth== 50){
@@ -224,34 +242,23 @@ public class AlgorithmsSimulation : MonoBehaviour
         visitedFloor
     }
 
-
-    void updateSensorsData(int[,] tempData)
+    //Update sensor data on UI
+    void updateUISensorData(int[,] tempData)
     {
         sensorData.text= "";
-        for (int i= 0; i <tempData.GetLength(0); i++)
-        {
-            for (int j= 0; j < tempData.GetLength(1); j++)
-                sensorData.text += tempData[i, j] + " ";
+        Debug.Log(">>>");
+        for (int i= 0; i <tempData.GetLength(0); i++){
+            for (int j= 0; j < tempData.GetLength(1); j++){
+                if(tempData[i, j]==-1)
+                    sensorData.text += "  ";
+                else
+                    sensorData.text += tempData[i, j] + " ";
+            }
             sensorData.text += "\n";
         }
     }
 
-    int[,] getMazeData(int size)
-    {
-        int[,] result= new int[size, size];
-        for (int i= 0; i < size; i++)
-            for (int j= 0; j < size; j++){
-                int x= currentX - 1 + i;
-                int y= currentY - 1 + j;
-                if(x<0 && x>mazeHeight && y<0 && y>mazeWidth)
-                    continue;
-                if (maze[currentX - 1 + i, currentY - 1 + j]== 1)
-                    result[i, j]= 1;
-                else
-                    result[i, j]= 0;
-            }
-        return result;
-    }
+    
 
     void Update()
     {
@@ -289,10 +296,10 @@ public class AlgorithmsSimulation : MonoBehaviour
         else if (direction== "South"){
             if (maze[currentX + 1, currentY +0 ]== 1) return;
             move(1, 0);
-            Debug.Log("South");
             robot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
             exploringRobot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
         }
+        robotDirection = direction;
     }
 
     void move(int x, int y)
