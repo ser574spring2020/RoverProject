@@ -146,7 +146,8 @@ public class Window_Graph : MonoBehaviour
         {
             pathcoverage.text = "";
         }
-        scrambledWatermark = range.ConvertAll(Convert.ToInt32);
+            StatusText.text = "";
+            scrambledWatermark = range.ConvertAll(Convert.ToInt32);
     }
         catch (Exception e)
         {
