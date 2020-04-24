@@ -119,23 +119,24 @@ public class Window_Graph : MonoBehaviour
         List<string> sensorval;
         List<string> pathcovered;
         List<int> scrambledWatermark = new List<int>(400);
-            average = db.averagevalue(yAxisValue, id);
-            minimum = db.minvalue(yAxisValue, id);
-            maximum = db.maxvalue(yAxisValue, id);
-            Maxvalue.text = maximum.ToString();
-            MinValue.text = minimum.ToString();
-            AverageValue.text = average.ToString();
-            algorithmval = db.selectValuesofAlgorithm(id);
-            Algovalue.text = algorithmval[0];
-            mazesizeval = db.selectvaluesofmazesize(id);
-            Mazevalue.text = mazesizeval[0];
-            thresholdval = db.selectvaluesofthreshold(id);
-            frequencyval.text = thresholdval[0].ToString();
-            sensorval = db.selectvaluesofsensor(id);
-            sensorvalues.text = sensorval[0];
-            range = db.selectValuesfromDB(yAxisValue, id);
-            db.UpdateMaze(new int[,] { { 1, 0 }, { 0, 1 }, { 1, 1 }, { 1, 0 } });
-            pathcovered = db.selectpathcovered(id);
+        try { 
+        average = db.averagevalue(yAxisValue, id);
+        minimum = db.minvalue(yAxisValue, id);
+        maximum = db.maxvalue(yAxisValue, id);
+        Maxvalue.text = maximum.ToString();
+        MinValue.text = minimum.ToString();
+        AverageValue.text = average.ToString();
+        algorithmval = db.selectValuesofAlgorithm(id);
+        Algovalue.text = algorithmval[0];
+        mazesizeval = db.selectvaluesofmazesize(id);
+        Mazevalue.text = mazesizeval[0];
+        thresholdval = db.selectvaluesofthreshold(id);
+        frequencyval.text = thresholdval[0].ToString();
+        sensorval = db.selectvaluesofsensor(id);
+        sensorvalues.text = sensorval[0];
+        range = db.selectValuesfromDB(yAxisValue, id);
+        db.UpdateMaze(new int[,] { { 1, 0 }, { 0, 1 }, { 1, 1 }, { 1, 0 } });
+        pathcovered = db.selectpathcovered(id);
         if (trailvalue.text != "")
         {
             string coveredpath = pathcovered[Convert.ToInt32(trailvalue.text) - 1];
@@ -146,7 +147,7 @@ public class Window_Graph : MonoBehaviour
             pathcoverage.text = "";
         }
         scrambledWatermark = range.ConvertAll(Convert.ToInt32);
-        /*
+    }
         catch (Exception e)
         {
             average = 0.0F;
@@ -154,7 +155,7 @@ public class Window_Graph : MonoBehaviour
             maximum = 0.0F;
             StatusText.text = "Sorry No Results stored in Database. Try again with different filters.";
             return;
-        }*/
+        }
 
 
 
