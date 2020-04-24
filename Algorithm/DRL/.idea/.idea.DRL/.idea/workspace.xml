@@ -26,12 +26,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e628e13a-4fd0-492c-8389-40d37d346689" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/DRL.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/DRL.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Assets/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Assets/DRL.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Assets/DRL.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Assets/DRL.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Assets/Scripts/AlgorithmsSimulation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Assets/Scripts/AlgorithmsSimulation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Assets/SensorsComponent.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Assets/SensorsComponent.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Assets/StreamingAssets/ExperimentalDatabase.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Assets/StreamingAssets/ExperimentalDatabase.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/ProjectSettings/ProjectVersion.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,14 +48,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/DRL/MazeCell.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/TestsExploration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/TestsExploredMaze.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/TestsMazeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/TestsDRL.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/MazeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DRL/DRL.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DRL/Properties/AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DRL/TestsDRL.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DRL/TestsExploration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DRL/TestsMazeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DRL/MazeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DRL/ExploredMap.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/MazeCell.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -57,9 +64,10 @@
         <option value="$PROJECT_DIR$/DRL/MazeCell.cs" />
         <option value="$PROJECT_DIR$/DRL/TestsExploration.cs" />
         <option value="$PROJECT_DIR$/DRL/TestsMazeGenerator.cs" />
-        <option value="$PROJECT_DIR$/DRL/TestsDRL.cs" />
         <option value="$PROJECT_DIR$/DRL/DatasetGenerator.cs" />
         <option value="$PROJECT_DIR$/DRL/MazeGenerator.cs" />
+        <option value="$PROJECT_DIR$/DRL/TestsDRL.cs" />
+        <option value="$PROJECT_DIR$/DRL/TestsExploredMaze.cs" />
         <option value="$PROJECT_DIR$/DRL/ExploredMap.cs" />
         <option value="$PROJECT_DIR$/DRL/DRL.cs" />
       </list>
@@ -109,6 +117,11 @@
       <workItem from="1587426023465" duration="2873000" />
       <workItem from="1587435132680" duration="701000" />
       <workItem from="1587436337593" duration="2320000" />
+      <workItem from="1587443014921" duration="3576000" />
+      <workItem from="1587585320243" duration="5431000" />
+      <workItem from="1587597310556" duration="27888000" />
+      <workItem from="1587667315715" duration="974000" />
+      <workItem from="1587683797948" duration="538000" />
     </task>
     <servers />
   </component>
@@ -137,27 +150,31 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="481" y="215" width="948" height="645" key="#Attach_to_Unity_Editor/0.0.1920.1080@0.0.1920.1080" timestamp="1587152789633" />
-    <state x="519" y="311" width="872" height="454" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587362013607">
+    <state x="519" y="311" width="872" height="454" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587595428383">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="519" y="311" width="872" height="454" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1587362013607" />
-    <state x="0" y="0" width="910" height="1080" key="find.popup" timestamp="1587428707323">
+    <state x="519" y="311" width="872" height="454" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1587595428383" />
+    <state x="100" y="100" width="1720" height="880" key="VCS.FileHistoryDialog" timestamp="1587632667305">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="0" y="0" width="910" height="1080" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1587428707323" />
+    <state x="100" y="100" width="1720" height="880" key="VCS.FileHistoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1587632667305" />
+    <state x="0" y="0" width="910" height="1080" key="find.popup" timestamp="1587667706554">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="0" y="0" width="910" height="1080" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1587667706554" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/DRL/ExploredMap.cs</url>
-          <line>127</line>
+          <line>153</line>
           <properties documentPath="$PROJECT_DIR$/DRL/ExploredMap.cs" initialLine="96">
             <startOffsets>
-              <option value="4588" />
+              <option value="5884" />
             </startOffsets>
             <endOffsets>
-              <option value="4589" />
+              <option value="5885" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
