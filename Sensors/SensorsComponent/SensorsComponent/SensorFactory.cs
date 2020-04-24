@@ -49,6 +49,7 @@ namespace SensorsComponent
                         break;
             }
             sensors = _sensor;
+            sensors.SetSensorType(sensorType);
             return sensors;
         }
 
