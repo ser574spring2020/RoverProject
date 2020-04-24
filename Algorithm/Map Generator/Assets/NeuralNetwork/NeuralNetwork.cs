@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Linq;
+using UnityEngine;
 
 namespace NeuralNet
 {
@@ -48,7 +49,14 @@ namespace NeuralNet
             var psi = new ProcessStartInfo();
             // Python path and Neural Network Script path 
             psi.FileName = @"C:\Users\Mayank PC\AppData\Local\Programs\Python\Python38-32\python.exe";
-            var script = @"F:\NN.py";
+
+            string m_Path;
+            //Get the path of the Neural Network Scipt data folder
+            m_Path = Application.dataPath+ "/NeuralNetwork/NN.py";
+
+            //Output the Neural Network Script path to the console
+            UnityEngine.Debug.Log("dataPath : " + m_Path);
+            var script = @m_Path;
             var testData="" ;
             for (int i=0;i<3;i++)
             {
