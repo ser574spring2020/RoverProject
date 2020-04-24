@@ -119,7 +119,6 @@ public class Window_Graph : MonoBehaviour
         List<string> sensorval;
         List<string> pathcovered;
         List<int> scrambledWatermark = new List<int>(400);
-
             average = db.averagevalue(yAxisValue, id);
             minimum = db.minvalue(yAxisValue, id);
             maximum = db.maxvalue(yAxisValue, id);
@@ -135,12 +134,19 @@ public class Window_Graph : MonoBehaviour
             sensorval = db.selectvaluesofsensor(id);
             sensorvalues.text = sensorval[0];
             range = db.selectValuesfromDB(yAxisValue, id);
-            db.UpdateMaze(new int[,] { { 1, 0 }, { 0, 1 }, { 1, 1 }, { 1, 0} });
+            db.UpdateMaze(new int[,] { { 1, 0 }, { 0, 1 }, { 1, 1 }, { 1, 0 } });
             pathcovered = db.selectpathcovered(id);
-            pathcoverage.text = pathcovered[Convert.ToInt32(trailvalue.text)];
+            if (trailvalue.text != "")
+            {
+                pathcoverage.text = pathcovered[Convert.ToInt32(trailvalue.text) - 1];
+            }
+            else
+            {
+            pathcoverage.text = "";
+             }
         scrambledWatermark = range.ConvertAll(Convert.ToInt32);
-        
-        /*catch (Exception e)
+        /*
+        catch (Exception e)
         {
             average = 0.0F;
             minimum = 0.0F;
