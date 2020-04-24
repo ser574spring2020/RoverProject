@@ -41,6 +41,8 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
     private bool isSimulationComplete = false;
     public Slider healthBar;
     public Text statusText;
+    public Text experimentText;
+    int ExperimentalID = 0;
 
     void Start()
     {
@@ -64,7 +66,8 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
     public void Begin()
     {
         int expc = expCounter + 1;
-        statusText.text = "Experiment " + expc  + " is Running.";
+        experimentText.text = "Experiment " + ExperimentalID + " is running";
+        statusText.text = "Trail " + expc  + " is running.";
         sensor = SensorsComponent.SensorFactory.GetInstance(1, robotPrefab);
         createMazeButtonListener();
         
@@ -128,17 +131,28 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
         TimeSpan duration = DateTime.Parse(endTime).Subtract(DateTime.Parse(startTime));
         return duration.ToString(@"hh\:mm\:ss");
     }
+    public void Expid()
+    {
+        expDB.get();
+        if (PlayerPrefs.GetString("Experiment") == "Training Data")
+        {
+            ExperimentalID = expDB.get() + 1;
+        }
+        else
+        {
+            ExperimentalID = expDB.get();
+        }
+    }
 
     private void UpdateParameters()
     {
         //Debug.Log("ALGORITHM SELECTED : " + GameObject.Find("AlgoButton").GetComponentInChildren<Text>().text);
-        
         placementThreshold = float.Parse(GameObject.Find("MazeButton").GetComponentInChildren<Text>().text);
         String[] size = GameObject.Find("SizeButton").GetComponentInChildren<Text>().text.ToString().Split('X');
         mazeWidth = Int32.Parse(size[0].Trim());
         mazeHeight = Int32.Parse(size[1].Trim());
         //Debug.Log("SENSOR SELECTED : " + GameObject.Find("SensorButton").GetComponentInChildren<Text>().text);
-        expDB.Insert(PlayerPrefs.GetString("Algo"), PlayerPrefs.GetString("Size"), Math.Round(float.Parse(PlayerPrefs.GetString("Maze")), 2), PlayerPrefs.GetString("Sensor"), PlayerPrefs.GetString("Experiment"));
+        expDB.Insert(PlayerPrefs.GetString("Algo"), PlayerPrefs.GetString("Size"), Math.Round(float.Parse(PlayerPrefs.GetString("Maze")), 2), PlayerPrefs.GetString("Sensor"), PlayerPrefs.GetString("Experiment"), ExperimentalID);
     }
 
     void getNextCommand()
@@ -192,9 +206,16 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
                 Destroy(mazeObjects[i]);
             arrayCounter++;
             if (expCounter < PlayerPrefs.GetInt("Iteration"))
+            {
                 Begin();
-           /* if (expCounter == PlayerPrefs.GetInt("Iteration"))
-                expCounter = 0;*/
+            }
+            else
+            {
+                experimentText.text = "";
+                statusText.text = "Trails are completed.";
+            }
+            /* if (expCounter == PlayerPrefs.GetInt("Iteration"))
+                 expCounter = 0;*/
         }
     }
 
@@ -295,7 +316,6 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
         endPoint,
         visitedFloor
     }
-
     // // Update the sensors data text on the screen
     void updateSensorsData(int[,] tempData)
     {
@@ -371,5 +391,9 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
 
     public bool getIsSimulationComplete(){
         return isSimulationComplete;
+    }
+    public void changeScene(String sceneName)
+    {
+        Application.LoadLevel(sceneName);
     }
 }
