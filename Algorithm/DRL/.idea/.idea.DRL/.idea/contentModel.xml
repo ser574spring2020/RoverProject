@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="$USER_HOME$/.cache/JetBrains/Rider2020.1/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/.cache/JetBrains/Rider2020.1/resharper-host/local/Transient/ReSharperHost/v201/SolutionCaches/_DRL.926155670.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/.cache/JetBrains/Rider2020.1/resharper-host/local/Transient/ReSharperHost/v201/SolutionCaches/_DRL.905783316.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="DRL" t="IncludeRecursive">
         <e p="DRL.cs" t="Include" />
@@ -15,6 +15,7 @@
         </e>
         <e p="TestsDRL.cs" t="Include" />
         <e p="TestsExploration.cs" t="Include" />
+        <e p="TestsExploredMaze.cs" t="Include" />
         <e p="TestsMazeGenerator.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive" />

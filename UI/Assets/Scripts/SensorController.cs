@@ -21,21 +21,22 @@ public class SensorController : MonoBehaviour
     //private static Sensors sensor;
 
     private static int sensorType;
-    public GameObject Cube;
+    GameObject Cube;
     void Start(){
-        sensor = SensorsComponent.SensorFactory.GetInstance(1, Cube);
-        algorithmsSimulation = new AlgorithmsSimulation();
-        Debug.Log(sensor.GetCurrentSensor());
-        
+        // algorithmsSimulation = new AlgorithmsSimulation();
+        // Cube = algorithmsSimulation.getRoverInstanceFromAlgorithmSimulation();
+        // // sensor = SensorsComponent.SensorFactory.GetInstance(1, Cube);
+        // sensor = algorithmsSimulation.GetSensorsFromAlgorithmsSimulation();
+        // Debug.Log(sensor.GetCurrentSensor());
     }
 
     // Update is called once per frame
     void Update()
     {
         // changePosRover();
-        if(!algorithmsSimulation.getIsSimulationComplete()){
-            sensor.Update_Obstacles(Cube);
-        }
+        // if(!algorithmsSimulation.getIsSimulationComplete()){
+            // sensor.Update_Obstacles(Cube);
+        // }
         // sensor.SetSensorType(1);
         // int[,] matrix = sensor.Get_Obstacle_Matrix();
         // testProximityMatrix(matrix);
