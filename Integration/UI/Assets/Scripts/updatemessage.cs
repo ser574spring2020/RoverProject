@@ -98,7 +98,7 @@ public class updatemessage : MonoBehaviour
         {
             database db = new database();
             thresholdval = Math.Round(thresholdval, 2);
-            db.Insert(InputAlgorithmValue, MazeSizeValue, thresholdval, SensorTypeValue, "Training");
+            db.Insert(InputAlgorithmValue, MazeSizeValue, thresholdval, SensorTypeValue, "Training",1);
             SceneManager.LoadScene("UI", LoadSceneMode.Single);
         }
         else

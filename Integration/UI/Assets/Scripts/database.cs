@@ -24,14 +24,14 @@ public class database : MonoBehaviour
         }
     }
 
-    public void Insert(string algorithm, string mazetype, double thresholdvalue, string sensor, string experimentType)
+    public void Insert(string algorithm, string mazetype, double thresholdvalue, string sensor, string experimentType,int ExperimentalID)
     {
 
         ExperimentalDesignDb expdb = new ExperimentalDesignDb();
 
         Start();
 
-        expdb.Insert(dbConnection,"INSERT INTO experimental_results(AlgorithmType, MazeSize, ThresholdFrequency,SensorType,ExperimentType) VALUES ('" + algorithm + "','" + mazetype + "'," + thresholdvalue + ",'" + sensor + "','"+ experimentType+"');");
+        expdb.Insert(dbConnection, "INSERT INTO experimental_results(AlgorithmType, MazeSize, ThresholdFrequency,SensorType,ExperimentType,ExperimentID) VALUES ('" + algorithm + "','" + mazetype + "'," + thresholdvalue + ",'" + sensor + "','"+ experimentType+"','" + ExperimentalID + "');");
 
 
     }
@@ -44,6 +44,13 @@ public class database : MonoBehaviour
             range = expdb.Select(dbConnection, yAxisValue, InputAlgorithmValue, MazeSizeValue, Threshold, SensorTypeValue);
             return range;
 
+    }
+    public int get()
+    {
+        ExperimentalDesignDb expdb = new ExperimentalDesignDb();
+        Start();
+        expdb.maxexpid(dbConnection);
+        return expdb.maxexpid(dbConnection);
     }
 
     public float minvalue(string yAxisValue, string InputAlgorithmValue, string MazeSizeValue, float Threshold, string SensorTypeValue)
