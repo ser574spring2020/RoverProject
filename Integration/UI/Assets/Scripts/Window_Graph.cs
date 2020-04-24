@@ -89,6 +89,7 @@ public class Window_Graph : MonoBehaviour
 
         GraphFlag = true;
         onButtonClicked();
+        onButtonClicked2();
 
 
     }
@@ -97,6 +98,7 @@ public class Window_Graph : MonoBehaviour
     {
         GraphFlag = false;
         onButtonClicked();
+        onButtonClicked2();
 
 
     }
