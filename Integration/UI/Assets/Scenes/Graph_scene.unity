@@ -1893,7 +1893,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1632832795}
+      - m_Target: {fileID: 1632832798}
         m_MethodName: onLineGraphButtonClick
         m_Mode: 1
         m_Arguments:
@@ -9278,7 +9278,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1632832795}
+      - m_Target: {fileID: 1632832798}
         m_MethodName: onBarGraphButtonClick
         m_Mode: 1
         m_Arguments:
