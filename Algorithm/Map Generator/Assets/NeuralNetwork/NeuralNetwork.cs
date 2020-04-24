@@ -65,9 +65,9 @@ namespace NeuralNet
                     testData += sensorData[i, j]+ ",";
                 }
             }
-          //  UnityEngine.Debug.Log(testData + "testData");
-            var end = " ";
-            psi.Arguments = $"\"{script}\" \"{testData}\" \"{end}\"";
+            //  UnityEngine.Debug.Log(testData + "testData");
+            string dataSet = Application.dataPath + "/NeuralNetwork/Dataset.csv";
+            psi.Arguments = $"\"{script}\" \"{testData}\" \"{dataSet}\"";
             psi.UseShellExecute = false;
             psi.CreateNoWindow = true;
             psi.RedirectStandardOutput = true;

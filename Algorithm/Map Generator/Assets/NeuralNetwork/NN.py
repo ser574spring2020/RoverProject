@@ -13,8 +13,9 @@ import sys
 import pandas as pd
 import numpy as np
 
-dataset = pd.read_csv("F:\Data set.csv")
+#dataset = pd.read_csv("F:\Data set.csv")
 sensorData = sys.argv[1]
+dataset=pd.read_csv(sys.argv[2])
 
 intermediate = sensorData.split(",")
 
