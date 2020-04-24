@@ -3,14 +3,20 @@
 namespace SensorsComponent
 {
     class ProximitySensor : Sensors
-    {
+    {        
         public ProximitySensor()
         {
-            obstacle_matrix = new int[,] { { -1, 0, -1 }, { 0, 2, 0 }, { -1, 0, -1 } };
-            sensorLength = 2f;
+            obstacle_matrix = new int[,] {  { -1,  0, -1 }, 
+                                            {  0,  2,  0 }, 
+                                            { -1,  0, -1 } };
+            sensorLength = 2f;            
         }
+
         public override void Update_Obstacles(GameObject gObj)
         {
+
+            obstacle_matrix = new int[,] { { -1, 0, -1 }, { 0, 2, 0 }, { -1, 0, -1 } }; 
+
 
             //Checks obstacles in 4 directions.
             CheckObstacle(gObj.transform.position,
