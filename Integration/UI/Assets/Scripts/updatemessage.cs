@@ -11,8 +11,11 @@ public class updatemessage : MonoBehaviour
     public Dropdown InputAlgorithm;
     public Dropdown MazeSize;
     public Dropdown SensorType;
-    public InputField Thresholdvalue;
+    public Slider Thresholdvalue;
     public Text Result;
+    public Text SliderValue;
+    public Slider MazeCoverage;
+    public Text mazecoveragevalue;
 
 
     // Start is called before the first frame update
@@ -54,6 +57,16 @@ public class updatemessage : MonoBehaviour
         SensorType.value = 1;
         SensorType.value = 0;
     }
+    public void updateslider()
+    {
+        float updatedvalue = Thresholdvalue.value;
+        SliderValue.text = updatedvalue.ToString();
+    }
+    public void slidermazecoverage()
+    {
+        int coveragevalue = Convert.ToInt32(MazeCoverage.value);
+        mazecoveragevalue.text = coveragevalue.ToString();
+    }
     public void updateText()
     {
         string value = "";
@@ -65,10 +78,11 @@ public class updatemessage : MonoBehaviour
         string MazeSizeValue = MazeSize.captionText.text;
         SensorType = GameObject.Find("SensorType").GetComponent<Dropdown>();
         string SensorTypeValue = SensorType.captionText.text;
+        int mazecoverageval = Convert.ToInt32(MazeCoverage.value);
 
         try
         {
-            value = Thresholdvalue.text;
+            value = (Thresholdvalue.value).ToString();
             thresholdval = float.Parse(value);
         }
         catch (FormatException fe)
@@ -84,7 +98,7 @@ public class updatemessage : MonoBehaviour
         {
             database db = new database();
             thresholdval = Math.Round(thresholdval, 2);
-            db.Insert(InputAlgorithmValue, MazeSizeValue, thresholdval, SensorTypeValue, "Training");
+            db.Insert(InputAlgorithmValue, MazeSizeValue, thresholdval, SensorTypeValue, "Training",1);
             SceneManager.LoadScene("UI", LoadSceneMode.Single);
         }
         else
@@ -94,9 +108,9 @@ public class updatemessage : MonoBehaviour
         }
 
 
-
+        PlayerPrefs.SetInt("MazeCoverage", mazecoverageval);
         PlayerPrefs.SetString("Algo", InputAlgorithmValue);
-        PlayerPrefs.SetString("Maze", Thresholdvalue.text);
+        PlayerPrefs.SetString("Maze", thresholdval.ToString());
         PlayerPrefs.SetString("Size", MazeSizeValue);
         PlayerPrefs.SetString("Sensor", SensorTypeValue);
         PlayerPrefs.Save();
