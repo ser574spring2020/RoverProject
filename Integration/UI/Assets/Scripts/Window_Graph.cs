@@ -136,14 +136,15 @@ public class Window_Graph : MonoBehaviour
             range = db.selectValuesfromDB(yAxisValue, id);
             db.UpdateMaze(new int[,] { { 1, 0 }, { 0, 1 }, { 1, 1 }, { 1, 0 } });
             pathcovered = db.selectpathcovered(id);
-            if (trailvalue.text != "")
-            {
-                pathcoverage.text = pathcovered[Convert.ToInt32(trailvalue.text) - 1];
-            }
-            else
-            {
+        if (trailvalue.text != "")
+        {
+            string coveredpath = pathcovered[Convert.ToInt32(trailvalue.text) - 1];
+            pathcoverage.text = (coveredpath).Replace(";", "\n");
+        }
+        else
+        {
             pathcoverage.text = "";
-             }
+        }
         scrambledWatermark = range.ConvertAll(Convert.ToInt32);
         /*
         catch (Exception e)
