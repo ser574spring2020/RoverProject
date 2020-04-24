@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using Algorithms;
 using System.Collections.Generic;
+using SensorsComponent;
 
 public class AlgorithmsSimulation : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class AlgorithmsSimulation : MonoBehaviour
     private float mazeOffset = 140;
     private static database expDB;
     private bool isSimulationComplete = false;
+    private GameObject robotMain;
 
     void Start()
     {
@@ -59,6 +61,14 @@ public class AlgorithmsSimulation : MonoBehaviour
             updateMaze();
             mazeCreated = true;
         }
+    }
+
+    public SensorsComponent.Sensors GetSensorsFromAlgorithmsSimulation(){
+        return sensor;
+    }
+
+    public GameObject getRoverInstanceFromAlgorithmSimulation(){
+        return robotMain;
     }
 
     void manualButtonListener(){
@@ -90,6 +100,8 @@ public class AlgorithmsSimulation : MonoBehaviour
         //Debug.Log("SENSOR SELECTED : " + GameObject.Find("SensorButton").GetComponentInChildren<Text>().text);
     }
 
+    
+
     void getNextCommand()
     {
         mazeCoverageStr = exploration.GetCoverage().ToString();
@@ -97,12 +109,16 @@ public class AlgorithmsSimulation : MonoBehaviour
         mazeCoverage = Int32.Parse(mazeCoverageStr);
         pointsScored = Int32.Parse(pointsScoredStr);
         if(checkRunTimeStatus()){
-            updateSensorsData(getSensorsData());
-            // updateSensorsTeamData();
+            sensor.Update_Obstacles(robotMain);
             int[,] sensorMatrix = sensor.Get_Obstacle_Matrix();
-            int[,] matrix = getSensorsData();
-            updateSensorMaze(sensorMatrix, matrix);
-            String robotCommand = exploration.GetNextCommand(sensorMatrix);
+            updateSensorsData(sensorMatrix);
+            String result = "";
+            for(int i=0;i<sensorMatrix.GetLength(0);i++)
+            for(int j=0;j<sensorMatrix.GetLength(1);j++)
+            result+=sensorMatrix[i,j] + " ";
+            Debug.Log(result);
+            // String robotCommand = exploration.GetNextCommand(sensorMatrix);
+            String robotCommand = "South";
             moveInDirection(robotCommand);
         }
         else{
@@ -174,6 +190,7 @@ public class AlgorithmsSimulation : MonoBehaviour
                 else if (maze[i, j] == 2){
                     mazeObjects[counter] = Instantiate(robotPrefab, tempVector, Quaternion.identity);
                     robot = mazeObjects[counter++];
+                    robotMain = robot;
                 }
                 else if (maze[i, j] == 4)
                     mazeObjects[counter++] = Instantiate(visitedFloorPrefab, tempVector, Quaternion.identity);
@@ -225,9 +242,9 @@ public class AlgorithmsSimulation : MonoBehaviour
     {
         // int[,] tempData = getSensorsData();
         sensorData.text = "";
-        for (int i = 0; i <3; i++)
+        for (int i = 0; i <tempData.GetLength(0); i++)
         {
-            for (int j = 0; j < 3; j++)
+            for (int j = 0; j < tempData.GetLength(1); j++)
                 sensorData.text += tempData[i, j] + " ";
             sensorData.text += "\n";
         }
@@ -259,24 +276,29 @@ public class AlgorithmsSimulation : MonoBehaviour
         batteryLife--;
         if (direction == "North")
         {
+            if (maze[currentX - 1, currentY +0 ] == 1) return;
             move(-1, 0);
-            robot.transform.Rotate(0.0f, 270.0f, 0.0f, Space.Self);
+            robot.transform.Rotate(0.0f, 270f, 0.0f, Space.Self);
             exploringRobot.transform.Rotate(0.0f, 270.0f, 0.0f, Space.Self);
         }
         else if (direction == "East")
         {
+            if (maze[currentX, currentY +1 ] == 1) return;
             move(0, 1);
-            robot.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
+            robot.transform.Rotate(0.0f, 0f, 0.0f, Space.Self);
             exploringRobot.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
         }
         else if (direction == "West")
         {
+            if (maze[currentX, currentY -1 ] == 1) return;
             move(0, -1);
             robot.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
             exploringRobot.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
         }
         else if (direction == "South"){
+            if (maze[currentX + 1, currentY +0 ] == 1) return;
             move(1, 0);
+            Debug.Log("South");
             robot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
             exploringRobot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
         }
