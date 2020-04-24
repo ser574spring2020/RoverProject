@@ -42,6 +42,10 @@ public class Window_Graph : MonoBehaviour
     public InputField AverageValue;
     public TMPro.TMP_Text StatusText;
     public InputField EXPID;
+    public InputField Algovalue;
+    public InputField Mazevalue;
+    public InputField frequencyval;
+    public InputField sensorvalues;
 
     private void Awake()
     {
@@ -107,18 +111,32 @@ public class Window_Graph : MonoBehaviour
         database db = new database();
         float average, minimum, maximum;
         List<float> range;
+        List<string> algorithmval;
+        List<string> mazesizeval;
+        List<float> thresholdval;
+        List<string> sensorval;
         List<int> scrambledWatermark = new List<int>(400);
         try
         {
+
             average = db.averagevalue(yAxisValue, id);
             minimum = db.minvalue(yAxisValue, id);
             maximum = db.maxvalue(yAxisValue, id);
             Maxvalue.text = maximum.ToString();
             MinValue.text = minimum.ToString();
             AverageValue.text = average.ToString();
-            range = db.selectValuesfromDB(yAxisValue,id);
+            algorithmval = db.selectValuesofAlgorithm(id);
+            Algovalue.text = algorithmval[1];
+            mazesizeval = db.selectvaluesofmazesize(id);
+            Mazevalue.text = mazesizeval[1];
+            thresholdval = db.selectvaluesofthreshold(id);
+            frequencyval.text = thresholdval[1].ToString();
+            sensorval = db.selectvaluesofsensor(id);
+            sensorvalues.text = sensorval[1];
+            range = db.selectValuesfromDB(yAxisValue, id);
             scrambledWatermark = range.ConvertAll(Convert.ToInt32);
         }
+        
         catch (Exception e)
         {
             average = 0.0F;

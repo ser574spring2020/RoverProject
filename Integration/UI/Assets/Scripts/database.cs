@@ -61,7 +61,38 @@ public class database : MonoBehaviour
         expdb.maxexpid(dbConnection);
         return expdb.maxexpid(dbConnection);
     }
-
+    public List<string> selectValuesofAlgorithm(int Expid)
+    {
+        ExperimentalDesignDb expdb = new ExperimentalDesignDb();
+        Start();
+        List<string> range = new List<string>();
+        range = expdb.Selectalgo(dbConnection, Expid);
+        return range;
+    }
+    public List<string> selectvaluesofmazesize(int Expid)
+    {
+        ExperimentalDesignDb expdb = new ExperimentalDesignDb();
+        Start();
+        List<string> range = new List<string>();
+        range = expdb.Selectmaze(dbConnection, Expid);
+        return range;
+    }
+    public List<float> selectvaluesofthreshold(int Expid)
+    {
+        ExperimentalDesignDb expdb = new ExperimentalDesignDb();
+        Start();
+        List<float> range = new List<float>();
+        range = expdb.Selectthreshold(dbConnection, Expid);
+        return range;
+    }
+    public List<string> selectvaluesofsensor(int Expid)
+    {
+        ExperimentalDesignDb expdb = new ExperimentalDesignDb();
+        Start();
+        List<string> range = new List<string>();
+        range = expdb.Selectsensor(dbConnection, Expid);
+        return range;
+    }
     public float minvalue(string yAxisValue, string InputAlgorithmValue, string MazeSizeValue, float Threshold, string SensorTypeValue)
     {
         ExperimentalDesignDb expdb = new ExperimentalDesignDb();
