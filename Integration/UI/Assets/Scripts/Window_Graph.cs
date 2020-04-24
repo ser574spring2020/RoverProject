@@ -46,6 +46,8 @@ public class Window_Graph : MonoBehaviour
     public InputField Mazevalue;
     public InputField frequencyval;
     public InputField sensorvalues;
+    public TMPro.TMP_Text pathcoverage;
+    public InputField trailvalue;
 
     private void Awake()
     {
@@ -115,9 +117,8 @@ public class Window_Graph : MonoBehaviour
         List<string> mazesizeval;
         List<float> thresholdval;
         List<string> sensorval;
+        List<string> pathcovered;
         List<int> scrambledWatermark = new List<int>(400);
-        try
-        {
 
             average = db.averagevalue(yAxisValue, id);
             minimum = db.minvalue(yAxisValue, id);
@@ -126,25 +127,27 @@ public class Window_Graph : MonoBehaviour
             MinValue.text = minimum.ToString();
             AverageValue.text = average.ToString();
             algorithmval = db.selectValuesofAlgorithm(id);
-            Algovalue.text = algorithmval[1];
+            Algovalue.text = algorithmval[0];
             mazesizeval = db.selectvaluesofmazesize(id);
-            Mazevalue.text = mazesizeval[1];
+            Mazevalue.text = mazesizeval[0];
             thresholdval = db.selectvaluesofthreshold(id);
-            frequencyval.text = thresholdval[1].ToString();
+            frequencyval.text = thresholdval[0].ToString();
             sensorval = db.selectvaluesofsensor(id);
-            sensorvalues.text = sensorval[1];
+            sensorvalues.text = sensorval[0];
             range = db.selectValuesfromDB(yAxisValue, id);
-            scrambledWatermark = range.ConvertAll(Convert.ToInt32);
-        }
+            db.UpdateMaze(new int[,] { { 1, 0 }, { 0, 1 }, { 1, 1 }, { 1, 0} });
+            pathcovered = db.selectpathcovered(id);
+            pathcoverage.text = pathcovered[Convert.ToInt32(trailvalue.text)];
+        scrambledWatermark = range.ConvertAll(Convert.ToInt32);
         
-        catch (Exception e)
+        /*catch (Exception e)
         {
             average = 0.0F;
             minimum = 0.0F;
             maximum = 0.0F;
             StatusText.text = "Sorry No Results stored in Database. Try again with different filters.";
             return;
-        }
+        }*/
 
 
 

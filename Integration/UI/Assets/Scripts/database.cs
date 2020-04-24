@@ -77,6 +77,14 @@ public class database : MonoBehaviour
         range = expdb.Selectmaze(dbConnection, Expid);
         return range;
     }
+    public List<string> selectpathcovered(int Expid)
+    {
+        ExperimentalDesignDb expdb = new ExperimentalDesignDb();
+        Start();
+        List<string> range = new List<string>();
+        range = expdb.Selectpathcovered(dbConnection, Expid);
+        return range;
+    }
     public List<float> selectvaluesofthreshold(int Expid)
     {
         ExperimentalDesignDb expdb = new ExperimentalDesignDb();
@@ -221,5 +229,44 @@ public class database : MonoBehaviour
 
         return statusCode;
 
+    }
+    public int UpdateMaze(int[,] updatedMaze)
+    {
+        int statusCode = 0;
+        Dictionary<string, string> value = new Dictionary<string, string>();
+
+        try
+        {
+            string str = "'";
+            for (int i = 0; i <= updatedMaze.GetUpperBound(0); i++)
+            {
+                str += "";
+                for (int j = 0; j <= updatedMaze.GetUpperBound(1); j++)
+                {
+                    str += updatedMaze[i, j];
+                    if (j != updatedMaze.GetUpperBound(1))
+                    {
+                        str += ",";
+                    }
+                }
+                str += "";
+                if (i != updatedMaze.GetUpperBound(0))
+                {
+                    str += ";";
+                }
+            }
+            str += "'";
+            ExperimentalDesignDb expdb = new ExperimentalDesignDb();
+            Start();
+            expdb.Update(dbConnection, "UPDATE experimental_results SET PathCovered=" + str + " WHERE ID IN (SELECT Max(ID) FROM experimental_results);");
+            statusCode = 200;
+
+        }
+        catch (SqliteException sqlEx)
+        {
+            Debug.LogError(sqlEx);
+            statusCode = 400;
+        }
+        return statusCode;
     }
 }
