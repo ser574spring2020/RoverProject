@@ -34,8 +34,10 @@ public class AlgorithmsSimulation : MonoBehaviour
         exploredMazeObjects = new GameObject[mazeHeight * mazeWidth];
         createMaze.onClick.AddListener(createMazeButtonListener);
         automateButton.onClick.AddListener(automate);
-        manualButton.onClick.AddListener(getNextCommand);
-        Debug.Log(AlgorithmsSimulation.getNextCommandFromNeuralNetwork());
+      //  manualButton.onClick.AddListener(getNextCommand);
+
+        manualButton.onClick.AddListener(getNextCommandFromNeuralNetwork);
+        // Debug.Log(AlgorithmsSimulation.getNextCommandFromNeuralNetwork());
     }
 
     void automate() {
@@ -63,10 +65,10 @@ public class AlgorithmsSimulation : MonoBehaviour
         moveInDirection(robotCommand);
     }
 
-    static String getNextCommandFromNeuralNetwork()
+     void getNextCommandFromNeuralNetwork()
     {
         NeuralNetwork NN= new NeuralNetwork();
-        return NN.getNextCommands();
+        moveInDirection(NN.getNextCommands(getSensorsData()));
     }
 
     //update the maze in the UI

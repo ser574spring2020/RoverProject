@@ -12,9 +12,9 @@ namespace NeuralNet
             nextCommands = "";
         }
     
-        public string getNextCommands()
+        public string getNextCommands(int[,] sensorData)
         {
-             nextCommands=NeuralNetwork.NeuralNEtworkConnection();
+             nextCommands=NeuralNetwork.NeuralNEtworkConnection(sensorData);
             // Direction as per North
             // If you are facing North then Left is West
             // Right is East
@@ -38,18 +38,26 @@ namespace NeuralNet
             else {
                 nextCommands = "Error";
             }
-            
+            UnityEngine.Debug.Log("Neural Network Prediction :" + nextCommands);
             return nextCommands;
         }
         
-        public static string NeuralNEtworkConnection()
+        public static string NeuralNEtworkConnection(int[,] sensorData)
         {
            
             var psi = new ProcessStartInfo();
             // Python path and Neural Network Script path 
             psi.FileName = @"C:\Users\Mayank PC\AppData\Local\Programs\Python\Python38-32\python.exe";
             var script = @"F:\NN.py";
-            var testData = " ";
+            var testData="" ;
+            for (int i=0;i<3;i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    testData += sensorData[i, j]+ ",";
+                }
+            }
+          //  UnityEngine.Debug.Log(testData + "testData");
             var end = " ";
             psi.Arguments = $"\"{script}\" \"{testData}\" \"{end}\"";
             psi.UseShellExecute = false;
@@ -63,7 +71,7 @@ namespace NeuralNet
                 errors = process.StandardError.ReadToEnd();
                 results = process.StandardOutput.ReadToEnd();
             }
-            
+            // UnityEngine.Debug.Log("Prediction"+results);
             return results;
         }
     }
