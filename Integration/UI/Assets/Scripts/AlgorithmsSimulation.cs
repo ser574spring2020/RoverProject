@@ -78,7 +78,7 @@ public class AlgorithmsSimulation : MonoBehaviour
     }
 
     private bool checkRunTimeStatus(){
-        return !(mazeCoverage >= 80 || batteryLife <= 0);
+        return !(mazeCoverage >= PlayerPrefs.GetInt("MazeCoverage") || batteryLife <= 0);
     }
 
     private String calculateRunTime(){

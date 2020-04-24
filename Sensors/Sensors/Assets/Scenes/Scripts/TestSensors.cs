@@ -17,7 +17,7 @@ public class TestSensors : MonoBehaviour
 {
 
     public Button play;
-    public Dropdown sensorInput;
+    public Dropdown sensorInput;    
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +33,7 @@ public class TestSensors : MonoBehaviour
         Debug.Log("Chosen value from drop down : "+sensorType);
 
         SensorController sc = new SensorController();
-        sc.setSensorType(sensorType);        
+        sc.setSensorType(sensorType);
         SceneManager.LoadScene("SensorTest");
     }
 }
