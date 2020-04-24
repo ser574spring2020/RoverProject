@@ -41,6 +41,7 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
     private bool isSimulationComplete = false;
     public Slider healthBar;
     public Text statusText;
+    public Text experimentText;
     int ExperimentalID = 0;
 
     void Start()
@@ -65,7 +66,8 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
     public void Begin()
     {
         int expc = expCounter + 1;
-        statusText.text = "Trail " + expc  + " is Running.";
+        experimentText.text = "Experiment " + ExperimentalID + " is running";
+        statusText.text = "Trail " + expc  + " is running.";
         sensor = SensorsComponent.SensorFactory.GetInstance(1, robotPrefab);
         createMazeButtonListener();
         
@@ -204,7 +206,14 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
                 Destroy(mazeObjects[i]);
             arrayCounter++;
             if (expCounter < PlayerPrefs.GetInt("Iteration"))
+            {
                 Begin();
+            }
+            else
+            {
+                experimentText.text = "";
+                statusText.text = "Trails are completed.";
+            }
             /* if (expCounter == PlayerPrefs.GetInt("Iteration"))
                  expCounter = 0;*/
         }
