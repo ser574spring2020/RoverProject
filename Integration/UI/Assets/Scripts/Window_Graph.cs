@@ -41,6 +41,7 @@ public class Window_Graph : MonoBehaviour
     public InputField MinValue;
     public InputField AverageValue;
     public TMPro.TMP_Text StatusText;
+    public InputField EXPID;
 
     private void Awake()
     {
@@ -98,12 +99,124 @@ public class Window_Graph : MonoBehaviour
     {
         Application.LoadLevel(sceneName);
     }
+    public void onButtonClicked2()
+    {
+        string yAxisValue = yAxis.captionText.text;
+        int id = Int32.Parse(EXPID.text);
+        List<int> valueList = new List<int>(400);
+        database db = new database();
+        float average, minimum, maximum;
+        List<float> range;
+        List<int> scrambledWatermark = new List<int>(400);
+        try
+        {
+            average = db.averagevalue(yAxisValue, id);
+            minimum = db.minvalue(yAxisValue, id);
+            maximum = db.maxvalue(yAxisValue, id);
+            Maxvalue.text = maximum.ToString();
+            MinValue.text = minimum.ToString();
+            AverageValue.text = average.ToString();
+            range = db.selectValuesfromDB(yAxisValue,id);
+            scrambledWatermark = range.ConvertAll(Convert.ToInt32);
+        }
+        catch (Exception e)
+        {
+            average = 0.0F;
+            minimum = 0.0F;
+            maximum = 0.0F;
+            StatusText.text = "Sorry No Results stored in Database. Try again with different filters.";
+            return;
+        }
+
+
+
+
+        if (GraphFlag)
+        {
+
+            switch (yAxisValue)
+            {
+                case "TimeTaken":
+                    foreach (int item in scrambledWatermark)
+                    {
+                        valueList.Add(item);
+                    }
+                    ShowGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " Minutes");
+                    break;
+                case "PointsScored":
+                    foreach (int item in scrambledWatermark)
+                    {
+                        valueList.Add(item);
+                    }
+                    ShowGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " Points");
+                    break;
+                case "MazeCoverage":
+                    foreach (int item in scrambledWatermark)
+                    {
+                        valueList.Add(item);
+                    }
+                    ShowGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " % ");
+                    break;
+                case "DroneLife":
+                    foreach (int item in scrambledWatermark)
+                    {
+                        valueList.Add(item);
+                    }
+                    ShowGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + "% Drone Life");
+                    break;
+                default:
+                    Debug.LogError("Improper command given!");
+                    break;
+            }
+
+        }
+        else
+        {
+
+            switch (yAxisValue)
+            {
+                case "TimeTaken":
+                    foreach (int item in scrambledWatermark)
+                    {
+                        valueList.Add(item);
+                    }
+                    ShowLineGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " Minutes");
+                    break;
+                case "PointsScored":
+                    foreach (int item in scrambledWatermark)
+                    {
+                        valueList.Add(item);
+                    }
+                    ShowLineGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " Points");
+                    break;
+                case "MazeCoverage":
+                    foreach (int item in scrambledWatermark)
+                    {
+                        valueList.Add(item);
+                    }
+                    ShowLineGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + "% ");
+                    break;
+                case "DroneLife":
+                    foreach (int item in scrambledWatermark)
+                    {
+                        valueList.Add(item);
+                    }
+                    ShowLineGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " % Drone Life");
+                    break;
+                default:
+                    Debug.LogError("Improper command given!");
+                    break;
+            }
+
+        }
+
+
+    }
 
     public void onButtonClicked()
     {
         string yAxisValue = yAxis.captionText.text;
-        print(yAxisValue);
-        List<int> valueList = new List<int>(15);
+        List<int> valueList = new List<int>(400);
         System.Random randNum = new System.Random();
 
         string InputAlgorithmValue = InputAlgorithm.captionText.text;
@@ -124,7 +237,7 @@ public class Window_Graph : MonoBehaviour
         // print(db.averagevalue(yAxisValue, InputAlgorithmValue, MazeSizeValue, Threshold, SensorTypeValue));
         float average, minimum, maximum;
         List<float> range;
-        List<int> scrambledWatermark = new List<int>(10) ;
+        List<int> scrambledWatermark = new List<int>(400) ;
         try
         {
             average = db.averagevalue(yAxisValue, InputAlgorithmValue, MazeSizeValue, Threshold, SensorTypeValue);
@@ -229,6 +342,7 @@ public class Window_Graph : MonoBehaviour
 
 
     }
+    /*
     public void onDropDownChange2()
     {
         string yAxisValue = yAxis.captionText.text;
@@ -281,7 +395,7 @@ public class Window_Graph : MonoBehaviour
         }
 
 
-        /*
+        
         if (yAxisValue.Equals("Time")) {
             for (int i = 0; i < 15; i++)
             {
@@ -295,11 +409,10 @@ public class Window_Graph : MonoBehaviour
                 valueList.Add(randNum.Next(1000, 2000));
             }
             ShowGraph(valueList, -1, (int _i) => "", (float _f) => Mathf.RoundToInt(_f) + " Points");
-        } */
+        } 
 
 
-    }
-
+    }*/
     private void ShowGraph(List<int> valueList, int maxVisibleValueAmount = -1, Func<int, string> getAxisLabelX = null, Func<float, string> getAxisLabelY = null)
     {
         if (getAxisLabelX == null)

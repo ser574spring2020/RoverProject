@@ -45,6 +45,15 @@ public class database : MonoBehaviour
             return range;
 
     }
+    public List<float> selectValuesfromDB(string yAxisValue, int Expid)
+    {
+        ExperimentalDesignDb expdb = new ExperimentalDesignDb();
+        Start();
+        List<float> range = new List<float>();
+        range = expdb.Select(dbConnection, yAxisValue,Expid);
+        return range;
+
+    }
     public int get()
     {
         ExperimentalDesignDb expdb = new ExperimentalDesignDb();
@@ -58,7 +67,14 @@ public class database : MonoBehaviour
         ExperimentalDesignDb expdb = new ExperimentalDesignDb();
         Start();
         float range = expdb.minimumvalue(dbConnection,yAxisValue, InputAlgorithmValue, MazeSizeValue, Threshold, SensorTypeValue);
-        print(range);
+        return range;
+
+    }
+    public float minvalue(string yAxisValue, int Expid)
+    {
+        ExperimentalDesignDb expdb = new ExperimentalDesignDb();
+        Start();
+        float range = expdb.minimumvalue(dbConnection, yAxisValue, Expid);
         return range;
 
     }
@@ -70,11 +86,27 @@ public class database : MonoBehaviour
         return range;
 
     }
+    public float maxvalue(string yAxisValue, int Expid)
+    {
+        ExperimentalDesignDb expdb = new ExperimentalDesignDb();
+        Start();
+        float range = expdb.maximumvalue(dbConnection, yAxisValue, Expid);
+        return range;
+
+    }
     public float averagevalue(string yAxisValue, string InputAlgorithmValue, string MazeSizeValue, float Threshold, string SensorTypeValue)
     {
         ExperimentalDesignDb expdb = new ExperimentalDesignDb();
         Start();
         float range = expdb.averagevalue(dbConnection,yAxisValue, InputAlgorithmValue, MazeSizeValue, Threshold, SensorTypeValue);
+        return range;
+
+    }
+    public float averagevalue(string yAxisValue, int Expid)
+    {
+        ExperimentalDesignDb expdb = new ExperimentalDesignDb();
+        Start();
+        float range = expdb.averagevalue(dbConnection, yAxisValue, Expid);
         return range;
 
     }
