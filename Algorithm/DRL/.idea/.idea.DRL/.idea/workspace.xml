@@ -26,18 +26,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e628e13a-4fd0-492c-8389-40d37d346689" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/DRL.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/DRL.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/ExploredMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/ExploredMap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/TestsExploration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/TestsExploration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csproj.FilesWrittenAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csproj.FilesWrittenAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../UI/Assets/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Assets/DRL.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UI/Assets/DRL.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Assets/DRL.dll.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../UI/Assets/Scripts/AlgorithmsSimulation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Assets/Scripts/AlgorithmsSimulation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UI/Assets/SensorsComponent.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Assets/SensorsComponent.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../UI/Assets/StreamingAssets/ExperimentalDatabase.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Assets/StreamingAssets/ExperimentalDatabase.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UI/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.TextMeshPro.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.TextMeshPro.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/StateCache/Hierarchy/19f132-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/StateCache/Hierarchy/19f132-mainStage.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/assetDatabase3" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/assetDatabase3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/metadata/05/0511975adf7ea48868493bf050dd44ec" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/metadata/05/0511975adf7ea48868493bf050dd44ec" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,14 +69,14 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/DRL/MazeCell.cs" />
-        <option value="$PROJECT_DIR$/DRL/TestsExploration.cs" />
         <option value="$PROJECT_DIR$/DRL/TestsMazeGenerator.cs" />
         <option value="$PROJECT_DIR$/DRL/DatasetGenerator.cs" />
         <option value="$PROJECT_DIR$/DRL/MazeGenerator.cs" />
         <option value="$PROJECT_DIR$/DRL/TestsDRL.cs" />
         <option value="$PROJECT_DIR$/DRL/TestsExploredMaze.cs" />
-        <option value="$PROJECT_DIR$/DRL/ExploredMap.cs" />
+        <option value="$PROJECT_DIR$/DRL/TestsExploration.cs" />
         <option value="$PROJECT_DIR$/DRL/DRL.cs" />
+        <option value="$PROJECT_DIR$/DRL/ExploredMap.cs" />
       </list>
     </option>
   </component>
@@ -85,6 +92,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -122,6 +130,9 @@
       <workItem from="1587597310556" duration="27888000" />
       <workItem from="1587667315715" duration="974000" />
       <workItem from="1587683797948" duration="538000" />
+      <workItem from="1587769705392" duration="366000" />
+      <workItem from="1587770191301" duration="196000" />
+      <workItem from="1587770406170" duration="3769000" />
     </task>
     <servers />
   </component>
@@ -154,6 +165,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="519" y="311" width="872" height="454" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1587595428383" />
+    <state x="324" y="87" width="1271" height="912" key="SettingsEditor" timestamp="1587770385387">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="324" y="87" width="1271" height="912" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1587770385387" />
     <state x="100" y="100" width="1720" height="880" key="VCS.FileHistoryDialog" timestamp="1587632667305">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -162,24 +177,5 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="0" y="0" width="910" height="1080" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1587667706554" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/DRL/ExploredMap.cs</url>
-          <line>153</line>
-          <properties documentPath="$PROJECT_DIR$/DRL/ExploredMap.cs" initialLine="96">
-            <startOffsets>
-              <option value="5884" />
-            </startOffsets>
-            <endOffsets>
-              <option value="5885" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -5,3 +5,5 @@
 /home/lisa/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRL/obj/Debug/DRL.pdb
 /home/lisa/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRL/bin/Debug/nunit.framework.dll
 /home/lisa/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRL/bin/Debug/UnityEngine.dll
+/home/lisa/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRL/bin/Debug/DRL.dll.mdb
+/home/lisa/Applications/UnityProjects/RoverProject/Algorithm/DRL/DRL/obj/Debug/DRL.dll.mdb

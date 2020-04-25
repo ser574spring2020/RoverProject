@@ -12,7 +12,7 @@ namespace DRL
         {
             Exploration exploration = new Exploration(3, 3);
             Vector2Int robotPosition = exploration.GetExploredMap().GetCurrentPosition();
-            int[,] mazeArray = exploration.GetExploredMap().GetMazeArray();
+            exploration.GetExploredMap().GetMazeArray();
             Assert.That(robotPosition, Is.EqualTo(new Vector2Int(1, 1)));
             
         }

@@ -2,8 +2,6 @@
 using UnityEngine;
 using System;
 using System.IO;
-using System.Runtime.InteropServices.ComTypes;
-using System.Runtime.Remoting.Messaging;
 using System.Text;
 using RandomSystem = System.Random;
 
@@ -21,9 +19,8 @@ namespace Algorithms
             {Vector2Int.down, Vector2Int.left, Vector2Int.up, Vector2Int.right};
 
         private int _points, _rows, _cols;
-        private string _direction = "South";
 
-        ExploredMap exploredMap;
+        public ExploredMap exploredMap;
 
         public Exploration(int rows, int cols)
         {
@@ -37,18 +34,16 @@ namespace Algorithms
         public String GetNextCommand(int[,] sensorData)
         {
             String robotCommand;
-            // printSensorData(sensorData);
-            RandomSystem r = new RandomSystem();
-            sensorData = RotateSensorData(sensorData, _direction);
             exploredMap.ProcessSensor(sensorData);
-            // List<String> possibleDirections = GetAvailableDirections(sensorData);
-            // int x = r.Next(0, possibleDirections.Count);
-            // robotCommand = possibleDirections[x];
-            // ManagePoints(vectorCommands[commands.IndexOf(robotCommand)]);
-            robotCommand = "South";
+            RandomSystem r = new RandomSystem();
+            // sensorData = RotateSensorData(sensorData, _direction);
+            List<String> possibleDirections = GetAvailableDirections(sensorData);
+            int x = r.Next(0, possibleDirections.Count);
+            robotCommand = possibleDirections[x];
+            ManagePoints(vectorCommands[commands.IndexOf(robotCommand)]);
+            // robotCommand = "South";
             exploredMap.MoveRelative(vectorCommands[commands.IndexOf(robotCommand)]);
-            
-            _direction = robotCommand;
+
             return robotCommand;
         }
 
@@ -94,10 +89,8 @@ namespace Algorithms
                 {
                     sensorDataString += sensorData[i, j] + " ";
                 }
-
                 sensorDataString += ",";
             }
-
             Debug.Log(sensorDataString);
         }
 
@@ -150,21 +143,21 @@ namespace Algorithms
         private List<String> GetAvailableDirections(int[,] sensorData)
         {
             List<string> possibleDirections = new List<string>();
-            // Vector2Int robotPosition = exploredMap.GetCurrentPosition();
-            // if (sensorData[0, 1] == 0 &&
-            //     exploredMap.GetCell(new Vector2Int(robotPosition.x - 1, robotPosition.y)).IsVisited() == false)
-            //     possibleDirections.Add("North");
-            // if (sensorData[1, 2] == 0 &&
-            //     exploredMap.GetCell(new Vector2Int(robotPosition.x, robotPosition.y + 1)).IsVisited() == false)
-            //     possibleDirections.Add("East");
-            // if (sensorData[2, 1] == 0 &&
-            //     exploredMap.GetCell(new Vector2Int(robotPosition.x + 1, robotPosition.y)).IsVisited() == false)
-            //     possibleDirections.Add("South");
-            // if (sensorData[1, 0] == 0 &&
-            //     exploredMap.GetCell(new Vector2Int(robotPosition.x, robotPosition.y - 1)).IsVisited() == false)
-            //     possibleDirections.Add("West");
-            // if (possibleDirections.Count == 0)
-            // {
+            Vector2Int robotPosition = exploredMap.GetCurrentPosition();
+            if (sensorData[0, 1] == 0 &&
+                exploredMap.GetCell(new Vector2Int(robotPosition.x - 1, robotPosition.y)).IsVisited() == false)
+                possibleDirections.Add("North");
+            if (sensorData[1, 2] == 0 &&
+                exploredMap.GetCell(new Vector2Int(robotPosition.x, robotPosition.y + 1)).IsVisited() == false)
+                possibleDirections.Add("East");
+            if (sensorData[2, 1] == 0 &&
+                exploredMap.GetCell(new Vector2Int(robotPosition.x + 1, robotPosition.y)).IsVisited() == false)
+                possibleDirections.Add("South");
+            if (sensorData[1, 0] == 0 &&
+                exploredMap.GetCell(new Vector2Int(robotPosition.x, robotPosition.y - 1)).IsVisited() == false)
+                possibleDirections.Add("West");
+            if (possibleDirections.Count == 0)
+            {
                 if (sensorData[0, 1] == 0)
                     possibleDirections.Add("North");
                 if (sensorData[1, 2] == 0)
@@ -173,7 +166,7 @@ namespace Algorithms
                     possibleDirections.Add("South");
                 if (sensorData[1, 0] == 0)
                     possibleDirections.Add("West");
-            // }
+            }
             return possibleDirections;
         }
 

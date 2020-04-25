@@ -45,28 +45,26 @@ namespace Algorithms
         }
 
         //saves the sensor reading to the explored map
-        public void ProcessRangeSensor(int[,] sensorReading)
+        public void ProcessSensor(int[,] sensorReading)
         {
-            // Vector2Int localRobotPosition = getRobotPosition(sensorReading);
-            // Debug.Log("Local Robot Position: " + localRobotPosition.x + " " + localRobotPosition.y);
+            Vector2Int localRobotPosition = GetSensorRobotPosition(sensorReading);
             for (var x = 0; x < 3; x++)
             for (var y = 0; y < 3; y++)
             {
-                var xMaze = _robotPosition.x + x - 1;
-                var yMaze = _robotPosition.y + y - 1;
-                if (_mazeMap[xMaze, yMaze] != null) continue;
-                if (sensorReading[x, y] == -1) continue;
-                var neighbor = new MazeCell(xMaze, yMaze); // create 
-                _mazeMap[xMaze, yMaze] = neighbor;
-                if (sensorReading[x, y] == 1) neighbor.MakeWall();
+            var xMaze = _robotPosition.x + x - localRobotPosition.x;
+            var yMaze = _robotPosition.y + y - localRobotPosition.y;
+            if (_mazeMap[xMaze, yMaze] != null) continue;
+            if (sensorReading[x, y] == -1) continue;
+            var neighbor = new MazeCell(xMaze, yMaze); // create 
+            _mazeMap[xMaze, yMaze] = neighbor;
+            if (sensorReading[x, y] == 1) neighbor.MakeWall();
             }
-
             _mazeMap[_robotPosition.x, _robotPosition.y].Visit();
         }
 
         void printSensorData(int[,] sensorData)
         {
-            string sensorDataString = "";
+            string sensorDataString = "RobotPosition";
             for (int i = 0; i < sensorData.GetLength(0); i++)
             {
                 for (int j = 0; j < sensorData.GetLength(1); j++)
@@ -76,36 +74,6 @@ namespace Algorithms
                 sensorDataString += ",";
             }
             Debug.Log(sensorDataString);
-        }
-
-        public void ProcessSensor(int[,] sensorReading)
-        {
-            // printSensorData(sensorReading);
-            // Vector2Int localPosition = GetSensorRobotPosition(sensorReading);
-            // int diffX = _robotPosition.x - localPosition.x;
-            // int diffY = _robotPosition.y - localPosition.y;
-            // for (var x = 0; x < 3; x++)
-            // {
-            // for (var y = 0; y < 3; y++)
-            // {
-            // if (_mazeMap[x + diffX, y + diffY] != null) continue;
-            // if (sensorReading[x, y] == -1)
-            //     continue;
-            // var neighbor = new MazeCell(x + diffX, y + diffY); // create
-            // _mazeMap[x + diffX, y + diffY] = neighbor;
-            // if (sensorReading[x, y] == 1)
-            //     neighbor.MakeWall();
-
-            // var xMaze = _robotPosition.x + x - 1;
-            // var yMaze = _robotPosition.y + y - 1;
-            // if (_mazeMap[xMaze, yMaze] != null) continue;
-            // if (sensorReading[x, y] == -1) continue;
-            // var neighbor = new MazeCell(xMaze, yMaze); // create 
-            // _mazeMap[xMaze, yMaze] = neighbor;
-            // if (sensorReading[x, y] == 1) neighbor.MakeWall();
-            // }
-            // }
-            // _mazeMap[_robotPosition.x, _robotPosition.y].Visit();
         }
 
         //Returns the integer array
