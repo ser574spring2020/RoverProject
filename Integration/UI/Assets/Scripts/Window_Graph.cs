@@ -48,6 +48,7 @@ public class Window_Graph : MonoBehaviour
     public InputField sensorvalues;
     public TMPro.TMP_Text pathcoverage;
     public InputField trailvalue;
+    public Boolean isexpid;
 
     private void Awake()
     {
@@ -88,8 +89,14 @@ public class Window_Graph : MonoBehaviour
     {
 
         GraphFlag = true;
-        onButtonClicked();
-        onButtonClicked2();
+        if (!isexpid)
+        {
+            onButtonClicked();
+        }
+        else
+        {
+            onButtonClicked2();
+        }
 
 
     }
@@ -97,8 +104,14 @@ public class Window_Graph : MonoBehaviour
     public void onLineGraphButtonClick()
     {
         GraphFlag = false;
-        onButtonClicked();
-        onButtonClicked2();
+        if (!isexpid)
+        {
+            onButtonClicked();
+        }
+        else
+        {
+            onButtonClicked2();
+        }
 
 
     }
@@ -109,6 +122,7 @@ public class Window_Graph : MonoBehaviour
     }
     public void onButtonClicked2()
     {
+        isexpid = true;
         string yAxisValue = yAxis.captionText.text;
         int id = Int32.Parse(EXPID.text);
         List<int> valueList = new List<int>(400);
@@ -247,6 +261,7 @@ public class Window_Graph : MonoBehaviour
 
     public void onButtonClicked()
     {
+        isexpid = false;
         string yAxisValue = yAxis.captionText.text;
         List<int> valueList = new List<int>(400);
         System.Random randNum = new System.Random();
