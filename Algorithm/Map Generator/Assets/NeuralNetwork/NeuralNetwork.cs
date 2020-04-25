@@ -48,8 +48,8 @@ namespace NeuralNet
            
             var psi = new ProcessStartInfo();
             // Python path and Neural Network Script path 
-            psi.FileName = @"C:\Users\Mayank PC\AppData\Local\Programs\Python\Python38-32\python.exe";
-
+            psi.FileName = @MagicEnums.PythonPath.ToDescriptionString();
+              
             string m_Path;
             //Get the path of the Neural Network Scipt data folder
             m_Path = Application.dataPath+ "/NeuralNetwork/NN.py";
