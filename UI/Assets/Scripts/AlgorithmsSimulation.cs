@@ -42,7 +42,7 @@ public class AlgorithmsSimulation : MonoBehaviour
         Radar= 4,
         Bumper=5
     }
-    int currentSensor = (int)SensorType.Range;
+    int currentSensor = (int)SensorType.Proximity;
     String robotDirection = "East";
 
     void Start()
@@ -80,10 +80,10 @@ public class AlgorithmsSimulation : MonoBehaviour
         if(checkRunTimeStatus()){
             int matrixSize = (currentSensor==1 || currentSensor == 5)? 3:5;
             sensor.Update_Maze_Data(getMazeData(matrixSize),robotDirection);
-            // updateUISensorData(getMazeData(matrixSize));
+            updateUISensorData(getMazeData(matrixSize));
             int[,] sensorReading = sensor.Get_Obstacle_Matrix();
             updateUISensorData(sensorReading);  
-            String robotCommand = exploration.GetNextCommand(sensorReading);
+            String robotCommand = exploration.GetNextCommand(sensorReading, currentSensor);
             moveInDirection(robotCommand);
         }
 
@@ -139,7 +139,7 @@ public class AlgorithmsSimulation : MonoBehaviour
 
     void automaticButtonListener(){
         startTime= DateTime.Now.ToString(@"hh\:mm\:ss");
-        InvokeRepeating("getNextCommand", 0.1f, 0.01f);
+        InvokeRepeating("getNextCommand", 0.1f, 0.1f);
     }
 
     private bool checkRunTimeStatus(){
@@ -153,7 +153,6 @@ public class AlgorithmsSimulation : MonoBehaviour
 
     private void UpdateParameters()
     {
-
         placementThreshold= float.Parse(GameObject.Find("MazeButton").GetComponentInChildren<Text>().text);
         String[] size= GameObject.Find("SizeButton").GetComponentInChildren<Text>().text.ToString().Split('X');
         mazeWidth= Int32.Parse(size[0].Trim());
@@ -263,11 +262,48 @@ public class AlgorithmsSimulation : MonoBehaviour
 
     void Update()
     {
+        string direction;
+        if (Input.GetKeyDown(KeyCode.W)){
+            if (maze[currentX - 1, currentY +0 ]== 1) return;
+            int matrixSize = (currentSensor==1 || currentSensor == 5)? 3:5;
+            sensor.Update_Maze_Data(getMazeData(matrixSize),"North");
+            int[,] sensorReading = sensor.Get_Obstacle_Matrix();
+            updateUISensorData(sensorReading);  
+            exploration.GenerateDataset(sensorReading, "North", currentSensor);
+            robotDirection = "North";
+            moveInDirection("North"); 
+        }
+        if (Input.GetKeyDown(KeyCode.D)){
+            if (maze[currentX, currentY +1 ]== 1) return;
+            int matrixSize = (currentSensor==1 || currentSensor == 5)? 3:5;
+            sensor.Update_Maze_Data(getMazeData(matrixSize),"East");
+            int[,] sensorReading = sensor.Get_Obstacle_Matrix();
+            updateUISensorData(sensorReading);  
+            exploration.GenerateDataset(sensorReading, "East", currentSensor);
+            robotDirection = "East";
+            moveInDirection("East"); 
+        }
+        if (Input.GetKeyDown(KeyCode.A)){
+            if (maze[currentX, currentY -1 ]== 1) return;
+            int matrixSize = (currentSensor==1 || currentSensor == 5)? 3:5;
+            sensor.Update_Maze_Data(getMazeData(matrixSize),"West");
+            int[,] sensorReading = sensor.Get_Obstacle_Matrix();
+            updateUISensorData(sensorReading);  
+            exploration.GenerateDataset(sensorReading, "West", currentSensor);
+            robotDirection = "West";
+            moveInDirection("West"); 
+        }
 
-        if (Input.GetKeyDown(KeyCode.W)) moveInDirection("North");
-        if (Input.GetKeyDown(KeyCode.D)) moveInDirection("East");
-        if (Input.GetKeyDown(KeyCode.A)) moveInDirection("West");
-        if (Input.GetKeyDown(KeyCode.S)) moveInDirection("South");
+        if (Input.GetKeyDown(KeyCode.S)){
+            if (maze[currentX + 1, currentY +0 ]== 1) return;
+            int matrixSize = (currentSensor==1 || currentSensor == 5)? 3:5;
+            sensor.Update_Maze_Data(getMazeData(matrixSize),"South");
+            int[,] sensorReading = sensor.Get_Obstacle_Matrix();
+            updateUISensorData(sensorReading);  
+            exploration.GenerateDataset(sensorReading, "South", currentSensor);
+            robotDirection = "South";
+            moveInDirection("South"); 
+        }
     }
 
     void moveInDirection(string direction)
@@ -300,7 +336,6 @@ public class AlgorithmsSimulation : MonoBehaviour
             robot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
             exploringRobot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
         }
-        robotDirection = direction;
     }
 
     void move(int x, int y)

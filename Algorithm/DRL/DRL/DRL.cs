@@ -20,6 +20,7 @@ namespace Algorithms
 
         private int _points, _rows, _cols;
 
+        private String direction = "East";
         public ExploredMap exploredMap;
 
         public Exploration(int rows, int cols)
@@ -31,23 +32,35 @@ namespace Algorithms
 
         //Returns the next command for the robot
         // @param SensorData - Used to compute the next command
-        public String GetNextCommand(int[,] sensorData)
+        public String GetNextCommand(int[,] sensorData, int sensorType)
         {
-            String robotCommand;
+            printSensorData(sensorData);
+            if (sensorType == 3)
+                sensorData = RotateSensorData(sensorData, direction);
             exploredMap.ProcessSensor(sensorData);
             RandomSystem r = new RandomSystem();
-            // sensorData = RotateSensorData(sensorData, _direction);
             List<String> possibleDirections = GetAvailableDirections(sensorData);
             int x = r.Next(0, possibleDirections.Count);
-            robotCommand = possibleDirections[x];
+            var robotCommand = possibleDirections[x];
             ManagePoints(vectorCommands[commands.IndexOf(robotCommand)]);
-            // robotCommand = "South";
             exploredMap.MoveRelative(vectorCommands[commands.IndexOf(robotCommand)]);
-
+            direction = robotCommand;
             return robotCommand;
         }
 
-        // Rotates the array anti-clockwise and returns the rotated array
+        public void GenerateDataset(int[,] sensorData, string resultDirection, int sensorType)
+        {
+            int[,] dataToBeSaved = sensorData;
+            if (sensorType == 3)
+                sensorData = RotateSensorData(sensorData, direction);
+            exploredMap.ProcessSensor(sensorData);
+            var robotCommand = resultDirection;
+            WriteSensorDataToCsv(dataToBeSaved, robotCommand, sensorType);
+            exploredMap.MoveRelative(vectorCommands[commands.IndexOf(robotCommand)]);
+            direction = robotCommand;
+        }
+
+        // Rotates the array clockwise and returns the rotated array
         // @param direction - affects the number of times that array will be rotated
         public int[,] RotateSensorData(int[,] sensorData, string direction)
         {
@@ -55,13 +68,13 @@ namespace Algorithms
             switch (direction)
             {
                 case "West":
-                    counter = 1;
+                    counter = 3;
                     break;
                 case "South":
                     counter = 2;
                     break;
                 case "East":
-                    counter = 3;
+                    counter = 1;
                     break;
             }
 
@@ -81,7 +94,7 @@ namespace Algorithms
             return output;
         }
 
-        void printSensorData(int[,] sensorData)
+        public static void printSensorData(int[,] sensorData)
         {
             string sensorDataString = "";
             for (int i = 0; i < sensorData.GetLength(0); i++)
@@ -91,7 +104,7 @@ namespace Algorithms
                     sensorDataString += sensorData[i, j] + " ";
                 }
 
-                sensorDataString += ",";
+                sensorDataString += " ,,, ";
             }
 
             Debug.Log(sensorDataString);
@@ -205,10 +218,34 @@ namespace Algorithms
             return possibleDirections;
         }
 
-        public void WriteSensorDataToCsv(int[,] sensorData, string direction)
+        public void WriteSensorDataToCsv(int[,] sensorData, string direction, int sensorType)
         {
+            int[,] dataToBeSaved = sensorData;
+            Vector2Int localRobotPosition = exploredMap.GetSensorRobotPosition(sensorData);
+            Vector2Int _robotPosition = exploredMap._robotPosition;
+            for (var x = 0; x < dataToBeSaved.GetLength(0); x++)
+            for (var y = 0; y < dataToBeSaved.GetLength(1); y++)
+            {
+                var xMaze = _robotPosition.x + x - localRobotPosition.x;
+                var yMaze = _robotPosition.y + y - localRobotPosition.y;
+                if (exploredMap.GetCell(new Vector2Int(xMaze, yMaze)) != null &&
+                    exploredMap.GetCell(new Vector2Int(xMaze, yMaze)).IsVisited())
+                    dataToBeSaved[x, y] = 4;
+                dataToBeSaved[localRobotPosition.x, localRobotPosition.y] = 2;
+            }
+
             var path = Directory.GetCurrentDirectory();
-            string filePath = path + "/Datasets/Dataset.csv";
+            string filePath = "/Datasets/Dataset.csv";
+            if (sensorType == 1)
+                filePath = path + "/Datasets/Proximity.csv";
+            if (sensorType == 2)
+                filePath = path + "/Datasets/Range.csv";
+            if (sensorType == 3)
+                filePath = path + "/Datasets/Lidar.csv";
+            if (sensorType == 4)
+                filePath = path + "/Datasets/Radar.csv";
+            if (sensorType == 5)
+                filePath = path + "/Datasets/Bumper.csv";
             foreach (var item in sensorData)
             {
                 File.AppendAllText(filePath, item.ToString(), Encoding.UTF8);

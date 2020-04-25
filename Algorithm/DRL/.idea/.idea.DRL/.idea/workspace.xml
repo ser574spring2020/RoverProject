@@ -32,7 +32,9 @@
       <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../UI/Assets/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Assets/DRL.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Assets/DRL.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Assets/DRL.dll.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../UI/Assets/Scripts/AlgorithmsSimulation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Assets/Scripts/AlgorithmsSimulation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Assets/StreamingAssets/ExperimentalDatabase.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Assets/StreamingAssets/ExperimentalDatabase.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Assembly-CSharp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Assembly-CSharp.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll" afterDir="false" />
@@ -40,8 +42,13 @@
       <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.TextMeshPro.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.TextMeshPro.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/StateCache/Hierarchy/19f132-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/StateCache/Hierarchy/19f132-mainStage.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/StateCache/SceneView/cfa478-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/StateCache/SceneView/cfa478-mainStage.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../UI/Library/assetDatabase3" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/assetDatabase3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../UI/Library/metadata/05/0511975adf7ea48868493bf050dd44ec" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/metadata/05/0511975adf7ea48868493bf050dd44ec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/metadata/cd/cd6f32077d9f361c0a38c74a0078ef05" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/metadata/cd/cd6f32077d9f361c0a38c74a0078ef05.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/shadercompiler-UnityShaderCompiler0.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/shadercompiler-UnityShaderCompiler0.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,9 +76,9 @@
         <option value="$PROJECT_DIR$/DRL/TestsMazeGenerator.cs" />
         <option value="$PROJECT_DIR$/DRL/DatasetGenerator.cs" />
         <option value="$PROJECT_DIR$/DRL/MazeGenerator.cs" />
-        <option value="$PROJECT_DIR$/DRL/TestsDRL.cs" />
         <option value="$PROJECT_DIR$/DRL/TestsExploredMaze.cs" />
         <option value="$PROJECT_DIR$/DRL/TestsExploration.cs" />
+        <option value="$PROJECT_DIR$/DRL/TestsDRL.cs" />
         <option value="$PROJECT_DIR$/DRL/ExploredMap.cs" />
         <option value="$PROJECT_DIR$/DRL/DRL.cs" />
       </list>
@@ -129,7 +136,8 @@
       <workItem from="1587683797948" duration="538000" />
       <workItem from="1587769705392" duration="366000" />
       <workItem from="1587770191301" duration="196000" />
-      <workItem from="1587770406170" duration="8274000" />
+      <workItem from="1587770406170" duration="25725000" />
+      <workItem from="1587810324916" duration="749000" />
     </task>
     <servers />
   </component>
@@ -170,10 +178,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="100" y="100" width="1720" height="880" key="VCS.FileHistoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1587632667305" />
-    <state x="478" y="135" width="953" height="816" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587781338719">
+    <state x="478" y="135" width="953" height="816" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587800057658">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="478" y="135" width="953" height="816" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1587781338719" />
+    <state x="478" y="135" width="953" height="816" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1587800057658" />
     <state x="0" y="0" width="910" height="1080" key="find.popup" timestamp="1587667706554">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

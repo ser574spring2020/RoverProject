@@ -12,7 +12,7 @@ namespace Algorithms
         private readonly List<MazeCell> _cells;
         private readonly MazeCell[,] _mazeMap;
         private readonly List<Vector2Int> _moveHistory;
-        private Vector2Int _robotPosition;
+        public Vector2Int _robotPosition;
 
         public ExploredMap(Vector2Int mazeDimension, Vector2Int robotPosition)
         {
