@@ -42,7 +42,7 @@ public class AlgorithmsSimulation : MonoBehaviour
         Radar= 4,
         Bumper=5
     }
-    int currentSensor = (int)SensorType.Proximity;
+    int currentSensor = (int)SensorType.Bumper;
     String robotDirection = "East";
 
     void Start()

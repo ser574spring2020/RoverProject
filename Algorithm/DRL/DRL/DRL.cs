@@ -29,6 +29,14 @@ namespace Algorithms
             this._cols = cols;
             exploredMap = new ExploredMap(new Vector2Int(rows, cols), new Vector2Int(1, 1));
         }
+        
+        private enum SensorType{
+        Proximity = 1,
+        Range = 2,
+        Lidar = 3,
+        Radar= 4,
+        Bumper=5
+        }
 
         //Returns the next command for the robot
         // @param SensorData - Used to compute the next command
