@@ -12,8 +12,8 @@ public enum MagicEnums
 {
     [Description("C:/Users/Mayank PC/AppData/Local/Programs/Python/Python38-32/python.exe")]
     PythonPath = 1,
-    [Description("String 2")]
-    V2 = 2
+    [Description("Value for Instance Variable will come here")]
+    InstanceVaribale = 2
 }
 
 public static class MagicWords
