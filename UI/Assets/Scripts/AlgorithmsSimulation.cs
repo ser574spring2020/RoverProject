@@ -42,7 +42,7 @@ public class AlgorithmsSimulation : MonoBehaviour
         Radar= 4,
         Bumper=5
     }
-    int currentSensor = (int)SensorType.Proximity;
+    int currentSensor = (int)SensorType.Range;
     String robotDirection = "East";
 
     void Start()
@@ -80,6 +80,7 @@ public class AlgorithmsSimulation : MonoBehaviour
         if(checkRunTimeStatus()){
             int matrixSize = (currentSensor==1 || currentSensor == 5)? 3:5;
             sensor.Update_Maze_Data(getMazeData(matrixSize),robotDirection);
+            // updateUISensorData(getMazeData(matrixSize));
             int[,] sensorReading = sensor.Get_Obstacle_Matrix();
             updateUISensorData(sensorReading);  
             String robotCommand = exploration.GetNextCommand(sensorReading);
@@ -113,7 +114,7 @@ public class AlgorithmsSimulation : MonoBehaviour
             for (int j= 0; j < size; j++){
                 int x= currentX - position + i;
                 int y= currentY - position + j;
-                if(x<0 || x>mazeHeight || y<0 || y>mazeWidth)
+                if(x<0 || x>=mazeHeight || y<0 || y>=mazeWidth)
                     continue;
                 if (maze[x,y]== 1)
                     result[i, j]= 1;
@@ -138,7 +139,7 @@ public class AlgorithmsSimulation : MonoBehaviour
 
     void automaticButtonListener(){
         startTime= DateTime.Now.ToString(@"hh\:mm\:ss");
-        InvokeRepeating("getNextCommand", 0.1f, 0.1f);
+        InvokeRepeating("getNextCommand", 0.1f, 0.01f);
     }
 
     private bool checkRunTimeStatus(){

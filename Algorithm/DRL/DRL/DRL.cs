@@ -64,6 +64,7 @@ namespace Algorithms
                     counter = 3;
                     break;
             }
+
             int[,] output = sensorData;
             for (int n = 0; n < counter; n++)
             {
@@ -89,8 +90,10 @@ namespace Algorithms
                 {
                     sensorDataString += sensorData[i, j] + " ";
                 }
+
                 sensorDataString += ",";
             }
+
             Debug.Log(sensorDataString);
         }
 
@@ -144,29 +147,61 @@ namespace Algorithms
         {
             List<string> possibleDirections = new List<string>();
             Vector2Int robotPosition = exploredMap.GetCurrentPosition();
-            if (sensorData[0, 1] == 0 &&
-                exploredMap.GetCell(new Vector2Int(robotPosition.x - 1, robotPosition.y)).IsVisited() == false)
-                possibleDirections.Add("North");
-            if (sensorData[1, 2] == 0 &&
-                exploredMap.GetCell(new Vector2Int(robotPosition.x, robotPosition.y + 1)).IsVisited() == false)
-                possibleDirections.Add("East");
-            if (sensorData[2, 1] == 0 &&
-                exploredMap.GetCell(new Vector2Int(robotPosition.x + 1, robotPosition.y)).IsVisited() == false)
-                possibleDirections.Add("South");
-            if (sensorData[1, 0] == 0 &&
-                exploredMap.GetCell(new Vector2Int(robotPosition.x, robotPosition.y - 1)).IsVisited() == false)
-                possibleDirections.Add("West");
+
+            var mazeCellPosition = new Vector2Int(robotPosition.x - 1, robotPosition.y);
+            var mazeCell = exploredMap.GetCell(mazeCellPosition);
+            if (mazeCell != null)
+                if (!mazeCell.IsWallCell() && !mazeCell.IsVisited())
+                    possibleDirections.Add("North");
+
+            mazeCellPosition = new Vector2Int(robotPosition.x, robotPosition.y + 1);
+            mazeCell = exploredMap.GetCell(mazeCellPosition);
+            if (mazeCell != null)
+                if (!mazeCell.IsWallCell() && !mazeCell.IsVisited())
+                    possibleDirections.Add("East");
+
+
+            mazeCellPosition = new Vector2Int(robotPosition.x + 1, robotPosition.y);
+            mazeCell = exploredMap.GetCell(mazeCellPosition);
+            if (mazeCell != null)
+                if (!mazeCell.IsWallCell() && !mazeCell.IsVisited())
+                    possibleDirections.Add("South");
+
+
+            mazeCellPosition = new Vector2Int(robotPosition.x, robotPosition.y - 1);
+            mazeCell = exploredMap.GetCell(mazeCellPosition);
+            if (mazeCell != null)
+                if (!mazeCell.IsWallCell() && !mazeCell.IsVisited())
+                    possibleDirections.Add("West");
             if (possibleDirections.Count == 0)
             {
-                if (sensorData[0, 1] == 0)
-                    possibleDirections.Add("North");
-                if (sensorData[1, 2] == 0)
-                    possibleDirections.Add("East");
-                if (sensorData[2, 1] == 0)
-                    possibleDirections.Add("South");
-                if (sensorData[1, 0] == 0)
-                    possibleDirections.Add("West");
+                mazeCellPosition = new Vector2Int(robotPosition.x - 1, robotPosition.y);
+                mazeCell = exploredMap.GetCell(mazeCellPosition);
+                if (mazeCell != null)
+                    if (!mazeCell.IsWallCell())
+                        possibleDirections.Add("North");
+
+                mazeCellPosition = new Vector2Int(robotPosition.x, robotPosition.y + 1);
+                mazeCell = exploredMap.GetCell(mazeCellPosition);
+                if (mazeCell != null)
+                    if (!mazeCell.IsWallCell())
+                        possibleDirections.Add("East");
+
+
+                mazeCellPosition = new Vector2Int(robotPosition.x + 1, robotPosition.y);
+                mazeCell = exploredMap.GetCell(mazeCellPosition);
+                if (mazeCell != null)
+                    if (!mazeCell.IsWallCell())
+                        possibleDirections.Add("South");
+
+
+                mazeCellPosition = new Vector2Int(robotPosition.x, robotPosition.y - 1);
+                mazeCell = exploredMap.GetCell(mazeCellPosition);
+                if (mazeCell != null)
+                    if (!mazeCell.IsWallCell())
+                        possibleDirections.Add("West");
             }
+
             return possibleDirections;
         }
 

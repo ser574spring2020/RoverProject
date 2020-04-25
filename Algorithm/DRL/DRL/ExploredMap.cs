@@ -48,17 +48,18 @@ namespace Algorithms
         public void ProcessSensor(int[,] sensorReading)
         {
             Vector2Int localRobotPosition = GetSensorRobotPosition(sensorReading);
-            for (var x = 0; x < 3; x++)
-            for (var y = 0; y < 3; y++)
+            for (var x = 0; x < sensorReading.GetLength(0); x++)
+            for (var y = 0; y < sensorReading.GetLength(1); y++)
             {
-            var xMaze = _robotPosition.x + x - localRobotPosition.x;
-            var yMaze = _robotPosition.y + y - localRobotPosition.y;
-            if (_mazeMap[xMaze, yMaze] != null) continue;
-            if (sensorReading[x, y] == -1) continue;
-            var neighbor = new MazeCell(xMaze, yMaze); // create 
-            _mazeMap[xMaze, yMaze] = neighbor;
-            if (sensorReading[x, y] == 1) neighbor.MakeWall();
+                var xMaze = _robotPosition.x + x - localRobotPosition.x;
+                var yMaze = _robotPosition.y + y - localRobotPosition.y;
+                if (sensorReading[x, y] == -1) continue;
+                if (_mazeMap[xMaze, yMaze] != null) continue;
+                var neighbor = new MazeCell(xMaze, yMaze); // create 
+                _mazeMap[xMaze, yMaze] = neighbor;
+                if (sensorReading[x, y] == 1) neighbor.MakeWall();
             }
+
             _mazeMap[_robotPosition.x, _robotPosition.y].Visit();
         }
 
@@ -71,8 +72,10 @@ namespace Algorithms
                 {
                     sensorDataString += sensorData[i, j] + " ";
                 }
+
                 sensorDataString += ",";
             }
+
             Debug.Log(sensorDataString);
         }
 
