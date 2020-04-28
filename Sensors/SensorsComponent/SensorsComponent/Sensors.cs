@@ -229,152 +229,78 @@ namespace SensorsComponent
         }
 
         private void update_liDAR_matrix(int[,] mazeData, string direction)
-        {
+        {            
+            obstacle_matrix = new int[,] { { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 2, 0, 0 } };
 
-            update_radar_matrix(mazeData);
+            mazeData = RotateSensorData(mazeData, direction);
 
-            if (direction.Equals("East"))
+            for (int i = 0; i < 3; i++)
             {
-                mazeData[3, 2] = -1;
-                mazeData[4, 2] = -1;
-                mazeData[1, 2] = -1;
-                mazeData[0, 2] = -1;
-
-                mazeData[0, 1] = -1;
-                mazeData[4, 1] = -1;
-
-                if (mazeData[1, 1] == 1)
+                for (int j = 0; j < 5; j++)
                 {
-                    mazeData[0, 0] = -1;
-                }
-                if (mazeData[3, 1] == 1)
-                {
-                    mazeData[4, 0] = -1;
-                }
-                if (mazeData[2, 1] == 1)
-                {
-                    mazeData[2, 0] = -1;
-                }
-            }
-            else if (direction.Equals("West"))
-            {
-                mazeData[3, 2] = -1;
-                mazeData[4, 2] = -1;
-                mazeData[1, 2] = -1;
-                mazeData[0, 2] = -1;
-
-                mazeData[0, 3] = -1;
-                mazeData[4, 3] = -1;
-
-                if (mazeData[1, 3] == 1)
-                {
-                    mazeData[0, 4] = -1;
-                }
-                if (mazeData[3, 3] == 1)
-                {
-                    mazeData[4, 4] = -1;
-                }
-                if (mazeData[2, 3] == 1)
-                {
-                    mazeData[2, 4] = -1;
-                }
-            }
-            else if (direction.Equals("North"))
-            {
-                mazeData[2, 0] = -1;
-                mazeData[2, 1] = -1;
-                mazeData[2, 3] = -1;
-                mazeData[2, 4] = -1;
-
-                mazeData[1, 0] = -1;
-                mazeData[1, 4] = -1;
-
-                if (mazeData[1, 1] == 1)
-                {
-                    mazeData[0, 0] = -1;
-                }
-                if (mazeData[1, 3] == 1)
-                {
-                    mazeData[1, 4] = -1;
-                }
-                if (mazeData[1, 2] == 1)
-                {
-                    mazeData[0, 2] = -1;
-                }
-            }
-            else if (direction.Equals("South"))
-            {
-                mazeData[2, 0] = -1;
-                mazeData[2, 1] = -1;
-                mazeData[2, 3] = -1;
-                mazeData[2, 4] = -1;
-
-                mazeData[3, 0] = -1;
-                mazeData[3, 4] = -1;
-
-                if (mazeData[3, 3] == 1)
-                {
-                    mazeData[4, 0] = -1;
-                }
-                if (mazeData[3, 3] == 1)
-                {
-                    mazeData[4, 4] = -1;
-                }
-                if (mazeData[3, 2] == 1)
-                {
-                    mazeData[4, 2] = -1;
+                    obstacle_matrix[i, j] = mazeData[i, j];
                 }
             }
 
-            refractor_liDAR_matrix(mazeData, direction);
+            if (obstacle_matrix[1,1] == 1)
+            {
+                obstacle_matrix[0, 0] = -1;
+                obstacle_matrix[0, 1] = -1;
+            }
+
+            if (obstacle_matrix[1, 3] == 1)
+            {
+                obstacle_matrix[0, 4] = -1;
+                obstacle_matrix[0, 3] = -1;
+            }
+
+            if (obstacle_matrix[1, 2] == 1)
+            {
+                obstacle_matrix[0, 2] = -1;                
+            }
+
+            obstacle_matrix[1, 0] = -1;
+            obstacle_matrix[2, 0] = -1;
+            obstacle_matrix[2, 1] = -1;
+
+            obstacle_matrix[1, 4] = -1;
+            obstacle_matrix[2, 3] = -1;
+            obstacle_matrix[2, 4] = -1;
 
         }
 
-        private void refractor_liDAR_matrix(int[,] mazeData, string direction)
+        private int[,] RotateSensorData(int[,] sensorData, string direction)
         {
-            obstacle_matrix = new int[,] { { 0, 0, 0, 0, 0 }, { 0, 0, 2, 0, 0 }, { 0, 0, 0, 0, 0 } };
+            int counter = 0;
+            switch (direction)
+            {
+                case "West":
+                    counter = 1;
+                    break;
+                case "South":
+                    counter = 2;
+                    break;
+                case "East":
+                    counter = 3;
+                    break;
+            }
 
-            if (direction.Equals("East"))
+            int[,] output = sensorData;
+            for (int n = 0; n < counter; n++)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    for (int j = 0; j < 3; j++)
-                    {
-                        obstacle_matrix[i, j] = mazeData[i, j];
-                    }
-                }
+                int cols = sensorData.GetLength(0);
+                int rows = sensorData.GetLength(1);
+                output = new int[rows, cols];
+
+                for (int i = 0; i < cols; i++)
+                    for (int j = 0; j < rows; j++)
+                        output[j, cols - 1 - i] = sensorData[i, j];
+                sensorData = output;
             }
-            else if (direction.Equals("West"))
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    for (int j = 2; j < 5; j++)
-                    {
-                        obstacle_matrix[i, j] = mazeData[i, j];
-                    }
-                }
-            }
-            else if (direction.Equals("North"))
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    for (int j = 0; j < 5; j++)
-                    {
-                        obstacle_matrix[i, j] = mazeData[i, j];
-                    }
-                }
-            }
-            else if (direction.Equals("South"))
-            {
-                for (int i = 2; i < 5; i++)
-                {
-                    for (int j = 0; j < 5; j++)
-                    {
-                        obstacle_matrix[i, j] = mazeData[i, j];
-                    }
-                }
-            }
+
+            return output;
         }
+
 
         private void update_range_matrix(int[,] mazeData)
         {
@@ -388,7 +314,7 @@ namespace SensorsComponent
             obstacle_matrix[1, 4] = -1;
             obstacle_matrix[3, 0] = -1;
             obstacle_matrix[3, 4] = -1;
-            obstacle_matrix[4, 2] = -1;
+            obstacle_matrix[4, 1] = -1;
             obstacle_matrix[4, 3] = -1;            
 
         }
@@ -397,21 +323,21 @@ namespace SensorsComponent
         {
             refractor_bumper_matrix(mazeData);
 
-            if (direction.Equals("East"))
-            {
-                obstacle_matrix[1, 0] = 1;
+            if (direction.Equals("West"))
+            {                
+                obstacle_matrix[1, 0] = (mazeData[1, 0] == 0) ? 0 : 1;
             }
-            else if (direction.Equals("West"))
-            {
-                obstacle_matrix[1, 2] = 1;
+            else if (direction.Equals("East"))
+            {                
+                obstacle_matrix[1, 2] = (mazeData[1, 2] == 0) ? 0 : 1;
             }
             else if (direction.Equals("North"))
             {
-                obstacle_matrix[0, 1] = 1;
+                obstacle_matrix[0, 1] = (mazeData[0, 1] == 0) ? 0 : 1;                
             }
             else if (direction.Equals("South"))
             {
-                obstacle_matrix[2, 1] = 1;
+                obstacle_matrix[2, 1] = (mazeData[2, 1] == 0)? 0 : 1;
             }
 
             obstacle_matrix[1, 1] = 2;
