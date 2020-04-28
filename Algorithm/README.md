@@ -32,35 +32,24 @@
 Algorithm (Root)
 
 ```
-├── algofind.cs                                                                   (AMIT PANDEY)
-│
-├── Back Propagation
-│   └── Back Propagation.cs
-│
-├── DRL
-│   └── DRL
-│       └── bin
-│           └── Debug
-│                  └── DRL.dll                                                   (FOR DEEP REINFORCEMENT LEARNING)
-│
-├── Map Generator                                                                 (MAIN UNITY PROJECT)
-│   └── Assets
-│       ├── Scenes
-│       │   └── SampleScene.unity                                                 (DEFAULT SCENE)
-│       └── Scripts
-│           └── AlgorithmsSimulation.cs
-│
-├── Maze Navigator
-│   └── Assets
-│       └── Scripts
-│           └── MazeExplorationMap.cs                                             (OBJECT ORIENTED STRUCTURE FOR MAZE - JONATHAN)
-│
-├── maze_sol.py                                                                   (AMIT PANDEY)
-│
-├── README.md
-│
-├── RobotCommands
-│   └── RobotCommands.cs                                                          (MAYANK BATRA)
-│
-└── ShortestPathBfs.cs                                                            (MAYANK RAWAT)
+.
+├── API Docs
+│   └── README.md
+└── DRL
+    ├── DRL
+    │   ├── BackPropagation.cs
+    │   ├── bin
+    │   │   └── Debug
+    │   │       └── DRL.dll           (DLL File)
+    │   ├── DRL.cs
+    │   ├── ExploredMap.cs
+    │   ├── FeedForwardManager.cs
+    │   ├── MazeCell.cs
+    │   ├── MazeGenerator.cs
+    │   ├── NeuralNetwork.cs
+    │   ├── TestsDRL.cs               (General Tests for DRL.cs)
+    │   ├── TestsExploration.cs       (Tests for DRL.cs/Exploration)
+    │   ├── TestsExploredMaze.cs      (Tests for ExploredMaze.cs)
+    │   └── TestsMazeGenerator.cs     (Tests for MazeGenerator.cs)
+    └── DRL.sln
 ```
