@@ -53,7 +53,7 @@ public int CreateExploredMaze(int mazeId, int[,] exploredMaze)
 For example:<br>
 ```
 int mazeId = 3;
-int[,] exploredMaze = new int[5, 5] { 
+int[,] exploredMaze = new int[4, 4] { 
 { 1, 1, -1, -1 }, 
 { 1, 0, 0, -1 }, 
 { 1, 0, 0, 1 }, 
@@ -79,7 +79,7 @@ public int UpdateMaze(int[,] updatedMaze)
 For example:<br>
 ```
 int mazeId = 3;
-int[,] updatedMaze = new int[5, 5] { 
+int[,] updatedMaze = new int[4, 4] { 
 { 1, 1, 1, 1 }, 
 { 1, 0, 0, 1 }, 
 { 1, 0, 0, 1 }, 
