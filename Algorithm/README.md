@@ -13,7 +13,7 @@
 ## How to generate dataset?
 - Start the Unity Project
 - Click on *Create Maze*
-- Use the <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>d</kbd> to move north, west, south and east.
+- Use the <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> to move north, west, south and east.
 - The dataset is saved at [/Datasets/Dataset.csv](https://github.com/ser574spring2020/RoverProject/tree/master/Algorithm/Map%20Generator/Datasets)
 
 
