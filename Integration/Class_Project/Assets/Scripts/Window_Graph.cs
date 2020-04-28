@@ -156,7 +156,7 @@ public class Window_Graph : MonoBehaviour
         if (trailvalue.text != "")
         {
             string coveredpath = pathcovered[Convert.ToInt32(trailvalue.text) - 1];
-            pathcoverage.text = (coveredpath).Replace(";", "\n");
+            pathcoverage.text = "["+(coveredpath).Replace(";", "\n ")+"]";
         }
         else
         {
