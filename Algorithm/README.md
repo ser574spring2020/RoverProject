@@ -3,15 +3,12 @@
 #### Latest DLL
 - [DRL.dll](/Algorithm/DRL/DRL/bin/Debug)
 
-#### How to run?
-- [Windows Build](/Algorithm/Map%20Generator/WindowsBuild) - *(RoverSimulation-AlgorithmsTeam.exe)*
-- [Linux Build](/Algorithm/Map%20Generator/LinuxBuild) - *( 	LinuxBuild.x86_64)*
-
 ## Links
 - [Documents](https://drive.google.com/open?id=1gdqUG-G0XlVtYJZFXqgZue7gCKFo_VYj)
-- [API Document - Github](https://github.com/ser574spring2020/RoverProject/tree/master/Algorithm/API%20Docs)
-- [Sprint 1 - Youtube Video](https://www.youtube.com/watch?v=gztgx2QT6So)
-- [Sprint 2 - Youtube Video](https://www.youtube.com/watch?v=kdmzKdTH5-k)
+- [API Document - Github](/Algorithm/API%20Docs)
+- [Sprint 1 - Youtube](https://www.youtube.com/watch?v=gztgx2QT6So)
+- [Sprint 2 - Youtube](https://www.youtube.com/watch?v=kdmzKdTH5-k)
+- [Sprint 3 - Youtube](https://www.youtube.com/watch?v=QxZ_aAJR0M0)
 
 ## How to generate dataset?
 - Start the Unity Project
