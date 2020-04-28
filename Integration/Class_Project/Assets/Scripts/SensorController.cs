@@ -21,9 +21,11 @@ public class SensorController : MonoBehaviour
     //private static Sensors sensor;
 
     private static int sensorType;
+    int currentSensor;
     public GameObject Cube;
     void Start(){
-        sensor = SensorsComponent.SensorFactory.GetInstance(1, Cube);
+        currentSensor = PlayerPrefs.GetInt("SensorType");
+        sensor = SensorsComponent.SensorFactory.GetInstance(currentSensor, Cube);
         algorithmsSimulation = new AlgorithmsSimulation();
         algorithmsSimulation_ED = new AlgorithmsSimulation_ExpDesign();
         Debug.Log(sensor.GetCurrentSensor());

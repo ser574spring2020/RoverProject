@@ -187,7 +187,7 @@ public class Window_Graph : MonoBehaviour
                     {
                         valueList.Add(item);
                     }
-                    ShowGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " Minutes");
+                    ShowGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " Seconds");
                     break;
                 case "PointsScored":
                     foreach (int item in scrambledWatermark)
@@ -226,7 +226,7 @@ public class Window_Graph : MonoBehaviour
                     {
                         valueList.Add(item);
                     }
-                    ShowLineGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " Minutes");
+                    ShowLineGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " Seconds");
                     break;
                 case "PointsScored":
                     foreach (int item in scrambledWatermark)
@@ -318,7 +318,7 @@ public class Window_Graph : MonoBehaviour
                     {
                         valueList.Add(item);
                     }
-                    ShowGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " Minutes");
+                    ShowGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " Seconds");
                     break;
                 case "PointsScored":
                     foreach (int item in scrambledWatermark)
@@ -357,7 +357,7 @@ public class Window_Graph : MonoBehaviour
                     {
                         valueList.Add(item);
                     }
-                    ShowLineGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " Minutes");
+                    ShowLineGraph(valueList, -1, (int _i) => " Trail " + (_i + 1), (float _f) => Mathf.RoundToInt(_f) + " Seconds");
                     break;
                 case "PointsScored":
                     foreach (int item in scrambledWatermark)

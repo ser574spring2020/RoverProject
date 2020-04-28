@@ -34,25 +34,21 @@ public class AlgorithmsSimulation : MonoBehaviour
     private float mazeOffset= 140;
     private static database expDB;
     private bool isSimulationComplete= false;
-    private GameObject robotMain;
-    private enum SensorType{
-        Proximity = 1,
-        Range = 2,
-        Lidar = 3,
-        Radar= 4,
-        Bumper=5
-    }
-    int currentSensor = (int)SensorType.Proximity;
+    private GameObject robotMain;    
+    int currentSensor;    
     String robotDirection = "East";
 
     void Start()
     {
-        sensor= SensorsComponent.SensorFactory.GetInstance(currentSensor, robotPrefab);
+        currentSensor = PlayerPrefs.GetInt("SensorType");        
+        sensor = SensorsComponent.SensorFactory.GetInstance(currentSensor, robotPrefab);
         createMaze.onClick.AddListener(createMazeButtonListener);
         expDB= new database();
         manualButton.onClick.AddListener(manualButtonListener);
         automaticButton.onClick.AddListener(automaticButtonListener);
         backButton.interactable= false;
+
+        
     }
 
 

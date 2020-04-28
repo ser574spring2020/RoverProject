@@ -43,15 +43,8 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
     public Text statusText;
     public Text experimentText;
     int ExperimentalID = 0;
-    private GameObject robotMain;
-    private enum SensorType{
-        Proximity = 1,
-        Range = 2,
-        Lidar = 3,
-        Radar= 4,
-        Bumper=5
-    }
-    int currentSensor = (int)SensorType.Proximity;
+    private GameObject robotMain;    
+    int currentSensor;
     String robotDirection = "East";
 
     void Start()
@@ -66,6 +59,8 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
     }
     public void Begin()
     {
+        currentSensor = PlayerPrefs.GetInt("SensorType");
+        Debug.Log("Curr Sensor: " + currentSensor);
         int expc = expCounter + 1;
         experimentText.text = "Experiment " + ExperimentalID + " is running";
         statusText.text = "Trail " + expc  + " is running.";
@@ -314,27 +309,27 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
         {
             if (maze[currentX - 1, currentY +0 ]== 1) return;
             move(-1, 0);
-            robot.transform.Rotate(0.0f, 270f, 0.0f, Space.Self);
+            //robot.transform.Rotate(0.0f, 270f, 0.0f, Space.Self);
             // exploringRobot.transform.Rotate(0.0f, 270.0f, 0.0f, Space.Self);
         }
         else if (direction== "East")
         {
             if (maze[currentX, currentY +1 ]== 1) return;
             move(0, 1);
-            robot.transform.Rotate(0.0f, 0f, 0.0f, Space.Self);
+            //robot.transform.Rotate(0.0f, 0f, 0.0f, Space.Self);
             // exploringRobot.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
         }
         else if (direction== "West")
         {
             if (maze[currentX, currentY -1 ]== 1) return;
             move(0, -1);
-            robot.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
+            //robot.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
             // exploringRobot.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
         }
         else if (direction== "South"){
             if (maze[currentX + 1, currentY +0 ]== 1) return;
             move(1, 0);
-            robot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
+            //robot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
             // exploringRobot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
         }
     }

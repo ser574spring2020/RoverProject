@@ -21,6 +21,7 @@ public class ExpDesignScript : MonoBehaviour
     public Text sliderval;
     public Slider MazeCoverage;
     public Text mazecoveragevalue;
+    private int sensorSelected;
 
     // Start is called before the first frame update
 
@@ -125,6 +126,7 @@ public class ExpDesignScript : MonoBehaviour
         }
         SensorType = GameObject.Find("SensorType").GetComponent<Dropdown>();
         string SensorTypeValue = SensorType.captionText.text;
+        sensorSelected = SensorType.value + 1;
 
         print(thresholdval);
         if ((!string.IsNullOrEmpty(value) && (thresholdval > 0 && thresholdval < 1)) && !string.IsNullOrEmpty(value1) && (experimentVal >= 1 && experimentVal <= 100))
@@ -146,6 +148,7 @@ public class ExpDesignScript : MonoBehaviour
         PlayerPrefs.SetString("Maze", thresholdval.ToString());
         PlayerPrefs.SetString("Size", MazeSizeValue);
         PlayerPrefs.SetString("Sensor", SensorTypeValue);
+        PlayerPrefs.SetInt("SensorType", sensorSelected);
         PlayerPrefs.SetInt("Iteration", experimentVal);
         PlayerPrefs.SetString("Experiment", ExperimentType.captionText.text);
         PlayerPrefs.Save();

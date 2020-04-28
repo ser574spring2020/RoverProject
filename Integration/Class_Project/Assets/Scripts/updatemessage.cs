@@ -16,6 +16,7 @@ public class updatemessage : MonoBehaviour
     public Text SliderValue;
     public Slider MazeCoverage;
     public Text mazecoveragevalue;
+    private int sensorSelected;
 
 
     // Start is called before the first frame update
@@ -92,6 +93,7 @@ public class updatemessage : MonoBehaviour
         }
         SensorType = GameObject.Find("SensorType").GetComponent<Dropdown>();
         SensorTypeValue = SensorType.captionText.text;
+        sensorSelected = SensorType.value + 1;
 
 
         if (!string.IsNullOrEmpty(value) && (thresholdval >= 0 && thresholdval <= 1))
@@ -113,6 +115,7 @@ public class updatemessage : MonoBehaviour
         PlayerPrefs.SetString("Maze", thresholdval.ToString());
         PlayerPrefs.SetString("Size", MazeSizeValue);
         PlayerPrefs.SetString("Sensor", SensorTypeValue);
+        PlayerPrefs.SetInt("SensorType", sensorSelected);
         PlayerPrefs.Save();
     }
 
