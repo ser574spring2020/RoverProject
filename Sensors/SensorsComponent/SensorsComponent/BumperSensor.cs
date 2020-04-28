@@ -21,6 +21,8 @@ namespace SensorsComponent
 
         public override void Update_Obstacles(GameObject gObj, int[,] mazeData, string Direction)
         {
+            base.Update_Obstacles(gObj, mazeData, Direction);
+
             Update_bumper_matrix(mazeData, Direction);
 
             CheckObstacle(gObj.transform.position,

@@ -5,7 +5,7 @@ using System.IO;
 using System.Text;
 using Algorithms;
 using System.Collections.Generic;
-using SensorsComponent;
+//using SensorsComponent;
 
 public class AlgorithmsSimulation : MonoBehaviour
 {
@@ -42,12 +42,12 @@ public class AlgorithmsSimulation : MonoBehaviour
     void Start()
     {
         currentSensor = PlayerPrefs.GetInt("SensorType");
-        sensor = SensorsComponent.SensorFactory.GetInstance(currentSensor, robotPrefab);
+        sensor = SensorsComponent.SensorFactory.GetInstance(currentSensor, robotPrefab);        
         createMaze.onClick.AddListener(createMazeButtonListener);
         expDB= new database();
         manualButton.onClick.AddListener(manualButtonListener);
         automaticButton.onClick.AddListener(automaticButtonListener);
-        backButton.interactable= false;
+        backButton.interactable= false;        
         Debug.Log(sensor.GetCurrentSensor());
 
 
@@ -244,13 +244,20 @@ public class AlgorithmsSimulation : MonoBehaviour
     //Update sensor data on UI
     void updateUISensorData(int[,] tempData)
     {
+
         sensorData.text= "";
         for (int i= 0; i <tempData.GetLength(0); i++){
             for (int j= 0; j < tempData.GetLength(1); j++){
-                if(tempData[i, j]==-1)
+                if(tempData[i, j] == -1)
+                {
                     sensorData.text += "  ";
+                }                    
                 else
+                {                    
                     sensorData.text += tempData[i, j] + " ";
+                }
+                    
+                    
             }
             sensorData.text += "\n";
         }

@@ -21,12 +21,12 @@ namespace SensorsComponent
         protected static int sensorType;
 
         protected static int[,] obstacle_matrix;
-        private static String currentSensor;
+        private static String currentSensor;        
 
         //Interface for mazeData matrix     
         public virtual void Update_Obstacles(GameObject gameObj, int[,] mazeData, string Direction)
         {
-
+            Rover = gameObj;
         }
         
         public void Update()
@@ -38,6 +38,11 @@ namespace SensorsComponent
         //Singleton Pattern. Only one instance allowed.
         protected Sensors()
         {
+        }
+
+        public GameObject GetRoverObject()
+        {
+            return Rover;
         }
 
         public int[,] Get_Obstacle_Matrix()

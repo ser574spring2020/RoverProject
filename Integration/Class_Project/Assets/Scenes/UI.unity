@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1267,7 +1267,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 798324276}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1655,8 +1655,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1927391374}
   - {fileID: 531963386}
+  - {fileID: 1927391374}
   - {fileID: 1519186017}
   - {fileID: 542185214}
   - {fileID: 46890538}
@@ -2227,7 +2227,6 @@ MonoBehaviour:
   backButton: {fileID: 1713630395}
   manualButton: {fileID: 1519186018}
   automaticButton: {fileID: 542185215}
-  healthBar: {fileID: 46890539}
 --- !u!1 &1050449376
 GameObject:
   m_ObjectHideFlags: 0
@@ -3719,7 +3718,7 @@ RectTransform:
   m_Children:
   - {fileID: 234922184}
   m_Father: {fileID: 798324276}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

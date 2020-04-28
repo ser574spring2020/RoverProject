@@ -26,6 +26,8 @@ namespace SensorsComponent
                 5X5 matrix is taken for this sensor
                 -1 : don't know; setting distance of collision to object in range of (1f-2f) */
 
+            base.Update_Obstacles(gObj, mazeData, Direction);
+
             Update_liDAR_matrix(mazeData, Direction);
 
             CheckObstacle(gObj.transform.position,

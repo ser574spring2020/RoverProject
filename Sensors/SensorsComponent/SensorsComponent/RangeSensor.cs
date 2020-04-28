@@ -25,6 +25,7 @@ namespace SensorsComponent
         {
             /* initial position for every step before checking for potential collisions
                5X5 matrix is taken for this sensor */
+            base.Update_Obstacles(gObj, mazeData, Direction);
 
             Update_range_matrix(mazeData, Direction);
 

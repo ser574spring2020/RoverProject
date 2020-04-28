@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using Algorithms;
 using System.Collections.Generic;
+//using SensorsComponent;
 
 
 public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
@@ -50,7 +51,7 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
 
     void Start()
     {
-
+        
         expDB = new database();
     }
 
@@ -59,15 +60,15 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
         expCounter = 0;
     }
     public void Begin()
-    {        
-        //Debug.Log("Curr Sensor: " + currentSensor);
+    {
+        //Debug.Log("Curr Sensor: " + currentSensor);        
         currentSensor = PlayerPrefs.GetInt("SensorType");
         int expc = expCounter + 1;
         experimentText.text = "Experiment " + ExperimentalID + " is running";
         statusText.text = "Trail " + expc  + " is running.";
-        sensor= SensorsComponent.SensorFactory.GetInstance(currentSensor, robotPrefab);
+        sensor = SensorsComponent.SensorFactory.GetInstance(currentSensor, robotPrefab);        
         createMazeButtonListener();
-        
+        Debug.Log(sensor.GetCurrentSensor());
         // manualButton.onClick.AddListener(manualButtonListener);
         automaticButtonListener();
         backButton.interactable = false;
@@ -124,7 +125,7 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
 
     private void UpdateParameters()
     {
-        //currentSensor = PlayerPrefs.GetInt("SensorType");
+        currentSensor = PlayerPrefs.GetInt("SensorType");
         currentAlgo = PlayerPrefs.GetInt("AlgoSelected");
         placementThreshold = float.Parse(GameObject.Find("MazeButton").GetComponentInChildren<Text>().text);
         String[] size = GameObject.Find("SizeButton").GetComponentInChildren<Text>().text.ToString().Split('X');
@@ -142,8 +143,9 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
         pointsScored = Int32.Parse(pointsScoredStr);
         if(checkRunTimeStatus()){
             int matrixSize = (currentSensor==1 || currentSensor == 5)? 3:5;
-            sensor.Update_Obstacles(robotMain, getMazeData(matrixSize), robotDirection);
-            updateUISensorData(getMazeData(matrixSize));
+            Debug.Log(robotMain);
+            sensor.Update_Obstacles(sensor.GetRoverObject(), getMazeData(matrixSize), robotDirection);
+            //updateUISensorData(getMazeData(matrixSize));
             int[,] sensorReading = sensor.Get_Obstacle_Matrix();
             updateUISensorData(sensorReading);
             String robotCommand = exploration.GetNextCommand(sensorReading, currentSensor);
