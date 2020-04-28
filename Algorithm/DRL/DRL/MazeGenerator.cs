@@ -1,10 +1,11 @@
-    using Random = UnityEngine.Random;
+    //using Random = UnityEngine.Random;
     using RandomSystem = System.Random;
 
     namespace Algorithms
     {
         public class MazeGenerator
         {
+            private RandomSystem rnd = new RandomSystem();
             //Returns an integer array maze
             // @param sizeRows - Number of rows in the maze
             // @param sizeCols - Number of cols in the maze
@@ -25,11 +26,11 @@
 
                         else if (i % 2 == 0 && j % 2 == 0)
                         {
-                            if (Random.value > placementThreshold)
+                            if (Random() > placementThreshold)
                             {
                                 maze[i, j] = 1;
-                                int a = Random.value < .5 ? 0 : (Random.value < .5 ? -1 : 1);
-                                int b = a != 0 ? 0 : (Random.value < .5 ? -1 : 1);
+                                int a = Random() < .5 ? 0 : (Random() < .5 ? -1 : 1);
+                                int b = a != 0 ? 0 : (Random() < .5 ? -1 : 1);
                                 maze[i + a, j + b] = 1;
                             }
                         }
@@ -37,6 +38,11 @@
                 }
 
                 return maze;
+            }
+
+            private double Random()
+            {
+                return rnd.NextDouble();
             }
         }
     }

@@ -26,10 +26,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e628e13a-4fd0-492c-8389-40d37d346689" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/DRL.Tests/Class1.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL.Tests/Properties/AssemblyInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL.Tests/TestsDRL.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL.Tests/TestsExploration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL.Tests/bin/Debug/DRL.Tests.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL.Tests/bin/Debug/DRL.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL.Tests/bin/Debug/NUnit3.TestAdapter.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL.Tests/bin/Debug/UnityEngine.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL.Tests/bin/Debug/UnityEngine.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL.Tests/bin/Debug/nunit.engine.api.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL.Tests/bin/Debug/nunit.engine.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL.Tests/bin/Debug/nunit.framework.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL.Tests/bin/Debug/nunit.framework.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL.Tests/obj/Debug/DRL.Tests.csproj.CopyComplete" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL.Tests/obj/Debug/DRL.Tests.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL.Tests/obj/Debug/DRL.Tests.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL.Tests/obj/Debug/DRL.Tests.csprojAssemblyReference.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL.Tests/obj/Debug/DRL.Tests.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL.Tests/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL.Tests/obj/Debug/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL.Tests/obj/Debug/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL.Tests/obj/Debug/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DRL.Tests/packages.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/DRL.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/DRL.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL.sln" beforeDir="false" afterPath="$PROJECT_DIR$/DRL.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/DRL.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/DRL.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/MazeGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/MazeGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/TestsDRL.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/TestsExploration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/TestsMazeGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL.Tests/TestsMazeGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.pdb" afterDir="false" />
     </list>
@@ -42,14 +74,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/DRL/MazeCell.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DRL/DRL.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DRL/Properties/AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DRL/TestsDRL.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DRL/TestsExploration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DRL/TestsMazeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DRL/MazeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/MazeCell.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/Properties/AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DRL/ExploredMap.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/DRL.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -59,9 +88,12 @@
         <option value="$PROJECT_DIR$/DRL/TestsMazeGenerator.cs" />
         <option value="$PROJECT_DIR$/DRL/TestsDRL.cs" />
         <option value="$PROJECT_DIR$/DRL/DatasetGenerator.cs" />
-        <option value="$PROJECT_DIR$/DRL/MazeGenerator.cs" />
         <option value="$PROJECT_DIR$/DRL/ExploredMap.cs" />
         <option value="$PROJECT_DIR$/DRL/DRL.cs" />
+        <option value="$PROJECT_DIR$/DRL.Tests/TestsDRL.cs" />
+        <option value="$PROJECT_DIR$/DRL.Tests/TestsMazeGenerator.cs" />
+        <option value="$PROJECT_DIR$/DRL/MazeGenerator.cs" />
+        <option value="$PROJECT_DIR$/DRL.Tests/TestsExploration.cs" />
       </list>
     </option>
   </component>
@@ -73,10 +105,18 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994584" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.30010834" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -85,10 +125,10 @@
       <option name="pid" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="8876">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="8876" />
       <method v="2" />
     </configuration>
   </component>
@@ -109,6 +149,7 @@
       <workItem from="1587426023465" duration="2873000" />
       <workItem from="1587435132680" duration="701000" />
       <workItem from="1587436337593" duration="2320000" />
+      <workItem from="1588092519210" duration="5260000" />
     </task>
     <servers />
   </component>
@@ -133,14 +174,83 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="481" y="215" width="948" height="645" key="#Attach_to_Unity_Editor" timestamp="1587152789633">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="481" y="209" width="948" height="645" key="#Attach_to_Unity_Editor" timestamp="1588093007980">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="481" y="215" width="948" height="645" key="#Attach_to_Unity_Editor/0.0.1920.1080@0.0.1920.1080" timestamp="1587152789633" />
+    <state x="481" y="209" key="#Attach_to_Unity_Editor/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093007980" />
     <state x="519" y="311" width="872" height="454" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587362013607">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="519" y="311" width="872" height="454" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1587362013607" />
+    <state width="1877" height="379" key="GridCell.Tab.0.bottom" timestamp="1588093029657">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.0.bottom/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029657" />
+    <state width="1877" height="379" key="GridCell.Tab.0.center" timestamp="1588093029657">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.0.center/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029657" />
+    <state width="1877" height="379" key="GridCell.Tab.0.left" timestamp="1588093029656">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.0.left/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029656" />
+    <state width="1877" height="379" key="GridCell.Tab.0.right" timestamp="1588093029657">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.0.right/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029657" />
+    <state width="1877" height="379" key="GridCell.Tab.1.bottom" timestamp="1588093029661">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.1.bottom/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029659" />
+    <state width="1877" height="379" key="GridCell.Tab.1.center" timestamp="1588093029657">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.1.center/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029657" />
+    <state width="1877" height="379" key="GridCell.Tab.1.left" timestamp="1588093029657">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.1.left/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029657" />
+    <state width="1877" height="379" key="GridCell.Tab.1.right" timestamp="1588093029657">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.1.right/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029657" />
+    <state width="1877" height="379" key="GridCell.Tab.2.bottom" timestamp="1588093029666">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.2.bottom/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029666" />
+    <state width="1877" height="379" key="GridCell.Tab.2.center" timestamp="1588093029664">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.2.center/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029664" />
+    <state width="1877" height="379" key="GridCell.Tab.2.left" timestamp="1588093029663">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.2.left/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029663" />
+    <state width="1877" height="379" key="GridCell.Tab.2.right" timestamp="1588093029665">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.2.right/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029665" />
+    <state width="1877" height="379" key="GridCell.Tab.3.bottom" timestamp="1588093029670">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.3.bottom/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029670" />
+    <state width="1877" height="379" key="GridCell.Tab.3.center" timestamp="1588093029669">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.3.center/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029669" />
+    <state width="1877" height="379" key="GridCell.Tab.3.left" timestamp="1588093029668">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.3.left/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029668" />
+    <state width="1877" height="379" key="GridCell.Tab.3.right" timestamp="1588093029669">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.3.right/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029669" />
+    <state x="769" y="439" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588099592941">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="769" y="439" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588099592941" />
     <state x="0" y="0" width="910" height="1080" key="find.popup" timestamp="1587428707323">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
