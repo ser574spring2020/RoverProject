@@ -24,14 +24,14 @@ namespace SensorsComponent
         private static String currentSensor;
 
         //Interface for mazeData matrix     
-        public virtual void Update_Obstacles(GameObject gameObj)
+        public virtual void Update_Obstacles(GameObject gameObj, int[,] mazeData, string Direction)
         {
 
         }
         
         public void Update()
         {
-            sensors.Update_Obstacles(Rover);
+            //sensors.Update_Obstacles(Rover);
         }
 
 
@@ -203,32 +203,32 @@ namespace SensorsComponent
         {
             if (GetSensorType() == 1) // for proximity
             {
-                update_proximity_matrix(mazeData);
+                //update_proximity_matrix(mazeData);
             }
             else if (GetSensorType() == 2) // for range
             {
-                update_range_matrix(mazeData);
+                //update_range_matrix(mazeData);
             }
             else if (GetSensorType() == 3)
             {
-                update_liDAR_matrix(mazeData, Direction);
+                //update_liDAR_matrix(mazeData, Direction);
             }
             else if (GetSensorType() == 4)
             {
-                update_radar_matrix(mazeData);
+                //update_radar_matrix(mazeData);
             }
             else if (GetSensorType() == 5) // bumper
             {
-                update_bumper_matrix(mazeData, Direction);
+                //update_bumper_matrix(mazeData, Direction);
             }
             else
             {
-                update_proximity_matrix(mazeData);
+                //update_proximity_matrix(mazeData);
             }
             
         }
 
-        private void update_liDAR_matrix(int[,] mazeData, string direction)
+        protected void Update_liDAR_matrix(int[,] mazeData, string direction)
         {            
             obstacle_matrix = new int[,] { { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 2, 0, 0 } };
 
@@ -302,11 +302,11 @@ namespace SensorsComponent
         }
 
 
-        private void update_range_matrix(int[,] mazeData)
+        protected void Update_range_matrix(int[,] mazeData, string Direction)
         {
             update_matrix(mazeData);
 
-            update_radar_matrix(obstacle_matrix);
+            Update_radar_matrix(obstacle_matrix, Direction);
 
             obstacle_matrix[0, 1] = -1;
             obstacle_matrix[0, 3] = -1;
@@ -319,7 +319,7 @@ namespace SensorsComponent
 
         }
 
-        private void update_bumper_matrix(int[,] mazeData, string direction)
+        protected void Update_bumper_matrix(int[,] mazeData, string direction)
         {
             refractor_bumper_matrix(mazeData);
 
@@ -355,7 +355,7 @@ namespace SensorsComponent
             }
         }
 
-        private void update_proximity_matrix(int[,] mazeData)
+        protected void Update_proximity_matrix(int[,] mazeData)
         {
             update_matrix(mazeData);
 
@@ -377,7 +377,7 @@ namespace SensorsComponent
             }
         }
 
-        private void update_radar_matrix(int[,] mazeData)
+        protected void Update_radar_matrix(int[,] mazeData, string Direction)
         {
             update_matrix(mazeData);
             

@@ -35,20 +35,22 @@ public class AlgorithmsSimulation : MonoBehaviour
     private static database expDB;
     private bool isSimulationComplete= false;
     private GameObject robotMain;    
-    int currentSensor;    
+    int currentSensor;
+    int currentAlgo;
     String robotDirection = "East";
 
     void Start()
     {
-        currentSensor = PlayerPrefs.GetInt("SensorType");        
+        currentSensor = PlayerPrefs.GetInt("SensorType");
         sensor = SensorsComponent.SensorFactory.GetInstance(currentSensor, robotPrefab);
         createMaze.onClick.AddListener(createMazeButtonListener);
         expDB= new database();
         manualButton.onClick.AddListener(manualButtonListener);
         automaticButton.onClick.AddListener(automaticButtonListener);
         backButton.interactable= false;
+        Debug.Log(sensor.GetCurrentSensor());
 
-        
+
     }
 
 
@@ -75,9 +77,8 @@ public class AlgorithmsSimulation : MonoBehaviour
         pointsScored= Int32.Parse(pointsScoredStr);
         if(checkRunTimeStatus()){
             int matrixSize = (currentSensor==1 || currentSensor == 5)? 3:5;
-            sensor.Update_Maze_Data(getMazeData(matrixSize),robotDirection);
-            updateUISensorData(getMazeData(matrixSize));
-            int[,] sensorReading = sensor.Get_Obstacle_Matrix();
+            sensor.Update_Obstacles(robotMain, getMazeData(matrixSize), robotDirection);            
+            int[,] sensorReading = sensor.Get_Obstacle_Matrix();            
             updateUISensorData(sensorReading);
             String robotCommand = exploration.GetNextCommand(sensorReading, currentSensor);
             moveInDirection(robotCommand);
@@ -148,8 +149,9 @@ public class AlgorithmsSimulation : MonoBehaviour
     }
 
     private void UpdateParameters()
-    {
-        placementThreshold= float.Parse(GameObject.Find("MazeButton").GetComponentInChildren<Text>().text);
+    {        
+        currentAlgo = PlayerPrefs.GetInt("AlgoSelected");
+        placementThreshold = float.Parse(GameObject.Find("MazeButton").GetComponentInChildren<Text>().text);
         String[] size= GameObject.Find("SizeButton").GetComponentInChildren<Text>().text.ToString().Split('X');
         mazeWidth= Int32.Parse(size[0].Trim());
         mazeHeight= Int32.Parse(size[1].Trim());

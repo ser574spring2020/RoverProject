@@ -20,6 +20,7 @@ public class GetParamters : MonoBehaviour
         print(PlayerPrefs.GetInt("Iteration"));
         print(PlayerPrefs.GetInt("MazeCoverage"));
         print(PlayerPrefs.GetInt("SensorType"));
+        print(PlayerPrefs.GetInt("AlgoSelected"));
 
     }
     // Update is called once per frame

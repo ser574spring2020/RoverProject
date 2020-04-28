@@ -12,11 +12,12 @@ namespace SensorsComponent
             sensorLength = 2f;            
         }
 
-        public override void Update_Obstacles(GameObject gObj)
+        public override void Update_Obstacles(GameObject gObj, int[,] mazeData, string Direction)
         {
 
-            obstacle_matrix = new int[,] { { -1, 0, -1 }, { 0, 2, 0 }, { -1, 0, -1 } }; 
+            obstacle_matrix = new int[,] { { -1, 0, -1 }, { 0, 2, 0 }, { -1, 0, -1 } };
 
+            Update_proximity_matrix(mazeData);
 
             //Checks obstacles in 4 directions.
             CheckObstacle(gObj.transform.position,

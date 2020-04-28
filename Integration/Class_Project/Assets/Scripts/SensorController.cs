@@ -3,7 +3,7 @@
     Function : Implements Functionality for Proximity Sensor
     Version  : V1
     Email    : adalvi1@asu.edu | Arizona State University.
-*/
+*//*
 
 using UnityEngine;
 
@@ -24,11 +24,11 @@ public class SensorController : MonoBehaviour
     int currentSensor;
     public GameObject Cube;
     void Start(){
-        currentSensor = PlayerPrefs.GetInt("SensorType");
-        sensor = SensorsComponent.SensorFactory.GetInstance(currentSensor, Cube);
-        algorithmsSimulation = new AlgorithmsSimulation();
-        algorithmsSimulation_ED = new AlgorithmsSimulation_ExpDesign();
-        Debug.Log(sensor.GetCurrentSensor());
+        //currentSensor = PlayerPrefs.GetInt("SensorType");
+        //sensor = SensorsComponent.SensorFactory.GetInstance(currentSensor, Cube);
+        //algorithmsSimulation = new AlgorithmsSimulation();
+        //algorithmsSimulation_ED = new AlgorithmsSimulation_ExpDesign();
+        //Debug.Log(sensor.GetCurrentSensor());
         
     }
 
@@ -36,14 +36,14 @@ public class SensorController : MonoBehaviour
     void Update()
     {
         // changePosRover();
-        if(!algorithmsSimulation.getIsSimulationComplete()){
-            sensor.Update_Obstacles(Cube);
-        }
+        //if(!algorithmsSimulation.getIsSimulationComplete()){
+            //sensor.Update_Obstacles(Cube);
+        //}
 
-        if (!algorithmsSimulation_ED.getIsSimulationComplete())
-        {
-            sensor.Update_Obstacles(Cube);
-        }
+        //if (!algorithmsSimulation_ED.getIsSimulationComplete())
+        //{
+            //sensor.Update_Obstacles(Cube);
+       //}
         // sensor.SetSensorType(1);
         // int[,] matrix = sensor.Get_Obstacle_Matrix();
         // testProximityMatrix(matrix);
@@ -92,7 +92,7 @@ public class SensorController : MonoBehaviour
         return sensorType;
     }
 
-    /*private void highlightCollider(GameObject gObj)
+    *//*private void highlightCollider(GameObject gObj)
     {
         Renderer r = gObj.GetComponent(typeof(Renderer)) as Renderer;
         oldColor = r.material.GetColor("_Color");
@@ -104,5 +104,6 @@ public class SensorController : MonoBehaviour
     {
         Renderer r = gObj.GetComponent(typeof(Renderer)) as Renderer;
         r.material.SetColor("_Color", oldColor);
-    }*/
+    }*//*
 }
+*/

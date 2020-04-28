@@ -45,6 +45,7 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
     int ExperimentalID = 0;
     private GameObject robotMain;    
     int currentSensor;
+    int currentAlgo;
     String robotDirection = "East";
 
     void Start()
@@ -58,9 +59,9 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
         expCounter = 0;
     }
     public void Begin()
-    {
+    {        
+        //Debug.Log("Curr Sensor: " + currentSensor);
         currentSensor = PlayerPrefs.GetInt("SensorType");
-        Debug.Log("Curr Sensor: " + currentSensor);
         int expc = expCounter + 1;
         experimentText.text = "Experiment " + ExperimentalID + " is running";
         statusText.text = "Trail " + expc  + " is running.";
@@ -123,6 +124,8 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
 
     private void UpdateParameters()
     {
+        //currentSensor = PlayerPrefs.GetInt("SensorType");
+        currentAlgo = PlayerPrefs.GetInt("AlgoSelected");
         placementThreshold = float.Parse(GameObject.Find("MazeButton").GetComponentInChildren<Text>().text);
         String[] size = GameObject.Find("SizeButton").GetComponentInChildren<Text>().text.ToString().Split('X');
         mazeWidth = Int32.Parse(size[0].Trim());
@@ -139,7 +142,7 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
         pointsScored = Int32.Parse(pointsScoredStr);
         if(checkRunTimeStatus()){
             int matrixSize = (currentSensor==1 || currentSensor == 5)? 3:5;
-            sensor.Update_Maze_Data(getMazeData(matrixSize),robotDirection);
+            sensor.Update_Obstacles(robotMain, getMazeData(matrixSize), robotDirection);
             updateUISensorData(getMazeData(matrixSize));
             int[,] sensorReading = sensor.Get_Obstacle_Matrix();
             updateUISensorData(sensorReading);

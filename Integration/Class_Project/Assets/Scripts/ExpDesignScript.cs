@@ -22,6 +22,7 @@ public class ExpDesignScript : MonoBehaviour
     public Slider MazeCoverage;
     public Text mazecoveragevalue;
     private int sensorSelected;
+    private int algoSelected;
 
     // Start is called before the first frame update
 
@@ -102,6 +103,8 @@ public class ExpDesignScript : MonoBehaviour
         TestSuite ts = new TestSuite();
         int mazecoverageval = Convert.ToInt32(MazeCoverage.value);
 
+        algoSelected = InputAlgorithm.value + 1;
+
         try
         {
             value1 = (NumberOfExperiments.value).ToString();
@@ -149,6 +152,7 @@ public class ExpDesignScript : MonoBehaviour
         PlayerPrefs.SetString("Size", MazeSizeValue);
         PlayerPrefs.SetString("Sensor", SensorTypeValue);
         PlayerPrefs.SetInt("SensorType", sensorSelected);
+        PlayerPrefs.SetInt("AlgoSelected", algoSelected);
         PlayerPrefs.SetInt("Iteration", experimentVal);
         PlayerPrefs.SetString("Experiment", ExperimentType.captionText.text);
         PlayerPrefs.Save();

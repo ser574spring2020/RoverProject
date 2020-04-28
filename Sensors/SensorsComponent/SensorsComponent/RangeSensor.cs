@@ -21,10 +21,13 @@ namespace SensorsComponent
                                           { -1, -1, -1, -1, -1 },
                                           { -1, -1, -1, -1, -1 }};
         }
-        public override void Update_Obstacles(GameObject gObj)
+        public override void Update_Obstacles(GameObject gObj, int[,] mazeData, string Direction)
         {
             /* initial position for every step before checking for potential collisions
                5X5 matrix is taken for this sensor */
+
+            Update_range_matrix(mazeData, Direction);
+
             Vector3 origin = gObj.transform.position;
 
             //Checks obstacles in 8 directions.

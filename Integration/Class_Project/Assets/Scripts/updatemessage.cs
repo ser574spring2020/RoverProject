@@ -17,6 +17,7 @@ public class updatemessage : MonoBehaviour
     public Slider MazeCoverage;
     public Text mazecoveragevalue;
     private int sensorSelected;
+    private int algorithmSelected;
 
 
     // Start is called before the first frame update
@@ -75,6 +76,8 @@ public class updatemessage : MonoBehaviour
 
         InputAlgorithm = GameObject.Find("Algorithm").GetComponent<Dropdown>();
         string InputAlgorithmValue = InputAlgorithm.captionText.text;
+        algorithmSelected = InputAlgorithm.value + 1;
+
         MazeSize = GameObject.Find("MazeSize").GetComponent<Dropdown>();
         string MazeSizeValue = MazeSize.captionText.text;
         SensorType = GameObject.Find("SensorType").GetComponent<Dropdown>();
@@ -112,6 +115,7 @@ public class updatemessage : MonoBehaviour
 
         PlayerPrefs.SetInt("MazeCoverage", mazecoverageval);
         PlayerPrefs.SetString("Algo", InputAlgorithmValue);
+        PlayerPrefs.SetInt("AlgoSelected", algorithmSelected);
         PlayerPrefs.SetString("Maze", thresholdval.ToString());
         PlayerPrefs.SetString("Size", MazeSizeValue);
         PlayerPrefs.SetString("Sensor", SensorTypeValue);

@@ -20,12 +20,14 @@ namespace SensorsComponent
                                           { -1, -1, -1, -1, -1 },
                                           { -1, -1, -1, -1, -1 }};
         }
-        public override void Update_Obstacles(GameObject gObj)
+        public override void Update_Obstacles(GameObject gObj, int[,] mazeData, string Direction)
         {
             /*
             initial position for every step before checking for potential collisions
             5X5 matrix is taken for this sensor
             -1 : don't know; setting distance of collision to object in range of (1f-2f) */
+
+            Update_radar_matrix(mazeData, Direction);
 
             DrawCircle(gObj.transform.position, sensorLength, Color.blue);
             DrawCircle(gObj.transform.position, sensorLength - 2, Color.red);
