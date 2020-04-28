@@ -46,5 +46,15 @@ namespace DRL
             int[,] result = new int[3, 3] {{9, 8, 7}, {6, 5, 4}, {3, 2, 1}};
             Assert.That(array, Is.EqualTo(result));
         }
+
+        [Test]
+        public void ConvertToOneDimensional_Should_Convert_Int2d_To_Double1d()
+        {
+            Exploration exploration = new Exploration(30,30);
+            int[,] array = new int[3, 3] {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+            double[] converted = exploration.convertToOneDimensionalDouble(array);
+            double[] expected = new double[]{1,2,3,4,5,6,7,8,9};
+            Assert.That(converted, Is.EqualTo(expected));
+        }
     }
 }
