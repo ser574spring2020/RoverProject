@@ -16,15 +16,6 @@
 - Use the <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> to move north, west, south and east.
 - The dataset is saved at [/Datasets/Dataset.csv](https://github.com/ser574spring2020/RoverProject/tree/master/Algorithm/Map%20Generator/Datasets)
 
-
-## Contributors
-- Amit Pandey
-- Jonathan Bush
-- Karandeep Singh Grewal
-- Mayank Batra
-- Mayank Rawat
-- Ria Mehta
-
 ## File Structure (For team use only)
 Algorithm (Root)
 
@@ -50,3 +41,12 @@ Algorithm (Root)
     │   └── TestsMazeGenerator.cs     (Tests for MazeGenerator.cs)
     └── DRL.sln
 ```
+
+
+## Contributors
+- Amit Pandey
+- Jonathan Bush
+- Karandeep Singh Grewal
+- Mayank Batra
+- Mayank Rawat
+- Ria Mehta
