@@ -42,7 +42,7 @@ public class AlgorithmsSimulation : MonoBehaviour
         Radar= 4,
         Bumper=5
     }
-    int currentSensor = (int)SensorType.Bumper;
+    int currentSensor = (int)SensorType.Proximity;
     String robotDirection = "East";
 
     void Start()
@@ -82,7 +82,7 @@ public class AlgorithmsSimulation : MonoBehaviour
             sensor.Update_Maze_Data(getMazeData(matrixSize),robotDirection);
             updateUISensorData(getMazeData(matrixSize));
             int[,] sensorReading = sensor.Get_Obstacle_Matrix();
-            updateUISensorData(sensorReading);  
+            updateUISensorData(sensorReading);
             String robotCommand = exploration.GetNextCommand(sensorReading, currentSensor);
             moveInDirection(robotCommand);
         }

@@ -43,20 +43,21 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
     public Text statusText;
     public Text experimentText;
     int ExperimentalID = 0;
+    private GameObject robotMain;
+    private enum SensorType{
+        Proximity = 1,
+        Range = 2,
+        Lidar = 3,
+        Radar= 4,
+        Bumper=5
+    }
+    int currentSensor = (int)SensorType.Proximity;
+    String robotDirection = "East";
 
     void Start()
     {
 
         expDB = new database();
-        /*sensor = SensorsComponent.SensorFactory.GetInstance(1, robotPrefab);
-        createMaze.onClick.AddListener(createMazeButtonListener);
-        expDB = new database();
-        manualButton.onClick.AddListener(manualButtonListener);
-        automaticButton.onClick.AddListener(automaticButtonListener);
-        backButton.interactable = false;*/
-
-        // dbm = new DataBaseManager();
-        // dbm.ConnectToDB("Rover.db");
     }
 
     public void resetValues()
@@ -68,50 +69,31 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
         int expc = expCounter + 1;
         experimentText.text = "Experiment " + ExperimentalID + " is running";
         statusText.text = "Trail " + expc  + " is running.";
-        sensor = SensorsComponent.SensorFactory.GetInstance(1, robotPrefab);
+        sensor= SensorsComponent.SensorFactory.GetInstance(currentSensor, robotPrefab);
         createMazeButtonListener();
         
         // manualButton.onClick.AddListener(manualButtonListener);
         automaticButtonListener();
         backButton.interactable = false;
-        /*for (int i = 0; i < 3; i++)
-        {
-            Debug.Log(i);
-            
-        }*/
+        
         expCounter++;
     }
     //Create the initial maze
     public void createMazeButtonListener()
     {
 
-        
-       /* if (exploredMazeObjects != null)
-        {
-            for (int i = 0; i < exploredMazeObjects.Length; i++)
-                Destroy(exploredMazeObjects[i]);
-        }*/
-
-
-       
         UpdateParameters();
         arrayOfGameObjects.Add(new GameObject[mazeHeight * mazeWidth]);
-        
 
-        //Debug.Log(arrayOfGameObjects[i]);
-       
-        //mazeObjects = new GameObject[mazeHeight * mazeWidth];
-        //exploredMazeObjects = new GameObject[mazeHeight * mazeWidth];
         exploration = new Exploration(mazeHeight, mazeWidth);
         if (mazeCreated == false)
         {
             if(arrayCounter == 0)
                 maze = mazeGenerator.GenerateMaze(mazeHeight, mazeWidth, placementThreshold);
             maze[currentX, currentY] = 2;
-           // updateMaze();
+            // updateMaze();
             mazeCreated = true;
         }
-        //arrayOfGameObjects.Add(mazeObjects);
     }
 
     void manualButtonListener(){
@@ -146,12 +128,10 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
 
     private void UpdateParameters()
     {
-        //Debug.Log("ALGORITHM SELECTED : " + GameObject.Find("AlgoButton").GetComponentInChildren<Text>().text);
         placementThreshold = float.Parse(GameObject.Find("MazeButton").GetComponentInChildren<Text>().text);
         String[] size = GameObject.Find("SizeButton").GetComponentInChildren<Text>().text.ToString().Split('X');
         mazeWidth = Int32.Parse(size[0].Trim());
         mazeHeight = Int32.Parse(size[1].Trim());
-        //Debug.Log("SENSOR SELECTED : " + GameObject.Find("SensorButton").GetComponentInChildren<Text>().text);
         expDB.Insert(PlayerPrefs.GetString("Algo"), PlayerPrefs.GetString("Size"), Math.Round(float.Parse(PlayerPrefs.GetString("Maze")), 2), PlayerPrefs.GetString("Sensor"), PlayerPrefs.GetString("Experiment"), ExperimentalID);
     }
 
@@ -163,19 +143,12 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
         mazeCoverage = Int32.Parse(mazeCoverageStr);
         pointsScored = Int32.Parse(pointsScoredStr);
         if(checkRunTimeStatus()){
-            updateSensorsData(getSensorsData());
-            // updateSensorsTeamData();
-            int[,] sensorMatrix = sensor.Get_Obstacle_Matrix();
-            int[,] matrix = getSensorsData();
-            updateSensorMaze(sensorMatrix, matrix);
-            Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-
-
-            // update SensorType here
-            //dbm.SetSensorMatrixById(unixTimestamp, 1, sensorMatrix);
-
-
-            String robotCommand = exploration.GetNextCommand(sensorMatrix);
+            int matrixSize = (currentSensor==1 || currentSensor == 5)? 3:5;
+            sensor.Update_Maze_Data(getMazeData(matrixSize),robotDirection);
+            updateUISensorData(getMazeData(matrixSize));
+            int[,] sensorReading = sensor.Get_Obstacle_Matrix();
+            updateUISensorData(sensorReading);
+            String robotCommand = exploration.GetNextCommand(sensorReading, currentSensor);
             moveInDirection(robotCommand);
         }
         else{
@@ -183,7 +156,6 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
             isSimulationComplete = true;
             endTime = DateTime.Now.ToString(@"hh\:mm\:ss");
             runTime = calculateRunTime();
-            // Debug.Log("RUN TIME : " + calculateRunTime());
             //enable back button
             backButton.interactable = true;
             // calculate end time
@@ -214,9 +186,15 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
                 experimentText.text = "";
                 statusText.text = "Trails are completed.";
             }
-            /* if (expCounter == PlayerPrefs.GetInt("Iteration"))
-                 expCounter = 0;*/
         }
+    }
+
+    public SensorsComponent.Sensors GetSensorsFromAlgorithmsSimulation(){
+        return sensor;
+    }
+
+    public GameObject getRoverInstanceFromAlgorithmSimulation(){
+        return robotMain;
     }
 
     private float getTimeInSeconds(String time){
@@ -231,7 +209,6 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
         expDB.UpdatePointsScored((float) pointsScored);
         expDB.UpdateMazeCoverage((float) mazeCoverage);
         expDB.UpdateDroneLife((float) batteryLife);
-        // getTimeInSeconds(runTime);
         expDB.UpdateTimeTaken(getTimeInSeconds(runTime));
     }
 
@@ -239,9 +216,6 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
     // range, radar - 5x5
     // lidar 3x5
     void updateSensorMaze(int[,] sensorMatrix, int[,] matrix){
-        
-        // int rows = sensorMatrix.GetLength(0);
-        // int cols = sensorMatrix.GetLength(1);
         for (int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){
                 if(sensorMatrix[i, j] != matrix[i, j]){
@@ -271,6 +245,7 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
                 else if (maze[i, j] == 2){
                     mazeObjects[counter] = Instantiate(robotPrefab, tempVector, Quaternion.identity);
                     robot = mazeObjects[counter++];
+                    robotMain= robot;
                 }
                 else if (maze[i, j] == 4)
                     mazeObjects[counter++] = Instantiate(visitedFloorPrefab, tempVector, Quaternion.identity);
@@ -316,65 +291,51 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
         endPoint,
         visitedFloor
     }
-    // // Update the sensors data text on the screen
-    void updateSensorsData(int[,] tempData)
+
+    //Update sensor data on UI
+    void updateUISensorData(int[,] tempData)
     {
-        // int[,] tempData = getSensorsData();
-        sensorData.text = "";
-        for (int i = 0; i <3; i++)
-        {
-            for (int j = 0; j < 3; j++)
-                sensorData.text += tempData[i, j] + " ";
+        sensorData.text= "";
+        for (int i= 0; i <tempData.GetLength(0); i++){
+            for (int j= 0; j < tempData.GetLength(1); j++){
+                if(tempData[i, j]==-1)
+                    sensorData.text += "  ";
+                else
+                    sensorData.text += tempData[i, j] + " ";
+            }
             sensorData.text += "\n";
         }
     }
 
-    int[,] getSensorsData()
-    {
-        int[,] result = new int[3, 3];
-        for (int i = 0; i < 3; i++)
-            for (int j = 0; j < 3; j++)
-                if (maze[currentX - 1 + i, currentY - 1 + j] == 1)
-                    result[i, j] = 1;
-                else
-                    result[i, j] = 0;
-        return result;
-    }
-
-    void Update()
-    {
-        // sensor.Update_Obstacles(robotPrefab);
-        if (Input.GetKeyDown(KeyCode.W)) moveInDirection("North");          //North - W Key
-        if (Input.GetKeyDown(KeyCode.D)) moveInDirection("East");           //East  - D Key
-        if (Input.GetKeyDown(KeyCode.A)) moveInDirection("West");           //West  - A Key
-        if (Input.GetKeyDown(KeyCode.S)) moveInDirection("South");          //South - S Key
-    }
-
     void moveInDirection(string direction)
     {
-        batteryLife-=10;
-        if (direction == "North")
+        batteryLife--;
+        if (direction== "North")
         {
+            if (maze[currentX - 1, currentY +0 ]== 1) return;
             move(-1, 0);
-           //robot.transform.Rotate(0.0f, 270.0f, 0.0f, Space.Self);
-            //exploringRobot.transform.Rotate(0.0f, 270.0f, 0.0f, Space.Self);
+            robot.transform.Rotate(0.0f, 270f, 0.0f, Space.Self);
+            // exploringRobot.transform.Rotate(0.0f, 270.0f, 0.0f, Space.Self);
         }
-        else if (direction == "East")
+        else if (direction== "East")
         {
+            if (maze[currentX, currentY +1 ]== 1) return;
             move(0, 1);
-          // robot.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
-            //exploringRobot.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
+            robot.transform.Rotate(0.0f, 0f, 0.0f, Space.Self);
+            // exploringRobot.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
         }
-        else if (direction == "West")
+        else if (direction== "West")
         {
+            if (maze[currentX, currentY -1 ]== 1) return;
             move(0, -1);
-          // robot.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
-           // exploringRobot.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
+            robot.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
+            // exploringRobot.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
         }
-        else if (direction == "South"){
+        else if (direction== "South"){
+            if (maze[currentX + 1, currentY +0 ]== 1) return;
             move(1, 0);
-          //robot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
-          //  exploringRobot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
+            robot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
+            // exploringRobot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
         }
     }
 
@@ -385,13 +346,38 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
         currentX += x;
         currentY += y;
         maze[currentX, currentY] = 2;
-       // updateMaze();
-       // updateExplored();
+        // updateMaze();
+        // updateExplored();
     }
 
     public bool getIsSimulationComplete(){
         return isSimulationComplete;
     }
+
+    //get maze data around robot with a diameter ${size
+    int[,] getMazeData(int size)
+    {
+        int[,] result= new int[size, size];
+        for (int i= 0; i < size; i++)
+            for (int j= 0; j < size; j++)
+                result[i,j] = -1;
+
+        int position = (size==3)?1:2;
+        for (int i= 0; i < size; i++)
+            for (int j= 0; j < size; j++){
+                int x= currentX - position + i;
+                int y= currentY - position + j;
+                if(x<0 || x>=mazeHeight || y<0 || y>=mazeWidth)
+                    continue;
+                if (maze[x,y]== 1)
+                    result[i, j]= 1;
+                else
+                    result[i, j]= 0;
+            }
+        result[position,position]=2;
+        return result;
+    }
+
     public void changeScene(String sceneName)
     {
         Application.LoadLevel(sceneName);
