@@ -20,13 +20,13 @@ Step 3. Refer the belows functions for further usage.
 Currently, **NINE**(7 Undone) APIs are provided for accessing database.
 Please see inside the documentation folder for more detail.
 
-#### Sensor Team
+#### Sensor
 1. 
-```
+```C#
 public int SetSensorMatrixById(int timestamp, int sensorId, int[,] matrix)
 ```
 For example:<br>
-```
+```C#
 int[,] matrix = new int[4, 4] { 
 { 1, 1, 1, 1 }, 
 { 1, 0, 0, 1 }, 
@@ -37,21 +37,21 @@ int resultCode = dbm.SetSensorMatrixById(20200420, 2, matrix);
 ```
 
 2. 
-```
+```C#
 public int[,] GetSensorMatrixById(int sensorId, int timestamp)
 ```
 For example:<br>
-```
+```C#
 int[,] matrix = dbm.GetSensorMatrixById(2, 20200420);
 ```
 
-#### Algorithm Team
+#### Algorithm
 3.
-```
+```C#
 public int CreateExploredMaze(int mazeId, int[,] exploredMaze)
 ```
 For example:<br>
-```
+```C#
 int mazeId = 3;
 int[,] exploredMaze = new int[4, 4] { 
 { 1, 1, -1, -1 }, 
@@ -63,21 +63,21 @@ int resultCode = dbm.CreateExploredMaze(mazeId, exploredMaze);
 ```
 
 4.
-```
+```C#
 public string[][] GetMazeById(int mazeId)
 ```
 For example:<br>
-```
+```C#
 int mazeId = 3;
 int[,] storedMaze = dbm.GetMazeById(mazeId);
 ```
 
 5.
-```
+```C#
 public int UpdateMaze(int[,] updatedMaze)
 ```
 For example:<br>
-```
+```C#
 int mazeId = 3;
 int[,] updatedMaze = new int[4, 4] { 
 { 1, 1, 1, 1 }, 
@@ -89,41 +89,41 @@ int resultCode = dbm.UpdateMaze(mazeId, updatedMaze);
 ```
 
 6.
-```
+```C#
 public int UpdateCoverage(float mazeCoverage)
 ```
 For example:<br>
-```
+```C#
 float mazeCoverage = 0.4F;
 int resultCode = dbm.UpdateCoverage(mazeCoverage);
 ```
 
 7.
-```
+```C#
 public int UpdateTimeTaken(int second)
 ```
 For example:<br>
-```
+```C#
 int second = 101;
 int resultCode = dbm.UpdateTimeTaken(second);
 ```
 
 8.
-```
+```C#
 public int UpdateMoveHistory(String[] path)
 ```
 For example:<br>
-```
+```C#
 String[] path = new String[5] { "East", "East", "North", "East", "South" };
 int resultCode = dbm.UpdateMoveHistory(path);
 ```
 
 9.
-```
+```C#
 public int UpdatePoints(int points)
 ```
 For example:<br>
-```
+```C#
 int points = 999;
 int resultCode = dbm.UpdatePoints(points);
 ```
