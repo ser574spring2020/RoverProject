@@ -8,7 +8,7 @@
 Step 1. Pull the whole **Data layer** folder under the project assets folder.
 
 Step 2. Create an instance of DataBaseManager and connect to Rover.db, for example:
-```
+```C#
 private DataBaseManager dbm;
 dbm = new DataBaseManager();
 dbm.ConnectToDB("Rover.db");
