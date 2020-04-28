@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Text;
 using Algorithms;
+using DRL;
 using System.Collections.Generic;
 using SensorsComponent;
 
@@ -42,7 +43,20 @@ public class AlgorithmsSimulation : MonoBehaviour
         Radar= 4,
         Bumper=5
     }
+    private enum AlgorithmType
+        {
+            BackPropagation = 1,
+            FeedForward = 2,
+            DeepLearning = 3,
+            RandomDirection = 4
+        }
+
+    // Algorithm and Sensor Options
+    // ************************************************************
+    int currentAlgorithm = (int)AlgorithmType.RandomDirection;
     int currentSensor = (int)SensorType.Proximity;
+    // ************************************************************
+
     String robotDirection = "East";
 
     void Start()
@@ -84,6 +98,8 @@ public class AlgorithmsSimulation : MonoBehaviour
             int[,] sensorReading = sensor.Get_Obstacle_Matrix();
             updateUISensorData(sensorReading);
             String robotCommand = exploration.GetNextCommand(sensorReading, currentSensor);
+            updateUISensorData(sensorReading);  
+            String robotCommand = exploration.GetNextCommand(sensorReading, currentSensor, currentAlgorithm);
             moveInDirection(robotCommand);
         }
 
