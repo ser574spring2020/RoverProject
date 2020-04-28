@@ -94,7 +94,7 @@ public int UpdateCoverage(float mazeCoverage)
 ```
 For example:<br>
 ```
-float mazeCoverage = 0.4;
+float mazeCoverage = 0.4F;
 int resultCode = dbm.UpdateCoverage(mazeCoverage);
 ```
 
