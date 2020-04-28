@@ -7,52 +7,23 @@ namespace Algorithms
 {
     public class FeedForwardManager
     {
-        NeuralNetwork net;
-        int[] layers = new int[3] {9, 12, 4};
-        string[] _activation = new string[2] {"sigmoid", "sigmoid"};
+        NeuralNetwork _net;
+        string[] _activation = {"sigmoid", "sigmoid"};
 
         float encode(String direction)
         {
-            if (direction == "North")
-            {
-                return 1;
-            }
-            else if (direction == "East")
-            {
-                return 2;
-            }
-            else if (direction == "South")
-            {
-                return 3;
-            }
-            else if (direction == "West")
-            {
-                return 4;
-            }
-
-            return 0;
+            return direction == "North" ? 1 :
+                direction == "East" ? 2 :
+                direction == "South" ? 3 :
+                direction == "West" ? 4 : 0;
         }
 
-        string decode(double direction)
+        string Decode(double direction)
         {
-            if (direction == 1)
-            {
-                return "North";
-            }
-            else if (direction == 2)
-            {
-                return "East";
-            }
-            else if (direction == 3)
-            {
-                return "South";
-            }
-            else if (direction == 4)
-            {
-                return "West";
-            }
-
-            return "";
+            return direction == 1 ? "North" :
+                direction == 2 ? "East" :
+                direction == 3 ? "South" :
+                direction == 4 ? "West" : "";
         }
 
         public int MaxIndex(float[] vector) // helper for Accuracy()
@@ -62,148 +33,118 @@ namespace Algorithms
             float biggestVal = vector[0];
             for (int i = 0; i < vector.Length; ++i)
             {
-                if (vector[i] > biggestVal)
-                {
-                    biggestVal = vector[i];
-                    bigIndex = i;
-                }
+                if (!(vector[i] > biggestVal)) continue;
+                biggestVal = vector[i];
+                bigIndex = i;
             }
 
             return bigIndex;
         }
 
-        public static string HitOrNot(string res, float[] test_data, float[] yoyo)
+        public static string HitOrNot(string res, float[] testData, float[] yoyo)
         {
             if (res.Equals("North"))
             {
-                if (test_data[1] == -1 || test_data[1] == 1)
+                if (testData[1] == -1 || testData[1] == 1)
                 {
-                    double loc_max = 0;
-                    int loc_max_ind = 0;
+                    double locMax = 0;
+                    int locMaxInd = 0;
                     for (int i = 0; i < yoyo.Length; i++)
                     {
                         if (i != 0)
                         {
-                            if (yoyo[i] > loc_max)
+                            if (yoyo[i] > locMax)
                             {
-                                loc_max = yoyo[i];
-                                loc_max_ind = i;
+                                locMax = yoyo[i];
+                                locMaxInd = i;
                             }
                         }
                     }
-
-                    if (loc_max_ind == 1)
-                        return HitOrNot("South", test_data, yoyo);
-                    else if (loc_max_ind == 2)
-                        return HitOrNot("East", test_data, yoyo);
-                    else
-                        return HitOrNot("West", test_data, yoyo);
+                    return locMaxInd == 1
+                        ? HitOrNot("South", testData, yoyo)
+                        : HitOrNot(locMaxInd == 2 ? "East" : "West", testData, yoyo);
                 }
-                else
-                    return "North";
+                return "North";
             }
-            else if (res.Equals("South"))
+
+            if (res.Equals("South"))
             {
-                if (test_data[7] == -1 || test_data[7] == 1)
+                if (testData[7] != -1 && testData[7] != 1) return "South";
+                double loc_max = 0;
+                int locMaxInd = 0;
+                for (int i = 0; i < yoyo.Length; i++)
                 {
-                    double loc_max = 0;
-                    int loc_max_ind = 0;
-                    for (int i = 0; i < yoyo.Length; i++)
+                    if (i != 1)
                     {
-                        if (i != 1)
+                        if (yoyo[i] > loc_max)
                         {
-                            if (yoyo[i] > loc_max)
-                            {
-                                loc_max = yoyo[i];
-                                loc_max_ind = i;
-                            }
+                            loc_max = yoyo[i];
+                            locMaxInd = i;
                         }
                     }
-
-                    if (loc_max_ind == 0)
-                        return HitOrNot("North", test_data, yoyo);
-                    else if (loc_max_ind == 2)
-                        return HitOrNot("East", test_data, yoyo);
-                    else
-                        return HitOrNot("West", test_data, yoyo);
                 }
-                else
-                    return "South";
+                return locMaxInd == 0
+                    ? HitOrNot("North", testData, yoyo)
+                    : HitOrNot(locMaxInd == 2 ? "East" : "West", testData, yoyo);
             }
-            else if (res.Equals("East"))
+
+            if (res.Equals("East"))
             {
-                if (test_data[5] == -1 || test_data[5] == 1)
+                if (testData[5] != -1 && testData[5] != 1) return "East";
+                double locMax = 0;
+                int loc_max_ind = 0;
+                for (int i = 0; i < yoyo.Length; i++)
                 {
-                    double loc_max = 0;
-                    int loc_max_ind = 0;
-                    for (int i = 0; i < yoyo.Length; i++)
-                    {
-                        if (i != 2)
-                        {
-                            if (yoyo[i] > loc_max)
-                            {
-                                loc_max = yoyo[i];
-                                loc_max_ind = i;
-                            }
-                        }
-                    }
-
-                    if (loc_max_ind == 0)
-                        return HitOrNot("North", test_data, yoyo);
-                    else if (loc_max_ind == 1)
-                        return HitOrNot("South", test_data, yoyo);
-                    else
-                        return HitOrNot("West", test_data, yoyo);
+                    if (i == 2) continue;
+                    if (!(yoyo[i] > locMax)) continue;
+                    locMax = yoyo[i];
+                    loc_max_ind = i;
                 }
-                else
-                    return "East";
+                return loc_max_ind == 0
+                    ? HitOrNot("North", testData, yoyo)
+                    : HitOrNot(loc_max_ind == 1 ? "South" : "West", testData, yoyo);
             }
-            else
+
+            if (testData[3] == -1 || testData[3] == 1)
             {
-                if (test_data[3] == -1 || test_data[3] == 1)
+                double locMax = 0;
+                int locMaxInd = 0;
+                for (int i = 0; i < yoyo.Length; i++)
                 {
-                    double loc_max = 0;
-                    int loc_max_ind = 0;
-                    for (int i = 0; i < yoyo.Length; i++)
-                    {
-                        if (i != 3)
-                        {
-                            if (yoyo[i] > loc_max)
-                            {
-                                loc_max = yoyo[i];
-                                loc_max_ind = i;
-                            }
-                        }
-                    }
-
-                    if (loc_max_ind == 0)
-                        return HitOrNot("North", test_data, yoyo);
-                    else if (loc_max_ind == 1)
-                        return HitOrNot("South", test_data, yoyo);
-                    else
-                        return HitOrNot("East", test_data, yoyo);
+                    if (i == 3) continue;
+                    if (!(yoyo[i] > locMax)) continue;
+                    locMax = yoyo[i];
+                    locMaxInd = i;
                 }
-                else
-                    return "West";
+
+                switch (locMaxInd)
+                {
+                    case 0:
+                        return HitOrNot("North", testData, yoyo);
+                    case 1:
+                        return HitOrNot("South", testData, yoyo);
+                    default:
+                        return HitOrNot("East", testData, yoyo);
+                }
             }
+
+            return "West";
         }
 
-        public string GetDirectionFromFeedForward(string sensor_type, float[] sensor_data)
+        public string GetDirectionFromFeedForward(string sensorType, float[] sensorData)
         {
             int[] layers = new int[3] {9, 12, 4};
-            ;
-            if (sensor_type == "Proximity")
+            if (sensorType == "Proximity")
             {
                 layers = new int[3] {9, 12, 4};
             }
-            else if (sensor_type == "Radar" || sensor_type == "Range")
+            else if (sensorType == "Radar" || sensorType == "Range")
             {
                 layers = new int[3] {25, 12, 4};
             }
 
-            this.net = new NeuralNetwork(layers, _activation);
-
-            StreamReader reader = new StreamReader(File.OpenRead(@"Assets/" + sensor_type + ".csv"));
+            this._net = new NeuralNetwork(layers, _activation);
+            StreamReader reader = new StreamReader(File.OpenRead(@"Assets/" + sensorType + ".csv"));
             while (!reader.EndOfStream)
             {
                 string line = reader.ReadLine();
@@ -232,10 +173,10 @@ namespace Algorithms
                     vs[i] = float.Parse(values[i]);
                 }
 
-                net.Train(vs, direction);
+                _net.Train(vs, direction);
             }
 
-            float[] op = net.FeedForward(sensor_data);
+            float[] op = _net.FeedForward(sensorData);
             int maxIndex = MaxIndex(op);
             String res;
             if (maxIndex == 0)

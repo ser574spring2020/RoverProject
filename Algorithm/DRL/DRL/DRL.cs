@@ -8,10 +8,7 @@ using RandomSystem = System.Random;
 
 namespace Algorithms
 {
-    /*
-        Main Class for Exploration
-        Contains all the methods related to Exploration
-     */
+    /*Main Class for Exploration.*/
     public class Exploration
     {
         private List<String> commands = new List<string>() {"West", "North", "East", "South"};
@@ -21,7 +18,7 @@ namespace Algorithms
 
         private int _points, _rows, _cols;
 
-        private String direction = "East";
+        private String _direction = "East";
         public ExploredMap exploredMap;
 
         public Exploration(int rows, int cols)
@@ -48,28 +45,28 @@ namespace Algorithms
             RandomDirection = 4
         }
 
-        //Returns the next command for the robot
-        // @param SensorData - Used to compute the next command
+        /*Returns the next command for the robot
+        @param SensorData - Used to compute the next command*/
         public String GetNextCommand(int[,] sensorData, int sensorType, int algorithmType)
         {
             int[,] dataToBeSaved = sensorData;
             if (sensorType == 3)
-                sensorData = RotateSensorData(sensorData, direction);
+                sensorData = RotateSensorData(sensorData, _direction);
             exploredMap.ProcessSensor(sensorData);
             String robotCommand;
             switch (algorithmType)
             {
                 case (int) AlgorithmType.BackPropagation:
-                    robotCommand = getCommandFromBackPropagation(sensorData, direction, sensorType);
+                    robotCommand = getCommandFromBackPropagation(sensorData, _direction, sensorType);
                     break;
                 case (int) AlgorithmType.RandomDirection:
-                    robotCommand = getCommandFromRandomDirectionAlgorithm(sensorData, direction, sensorType);
+                    robotCommand = GetCommandFromRandomDirectionAlgorithm(sensorData, sensorType);
                     break;
                 case (int) AlgorithmType.FeedForward:
-                    robotCommand = getCommandFromRandomDirectionAlgorithm(sensorData, direction, sensorType);
+                    robotCommand = GetCommandFromFeedForward(sensorData, _direction, sensorType);
                     break;
                 default:
-                    robotCommand = getCommandFromRandomDirectionAlgorithm(sensorData, direction, sensorType);
+                    robotCommand = GetCommandFromRandomDirectionAlgorithm(sensorData, sensorType);
                     Debug.Log("Unknown Algorithm Type: Switched to Random Direction Algorithm");
                     break;
             }
@@ -77,11 +74,11 @@ namespace Algorithms
             ManagePoints(vectorCommands[commands.IndexOf(robotCommand)]);
             WriteSensorDataToCsv(dataToBeSaved, robotCommand, sensorType);
             exploredMap.MoveRelative(vectorCommands[commands.IndexOf(robotCommand)]);
-            direction = robotCommand;
+            _direction = robotCommand;
             return robotCommand;
         }
 
-        String getCommandFromRandomDirectionAlgorithm(int[,] sensorData, String direection, int sensorType)
+        String GetCommandFromRandomDirectionAlgorithm(int[,] sensorData, int sensorType)
         {
             RandomSystem r = new RandomSystem();
             List<String> possibleDirections = GetAvailableDirections(sensorData);
@@ -90,98 +87,83 @@ namespace Algorithms
             return robotCommand;
         }
 
-        String getCommandFromFeedForward(int[,] sensorData, String direction, int sensorType)
+        String GetCommandFromFeedForward(int[,] sensorData, String direction, int sensorType)
         {
             String sensorTypeString = "";
-            switch (sensorType)
-            {
-                case (int) SensorType.Proximity:
-                    sensorTypeString = "Proximity";
-                    break;
-                case (int) SensorType.Range:
-                    sensorTypeString = "Range";
-                    break;
-                case (int) SensorType.Lidar:
-                    sensorTypeString = "Lidar";
-                    break;
-                case (int) SensorType.Radar:
-                    sensorTypeString = "Radar";
-                    break;
-                case (int) SensorType.Bumper:
-                    sensorTypeString = "Bumper";
-                    break;
-            }
+            if (sensorType == (int) SensorType.Proximity)
+                sensorTypeString = "Proximity";
+            else if (sensorType == (int) SensorType.Range)
+                sensorTypeString = "Range";
+            else if (sensorType == (int) SensorType.Lidar)
+                sensorTypeString = "Lidar";
+            else if (sensorType == (int) SensorType.Radar)
+                sensorTypeString = "Radar";
+            else if (sensorType == (int) SensorType.Bumper) sensorTypeString = "Bumper";
 
-            int[,] processedSensorData = getProcessedSensorData(sensorData, direction, sensorType);
+            int[,] processedSensorData = GetProcessedSensorData(sensorData, direction, sensorType);
             FeedForwardManager forwardManager = new FeedForwardManager();
             var robotCommand =
                 forwardManager.GetDirectionFromFeedForward(sensorTypeString,
-                    convertToOneDimensional(processedSensorData));
+                    ConvertToOneDimensional(processedSensorData));
             return robotCommand;
         }
 
         String getCommandFromBackPropagation(int[,] sensorData, String direction, int sensorType)
         {
             String sensorTypeString = "";
-            switch (sensorType)
-            {
-                case (int) SensorType.Proximity:
-                    sensorTypeString = "Proximity";
-                    break;
-                case (int) SensorType.Range:
-                    sensorTypeString = "Range";
-                    break;
-                case (int) SensorType.Lidar:
-                    sensorTypeString = "Lidar";
-                    break;
-                case (int) SensorType.Radar:
-                    sensorTypeString = "Radar";
-                    break;
-                case (int) SensorType.Bumper:
-                    sensorTypeString = "Bumper";
-                    break;
-            }
+            if (sensorType == (int) SensorType.Proximity)
+                sensorTypeString = "Proximity";
+            else if (sensorType == (int) SensorType.Range)
+                sensorTypeString = "Range";
+            else if (sensorType == (int) SensorType.Lidar)
+                sensorTypeString = "Lidar";
+            else if (sensorType == (int) SensorType.Radar)
+                sensorTypeString = "Radar";
+            else if (sensorType == (int) SensorType.Bumper) sensorTypeString = "Bumper";
 
-            int[,] processedSensorData = getProcessedSensorData(sensorData, direction, sensorType);
+            int[,] processedSensorData = GetProcessedSensorData(sensorData, direction, sensorType);
             var robotCommand =
                 BackPropagation.Driver("Command", sensorTypeString, convertToOneDimensionalDouble(processedSensorData));
             return robotCommand;
         }
 
+        //Converts int[,] to int[]
         public double[] convertToOneDimensionalDouble(int[,] array)
         {
             double[] result = new double[array.GetLength(0) * array.GetLength(1)];
             int i = 0;
-            foreach (int VARIABLE in array)
+            foreach (int variable in array)
             {
-                result[i++] = Convert.ToDouble(VARIABLE);
+                result[i++] = Convert.ToDouble(variable);
             }
 
             return result;
         }
 
-        public float[] convertToOneDimensional(int[,] array)
+        //Converts int[,] to float[]
+        private float[] ConvertToOneDimensional(int[,] array)
         {
             float[] result = new float[array.GetLength(0) * array.GetLength(1)];
             int i = 0;
-            foreach (int VARIABLE in array)
+            foreach (int variable in array)
             {
-                result[i++] = VARIABLE;
+                result[i++] = variable;
             }
 
             return result;
         }
 
+        //Save movement and sensor data to csv file
         public void GenerateDataset(int[,] sensorData, string resultDirection, int sensorType)
         {
             int[,] dataToBeSaved = sensorData;
             if (sensorType == 3)
-                sensorData = RotateSensorData(sensorData, direction);
+                sensorData = RotateSensorData(sensorData, _direction);
             exploredMap.ProcessSensor(sensorData);
             var robotCommand = resultDirection;
             WriteSensorDataToCsv(dataToBeSaved, robotCommand, sensorType);
             exploredMap.MoveRelative(vectorCommands[commands.IndexOf(robotCommand)]);
-            direction = robotCommand;
+            _direction = robotCommand;
         }
 
         // Rotates the array clockwise and returns the rotated array
@@ -218,7 +200,8 @@ namespace Algorithms
             return output;
         }
 
-        public static void printSensorData(int[,] sensorData)
+        //Prints the sensorData array
+        public static void PrintSensorData(int[,] sensorData)
         {
             string sensorDataString = "";
             for (int i = 0; i < sensorData.GetLength(0); i++)
@@ -234,11 +217,13 @@ namespace Algorithms
             Debug.Log(sensorDataString);
         }
 
-        public void MoveRobot(int[,] sensorData, string direction)
+        //Move the robot in given direction
+        public void MoveRobot(string direction)
         {
             exploredMap.MoveRelative(vectorCommands[commands.IndexOf(direction)]);
         }
 
+        //Calculates the points of the robot
         private void ManagePoints(Vector2Int direction)
         {
             var futurePosition = GetExploredMap().GetCurrentPosition() + direction;
@@ -257,6 +242,7 @@ namespace Algorithms
             return _points;
         }
 
+        //Returns the total coverage of the robot.
         public int GetCoverage()
         {
             float coverage = 0, total = _cols * _rows;
@@ -273,7 +259,6 @@ namespace Algorithms
             return (int) coverage;
         }
 
-        //Returns the explored map
         public ExploredMap GetExploredMap()
         {
             return exploredMap;
@@ -342,16 +327,17 @@ namespace Algorithms
             return possibleDirections;
         }
 
-        public int[,] getProcessedSensorData(int[,] sensorData, string direction, int sensorType)
+        //Returns the sensor data with the information about the visited cells
+        public int[,] GetProcessedSensorData(int[,] sensorData, string direction, int sensorType)
         {
             int[,] processedSensorData = sensorData;
             Vector2Int localRobotPosition = exploredMap.GetSensorRobotPosition(sensorData);
-            Vector2Int _robotPosition = exploredMap._robotPosition;
+            Vector2Int robotPosition = exploredMap._robotPosition;
             for (var x = 0; x < processedSensorData.GetLength(0); x++)
             for (var y = 0; y < processedSensorData.GetLength(1); y++)
             {
-                var xMaze = _robotPosition.x + x - localRobotPosition.x;
-                var yMaze = _robotPosition.y + y - localRobotPosition.y;
+                var xMaze = robotPosition.x + x - localRobotPosition.x;
+                var yMaze = robotPosition.y + y - localRobotPosition.y;
                 if (exploredMap.GetCell(new Vector2Int(xMaze, yMaze)) != null &&
                     exploredMap.GetCell(new Vector2Int(xMaze, yMaze)).IsVisited())
                     processedSensorData[x, y] = 4;
@@ -361,16 +347,17 @@ namespace Algorithms
             return processedSensorData;
         }
 
+        //Write sensor data and the given direction to csv file
         public void WriteSensorDataToCsv(int[,] sensorData, string direction, int sensorType)
         {
             int[,] dataToBeSaved = sensorData;
             Vector2Int localRobotPosition = exploredMap.GetSensorRobotPosition(sensorData);
-            Vector2Int _robotPosition = exploredMap._robotPosition;
+            Vector2Int robotPosition = exploredMap._robotPosition;
             for (var x = 0; x < dataToBeSaved.GetLength(0); x++)
             for (var y = 0; y < dataToBeSaved.GetLength(1); y++)
             {
-                var xMaze = _robotPosition.x + x - localRobotPosition.x;
-                var yMaze = _robotPosition.y + y - localRobotPosition.y;
+                var xMaze = robotPosition.x + x - localRobotPosition.x;
+                var yMaze = robotPosition.y + y - localRobotPosition.y;
                 if (exploredMap.GetCell(new Vector2Int(xMaze, yMaze)) != null &&
                     exploredMap.GetCell(new Vector2Int(xMaze, yMaze)).IsVisited())
                     dataToBeSaved[x, y] = 4;

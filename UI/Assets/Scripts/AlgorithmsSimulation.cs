@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Text;
 using Algorithms;
+using DRL;
 using System.Collections.Generic;
 using SensorsComponent;
 
@@ -52,8 +53,8 @@ public class AlgorithmsSimulation : MonoBehaviour
 
     // Algorithm and Sensor Options
     // ************************************************************
-    int currentAlgorithm = (int)AlgorithmType.FeedForward;
-    int currentSensor = (int)SensorType.Range;
+    int currentAlgorithm = (int)AlgorithmType.RandomDirection;
+    int currentSensor = (int)SensorType.Proximity;
     // ************************************************************
 
 

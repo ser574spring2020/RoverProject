@@ -22,25 +22,18 @@ namespace Algorithms
             _moveHistory = new List<Vector2Int>();
         }
 
-        //Returns the current position of the robot
         public Vector2Int GetCurrentPosition()
         {
             return new Vector2Int(_robotPosition.x, _robotPosition.y);
         }
 
+        //Returns the position of the robot in a given sensor data matrix
         public Vector2Int GetSensorRobotPosition(int[,] sensorReading)
         {
-            for (int i = 0; i < sensorReading.GetLength(0); i++)
-            {
-                for (int j = 0; j < sensorReading.GetLength(1); j++)
-                {
-                    if (sensorReading[i, j] == 2)
-                    {
-                        return new Vector2Int(i, j);
-                    }
-                }
-            }
-
+            for (var i = 0; i < sensorReading.GetLength(0); i++)
+            for (var j = 0; j < sensorReading.GetLength(1); j++)
+                if (sensorReading[i, j] == 2)
+                    return new Vector2Int(i, j);
             return new Vector2Int(0, 0);
         }
 
@@ -59,38 +52,21 @@ namespace Algorithms
                 _mazeMap[xMaze, yMaze] = neighbor;
                 if (sensorReading[x, y] == 1) neighbor.MakeWall();
             }
-
             _mazeMap[_robotPosition.x, _robotPosition.y].Visit();
         }
 
-        void printSensorData(int[,] sensorData)
-        {
-            string sensorDataString = "RobotPosition";
-            for (int i = 0; i < sensorData.GetLength(0); i++)
-            {
-                for (int j = 0; j < sensorData.GetLength(1); j++)
-                {
-                    sensorDataString += sensorData[i, j] + " ";
-                }
-
-                sensorDataString += ",";
-            }
-
-            Debug.Log(sensorDataString);
-        }
-
-        //Returns the integer array
+        //Returns the integer array for the explored maze
         public int[,] GetMazeArray()
         {
             var intArray = new int[_mazeMap.GetLength(0), _mazeMap.GetLength(1)];
             for (var i = 0; i < _mazeMap.GetLength(0); i++)
             for (var j = 0; j < _mazeMap.GetLength(1); j++)
                 if (_mazeMap[i, j] == null)
-                    intArray[i, j] = -1; // unexplored
+                    intArray[i, j] = -1;            // unexplored
                 else if (_mazeMap[i, j].IsWallCell())
-                    intArray[i, j] = 1; // wall
+                    intArray[i, j] = 1;             // wall
                 else
-                    intArray[i, j] = 0; // open
+                    intArray[i, j] = 0;             // open
 
             intArray[_robotPosition.x, _robotPosition.y] = 2; // robot position
             return intArray;
@@ -128,7 +104,7 @@ namespace Algorithms
             return _mazeMap[newPosition.x, newPosition.y].IsVisited();
         }
 
-        //
+        //move the robot in the given relative direction
         public bool MoveRelative(Vector2Int relativeMove)
         {
             if (!CheckMoveBounds(relativeMove)) return false;
@@ -138,11 +114,13 @@ namespace Algorithms
             return true;
         }
 
+        //Returns the cell at the given position
         public MazeCell GetCell(Vector2Int absolutePosition)
         {
             return CheckAbsolutePosition(absolutePosition) ? _mazeMap[absolutePosition.x, absolutePosition.y] : null;
         }
 
+        //returns the move history of the robot
         public Vector2Int[] GetMoveHistoryArray()
         {
             var moves = new Vector2Int[_moveHistory.Count];
@@ -150,6 +128,7 @@ namespace Algorithms
             return moves;
         }
 
+        //Returns the unvisited cells of the explored maze
         public List<MazeCell> GetUnvisitedCells()
         {
             var unvisited = new List<MazeCell>();
