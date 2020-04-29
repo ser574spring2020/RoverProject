@@ -78,7 +78,6 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
     //Create the initial maze
     public void createMazeButtonListener()
     {
-
         UpdateParameters();
         arrayOfGameObjects.Add(new GameObject[mazeHeight * mazeWidth]);
 
@@ -91,6 +90,7 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
             // updateMaze();
             mazeCreated = true;
         }
+        expDB.Insert(convertMatrixToString(), PlayerPrefs.GetString("Algo"), PlayerPrefs.GetString("Size"), Math.Round(float.Parse(PlayerPrefs.GetString("Maze")), 2), PlayerPrefs.GetString("Sensor"), PlayerPrefs.GetString("Experiment"), ExperimentalID);
     }
 
     void manualButtonListener(){
@@ -123,6 +123,29 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
         }
     }
 
+    private String convertMatrixToString(){
+        string str = "'";
+            for (int i = 0; i <= maze.GetUpperBound(0); i++)
+            {
+                str += "";
+                for (int j = 0; j <= maze.GetUpperBound(1); j++)
+                {
+                    str += maze[i, j];
+                    if (j != maze.GetUpperBound(1))
+                    {
+                        str += ",";
+                    }
+                }
+                str += "";
+                if (i != maze.GetUpperBound(0))
+                {
+                    str += ";";
+                }
+            }
+            str += "'"; 
+        return str;
+    }
+
     private void UpdateParameters()
     {
         // PlayerPrefs.GetInt("Experiment");
@@ -131,7 +154,6 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
         String[] size = GameObject.Find("SizeButton").GetComponentInChildren<Text>().text.ToString().Split('X');
         mazeWidth = Int32.Parse(size[0].Trim());
         mazeHeight = Int32.Parse(size[1].Trim());
-        expDB.Insert(PlayerPrefs.GetString("Algo"), PlayerPrefs.GetString("Size"), Math.Round(float.Parse(PlayerPrefs.GetString("Maze")), 2), PlayerPrefs.GetString("Sensor"), PlayerPrefs.GetString("Experiment"), ExperimentalID);
     }
 
     void getNextCommand()
