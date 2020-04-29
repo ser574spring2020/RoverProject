@@ -48,7 +48,6 @@ public class AlgorithmsSimulation : MonoBehaviour
         manualButton.onClick.AddListener(manualButtonListener);
         automaticButton.onClick.AddListener(automaticButtonListener);
         backButton.interactable= false;        
-        Debug.Log(sensor.GetCurrentSensor());
     }
 
 
@@ -63,6 +62,7 @@ public class AlgorithmsSimulation : MonoBehaviour
             maze= mazeGenerator.GenerateMaze(mazeHeight, mazeWidth, placementThreshold);
             maze[currentX, currentY]= 2;
             updateMaze();
+            updateExplored();
             mazeCreated= true;
         }
     }
@@ -78,7 +78,6 @@ public class AlgorithmsSimulation : MonoBehaviour
             sensor.Update_Obstacles(robotMain, getMazeData(matrixSize), robotDirection);            
             int[,] sensorReading = sensor.Get_Obstacle_Matrix();
             updateUISensorData(sensorReading);
-            // String robotCommand = exploration.GetNextCommand(sensorReading, currentSensor-1, currentAlgo, 1);
             String robotCommand = exploration.GetNextCommand(sensorReading, currentSensor-1, currentAlgo, 1);
             moveInDirection(robotCommand);
         }
@@ -89,7 +88,7 @@ public class AlgorithmsSimulation : MonoBehaviour
             endTime= DateTime.Now.ToString(@"hh\:mm\:ss");
             runTime= calculateRunTime();
             backButton.interactable= true;
-            Debug.Log("END TIME : " + runTime);
+            Debug.Log("End Time : " + runTime);
             Debug.Log("Battery Life : " + batteryLife);
             Debug.Log("Points : " + pointsScored);
             sendDateToExpDesign();
@@ -214,7 +213,6 @@ public class AlgorithmsSimulation : MonoBehaviour
             Destroy(exploredMazeObjects[i]);
         counter= 0;
 
-
         for (int i= 0; i < mazeHeight; i++)
             for (int j= 0; j < mazeWidth; j++)
             {
@@ -258,9 +256,7 @@ public class AlgorithmsSimulation : MonoBehaviour
                 else
                 {                    
                     sensorData.text += tempData[i, j] + " ";
-                }
-                    
-                    
+                }     
             }
             sensorData.text += "\n";
         }
@@ -320,14 +316,15 @@ public class AlgorithmsSimulation : MonoBehaviour
         if (direction== "North")
         {
             if (maze[currentX - 1, currentY +0 ]== 1) return;
+            exploredMaze.MoveRelative(Vector2Int.left);
             move(-1, 0);
-            exploredMaze.MoveRelative("North");
             robot.transform.Rotate(0.0f, 270f, 0.0f, Space.Self);
             exploringRobot.transform.Rotate(0.0f, 270.0f, 0.0f, Space.Self);
         }
         else if (direction== "East")
         {
             if (maze[currentX, currentY +1 ]== 1) return;
+            exploredMaze.MoveRelative(Vector2Int.up);
             move(0, 1);
             robot.transform.Rotate(0.0f, 0f, 0.0f, Space.Self);
             exploringRobot.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
@@ -335,12 +332,14 @@ public class AlgorithmsSimulation : MonoBehaviour
         else if (direction== "West")
         {
             if (maze[currentX, currentY -1 ]== 1) return;
+            exploredMaze.MoveRelative(Vector2Int.down);
             move(0, -1);
             robot.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
             exploringRobot.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
         }
         else if (direction== "South"){
             if (maze[currentX + 1, currentY +0 ]== 1) return;
+            exploredMaze.MoveRelative(Vector2Int.right);
             move(1, 0);
             robot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
             exploringRobot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);

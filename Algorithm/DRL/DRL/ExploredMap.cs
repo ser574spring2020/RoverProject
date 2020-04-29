@@ -50,6 +50,7 @@ namespace Algorithms
                 _mazeMap[xMaze, yMaze] = neighbor;
                 if (sensorReading[x, y] == 1) neighbor.MakeWall();
             }
+
             _mazeMap[_robotPosition.x, _robotPosition.y].Visit();
         }
 
@@ -60,12 +61,11 @@ namespace Algorithms
             for (var i = 0; i < _mazeMap.GetLength(0); i++)
             for (var j = 0; j < _mazeMap.GetLength(1); j++)
                 if (_mazeMap[i, j] == null)
-                    intArray[i, j] = -1;            // unexplored
+                    intArray[i, j] = -1; // unexplored
                 else if (_mazeMap[i, j].IsWallCell())
-                    intArray[i, j] = 1;             // wall
+                    intArray[i, j] = 1; // wall
                 else
-                    intArray[i, j] = 0;             // open
-
+                    intArray[i, j] = 0; // open
             intArray[_robotPosition.x, _robotPosition.y] = 2; // robot position
             return intArray;
         }
@@ -133,7 +133,6 @@ namespace Algorithms
             foreach (var cell in _cells)
                 if (!cell.IsVisited())
                     unvisited.Add(cell);
-
             return unvisited;
         }
     }

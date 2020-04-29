@@ -41,7 +41,7 @@ namespace Algorithms
             return bigIndex;
         }
 
-        public static string HitOrNot(string res, float[] testData, float[] yoyo)
+        public static string HitOrNot(string res, float[] testData, float[] prediction)
         {
             if (res.Equals("North"))
             {
@@ -49,20 +49,20 @@ namespace Algorithms
                 {
                     double locMax = 0;
                     int locMaxInd = 0;
-                    for (int i = 0; i < yoyo.Length; i++)
+                    for (int i = 0; i < prediction.Length; i++)
                     {
                         if (i != 0)
                         {
-                            if (yoyo[i] > locMax)
+                            if (prediction[i] > locMax)
                             {
-                                locMax = yoyo[i];
+                                locMax = prediction[i];
                                 locMaxInd = i;
                             }
                         }
                     }
                     return locMaxInd == 1
-                        ? HitOrNot("South", testData, yoyo)
-                        : HitOrNot(locMaxInd == 2 ? "East" : "West", testData, yoyo);
+                        ? HitOrNot("South", testData, prediction)
+                        : HitOrNot(locMaxInd == 2 ? "East" : "West", testData, prediction);
                 }
                 return "North";
             }
@@ -72,59 +72,59 @@ namespace Algorithms
                 if (testData[7] != -1 && testData[7] != 1) return "South";
                 double loc_max = 0;
                 int locMaxInd = 0;
-                for (int i = 0; i < yoyo.Length; i++)
+                for (int i = 0; i < prediction.Length; i++)
                 {
                     if (i != 1)
                     {
-                        if (yoyo[i] > loc_max)
+                        if (prediction[i] > loc_max)
                         {
-                            loc_max = yoyo[i];
+                            loc_max = prediction[i];
                             locMaxInd = i;
                         }
                     }
                 }
                 return locMaxInd == 0
-                    ? HitOrNot("North", testData, yoyo)
-                    : HitOrNot(locMaxInd == 2 ? "East" : "West", testData, yoyo);
+                    ? HitOrNot("North", testData, prediction)
+                    : HitOrNot(locMaxInd == 2 ? "East" : "West", testData, prediction);
             }
 
             if (res.Equals("East"))
             {
                 if (testData[5] != -1 && testData[5] != 1) return "East";
                 double locMax = 0;
-                int loc_max_ind = 0;
-                for (int i = 0; i < yoyo.Length; i++)
+                int locMaxInd = 0;
+                for (int i = 0; i < prediction.Length; i++)
                 {
                     if (i == 2) continue;
-                    if (!(yoyo[i] > locMax)) continue;
-                    locMax = yoyo[i];
-                    loc_max_ind = i;
+                    if (!(prediction[i] > locMax)) continue;
+                    locMax = prediction[i];
+                    locMaxInd = i;
                 }
-                return loc_max_ind == 0
-                    ? HitOrNot("North", testData, yoyo)
-                    : HitOrNot(loc_max_ind == 1 ? "South" : "West", testData, yoyo);
+                return locMaxInd == 0
+                    ? HitOrNot("North", testData, prediction)
+                    : HitOrNot(locMaxInd == 1 ? "South" : "West", testData, prediction);
             }
 
-            if (testData[3] == -1 || testData[3] == 1)
+            if (testData[3] != -1 && testData[3] != 1) return "West";
             {
                 double locMax = 0;
                 int locMaxInd = 0;
-                for (int i = 0; i < yoyo.Length; i++)
+                for (int i = 0; i < prediction.Length; i++)
                 {
                     if (i == 3) continue;
-                    if (!(yoyo[i] > locMax)) continue;
-                    locMax = yoyo[i];
+                    if (!(prediction[i] > locMax)) continue;
+                    locMax = prediction[i];
                     locMaxInd = i;
                 }
 
                 switch (locMaxInd)
                 {
                     case 0:
-                        return HitOrNot("North", testData, yoyo);
+                        return HitOrNot("North", testData, prediction);
                     case 1:
-                        return HitOrNot("South", testData, yoyo);
+                        return HitOrNot("South", testData, prediction);
                     default:
-                        return HitOrNot("East", testData, yoyo);
+                        return HitOrNot("East", testData, prediction);
                 }
             }
 
@@ -179,21 +179,20 @@ namespace Algorithms
             float[] op = _net.FeedForward(sensorData);
             int maxIndex = MaxIndex(op);
             String res;
-            if (maxIndex == 0)
+            switch (maxIndex)
             {
-                res = "North";
-            }
-            else if (maxIndex == 1)
-            {
-                res = "South";
-            }
-            else if (maxIndex == 2)
-            {
-                res = "East";
-            }
-            else
-            {
-                res = "West";
+                case 0:
+                    res = "North";
+                    break;
+                case 1:
+                    res = "South";
+                    break;
+                case 2:
+                    res = "East";
+                    break;
+                default:
+                    res = "West";
+                    break;
             }
 
             Debug.Log(res);

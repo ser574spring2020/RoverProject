@@ -15,7 +15,7 @@ namespace DRL
             exploration.GetExploredMap().GetMazeArray();
             Assert.That(robotPosition, Is.EqualTo(new Vector2Int(1, 1)));
         }
-        
+
         [Test]
         public void RotateSensorData_Should_RotateArrayThrice_When_Direction_Is_West()
         {
@@ -55,19 +55,20 @@ namespace DRL
         [Test]
         public void ConvertToOneDimensionalDouble_Should_Convert_Int2d_To_Double1d()
         {
-            var exploration = new Exploration(30,30);
+            var exploration = new Exploration(30, 30);
             var array = new int[3, 3] {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
             var converted = exploration.convertToOneDimensionalDouble(array);
-            var expected = new double[]{1,2,3,4,5,6,7,8,9};
+            var expected = new double[] {1, 2, 3, 4, 5, 6, 7, 8, 9};
             Assert.That(converted, Is.EqualTo(expected));
         }
+
         [Test]
         public void ConvertToOneDimensionalFloat_Should_Convert_Int2d_To_Double1d()
         {
-            var exploration = new Exploration(30,30);
+            var exploration = new Exploration(30, 30);
             var array = new int[3, 3] {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
             var converted = exploration.ConvertToOneDimensionalFloat(array);
-            var expected = new float[]{1,2,3,4,5,6,7,8,9};
+            var expected = new float[] {1, 2, 3, 4, 5, 6, 7, 8, 9};
             Assert.That(converted, Is.EqualTo(expected));
         }
     }
