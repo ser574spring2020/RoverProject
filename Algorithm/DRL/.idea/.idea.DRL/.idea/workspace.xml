@@ -26,44 +26,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e628e13a-4fd0-492c-8389-40d37d346689" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/DRL.Tests/Class1.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DRL.Tests/Properties/AssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DRL.Tests/TestsDRL.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DRL.Tests/TestsExploration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DRL.Tests/bin/Debug/DRL.Tests.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DRL.Tests/bin/Debug/DRL.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DRL.Tests/bin/Debug/NUnit3.TestAdapter.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DRL.Tests/bin/Debug/UnityEngine.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DRL.Tests/bin/Debug/UnityEngine.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DRL.Tests/bin/Debug/nunit.engine.api.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DRL.Tests/bin/Debug/nunit.engine.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DRL.Tests/bin/Debug/nunit.framework.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DRL.Tests/bin/Debug/nunit.framework.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DRL.Tests/obj/Debug/DRL.Tests.csproj.CopyComplete" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DRL.Tests/obj/Debug/DRL.Tests.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DRL.Tests/obj/Debug/DRL.Tests.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DRL.Tests/obj/Debug/DRL.Tests.csprojAssemblyReference.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DRL.Tests/obj/Debug/DRL.Tests.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DRL.Tests/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DRL.Tests/obj/Debug/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DRL.Tests/obj/Debug/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DRL.Tests/obj/Debug/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DRL.Tests/packages.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL.sln" beforeDir="false" afterPath="$PROJECT_DIR$/DRL.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/DRL.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/DRL.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/MazeGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/MazeGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/TestsDRL.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/TestsExploration.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/TestsMazeGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL.Tests/TestsMazeGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.pdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,11 +39,12 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///MazeGenerator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DRL/MazeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DRL/MazeCell.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DRL/Properties/AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DRL/ExploredMap.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DRL/DRL.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///MazeGenerator.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -149,8 +115,16 @@
       <workItem from="1587426023465" duration="2873000" />
       <workItem from="1587435132680" duration="701000" />
       <workItem from="1587436337593" duration="2320000" />
-      <workItem from="1588092519210" duration="5260000" />
+      <workItem from="1588092519210" duration="6124000" />
     </task>
+    <task id="LOCAL-00001" summary="Added unit tests for ExploredMap. Fixed ECall security error for MazeGenerator.">
+      <created>1588100035359</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1588100035359</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,6 +146,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Added unit tests for ExploredMap. Fixed ECall security error for MazeGenerator." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added unit tests for ExploredMap. Fixed ECall security error for MazeGenerator." />
   </component>
   <component name="WindowStateProjectService">
     <state x="481" y="209" width="948" height="645" key="#Attach_to_Unity_Editor" timestamp="1588093007980">
@@ -247,6 +223,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="379" key="GridCell.Tab.3.right/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029669" />
+    <state x="552" y="245" key="Vcs.Push.Dialog.v2" timestamp="1588100039709">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="552" y="245" key="Vcs.Push.Dialog.v2/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588100039709" />
     <state x="769" y="439" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588099592941">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -261,7 +241,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/DRL/ExploredMap.cs</url>
-          <line>127</line>
+          <line>98</line>
           <properties documentPath="$PROJECT_DIR$/DRL/ExploredMap.cs" initialLine="96">
             <startOffsets>
               <option value="4588" />
