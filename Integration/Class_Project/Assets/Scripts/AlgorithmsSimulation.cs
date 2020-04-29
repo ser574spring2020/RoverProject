@@ -321,7 +321,7 @@ public class AlgorithmsSimulation : MonoBehaviour
         {
             if (maze[currentX - 1, currentY +0 ]== 1) return;
             move(-1, 0);
-            exploredMaze.MoveRelative("North");
+            //exploredMaze.MoveRelative("North");
             robot.transform.Rotate(0.0f, 270f, 0.0f, Space.Self);
             exploringRobot.transform.Rotate(0.0f, 270.0f, 0.0f, Space.Self);
         }
