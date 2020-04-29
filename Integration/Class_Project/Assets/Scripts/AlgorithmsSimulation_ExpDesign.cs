@@ -114,7 +114,7 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
     public void Expid()
     {
         expDB.get();
-        if (PlayerPrefs.GetString("Experiment") == "Training Data")
+        if (PlayerPrefs.GetString("ExperimentTypevalue") == "Training Data")
         {
             ExperimentalID = expDB.get() + 1;
         }
