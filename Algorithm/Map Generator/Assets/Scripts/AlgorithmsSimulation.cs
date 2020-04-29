@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System;
 using System.IO;
 using Algorithms;
+using NeuralNet;
 
 public class AlgorithmsSimulation : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class AlgorithmsSimulation : MonoBehaviour
     public int mazeHeight, mazeWidth;
     GameObject[] mazeObjects, exploredMazeObjects;
     int counter = 0;
-    int currentX=1,currentY=1;
+    int currentX = 1, currentY = 1;
     int[,] maze;
     ExploredMap exploredMaze;
     System.Random rand = new System.Random();
@@ -33,10 +34,13 @@ public class AlgorithmsSimulation : MonoBehaviour
         exploredMazeObjects = new GameObject[mazeHeight * mazeWidth];
         createMaze.onClick.AddListener(createMazeButtonListener);
         automateButton.onClick.AddListener(automate);
-        manualButton.onClick.AddListener(getNextCommand);
+      //  manualButton.onClick.AddListener(getNextCommand);
+
+        manualButton.onClick.AddListener(getNextCommandFromNeuralNetwork);
+        // Debug.Log(AlgorithmsSimulation.getNextCommandFromNeuralNetwork());
     }
 
-    void automate(){
+    void automate() {
         InvokeRepeating("getNextCommand", 0.1f, 0.1f);
     }
 
@@ -59,6 +63,12 @@ public class AlgorithmsSimulation : MonoBehaviour
     {
         String robotCommand = exploration.GetNextCommand(getSensorsData());
         moveInDirection(robotCommand);
+    }
+
+     void getNextCommandFromNeuralNetwork()
+    {
+        NeuralNetwork NN= new NeuralNetwork();
+        moveInDirection(NN.getNextCommands(getSensorsData()));
     }
 
     //update the maze in the UI
@@ -136,7 +146,7 @@ public class AlgorithmsSimulation : MonoBehaviour
         }
     }
 
-    int[,] getSensorsData()
+   public int[,] getSensorsData()
     {
         int[,] result = new int[3, 3];
         for (int i = 0; i < 3; i++)
