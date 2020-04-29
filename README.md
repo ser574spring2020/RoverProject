@@ -15,4 +15,5 @@
 ## Documentation Link
 - [Google Drive](https://drive.google.com/drive/u/1/folders/179mMU8yw6jKtETn6Q0-5lH5IkhCP958J)
 - [Taiga - UI](https://tree.taiga.io/project/gmatti1-ser574roverprojectui/timeline)
+- [Taiga - Sensors](https://tree.taiga.io/project/aneeshdalvi-ser574-sensors-team/timeline)
 - [Taiga - Algorithms](https://tree.taiga.io/project/jebush2-ser574-algorithms/timeline)
