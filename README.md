@@ -1,11 +1,12 @@
 # Project Rover
 
-Steps to run the project:
+## How to Run?
 
-Clone the project from gitHub
-Add new -> till the root directory of the project
-Double click on the top unity project
-The Hierarchy should contain sameplescene only, click on run button on top.
+- Clone the project.
+` $ git clone git@github.com:ser574spring2020/RoverProject.git`
+- Open Unity Hub and add new project.
+- Browse to the location where you clone the project. Unity Project is located in the folder:
+  `RoverProject/Integration/Class_Project`
 
 ## Course Information
 - **Instructor**: Michael Findler
@@ -13,5 +14,6 @@ The Hierarchy should contain sameplescene only, click on run button on top.
 
 ## Documentation Link
 - [Google Drive](https://drive.google.com/drive/u/1/folders/179mMU8yw6jKtETn6Q0-5lH5IkhCP958J)
-- [Taiga](https://tree.taiga.io/project/gmatti1-ser574roverprojectui/timeline)
-
+- [Taiga - UI](https://tree.taiga.io/project/gmatti1-ser574roverprojectui/timeline)
+- [Taiga - Sensors](https://tree.taiga.io/project/aneeshdalvi-ser574-sensors-team/timeline)
+- [Taiga - Algorithms](https://tree.taiga.io/project/jebush2-ser574-algorithms/timeline)
