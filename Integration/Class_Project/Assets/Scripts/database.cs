@@ -32,7 +32,7 @@ public class database : MonoBehaviour
         Start();
         //Debug.Log(maze);
         //Debug.Log("INSERT INTO experimental_results(Mazeused, AlgorithmType, MazeSize, ThresholdFrequency,SensorType,ExperimentType,ExperimentID) VALUES ('" + maze + "','" + algorithm + "','" + mazetype + "'," + thresholdvalue + ",'" + sensor + "','"+ experimentType+"','" + ExperimentalID + "');");
-        expdb.Insert(dbConnection, "INSERT INTO experimental_results(Mazeused, AlgorithmType, MazeSize, ThresholdFrequency,SensorType,ExperimentType,ExperimentID) VALUES (" + maze + ",'" + algorithm + "','" + mazetype + "'," + thresholdvalue + ",'" + sensor + "','"+ experimentType+"','" + ExperimentalID + "');");
+        expdb.Insert(dbConnection, "INSERT INTO experimental_results(Mazeused, AlgorithmType, MazeSize, ThresholdFrequency,SensorType,ExperimentType,ExperimentID) VALUES ('" + maze + "','" + algorithm + "','" + mazetype + "'," + thresholdvalue + ",'" + sensor + "','"+ experimentType+"','" + ExperimentalID + "');");
 
 
 

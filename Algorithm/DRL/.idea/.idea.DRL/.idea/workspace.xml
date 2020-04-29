@@ -26,31 +26,243 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e628e13a-4fd0-492c-8389-40d37d346689" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../UI/Datasets/Lidar.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/DRL.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/DRL.dll.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/ExperimentalDesign.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/ExperimentalDesign.dll.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Materials/Cube1Mat.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Materials/Cube1Mat.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Materials/CubeMat.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Materials/CubeMat.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Materials/Path.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Materials/Path.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Materials/VisitedPath.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Materials/VisitedPath.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Materials/Walls.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Materials/Walls.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Materials/planeMat.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Materials/planeMat.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Plugins.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Plugins/Mono.Data.Sqlite.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Plugins/Mono.Data.Sqlite.dll.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Plugins/Sql.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Plugins/Sql.dll.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Plugins/System.Data.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Plugins/System.Data.dll.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Plugins/System.Drawing.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Plugins/System.Drawing.dll.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Plugins/prefabs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Plugins/prefabs/Cube.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Plugins/prefabs/Cube.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Plugins/prefabs/Path.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Plugins/prefabs/Path.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Plugins/prefabs/VisitedPath.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Plugins/prefabs/VisitedPath.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Plugins/prefabs/Wall1.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Plugins/prefabs/Wall1.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Plugins/sqlite3.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Plugins/sqlite3.dll.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/SQLiteSetup.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/SQLiteSetup.dll.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scenes.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scenes/ExperimentalDesign.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scenes/ExperimentalDesign.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scenes/Graph_scene.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scenes/Graph_scene.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scenes/MainScreen.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scenes/MainScreen.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scenes/Start.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scenes/Start.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scenes/UI.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scenes/UI.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scenes/UI_Exp_Design.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scenes/UI_Exp_Design.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/AlgorithmsSimulation.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/AlgorithmsSimulation.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/AlgorithmsSimulation_ExpDesign.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/AlgorithmsSimulation_ExpDesign.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/Button_UI.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/Button_UI.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/ChangeScenes.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/ChangeScenes.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/ChangeScreen.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/ChangeScreen.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/Constants.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/Constants.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/DataBaseManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/DataBaseManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/ExpDesignScript.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/ExpDesignScript.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/GetParamters.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/GetParamters.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/SensorController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/SensorController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/TestSuite.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/TestSuite.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/TestSuiteDatabase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/TestSuiteDatabase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/UIPanelScript.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/UIPanelScript.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/UnitTest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/UnitTest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/Window_Graph.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/Window_Graph.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/database.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/database.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/updatemessage.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Scripts/updatemessage.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/SensorsComponent.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/SensorsComponent.dll.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Sprites.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Sprites/Bar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Sprites/Bar.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Sprites/Heart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Sprites/Heart.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/StreamingAssets.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/StreamingAssets/ExperimentalDatabase.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/StreamingAssets/ExperimentalDatabase.db.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/StreamingAssets/Rover.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/StreamingAssets/Rover.db.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Documentation.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Fonts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Fonts/LiberationSans.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Fonts/LiberationSans.ttf.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Fonts &amp; Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Outline.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Outline.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMP_Bitmap-Custom-Atlas.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMP_Bitmap-Custom-Atlas.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMP_Bitmap-Mobile.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMP_Bitmap-Mobile.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMP_Bitmap.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMP_Bitmap.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMP_SDF Overlay.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMP_SDF Overlay.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMP_SDF-Mobile Masking.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMP_SDF-Mobile Masking.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMP_SDF-Mobile Overlay.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMP_SDF-Mobile Overlay.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMP_SDF-Mobile.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMP_SDF-Mobile.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMP_SDF-Surface-Mobile.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMP_SDF-Surface-Mobile.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMP_SDF-Surface.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMP_SDF-Surface.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMP_SDF.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMP_SDF.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMP_Sprite.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMP_Sprite.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMPro.cginc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMPro.cginc.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMPro_Properties.cginc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMPro_Properties.cginc.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMPro_Surface.cginc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Shaders/TMPro_Surface.cginc.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Sprite Assets.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Style Sheets.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/TMP Settings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Resources/TMP Settings.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Sprites.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Sprites/EmojiOne Attribution.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Sprites/EmojiOne Attribution.txt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Sprites/EmojiOne.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Sprites/EmojiOne.json.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Sprites/EmojiOne.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/TextMesh Pro/Sprites/EmojiOne.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Textures.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Textures/BarChartIcon.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Textures/BarChartIcon.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Textures/Circle.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Textures/Circle.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Textures/Dash.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Textures/Dash.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Textures/DollarIcon.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Textures/DollarIcon.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Textures/EuroIcon.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Textures/EuroIcon.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Textures/LineGraphIcon.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Textures/LineGraphIcon.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Textures/MinusIcon.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Textures/MinusIcon.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Textures/PlusIcon.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Assets/Textures/PlusIcon.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Datasets/Bumper.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Datasets/Proximity.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Datasets/Radar.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Datasets/Range.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Packages/manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/ProjectSettings/AudioManager.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/ProjectSettings/ClusterInputManager.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/ProjectSettings/DynamicsManager.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/ProjectSettings/EditorSettings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/ProjectSettings/InputManager.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/ProjectSettings/NavMeshAreas.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/ProjectSettings/NetworkManager.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/ProjectSettings/Physics2DSettings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/ProjectSettings/PresetManager.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/ProjectSettings/TimeManager.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/ProjectSettings/UnityConnectSettings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/ProjectSettings/VFXManager.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../UI/Datasets/Backup/Proximity.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../UI/Datasets/Backup/Radar.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../UI/Datasets/Backup/Range.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/DRL.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/DRL.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/ExploredMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/ExploredMap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/BackPropagation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/BackPropagation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/Exploration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/Exploration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll.mdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll.mdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UI/Assets/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Assets/DRL.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UI/Assets/DRL.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Assets/DRL.dll.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UI/Assets/Scripts/AlgorithmsSimulation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Assets/Scripts/AlgorithmsSimulation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UI/Assets/StreamingAssets/ExperimentalDatabase.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Assets/StreamingAssets/ExperimentalDatabase.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UI/Library/CurrentLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/CurrentLayout.dwlt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Assembly-CSharp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Assembly-CSharp.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.TextMeshPro.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.TextMeshPro.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UI/Library/StateCache/Hierarchy/19f132-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/StateCache/Hierarchy/19f132-mainStage.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll.mdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll.mdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/ExperimentalDesign.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/ExperimentalDesign.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scenes/ExperimentalDesign.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scenes/ExperimentalDesign.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scripts/AlgorithmsSimulation_ExpDesign.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scripts/AlgorithmsSimulation_ExpDesign.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scripts/ExpDesignScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scripts/ExpDesignScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scripts/GetParamters.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scripts/GetParamters.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scripts/database.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scripts/database.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scripts/updatemessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scripts/updatemessage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/StreamingAssets/ExperimentalDatabase.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/StreamingAssets/ExperimentalDatabase.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Ner/Proximity.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Ner/Radar.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Ner/Range.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Proximity.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Range.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sensors/Sensors/Assets/screenshots/Sensors.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Sensors/Sensors/Assets/screenshots/Sensors.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Datasets/Dataset.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../ExperimentalDesign/Class_Project/Datasets/Dataset.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../UI/Library/StateCache/SceneView/cfa478-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/StateCache/SceneView/cfa478-mainStage.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UI/Library/assetDatabase3" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/assetDatabase3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UI/Library/metadata/05/0511975adf7ea48868493bf050dd44ec" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/metadata/05/0511975adf7ea48868493bf050dd44ec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UI/Library/metadata/cd/cd6f32077d9f361c0a38c74a0078ef05" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UI/Library/metadata/cd/cd6f32077d9f361c0a38c74a0078ef05.info" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../UI/Library/shadercompiler-UnityShaderCompiler0.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/shadercompiler-UnityShaderCompiler0.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Proximity_wts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/MachineLearning/BPWeights/Proximity_wts.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Radar_wts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/MachineLearning/BPWeights/Radar_wts.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Range_wts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/MachineLearning/BPWeights/Range_wts.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,15 +273,12 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/DRL/TestsExploration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DRL/TestsExploredMaze.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DRL/TestsMazeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DRL/TestsDRL.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DRL/MazeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DRL/DRL.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DRL/Properties/AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DRL/ExploredMap.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/TestsExploredMaze.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DRL/MazeCell.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/Properties/AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/Exploration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/ExploredMap.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
