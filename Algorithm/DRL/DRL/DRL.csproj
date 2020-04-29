@@ -48,17 +48,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackPropagation.cs" />
-    <Compile Include="DRL.cs" />
+    <Compile Include="Exploration.cs" />
+    <Compile Include="ExploredMapTests.cs" />
     <Compile Include="ExploredMap.cs" />
     <Compile Include="FeedForwardManager.cs" />
     <Compile Include="MazeCell.cs" />
     <Compile Include="MazeGenerator.cs" />
     <Compile Include="NeuralNetwork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestsDRL.cs" />
-    <Compile Include="TestsExploration.cs" />
+    <Compile Include="ExplorationTests.cs" />
     <Compile Include="TestsExploredMaze.cs" />
-    <Compile Include="TestsMazeGenerator.cs" />
+    <Compile Include="MazeGeneratorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
