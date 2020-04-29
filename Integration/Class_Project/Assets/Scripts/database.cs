@@ -30,8 +30,8 @@ public class database : MonoBehaviour
         ExperimentalDesignDb expdb = new ExperimentalDesignDb();
 
         Start();
-        Debug.Log("INSERT INTO experimental_results(Mazeused, AlgorithmType, MazeSize, ThresholdFrequency,SensorType,ExperimentType,ExperimentID) VALUES ('" + maze + "','" + algorithm + "','" + mazetype + "'," + thresholdvalue + ",'" + sensor + "','"+ experimentType+"','" + ExperimentalID + "');");
-        expdb.Insert(dbConnection, "INSERT INTO experimental_results(Mazeused, AlgorithmType, MazeSize, ThresholdFrequency,SensorType,ExperimentType,ExperimentID) VALUES ('" + "1 1 1 1 1 1 1 1" + "','" + algorithm + "','" + mazetype + "'," + thresholdvalue + ",'" + sensor + "','"+ experimentType+"','" + ExperimentalID + "');");
+        //Debug.Log("INSERT INTO experimental_results(Mazeused, AlgorithmType, MazeSize, ThresholdFrequency,SensorType,ExperimentType,ExperimentID) VALUES ('" + maze + "','" + algorithm + "','" + mazetype + "'," + thresholdvalue + ",'" + sensor + "','"+ experimentType+"','" + ExperimentalID + "');");
+        expdb.Insert(dbConnection, "INSERT INTO experimental_results(Mazeused, AlgorithmType, MazeSize, ThresholdFrequency,SensorType,ExperimentType,ExperimentID) VALUES ('" + "11111" + "','" + algorithm + "','" + mazetype + "'," + thresholdvalue + ",'" + sensor + "','"+ experimentType+"','" + ExperimentalID + "');");
 
 
 
