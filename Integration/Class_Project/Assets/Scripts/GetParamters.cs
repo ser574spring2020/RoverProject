@@ -18,10 +18,11 @@ public class GetParamters : MonoBehaviour
         GameObject.Find("SizeButton").GetComponentInChildren<Text>().text = PlayerPrefs.GetString("Size");
         GameObject.Find("SensorButton").GetComponentInChildren<Text>().text = PlayerPrefs.GetString("Sensor");
         PlayerPrefs.GetInt("Experiment");    
-        print(PlayerPrefs.GetInt("Iteration"));
-        print(PlayerPrefs.GetInt("MazeCoverage"));
-        print(PlayerPrefs.GetInt("SensorType"));
-        print(PlayerPrefs.GetInt("AlgoSelected"));
+        PlayerPrefs.GetInt("Iteration");
+        PlayerPrefs.GetInt("MazeCoverage");
+        PlayerPrefs.GetInt("SensorType");
+        PlayerPrefs.GetInt("AlgoSelected");
+        PlayerPrefs.GetString("ExperimentTypevalue");
 
     }
     // Update is called once per frame

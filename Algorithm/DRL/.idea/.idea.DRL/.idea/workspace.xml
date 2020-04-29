@@ -36,10 +36,7 @@
       <change beforePath="$PROJECT_DIR$/../../UI/Assets/DRL.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Assets/DRL.dll.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../UI/Assets/Scripts/AlgorithmsSimulation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Assets/Scripts/AlgorithmsSimulation.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../UI/Assets/StreamingAssets/ExperimentalDatabase.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Assets/StreamingAssets/ExperimentalDatabase.db" afterDir="false" />
-<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/../../UI/Library/CurrentLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/CurrentLayout.dwlt" afterDir="false" />
-=======
->>>>>>> 376e4363a3377a5b4dd966398e25c509034f926b
       <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Assembly-CSharp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Assembly-CSharp.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll" afterDir="false" />
@@ -143,10 +140,7 @@
       <workItem from="1587770191301" duration="196000" />
       <workItem from="1587770406170" duration="25725000" />
       <workItem from="1587810324916" duration="749000" />
-<<<<<<< HEAD
       <workItem from="1587811260025" duration="315000" />
-=======
->>>>>>> 376e4363a3377a5b4dd966398e25c509034f926b
     </task>
     <servers />
   </component>

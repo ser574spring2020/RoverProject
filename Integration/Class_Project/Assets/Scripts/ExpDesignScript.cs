@@ -136,8 +136,8 @@ public class ExpDesignScript : MonoBehaviour
         {
             database db = new database();
             thresholdval = Math.Round(thresholdval, 2);
-            inputs = new string[] { InputAlgorithmValue, MazeSizeValue, SensorTypeValue, ExperimentType.captionText.text };
-            ts.testUpdateText(inputs);
+            //inputs = new string[] { InputAlgorithmValue, MazeSizeValue, SensorTypeValue, ExperimentType.captionText.text };
+           // ts.testUpdateText(inputs);
             SceneManager.LoadScene("UI_Exp_Design", LoadSceneMode.Single);
         }
         else
@@ -155,6 +155,7 @@ public class ExpDesignScript : MonoBehaviour
         PlayerPrefs.SetInt("AlgoSelected", algoSelected);
         PlayerPrefs.SetInt("Iteration", experimentVal);
         PlayerPrefs.SetInt("Experiment", ExperimentType.value);
+        PlayerPrefs.SetString("ExperimentTypevalue", ExperimentType.captionText.text);
         PlayerPrefs.Save();
     }
 
@@ -173,6 +174,7 @@ public class ExpDesignScript : MonoBehaviour
         string MazeSizeValue = MazeSize.captionText.text;
         TestSuite ts = new TestSuite();
         int mazecoverageval = Convert.ToInt32(MazeCoverage.value);
+        algoSelected = InputAlgorithm.value;
 
         try
         {
@@ -198,6 +200,7 @@ public class ExpDesignScript : MonoBehaviour
         }
         SensorType = GameObject.Find("SensorType").GetComponent<Dropdown>();
         string SensorTypeValue = SensorType.captionText.text;
+        sensorSelected = SensorType.value + 1;
 
         print(thresholdval);
         if ((!string.IsNullOrEmpty(value) && (thresholdval > 0 && thresholdval < 1)) && !string.IsNullOrEmpty(value1) && (experimentVal >= 1 && experimentVal <= 100))
@@ -220,7 +223,10 @@ public class ExpDesignScript : MonoBehaviour
         PlayerPrefs.SetString("Size", MazeSizeValue);
         PlayerPrefs.SetString("Sensor", SensorTypeValue);
         PlayerPrefs.SetInt("Iteration", experimentVal);
-        PlayerPrefs.SetString("Experiment", ExperimentType.captionText.text);
+        PlayerPrefs.SetInt("SensorType", sensorSelected);
+        PlayerPrefs.SetInt("AlgoSelected", algoSelected);
+        PlayerPrefs.SetString("ExperimentTypevalue", ExperimentType.captionText.text);
+        PlayerPrefs.SetInt("Experiment", ExperimentType.value);
         PlayerPrefs.Save();
     }
 

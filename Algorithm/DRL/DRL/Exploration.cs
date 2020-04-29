@@ -37,6 +37,12 @@ namespace Algorithms
             Bumper = 4
         }
 
+        private enum ExperimentType
+        {
+            Training = 0,
+            Testing = 1,
+        }
+
         public Exploration(int rows, int cols)
         {
             this._rows = rows;
@@ -47,8 +53,9 @@ namespace Algorithms
 
         /*Returns the next command for the robot
         @param SensorData - Used to compute the next command*/
-        public string GetNextCommand(int[,] sensorData, int sensorType, int algorithmType)
+        public string GetNextCommand(int[,] sensorData, int sensorType, int algorithmType, int experimentType)
         {
+            if (experimentType == (int) ExperimentType.Training) return "";
             int[,] dataToBeSaved = sensorData;
             if (sensorType == 3)
                 sensorData = RotateSensorData(sensorData, _direction);
@@ -72,7 +79,6 @@ namespace Algorithms
             }
 
             ManagePoints(vectorCommands[commands.IndexOf(robotCommand)]);
-            WriteSensorDataToCsv(dataToBeSaved, robotCommand, sensorType);
             exploredMap.MoveRelative(vectorCommands[commands.IndexOf(robotCommand)]);
             _direction = robotCommand;
             return robotCommand;
@@ -362,16 +368,16 @@ namespace Algorithms
             }
 
             var path = Directory.GetCurrentDirectory();
-            string filePath = "/Datasets/Dataset.csv";
-            if (sensorType == 1)
+            string filePath = "";
+            if (sensorType == (int)SensorType.Proximity)
                 filePath = path + "/Datasets/Proximity.csv";
-            if (sensorType == 2)
+            if (sensorType == (int)SensorType.Range)
                 filePath = path + "/Datasets/Range.csv";
-            if (sensorType == 3)
+            if (sensorType == (int)SensorType.Lidar)
                 filePath = path + "/Datasets/Lidar.csv";
-            if (sensorType == 4)
+            if (sensorType == (int)SensorType.Radar)
                 filePath = path + "/Datasets/Radar.csv";
-            if (sensorType == 5)
+            if (sensorType == (int)SensorType.Bumper)
                 filePath = path + "/Datasets/Bumper.csv";
             foreach (var item in sensorData)
             {

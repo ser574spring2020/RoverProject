@@ -44,14 +44,14 @@ namespace DRL
                 double[] weights = nn.Train(roverTrainData, maxEpochs, learnRate, momentum);
 
                 //Write trained weights in a file
-                StreamWriter file = new StreamWriter("./" + sensor_type + "_wts.csv");
+                StreamWriter file = new StreamWriter("./MachineLearning/BPWeights/" + sensor_type + "_wts.csv");
                 for (int i = 0; i < weights.Length; i++)
                 {
                     file.WriteLine(weights[i]);
                 }
 
                 file.Close();
-                return "New weights have been written into the file " + sensor_type + "_wts.csv";
+                return "New weights have been written into the file MachineLearning/BPWeights/" + sensor_type + "_wts.csv";
                 //Training over
             }
             else if (func.Equals("Command"))
@@ -96,7 +96,7 @@ namespace DRL
 
         public static double[] GetTrainedWts(String sensor_type, int numInput, int numHidden, int numOutput)
         {
-            String st = System.IO.File.ReadAllText("./" + sensor_type + "_wts.csv");
+            String st = System.IO.File.ReadAllText("./MachineLearning/BPWeights/" + sensor_type + "_wts.csv");
 
             String[] elements = st.Split(new String[] {"\n"}, StringSplitOptions.None);
             int numWeights = (numInput * numHidden) +
@@ -230,7 +230,7 @@ namespace DRL
         public static double[][] ExtractTrainData(string sensor_type)
         {
             //Assuming North is [1,0,0,0], South is [0,1,0,0], East is [0,0,1,0], West is [0,0,0,1] 
-            String st = System.IO.File.ReadAllText("/" + sensor_type + ".csv");
+            String st = System.IO.File.ReadAllText("/Backup/" + sensor_type + ".csv");
             ;
             int no_of_fields;
             if (sensor_type.Equals("Proximity"))
