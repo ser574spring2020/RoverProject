@@ -10,6 +10,10 @@ namespace SensorsComponent
         */
         private static String currentSensor;
 
+        /// <summary>Gets the instance of sensor selected.</summary>
+        /// <param name="sensorType">Type of the sensor.</param>
+        /// <param name="gObj">The game object for the rover.</param>
+        /// <returns>Instance of the sensor selected on the rover</returns>
         public static Sensors GetInstance(int sensorType, GameObject gObj)
         {
 
@@ -53,6 +57,8 @@ namespace SensorsComponent
             return sensors;
         }
 
+        /// <summary>Gets the instance.</summary>
+        /// <returns>instance of Sensor selected on the rover</returns>
         public static Sensors GetInstance()
         {
             return sensors;

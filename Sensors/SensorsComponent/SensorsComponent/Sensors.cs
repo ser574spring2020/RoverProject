@@ -21,15 +21,18 @@ namespace SensorsComponent
         protected static int sensorType;
 
         protected static int[,] obstacle_matrix;
-        private static String currentSensor;        
+        private static String currentSensor;
 
-        //Interface for mazeData matrix     
+        /// <summary>Updates the obstacles.</summary>
+        /// <param name="gameObj">The game object of Rover.</param>
+        /// <param name="mazeData">The maze matrix chosen.</param>
+        /// <param name="Direction">The direction in which the rover starts.</param>
         public virtual void Update_Obstacles(GameObject gameObj, int[,] mazeData, string Direction)
         {
             Rover = gameObj;
         }
         
-        public void Update()
+        void Update()
         {
             //sensors.Update_Obstacles(Rover);
         }
@@ -40,27 +43,34 @@ namespace SensorsComponent
         {
         }
 
+        /// <summary>Gets the rover object.</summary>
+        /// <returns>Retrurns the instance of the Rover</returns>
         public GameObject GetRoverObject()
         {
             return Rover;
         }
 
+        /// <summary>Gets the obstacle matrix.</summary>
+        /// <returns>Returns the obstacle matrix at the current position of the rover</returns>
         public int[,] Get_Obstacle_Matrix()
         {
             return obstacle_matrix;
         }
-
-        public void SetSensorType(int value)
+        
+        protected void SetSensorType(int value)
         {
             sensorType = value;
         }
 
+        /// <summary>Gets the type of the sensor.</summary>
+        /// <returns>Returns SensorType value</returns>
         public int GetSensorType()
         {
             return sensorType;
         }
 
-        // gets the string for current running Sensor
+        /// <summary>Gets the current sensor.</summary>
+        /// <returns>Returns string informing which sensor is currently been used</returns>
         public String GetCurrentSensor()
         {
             return currentSensor;
@@ -200,39 +210,7 @@ namespace SensorsComponent
             }
 
         }
-
-
-        // code for integration new modification for algo team
-        // need to remove while submission
-        public void Update_Maze_Data(int[,] mazeData, string Direction)
-        {
-            if (GetSensorType() == 1) // for proximity
-            {
-                //update_proximity_matrix(mazeData);
-            }
-            else if (GetSensorType() == 2) // for range
-            {
-                //update_range_matrix(mazeData);
-            }
-            else if (GetSensorType() == 3)
-            {
-                //update_liDAR_matrix(mazeData, Direction);
-            }
-            else if (GetSensorType() == 4)
-            {
-                //update_radar_matrix(mazeData);
-            }
-            else if (GetSensorType() == 5) // bumper
-            {
-                //update_bumper_matrix(mazeData, Direction);
-            }
-            else
-            {
-                //update_proximity_matrix(mazeData);
-            }
-            
-        }
-
+        
         protected void Update_liDAR_matrix(int[,] mazeData, string direction)
         {            
             obstacle_matrix = new int[,] { { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 2, 0, 0 } };
