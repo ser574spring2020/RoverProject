@@ -125,7 +125,7 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
 
     private void UpdateParameters()
     {
-        currentSensor = PlayerPrefs.GetInt("SensorType");
+        // PlayerPrefs.GetInt("Experiment");
         currentAlgo = PlayerPrefs.GetInt("AlgoSelected");
         placementThreshold = float.Parse(GameObject.Find("MazeButton").GetComponentInChildren<Text>().text);
         String[] size = GameObject.Find("SizeButton").GetComponentInChildren<Text>().text.ToString().Split('X');
@@ -148,8 +148,10 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
             //updateUISensorData(getMazeData(matrixSize));
             int[,] sensorReading = sensor.Get_Obstacle_Matrix();
             updateUISensorData(sensorReading);
-            String robotCommand = exploration.GetNextCommand(sensorReading, currentSensor);
-            moveInDirection(robotCommand);
+            String robotCommand = exploration.GetNextCommand(sensorReading, currentSensor-1, currentAlgo, PlayerPrefs.GetInt("Experiment"));
+            if(robotCommand != ""){
+                moveInDirection(robotCommand);    
+            }
         }
         else{
             CancelInvoke("getNextCommand");

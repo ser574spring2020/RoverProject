@@ -17,6 +17,7 @@ public class GetParamters : MonoBehaviour
         GameObject.Find("MazeButton").GetComponentInChildren<Text>().text = PlayerPrefs.GetString("Maze");
         GameObject.Find("SizeButton").GetComponentInChildren<Text>().text = PlayerPrefs.GetString("Size");
         GameObject.Find("SensorButton").GetComponentInChildren<Text>().text = PlayerPrefs.GetString("Sensor");
+        PlayerPrefs.GetInt("Experiment");    
         print(PlayerPrefs.GetInt("Iteration"));
         print(PlayerPrefs.GetInt("MazeCoverage"));
         print(PlayerPrefs.GetInt("SensorType"));

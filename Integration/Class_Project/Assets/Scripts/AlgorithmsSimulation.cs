@@ -49,8 +49,6 @@ public class AlgorithmsSimulation : MonoBehaviour
         automaticButton.onClick.AddListener(automaticButtonListener);
         backButton.interactable= false;        
         Debug.Log(sensor.GetCurrentSensor());
-
-
     }
 
 
@@ -80,7 +78,7 @@ public class AlgorithmsSimulation : MonoBehaviour
             sensor.Update_Obstacles(robotMain, getMazeData(matrixSize), robotDirection);            
             int[,] sensorReading = sensor.Get_Obstacle_Matrix();            
             updateUISensorData(sensorReading);
-            String robotCommand = exploration.GetNextCommand(sensorReading, currentSensor);
+            String robotCommand = exploration.GetNextCommand(sensorReading, currentSensor-1, currentAlgo, 1);
             moveInDirection(robotCommand);
         }
 
@@ -148,6 +146,10 @@ public class AlgorithmsSimulation : MonoBehaviour
         return duration.ToString(@"hh\:mm\:ss");
     }
 
+	//back
+    //fwd
+    //deep
+    //random
     private void UpdateParameters()
     {        
         currentAlgo = PlayerPrefs.GetInt("AlgoSelected");

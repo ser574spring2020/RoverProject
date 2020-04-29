@@ -76,7 +76,7 @@ public class updatemessage : MonoBehaviour
 
         InputAlgorithm = GameObject.Find("Algorithm").GetComponent<Dropdown>();
         string InputAlgorithmValue = InputAlgorithm.captionText.text;
-        algorithmSelected = InputAlgorithm.value + 1;
+        algorithmSelected = InputAlgorithm.value;
 
         MazeSize = GameObject.Find("MazeSize").GetComponent<Dropdown>();
         string MazeSizeValue = MazeSize.captionText.text;

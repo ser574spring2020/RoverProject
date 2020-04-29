@@ -103,7 +103,7 @@ public class ExpDesignScript : MonoBehaviour
         TestSuite ts = new TestSuite();
         int mazecoverageval = Convert.ToInt32(MazeCoverage.value);
 
-        algoSelected = InputAlgorithm.value + 1;
+        algoSelected = InputAlgorithm.value;
 
         try
         {
@@ -154,7 +154,7 @@ public class ExpDesignScript : MonoBehaviour
         PlayerPrefs.SetInt("SensorType", sensorSelected);
         PlayerPrefs.SetInt("AlgoSelected", algoSelected);
         PlayerPrefs.SetInt("Iteration", experimentVal);
-        PlayerPrefs.SetString("Experiment", ExperimentType.captionText.text);
+        PlayerPrefs.SetInt("Experiment", ExperimentType.value);
         PlayerPrefs.Save();
     }
 
