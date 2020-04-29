@@ -90,7 +90,8 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
             // updateMaze();
             mazeCreated = true;
         }
-        expDB.Insert(convertMatrixToString(), PlayerPrefs.GetString("Algo"), PlayerPrefs.GetString("Size"), Math.Round(float.Parse(PlayerPrefs.GetString("Maze")), 2), PlayerPrefs.GetString("Sensor"), PlayerPrefs.GetString("Experiment"), ExperimentalID);
+        Debug.Log(PlayerPrefs.GetString("ExperimentTypevalue"));
+        expDB.Insert(convertMatrixToString(), PlayerPrefs.GetString("Algo"), PlayerPrefs.GetString("Size"), Math.Round(float.Parse(PlayerPrefs.GetString("Maze")), 2), PlayerPrefs.GetString("Sensor"), PlayerPrefs.GetString("ExperimentTypevalue"), ExperimentalID);
     }
 
     void manualButtonListener(){
@@ -165,7 +166,7 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
         pointsScored = Int32.Parse(pointsScoredStr);
         if(checkRunTimeStatus()){
             int matrixSize = (currentSensor==1 || currentSensor == 5)? 3:5;
-            Debug.Log(robotMain);
+            //Debug.Log(robotMain);
             sensor.Update_Obstacles(sensor.GetRoverObject(), getMazeData(matrixSize), robotDirection);
             //updateUISensorData(getMazeData(matrixSize));
             int[,] sensorReading = sensor.Get_Obstacle_Matrix();
