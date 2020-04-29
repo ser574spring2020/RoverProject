@@ -125,7 +125,7 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
     }
 
     private String convertMatrixToString(){
-        string str = "'";
+        string str = "";
             for (int i = 0; i <= maze.GetUpperBound(0); i++)
             {
                 str += "";
@@ -143,7 +143,7 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
                     str += ";";
                 }
             }
-            str += "'"; 
+            str += ""; 
         return str;
     }
 
