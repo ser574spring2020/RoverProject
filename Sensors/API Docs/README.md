@@ -32,10 +32,10 @@
 
 ### Sensors.GetInstance Method (Int32, GameObject)
 
-Gets the instance of sensor selected.
+> Gets the instance of sensor selected.
 
-Namespace: SensorsComponent
-Assembly: SensorsComponent (in SensorsComponent.dll)
+- Namespace: SensorsComponent
+- Assembly: SensorsComponent (in SensorsComponent.dll)
 
 ``` 
   public static Sensors GetInstance(
@@ -59,10 +59,10 @@ Assembly: SensorsComponent (in SensorsComponent.dll)
     
 ### Sensors.GetInstance Method 
 
-Gets the instance of sensor selected.
+> Gets the instance of sensor selected.
 
-Namespace: SensorsComponent
-Assembly: SensorsComponent (in SensorsComponent.dll)
+- Namespace: SensorsComponent
+- Assembly: SensorsComponent (in SensorsComponent.dll)
 
 ``` 
   public static Sensors GetInstance(
@@ -73,7 +73,6 @@ Assembly: SensorsComponent (in SensorsComponent.dll)
 
 #### Return Value
 - Instance of the sensor selected on the rover
-
 
 ___
 
@@ -126,10 +125,10 @@ ___
 
 ### Sensors.Update_Obstacles Method 
 
-Updates the obstacles in the obstacle_matrix
+> Updates the obstacles in the obstacle_matrix
 
-Namespace: SensorsComponent
-Assembly: SensorsComponent (in SensorsComponent.dll)
+- Namespace: SensorsComponent
+- Assembly: SensorsComponent (in SensorsComponent.dll)
 
 ``` 
   public virtual void Update_Obstacles(
@@ -157,10 +156,10 @@ Assembly: SensorsComponent (in SensorsComponent.dll)
 
 ### Sensors.GetRoverObject Method 
 
-Gets the rover object.
+> Gets the rover object.
 
-Namespace: SensorsComponent
-Assembly: SensorsComponent (in SensorsComponent.dll)
+- Namespace: SensorsComponent
+- Assembly: SensorsComponent (in SensorsComponent.dll)
 
 ``` 
   public GameObject GetRoverObject()
@@ -173,10 +172,10 @@ Assembly: SensorsComponent (in SensorsComponent.dll)
 
 ### Sensors.Get_Obstacle_Matrix Method 
 
-Gets the obstacle matrix.
+> Gets the obstacle matrix.
 
-Namespace: SensorsComponent
-Assembly: SensorsComponent (in SensorsComponent.dll)
+- Namespace: SensorsComponent
+- Assembly: SensorsComponent (in SensorsComponent.dll)
 
 ``` 
   public int[,] Get_Obstacle_Matrix()
@@ -189,10 +188,10 @@ Assembly: SensorsComponent (in SensorsComponent.dll)
 
 ### Sensors.GetSensorType Method 
 
-Gets the type of the sensor.
+> Gets the type of the sensor.
 
-Namespace: SensorsComponent
-Assembly: SensorsComponent (in SensorsComponent.dll)
+- Namespace: SensorsComponent
+- Assembly: SensorsComponent (in SensorsComponent.dll)
 
 ``` 
   public int GetSensorType()
@@ -205,10 +204,10 @@ Assembly: SensorsComponent (in SensorsComponent.dll)
 
 ### Sensors.GetCurrentSensor Method 
 
-Gets the current sensor.
+> Gets the current sensor.
 
-Namespace: SensorsComponent
-Assembly: SensorsComponent (in SensorsComponent.dll)
+- Namespace: SensorsComponent
+- Assembly: SensorsComponent (in SensorsComponent.dll)
 
 ``` 
   public String GetCurrentSensor()
