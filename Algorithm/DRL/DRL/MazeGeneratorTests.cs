@@ -55,6 +55,7 @@ namespace DRL
             return _randomNumber.NextDouble();
         }
 
+        //Test for GenerateMaze
         [Test]
         public void GenerateMaze_Return_Null_WhenRowsLessThanThree()
         {
@@ -62,6 +63,7 @@ namespace DRL
             Assert.That(maze, Is.Null);
         }
 
+        //Test for GenerateMaze
         [Test]
         public void GenerateMaze_Return_Null_WhenColsLessThanThree()
         {
@@ -69,6 +71,7 @@ namespace DRL
             Assert.That(maze, Is.Null);
         }
 
+        //Test for GenerateMaze
         [Test]
         public void GenerateMaze_Return_Null_WhenThreshNegative()
         {
@@ -76,6 +79,7 @@ namespace DRL
             Assert.That(maze, Is.Null);
         }
 
+        //Test for GenerateMaze
         [Test]
         public void GenerateMaze_Return_Null_WhenRowsColsThreshNegative()
         {

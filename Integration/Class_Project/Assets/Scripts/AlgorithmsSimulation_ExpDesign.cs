@@ -73,6 +73,7 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
         
         if (PlayerPrefs.GetString("ExperimentTypevalue") == "Training Data"){
             exploration.GetNextCommand(null, currentSensor-1, currentAlgo, 0);
+            Debug.Log("Training Complete "+expCounter);
         }
         else{
             Debug.Log(sensor.GetCurrentSensor());

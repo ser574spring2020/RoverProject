@@ -40,6 +40,7 @@ namespace Algorithms
             this._net = new NeuralNetwork(layers, _activation);
             if (experimentType == 0)
             {
+                _net.Load("MachineLearning/FFWeights/"+sensorType+"Weights.txt");
                 StreamReader reader = new StreamReader(File.OpenRead(@"MachineLearning/Backup/" + sensorType + ".csv"));
                 while (!reader.EndOfStream)
                 {
@@ -72,11 +73,11 @@ namespace Algorithms
                     _net.Train(vs, direction);
                 }
 
-                _net.Save(sensorType+"Weights.txt");
+                _net.Save("MachineLearning/FFWeights/"+sensorType+"Weights.txt");
             }
             else
             {
-                _net.Load(sensorType+"Weights.txt");
+                _net.Load("MachineLearning/FFWeights/"+sensorType+"Weights.txt");
                 float[] op = _net.FeedForward(sensorData);
                 int maxIndex = MaxIndex(op);
                 String res;

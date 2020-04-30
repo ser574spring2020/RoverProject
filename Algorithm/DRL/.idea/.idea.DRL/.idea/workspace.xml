@@ -27,7 +27,29 @@
   <component name="ChangeListManager">
     <list default="true" id="e628e13a-4fd0-492c-8389-40d37d346689" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/BackPropagation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/BackPropagation.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/ExplorationRandomDirectionTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/ExplorationRandomDirectionTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/ExplorationTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/ExplorationTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/ExploredMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/ExploredMap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/ExploredMapTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/ExploredMapTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/FeedForwardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/FeedForwardManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/MazeGeneratorTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/MazeGeneratorTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/TestsExploredMaze.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/TestsExploredMaze.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll.mdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll.mdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll.mdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll.mdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/DRL.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scripts/AlgorithmsSimulation_ExpDesign.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scripts/AlgorithmsSimulation_ExpDesign.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/StreamingAssets/ExperimentalDatabase.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/StreamingAssets/ExperimentalDatabase.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Backup/Proximity.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Backup/Proximity.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Backup/Radar.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Backup/Radar.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Backup/Range.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Backup/Range.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Proximity.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Proximity.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/MachineLearning/BPWeights/Proximity_wts (copy).csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/MachineLearning/BPWeights/Proximity_wts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/MachineLearning/BPWeights/Proximity_wts.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Weights.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,14 +85,14 @@
         <option value="$PROJECT_DIR$/DRL/TestsExploration.cs" />
         <option value="$PROJECT_DIR$/DRL/TestsDRL.cs" />
         <option value="$PROJECT_DIR$/DRL/DRL.cs" />
-        <option value="$PROJECT_DIR$/DRL/ExploredMap.cs" />
+        <option value="$USER_HOME$/.ideavimrc" />
+        <option value="$PROJECT_DIR$/DRL/ExplorationTests.cs" />
         <option value="$PROJECT_DIR$/DRL/ExploredMapTests.cs" />
+        <option value="$PROJECT_DIR$/DRL/Exploration.cs" />
         <option value="$PROJECT_DIR$/DRL/FeedForwardManager.cs" />
         <option value="$PROJECT_DIR$/DRL/BackPropagation.cs" />
-        <option value="$USER_HOME$/.ideavimrc" />
-        <option value="$PROJECT_DIR$/DRL/Exploration.cs" />
-        <option value="$PROJECT_DIR$/DRL/ExplorationTests.cs" />
         <option value="$PROJECT_DIR$/DRL/ExplorationRandomDirectionTests.cs" />
+        <option value="$PROJECT_DIR$/DRL/ExploredMap.cs" />
       </list>
     </option>
   </component>
@@ -82,6 +104,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -135,7 +158,11 @@
       <workItem from="1588225444133" duration="6348000" />
       <workItem from="1588232114211" duration="1613000" />
       <workItem from="1588233758486" duration="338000" />
-      <workItem from="1588234121364" duration="3736000" />
+      <workItem from="1588234121364" duration="5886000" />
+      <workItem from="1588240617770" duration="1743000" />
+      <workItem from="1588244607477" duration="4533000" />
+      <workItem from="1588249304341" duration="237000" />
+      <workItem from="1588273798337" duration="3286000" />
     </task>
     <servers />
   </component>
@@ -174,6 +201,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="481" y="215" width="948" height="645" key="#Attach_to_Unity_Editor/0.0.1920.1080@0.0.1920.1080" timestamp="1587152789633" />
+    <state x="455" y="98" width="1000" height="890" key="#Plugins" timestamp="1588240729689">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="455" y="98" width="1000" height="890" key="#Plugins/0.0.1920.1080@0.0.1920.1080" timestamp="1588240729689" />
     <state x="519" y="311" width="872" height="454" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588230507990">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -198,10 +229,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="478" y="135" width="953" height="816" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1588235740775" />
-    <state x="0" y="195" width="1290" height="885" key="find.popup" timestamp="1588230681458">
+    <state x="0" y="195" width="1290" height="885" key="find.popup" timestamp="1588247010405">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="0" y="195" width="1290" height="885" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1588230681458" />
+    <state x="0" y="195" width="1290" height="885" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1588247010405" />
     <state x="540" y="241" key="run.anything.popup" timestamp="1588235841786">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

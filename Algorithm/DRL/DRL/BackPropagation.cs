@@ -88,7 +88,7 @@ namespace DRL
 
         public static double[] GetTrainedWts(String sensorType, int numInput, int numHidden, int numOutput)
         {
-            String st = System.IO.File.ReadAllText("./MachineLearning/BPWeights/" + sensorType + "_wts.csv");
+            String st = File.ReadAllText("./MachineLearning/BPWeights/" + sensorType + "_wts.csv");
             String[] elements = st.Split(new String[] {"\n"}, StringSplitOptions.None);
             int numWeights = (numInput * numHidden) +
                              (numHidden * numOutput) + numHidden + numOutput;
@@ -214,10 +214,11 @@ namespace DRL
             }
         }
 
+        //Used for Training
         public static double[][] ExtractTrainData(string sensorType)
         {
             //Assuming North is [1,0,0,0], South is [0,1,0,0], East is [0,0,1,0], West is [0,0,0,1] 
-            String st = System.IO.File.ReadAllText("./Datasets/Backup/" + sensorType + ".csv");
+            String st = File.ReadAllText("./Datasets/Backup/" + sensorType + ".csv");
             ;
             int noOfFields;
             if (sensorType.Equals("Proximity"))

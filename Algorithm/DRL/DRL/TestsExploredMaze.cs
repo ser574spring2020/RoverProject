@@ -7,6 +7,7 @@ namespace DRL
     [TestFixture]
     public class TestsExploredMaze
     {
+        //Test for GetSensorRobotPosition
         [Test]
         public void GetSensorRobotPosition_Should_Return_Position_For_ProximitySensor()
         {

@@ -8,6 +8,7 @@ namespace DRL
     [TestFixture]
     public class ExplorationTests
     {
+        //Test for Exploration
         [Test]
         public void Exploration_Initializes_ExploredMap_When_RowsColsGreaterEqualThree()
         {
@@ -17,7 +18,7 @@ namespace DRL
             Assert.That(robotPosition, Is.EqualTo(new Vector2Int(1, 1)));
         }
 
-        //GenerateDataset
+        //Test for GenerateDataset
         [Test]
         public void GenerateDataset_Should_ProcessSensorData_And_SaveToFile()
         {
@@ -30,6 +31,7 @@ namespace DRL
             Assert.That(initialMazeCoverage, Is.LessThan(finalMazeCoverage));
         }
 
+        //Test for WriteSensorDataToCsv
         [Test]
         public void WriteSensorDataToCsv_Should_WriteDataAndDirectionToFile()
         {
@@ -41,7 +43,7 @@ namespace DRL
             Assert.That(text,Is.EqualTo("1,2,3,3,4,5,7,8,9,North,\n"));
         }
 
-        //ManagePoints
+        //Test for ManagePoints
         [Test]
         public void ManagePoints_Should_AddPoints_When_RelativeCell_Is_NotVisited()
         {
@@ -55,7 +57,7 @@ namespace DRL
             Assert.That(points, Is.EqualTo(exploration.GetPoints() - 10));
         }
 
-
+        //Test for ConvertToOneDimensionalDouble
         [Test]
         public void ConvertToOneDimensionalDouble_Should_Convert_Int2d_To_Double1d()
         {
@@ -66,6 +68,7 @@ namespace DRL
             Assert.That(converted, Is.EqualTo(expected));
         }
 
+        //Test for ConvertToOneDimensionalFloat
         [Test]
         public void ConvertToOneDimensionalFloat_Should_Convert_Int2d_To_Double1d()
         {
@@ -75,6 +78,8 @@ namespace DRL
             var expected = new float[] {1, 2, 3, 4, 5, 6, 7, 8, 9};
             Assert.That(converted, Is.EqualTo(expected));
         }
+
+        //Test for RotateSensorData
         [Test]
         public void RotateSensorData_Should_RotateArrayThrice_When_Direction_Is_West()
         {
@@ -84,6 +89,7 @@ namespace DRL
             Assert.That(array, Is.EqualTo(result));
         }
         
+        //Test for RotateSensorData
         [Test]
         public void RotateSensorData_Should_RotateArrayOnce_When_Direction_Is_East()
         {
@@ -93,6 +99,7 @@ namespace DRL
             Assert.That(array, Is.EqualTo(result));
         }
 
+        //Test for RotateSensorData
         [Test]
         public void RotateSensorData_ShouldNot_RotateArray_When_Direction_Is_North()
         {
@@ -102,6 +109,7 @@ namespace DRL
             Assert.That(array, Is.EqualTo(result));
         }
 
+        //Test for RotateSensorData
         [Test]
         public void RotateSensorData_Should_RotateArrayTwice_When_Direction_Is_South()
         {

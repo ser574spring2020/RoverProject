@@ -47,7 +47,7 @@ namespace DRL
         }
         
         [Test]
-        public void TestArguments()
+        public void SingleTest()
         {
             Exploration exploration = new Exploration(30, 30);
             exploration.exploredMap.ProcessSensor(_sensorData);
