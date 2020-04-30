@@ -91,18 +91,13 @@ namespace Algorithms
 
         private void TrainNeuralNetworks(int algorithmType, int sensorType)
         {
-            Debug.Log("Starting training...");
             switch (algorithmType)
             {
                 case (int) AlgorithmType.BackPropagation:
-                Debug.Log("Started");
                     BackPropagation.Driver("Train", _sensorTypeString[sensorType], null);
-                Debug.Log("Complete");
                     break;
                 case (int) AlgorithmType.FeedForward:
-                    Debug.Log("Started");
-                    forwardManager.GetDirectionFromFeedForward(_sensorTypeString[sensorType],new float[]{}, 0);
-                    Debug.Log("Complete");
+                    forwardManager.GetDirectionFromFeedForward(_sensorTypeString[sensorType], new float[] { }, 0);
                     break;
             }
         }
@@ -135,7 +130,7 @@ namespace Algorithms
         }
 
         //Computes all the available directions
-        private List<String> GetAvailableDirections(int[,] sensorData)
+        public List<String> GetAvailableDirections(int[,] sensorData)
         {
             List<string> possibleDirections = new List<string>();
             Vector2Int robotPosition = exploredMap.GetCurrentPosition();
@@ -196,7 +191,7 @@ namespace Algorithms
         }
 
         //Calculates the points of the robot
-        private void ManagePoints(Vector2Int direction)
+        public void ManagePoints(Vector2Int direction)
         {
             var futurePosition = GetExploredMap().GetCurrentPosition() + direction;
             if (exploredMap.GetCell(futurePosition).IsVisited() == false)
@@ -237,7 +232,7 @@ namespace Algorithms
         }
 
         //Returns the sensor data with the information about the visited cells
-        private int[,] GetProcessedSensorData(int[,] sensorData)
+        public int[,] GetProcessedSensorData(int[,] sensorData)
         {
             int[,] processedSensorData = sensorData;
             Vector2Int localRobotPosition = exploredMap.GetSensorRobotPosition(sensorData);
@@ -250,9 +245,8 @@ namespace Algorithms
                 if (exploredMap.GetCell(new Vector2Int(xMaze, yMaze)) != null &&
                     exploredMap.GetCell(new Vector2Int(xMaze, yMaze)).IsVisited())
                     processedSensorData[x, y] = 4;
-                processedSensorData[localRobotPosition.x, localRobotPosition.y] = 2;
             }
-
+            processedSensorData[localRobotPosition.x, localRobotPosition.y] = 2;
             return processedSensorData;
         }
 
@@ -333,7 +327,7 @@ namespace Algorithms
         }
 
         //Write sensor data and the given direction to csv file
-        private void WriteSensorDataToCsv(int[,] sensorData, string direction, int sensorType)
+        public void WriteSensorDataToCsv(int[,] sensorData, string direction, int sensorType)
         {
             int[,] dataToBeSaved = sensorData;
             Vector2Int localRobotPosition = exploredMap.GetSensorRobotPosition(sensorData);

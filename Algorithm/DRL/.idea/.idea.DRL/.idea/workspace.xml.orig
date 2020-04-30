@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e628e13a-4fd0-492c-8389-40d37d346689" name="Default Changelist" comment="">
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL.Tests/bin/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL.Tests/bin/Debug/DRL.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL.Tests/obj/Debug/DRL.Tests.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DRL.Tests/obj/Debug/DRL.Tests.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/ExplorationTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/ExplorationTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.pdb" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/BackPropagation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/BackPropagation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/Exploration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/Exploration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/FeedForwardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/FeedForwardManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll.mdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll.mdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll.mdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll.mdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/DRL.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/DRL.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/DRL.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scenes/UI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scenes/UI.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scripts/AlgorithmsSimulation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scripts/AlgorithmsSimulation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scripts/AlgorithmsSimulation_ExpDesign.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scripts/AlgorithmsSimulation_ExpDesign.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/StreamingAssets/ExperimentalDatabase.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/StreamingAssets/ExperimentalDatabase.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Backup/Proximity.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Backup/Proximity.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Backup/Radar.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Backup/Radar.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Backup/Range.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Backup/Range.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Proximity.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Proximity.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/CurrentLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/CurrentLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.TextMeshPro.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.TextMeshPro.dll" afterDir="false" />
+>>>>>>> master
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+<<<<<<< HEAD
+    <setting file="mock:///MazeGenerator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/MazeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/MazeCell.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL.Tests/TestsExploration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL.Tests/TestsDRL.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/ExplorationTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/Properties/AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL.Tests/TestsMazeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/NeuralNetwork.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/TestsExploredMaze.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/BackPropagation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///MazeGenerator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/ExploredMapTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/MazeGeneratorTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/Exploration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/ExploredMap.cs" root0="FORCE_HIGHLIGHTING" />
+=======
+    <setting file="file://$PROJECT_DIR$/DRL/FeedForwardManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/MazeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/TestsExploredMaze.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/MazeCell.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/Properties/AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/ExploredMapTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/MazeGeneratorTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/BackPropagation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/Exploration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/ExplorationTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/ExploredMap.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/NeuralNetwork.cs" root0="FORCE_HIGHLIGHTING" />
+>>>>>>> master
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/DRL/MazeCell.cs" />
+        <option value="$PROJECT_DIR$/DRL/TestsExploration.cs" />
+        <option value="$PROJECT_DIR$/DRL/TestsMazeGenerator.cs" />
+        <option value="$PROJECT_DIR$/DRL/TestsDRL.cs" />
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/DRL/DatasetGenerator.cs" />
+        <option value="$PROJECT_DIR$/DRL/ExploredMap.cs" />
+        <option value="$PROJECT_DIR$/DRL/DRL.cs" />
+        <option value="$PROJECT_DIR$/DRL.Tests/TestsDRL.cs" />
+        <option value="$PROJECT_DIR$/DRL.Tests/TestsMazeGenerator.cs" />
+        <option value="$PROJECT_DIR$/DRL/MazeGenerator.cs" />
+        <option value="$PROJECT_DIR$/DRL.Tests/TestsExploration.cs" />
+        <option value="$PROJECT_DIR$/DRL/ExplorationTests.cs" />
+=======
+        <option value="$PROJECT_DIR$/DRL/DRL.cs" />
+        <option value="$PROJECT_DIR$/DRL/ExplorationTests.cs" />
+        <option value="$PROJECT_DIR$/DRL/ExploredMap.cs" />
+        <option value="$PROJECT_DIR$/DRL/ExploredMapTests.cs" />
+        <option value="$PROJECT_DIR$/DRL/FeedForwardManager.cs" />
+        <option value="$PROJECT_DIR$/DRL/BackPropagation.cs" />
+        <option value="$PROJECT_DIR$/DRL/Exploration.cs" />
+>>>>>>> master
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1agFtHuygTocNuSgvLZzJdbRAk5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994584" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.30010834" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scripts" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+>>>>>>> master
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e628e13a-4fd0-492c-8389-40d37d346689" name="Default Changelist" comment="" />
+      <created>1587149542673</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1587149542673</updated>
+      <workItem from="1587149548268" duration="258000" />
+      <workItem from="1587152709010" duration="1663000" />
+      <workItem from="1587350181977" duration="1560000" />
+      <workItem from="1587359732751" duration="5392000" />
+      <workItem from="1587426023465" duration="2873000" />
+      <workItem from="1587435132680" duration="701000" />
+      <workItem from="1587436337593" duration="2320000" />
+<<<<<<< HEAD
+      <workItem from="1588092519210" duration="6124000" />
+=======
+      <workItem from="1587443014921" duration="3576000" />
+      <workItem from="1587585320243" duration="5431000" />
+      <workItem from="1587597310556" duration="27888000" />
+      <workItem from="1587667315715" duration="974000" />
+      <workItem from="1587683797948" duration="538000" />
+      <workItem from="1587769705392" duration="366000" />
+      <workItem from="1587770191301" duration="196000" />
+      <workItem from="1587770406170" duration="25725000" />
+      <workItem from="1587810324916" duration="749000" />
+      <workItem from="1587811260025" duration="315000" />
+      <workItem from="1588198640230" duration="9013000" />
+      <workItem from="1588209110850" duration="3210000" />
+>>>>>>> master
+    </task>
+    <task id="LOCAL-00001" summary="Added unit tests for ExploredMap. Fixed ECall security error for MazeGenerator.">
+      <created>1588100035359</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1588100035359</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Added unit tests for ExploredMap. Fixed ECall security error for MazeGenerator." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added unit tests for ExploredMap. Fixed ECall security error for MazeGenerator." />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="481" y="209" width="948" height="645" key="#Attach_to_Unity_Editor" timestamp="1588093007980">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="481" y="215" width="948" height="645" key="#Attach_to_Unity_Editor/0.0.1920.1080@0.0.1920.1080" timestamp="1587152789633" />
+    <state x="481" y="209" key="#Attach_to_Unity_Editor/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093007980" />
+    <state x="519" y="311" width="872" height="454" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587362013607">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+<<<<<<< HEAD
+    <state x="519" y="311" width="872" height="454" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1587362013607" />
+    <state width="1877" height="379" key="GridCell.Tab.0.bottom" timestamp="1588093029657">
+      <screen x="0" y="0" width="1920" height="1050" />
+=======
+    <state x="519" y="311" width="872" height="454" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1587595428383" />
+    <state x="100" y="100" width="1720" height="880" maximized="true" key="DiffContextDialog" timestamp="1588201965283">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="100" y="100" width="1720" height="880" maximized="true" key="DiffContextDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1588201965283" />
+    <state x="690" y="241" width="530" height="605" key="FileChooserDialogImpl" timestamp="1588213087696">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="690" y="241" width="530" height="605" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1588213087696" />
+    <state x="324" y="87" width="1271" height="912" key="SettingsEditor" timestamp="1587770385387">
+      <screen x="0" y="0" width="1920" height="1080" />
+>>>>>>> master
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.0.bottom/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029657" />
+    <state width="1877" height="379" key="GridCell.Tab.0.center" timestamp="1588093029657">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.0.center/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029657" />
+    <state width="1877" height="379" key="GridCell.Tab.0.left" timestamp="1588093029656">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+<<<<<<< HEAD
+    <state width="1877" height="379" key="GridCell.Tab.0.left/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029656" />
+    <state width="1877" height="379" key="GridCell.Tab.0.right" timestamp="1588093029657">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.0.right/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029657" />
+    <state width="1877" height="379" key="GridCell.Tab.1.bottom" timestamp="1588093029661">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.1.bottom/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029659" />
+    <state width="1877" height="379" key="GridCell.Tab.1.center" timestamp="1588093029657">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.1.center/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029657" />
+    <state width="1877" height="379" key="GridCell.Tab.1.left" timestamp="1588093029657">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.1.left/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029657" />
+    <state width="1877" height="379" key="GridCell.Tab.1.right" timestamp="1588093029657">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.1.right/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029657" />
+    <state width="1877" height="379" key="GridCell.Tab.2.bottom" timestamp="1588093029666">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.2.bottom/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029666" />
+    <state width="1877" height="379" key="GridCell.Tab.2.center" timestamp="1588093029664">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.2.center/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029664" />
+    <state width="1877" height="379" key="GridCell.Tab.2.left" timestamp="1588093029663">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.2.left/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029663" />
+    <state width="1877" height="379" key="GridCell.Tab.2.right" timestamp="1588093029665">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.2.right/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029665" />
+    <state width="1877" height="379" key="GridCell.Tab.3.bottom" timestamp="1588093029670">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.3.bottom/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029670" />
+    <state width="1877" height="379" key="GridCell.Tab.3.center" timestamp="1588093029669">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.3.center/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029669" />
+    <state width="1877" height="379" key="GridCell.Tab.3.left" timestamp="1588093029668">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.3.left/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029668" />
+    <state width="1877" height="379" key="GridCell.Tab.3.right" timestamp="1588093029669">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="379" key="GridCell.Tab.3.right/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588093029669" />
+    <state x="552" y="245" key="Vcs.Push.Dialog.v2" timestamp="1588100039709">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="552" y="245" key="Vcs.Push.Dialog.v2/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588100039709" />
+    <state x="769" y="439" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588099592941">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="769" y="439" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588099592941" />
+    <state x="0" y="0" width="910" height="1050" key="find.popup" timestamp="1588219059481">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="0" y="0" width="910" height="1080" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1587428707323" />
+    <state x="0" y="0" width="910" height="1050" key="find.popup/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588219059481" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/DRL/ExploredMap.cs</url>
+          <line>98</line>
+          <properties documentPath="$PROJECT_DIR$/DRL/ExploredMap.cs" initialLine="96">
+            <startOffsets>
+              <option value="4588" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4589" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+=======
+    <state x="478" y="135" width="953" height="816" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1587800057658" />
+    <state x="0" y="195" width="1290" height="885" key="find.popup" timestamp="1588203131039">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="0" y="195" width="1290" height="885" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1588203131039" />
+>>>>>>> master
+  </component>
+</project>

@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="BackPropagation.cs" />
     <Compile Include="Exploration.cs" />
+    <Compile Include="ExplorationRandomDirectionTests.cs" />
     <Compile Include="ExploredMapTests.cs" />
     <Compile Include="ExploredMap.cs" />
     <Compile Include="FeedForwardManager.cs" />
@@ -62,6 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Datasets" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

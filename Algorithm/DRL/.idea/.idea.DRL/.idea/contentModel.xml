@@ -7,7 +7,9 @@
       <e p="DRL" t="IncludeRecursive">
         <e p="BackPropagation.cs" t="Include" />
         <e p="DRL.csproj" t="IncludeRecursive" />
+        <e p="Datasets" t="Include" />
         <e p="Exploration.cs" t="Include" />
+        <e p="ExplorationRandomDirectionTests.cs" t="Include" />
         <e p="ExplorationTests.cs" t="Include" />
         <e p="ExploredMap.cs" t="Include" />
         <e p="ExploredMapTests.cs" t="Include" />

@@ -72,11 +72,11 @@ namespace Algorithms
                     _net.Train(vs, direction);
                 }
 
-                _net.Save("Weights.txt");
+                _net.Save(sensorType+"Weights.txt");
             }
             else
             {
-                _net.Load("Weights.txt");
+                _net.Load(sensorType+"Weights.txt");
                 float[] op = _net.FeedForward(sensorData);
                 int maxIndex = MaxIndex(op);
                 String res;

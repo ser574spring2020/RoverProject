@@ -362,31 +362,23 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
             if (maze[currentX - 1, currentY +0 ]== 1) return;
             exploredMaze.MoveRelative(Vector2Int.left);
             move(-1, 0);
-            //robot.transform.Rotate(0.0f, 270f, 0.0f, Space.Self);
-            // exploringRobot.transform.Rotate(0.0f, 270.0f, 0.0f, Space.Self);
         }
         else if (direction== "East")
         {
             if (maze[currentX, currentY +1 ]== 1) return;
             exploredMaze.MoveRelative(Vector2Int.up);
             move(0, 1);
-            //robot.transform.Rotate(0.0f, 0f, 0.0f, Space.Self);
-            // exploringRobot.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
         }
         else if (direction== "West")
         {
             if (maze[currentX, currentY -1 ]== 1) return;
             exploredMaze.MoveRelative(Vector2Int.down);
             move(0, -1);
-            //robot.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
-            // exploringRobot.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
         }
         else if (direction== "South"){
             if (maze[currentX + 1, currentY +0 ]== 1) return;
             exploredMaze.MoveRelative(Vector2Int.right);
             move(1, 0);
-            //robot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
-            // exploringRobot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
         }
     }
 
