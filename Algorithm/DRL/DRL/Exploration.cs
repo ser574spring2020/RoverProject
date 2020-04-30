@@ -19,6 +19,7 @@ namespace Algorithms
         private String _direction = "East";
         private int _points, _rows, _cols;
         public ExploredMap exploredMap;
+        FeedForwardManager forwardManager = new FeedForwardManager();
 
         private enum AlgorithmType
         {
@@ -28,14 +29,14 @@ namespace Algorithms
             RandomDirection = 3
         }
 
-        private enum SensorType
+        private String[] _sensorTypeString =
         {
-            Proximity = 0,
-            Range = 1,
-            Lidar = 2,
-            Radar = 3,
-            Bumper = 4
-        }
+            "Proximity",
+            "Range",
+            "Lidar",
+            "Radar",
+            "Bumper"
+        };
 
         private enum ExperimentType
         {
@@ -54,7 +55,14 @@ namespace Algorithms
         @param SensorData - Used to compute the next command*/
         public string GetNextCommand(int[,] sensorData, int sensorType, int algorithmType, int experimentType)
         {
-            if (experimentType == (int) ExperimentType.Training) return "";
+            Debug.Log("Staring Computation");
+            if (experimentType == (int) ExperimentType.Training)
+            {
+                Debug.Log("Starting Training");
+                TrainNeuralNetworks(algorithmType, sensorType);
+                return "";
+            }
+
             if (sensorType == 3)
                 sensorData = RotateSensorData(sensorData, _direction);
             exploredMap.ProcessSensor(sensorData);
@@ -81,41 +89,39 @@ namespace Algorithms
             return robotCommand;
         }
 
+        private void TrainNeuralNetworks(int algorithmType, int sensorType)
+        {
+            Debug.Log("Starting training...");
+            switch (algorithmType)
+            {
+                case (int) AlgorithmType.BackPropagation:
+                Debug.Log("Started");
+                    BackPropagation.Driver("Train", _sensorTypeString[sensorType], null);
+                Debug.Log("Complete");
+                    break;
+                case (int) AlgorithmType.FeedForward:
+                    Debug.Log("Started");
+                    forwardManager.GetDirectionFromFeedForward(_sensorTypeString[sensorType],new float[]{}, 0);
+                    Debug.Log("Complete");
+                    break;
+            }
+        }
+
         String GetCommandFromBackPropagation(int[,] sensorData, int sensorType)
         {
-            String sensorTypeString = "";
-            if (sensorType == (int) SensorType.Proximity)
-                sensorTypeString = "Proximity";
-            else if (sensorType == (int) SensorType.Range)
-                sensorTypeString = "Range";
-            else if (sensorType == (int) SensorType.Lidar)
-                sensorTypeString = "Lidar";
-            else if (sensorType == (int) SensorType.Radar)
-                sensorTypeString = "Radar";
-            else if (sensorType == (int) SensorType.Bumper) sensorTypeString = "Bumper";
             int[,] processedSensorData = GetProcessedSensorData(sensorData);
             var robotCommand =
-                BackPropagation.Driver("Command", sensorTypeString, convertToOneDimensionalDouble(processedSensorData));
+                BackPropagation.Driver("Command", _sensorTypeString[sensorType],
+                    convertToOneDimensionalDouble(processedSensorData));
             return robotCommand;
         }
 
         String GetCommandFromFeedForward(int[,] sensorData, int sensorType)
         {
-            String sensorTypeString = "";
-            if (sensorType == (int) SensorType.Proximity)
-                sensorTypeString = "Proximity";
-            else if (sensorType == (int) SensorType.Range)
-                sensorTypeString = "Range";
-            else if (sensorType == (int) SensorType.Lidar)
-                sensorTypeString = "Lidar";
-            else if (sensorType == (int) SensorType.Radar)
-                sensorTypeString = "Radar";
-            else if (sensorType == (int) SensorType.Bumper) sensorTypeString = "Bumper";
             int[,] processedSensorData = GetProcessedSensorData(sensorData);
-            FeedForwardManager forwardManager = new FeedForwardManager();
             var robotCommand =
-                forwardManager.GetDirectionFromFeedForward(sensorTypeString,
-                    ConvertToOneDimensionalFloat(processedSensorData));
+                forwardManager.GetDirectionFromFeedForward(_sensorTypeString[sensorType],
+                    ConvertToOneDimensionalFloat(processedSensorData), 1);
             return robotCommand;
         }
 
@@ -345,16 +351,7 @@ namespace Algorithms
 
             var path = Directory.GetCurrentDirectory();
             string filePath = "";
-            if (sensorType == (int) SensorType.Proximity)
-                filePath = path + "/Datasets/Proximity.csv";
-            if (sensorType == (int) SensorType.Range)
-                filePath = path + "/Datasets/Range.csv";
-            if (sensorType == (int) SensorType.Lidar)
-                filePath = path + "/Datasets/Lidar.csv";
-            if (sensorType == (int) SensorType.Radar)
-                filePath = path + "/Datasets/Radar.csv";
-            if (sensorType == (int) SensorType.Bumper)
-                filePath = path + "/Datasets/Bumper.csv";
+            filePath = path + "/Datasets/" + _sensorTypeString[sensorType] + ".csv";
             foreach (var item in sensorData)
             {
                 File.AppendAllText(filePath, item.ToString(), Encoding.UTF8);

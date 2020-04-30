@@ -217,7 +217,7 @@ namespace DRL
         public static double[][] ExtractTrainData(string sensorType)
         {
             //Assuming North is [1,0,0,0], South is [0,1,0,0], East is [0,0,1,0], West is [0,0,0,1] 
-            String st = System.IO.File.ReadAllText("/Backup/" + sensorType + ".csv");
+            String st = System.IO.File.ReadAllText("./Datasets/Backup/" + sensorType + ".csv");
             ;
             int noOfFields;
             if (sensorType.Equals("Proximity"))

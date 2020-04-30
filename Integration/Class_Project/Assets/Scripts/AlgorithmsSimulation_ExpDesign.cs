@@ -7,7 +7,6 @@ using Algorithms;
 using System.Collections.Generic;
 //using SensorsComponent;
 
-
 public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
 {
     GameObject robot, exploringRobot;
@@ -40,6 +39,7 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
     private static database expDB;
     // private DataBaseManager dbm;
     private bool isSimulationComplete = false;
+    public Text droneLifeText, pointsText, timeTakenText, mazeCoverageText;
     public Slider healthBar;
     public Text statusText;
     public Text experimentText;
@@ -62,18 +62,33 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
     public void Begin()
     {
         //Debug.Log("Curr Sensor: " + currentSensor);        
+        Debug.Log(expCounter+">>>>");
         currentSensor = PlayerPrefs.GetInt("SensorType");
         int expc = expCounter + 1;
         experimentText.text = "Experiment " + ExperimentalID + " is running";
         statusText.text = "Trail " + expc  + " is running.";
         sensor = SensorsComponent.SensorFactory.GetInstance(currentSensor, robotPrefab);        
+
         createMazeButtonListener();
-        Debug.Log(sensor.GetCurrentSensor());
-        // manualButton.onClick.AddListener(manualButtonListener);
-        automaticButtonListener();
-        backButton.interactable = false;
+        
+        if (PlayerPrefs.GetString("ExperimentTypevalue") == "Training Data"){
+            exploration.GetNextCommand(null, currentSensor-1, currentAlgo, 0);
+        }
+        else{
+            Debug.Log(sensor.GetCurrentSensor());
+            // manualButton.onClick.AddListener(manualButtonListener);
+            automaticButtonListener();
+            backButton.interactable = false;
+            
+        }
         
         expCounter++;
+        if(PlayerPrefs.GetString("ExperimentTypevalue") == "Training Data" && expCounter<PlayerPrefs.GetInt("Iteration")){
+            Begin();
+        }
+        
+        
+        
     }
     //Create the initial maze
     public void createMazeButtonListener()
@@ -87,7 +102,6 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
             if(arrayCounter == 0)
                 maze = mazeGenerator.GenerateMaze(mazeHeight, mazeWidth, placementThreshold);
             maze[currentX, currentY] = 2;
-            // updateMaze();
             mazeCreated = true;
         }
         Debug.Log(PlayerPrefs.GetString("ExperimentTypevalue"));
@@ -175,6 +189,10 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
             if(robotCommand != ""){
                 moveInDirection(robotCommand);    
             }
+        mazeCoverageText.text="Maze Coverage: "+mazeCoverageStr;
+        pointsText.text="Points: "+pointsScoredStr;
+        timeTakenText.text="Time: "+runTime;
+        droneLifeText.text="Life: "+batteryLife;
         }
         else{
             CancelInvoke("getNextCommand");
@@ -198,13 +216,16 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
             pointsScored = 0;
             
             GameObject[] mazeObjects = arrayOfGameObjects[arrayCounter];
+            
+            
             //Destroy UI
             for (int i = 0; i < mazeObjects.Length; i++)
                 Destroy(mazeObjects[i]);
             arrayCounter++;
+
             if (expCounter < PlayerPrefs.GetInt("Iteration"))
             {
-                Begin();
+                Begin();        
             }
             else
             {
@@ -335,9 +356,11 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
     void moveInDirection(string direction)
     {
         batteryLife--;
+        exploredMaze = exploration.GetExploredMap();
         if (direction== "North")
         {
             if (maze[currentX - 1, currentY +0 ]== 1) return;
+            exploredMaze.MoveRelative(Vector2Int.left);
             move(-1, 0);
             //robot.transform.Rotate(0.0f, 270f, 0.0f, Space.Self);
             // exploringRobot.transform.Rotate(0.0f, 270.0f, 0.0f, Space.Self);
@@ -345,6 +368,7 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
         else if (direction== "East")
         {
             if (maze[currentX, currentY +1 ]== 1) return;
+            exploredMaze.MoveRelative(Vector2Int.up);
             move(0, 1);
             //robot.transform.Rotate(0.0f, 0f, 0.0f, Space.Self);
             // exploringRobot.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
@@ -352,12 +376,14 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
         else if (direction== "West")
         {
             if (maze[currentX, currentY -1 ]== 1) return;
+            exploredMaze.MoveRelative(Vector2Int.down);
             move(0, -1);
             //robot.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
             // exploringRobot.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
         }
         else if (direction== "South"){
             if (maze[currentX + 1, currentY +0 ]== 1) return;
+            exploredMaze.MoveRelative(Vector2Int.right);
             move(1, 0);
             //robot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
             // exploringRobot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
@@ -371,8 +397,6 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
         currentX += x;
         currentY += y;
         maze[currentX, currentY] = 2;
-        // updateMaze();
-        // updateExplored();
     }
 
     public bool getIsSimulationComplete(){

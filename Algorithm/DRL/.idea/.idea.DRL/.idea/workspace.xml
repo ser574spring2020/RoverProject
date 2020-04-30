@@ -29,14 +29,27 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/BackPropagation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/BackPropagation.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/Exploration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/Exploration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/ExplorationTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/ExplorationTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/ExploredMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/ExploredMap.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/FeedForwardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/FeedForwardManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll.mdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll.mdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll.mdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll.mdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/DRL.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/DRL.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/DRL.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scenes/UI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scenes/UI.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scripts/AlgorithmsSimulation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scripts/AlgorithmsSimulation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scripts/AlgorithmsSimulation_ExpDesign.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scripts/AlgorithmsSimulation_ExpDesign.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/StreamingAssets/ExperimentalDatabase.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/StreamingAssets/ExperimentalDatabase.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Backup/Proximity.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Backup/Proximity.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Backup/Radar.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Backup/Radar.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Backup/Range.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Backup/Range.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Proximity.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Proximity.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/CurrentLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/CurrentLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.TextMeshPro.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../UI/Library/ScriptAssemblies/Unity.TextMeshPro.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,12 +84,12 @@
         <option value="$PROJECT_DIR$/DRL/TestsExploration.cs" />
         <option value="$PROJECT_DIR$/DRL/TestsDRL.cs" />
         <option value="$PROJECT_DIR$/DRL/DRL.cs" />
-        <option value="$PROJECT_DIR$/DRL/FeedForwardManager.cs" />
-        <option value="$PROJECT_DIR$/DRL/BackPropagation.cs" />
-        <option value="$PROJECT_DIR$/DRL/Exploration.cs" />
         <option value="$PROJECT_DIR$/DRL/ExplorationTests.cs" />
         <option value="$PROJECT_DIR$/DRL/ExploredMap.cs" />
         <option value="$PROJECT_DIR$/DRL/ExploredMapTests.cs" />
+        <option value="$PROJECT_DIR$/DRL/FeedForwardManager.cs" />
+        <option value="$PROJECT_DIR$/DRL/BackPropagation.cs" />
+        <option value="$PROJECT_DIR$/DRL/Exploration.cs" />
       </list>
     </option>
   </component>
@@ -92,6 +105,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scripts" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
@@ -135,7 +149,8 @@
       <workItem from="1587770406170" duration="25725000" />
       <workItem from="1587810324916" duration="749000" />
       <workItem from="1587811260025" duration="315000" />
-      <workItem from="1588198640230" duration="4786000" />
+      <workItem from="1588198640230" duration="9013000" />
+      <workItem from="1588209110850" duration="3210000" />
     </task>
     <servers />
   </component>
@@ -172,6 +187,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="100" y="100" width="1720" height="880" maximized="true" key="DiffContextDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1588201965283" />
+    <state x="690" y="241" width="530" height="605" key="FileChooserDialogImpl" timestamp="1588213087696">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="690" y="241" width="530" height="605" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1588213087696" />
     <state x="324" y="87" width="1271" height="912" key="SettingsEditor" timestamp="1587770385387">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

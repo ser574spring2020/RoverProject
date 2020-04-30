@@ -79,6 +79,7 @@ public class AlgorithmsSimulation : MonoBehaviour
             int[,] sensorReading = sensor.Get_Obstacle_Matrix();
             updateUISensorData(sensorReading);
             String robotCommand = exploration.GetNextCommand(sensorReading, currentSensor-1, currentAlgo, 1);
+            Debug.Log(robotCommand);
             moveInDirection(robotCommand);
         }
 
