@@ -26,9 +26,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e628e13a-4fd0-492c-8389-40d37d346689" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL.Tests/bin/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL.Tests/bin/Debug/DRL.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL.Tests/obj/Debug/DRL.Tests.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DRL.Tests/obj/Debug/DRL.Tests.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/ExplorationTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/ExplorationTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.pdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,9 +49,19 @@
     <setting file="mock:///MazeGenerator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DRL/MazeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DRL/MazeCell.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL.Tests/TestsExploration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL.Tests/TestsDRL.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/ExplorationTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DRL/Properties/AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DRL/ExploredMap.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL.Tests/TestsMazeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/NeuralNetwork.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/TestsExploredMaze.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/BackPropagation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///MazeGenerator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/ExploredMapTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/MazeGeneratorTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/Exploration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DRL/ExploredMap.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -60,6 +77,7 @@
         <option value="$PROJECT_DIR$/DRL.Tests/TestsMazeGenerator.cs" />
         <option value="$PROJECT_DIR$/DRL/MazeGenerator.cs" />
         <option value="$PROJECT_DIR$/DRL.Tests/TestsExploration.cs" />
+        <option value="$PROJECT_DIR$/DRL/ExplorationTests.cs" />
       </list>
     </option>
   </component>
@@ -91,10 +109,10 @@
       <option name="pid" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="8876">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="8876" />
+      <option name="pid" />
       <method v="2" />
     </configuration>
   </component>
@@ -231,10 +249,11 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="769" y="439" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588099592941" />
-    <state x="0" y="0" width="910" height="1080" key="find.popup" timestamp="1587428707323">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="0" y="0" width="910" height="1050" key="find.popup" timestamp="1588219059481">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="0" y="0" width="910" height="1080" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1587428707323" />
+    <state x="0" y="0" width="910" height="1050" key="find.popup/1920.65.1280.994/0.0.1920.1050@0.0.1920.1050" timestamp="1588219059481" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

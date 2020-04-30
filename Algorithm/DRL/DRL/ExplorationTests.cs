@@ -70,5 +70,15 @@ namespace DRL
             var expected = new float[]{1,2,3,4,5,6,7,8,9};
             Assert.That(converted, Is.EqualTo(expected));
         }
+
+        [Test]
+        public void GetCoverage_Should_Calculate_Maze_Exploration_Percentage()
+        {
+            var exploration = new Exploration(10, 10);
+            Assert.That(exploration.GetCoverage(), Is.EqualTo(0));
+            int[,] data = {{0, 0, 0}, {0, 2, 0}, {0, 0, 0}};
+            exploration.exploredMap.ProcessSensor(data);
+            Assert.That(exploration.GetCoverage(), Is.EqualTo(9));
+        }
     }
 }
