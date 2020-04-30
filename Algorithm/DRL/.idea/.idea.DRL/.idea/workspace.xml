@@ -26,21 +26,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e628e13a-4fd0-492c-8389-40d37d346689" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/DRL/ExplorationRandomDirectionTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DRL/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/DRL.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/DRL.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/Exploration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/Exploration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/ExplorationTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/ExplorationTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/FeedForwardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/FeedForwardManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll.mdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/bin/Debug/DRL.dll.mdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll.mdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll.mdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scripts/AlgorithmsSimulation_ExpDesign.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/Scripts/AlgorithmsSimulation_ExpDesign.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/StreamingAssets/ExperimentalDatabase.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/StreamingAssets/ExperimentalDatabase.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Proximity.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Proximity.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Weights (copy).txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRL/ExplorationRandomDirectionTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/ExplorationRandomDirectionTests.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +135,7 @@
       <workItem from="1588225444133" duration="6348000" />
       <workItem from="1588232114211" duration="1613000" />
       <workItem from="1588233758486" duration="338000" />
-      <workItem from="1588234121364" duration="3327000" />
+      <workItem from="1588234121364" duration="3736000" />
     </task>
     <servers />
   </component>

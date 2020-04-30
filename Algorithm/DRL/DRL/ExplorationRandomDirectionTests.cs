@@ -37,36 +37,21 @@ namespace DRL
     [TestFixture(1, 1, 1, 0, "West")]
     public class ExplorationRandomDirectionTests
     {
-        private int[,] sensorData;
-        string _direction;
+        private int[,] _sensorData;
+        private string _direction;
 
         public ExplorationRandomDirectionTests(int north, int south, int east, int west, string direction)
         {
-            sensorData = new int[,] {{-1, north, -1}, {west, 2, east}, {-1, south, -1}};
+            _sensorData = new int[,] {{-1, north, -1}, {west, 2, east}, {-1, south, -1}};
             _direction = direction;
         }
-
+        
         [Test]
         public void TestArguments()
         {
             Exploration exploration = new Exploration(30, 30);
-    public class ExplorationRandomDirectionTests
-    {
-        private int[,] sensorData;
-        string _direction;
-
-        public ExplorationRandomDirectionTests(int north, int south, int east, int west, string direction)
-        {
-            sensorData = new int[,] {{-1, north, -1}, {west, 2, east}, {-1, south, -1}};
-            _direction = direction;
-        }
-
-        [Test]
-        public void TestArguments()
-        {
-            Exploration exploration = new Exploration(30, 30);
-            exploration.exploredMap.ProcessSensor(sensorData);
-            var directions = exploration.GetAvailableDirections(sensorData);
+            exploration.exploredMap.ProcessSensor(_sensorData);
+            var directions = exploration.GetAvailableDirections(_sensorData);
             Assert.That(directions.Contains(_direction));
         }
     }
