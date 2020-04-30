@@ -11,115 +11,141 @@ using UnityEngine;
 /// </summary>
 public class UnitTest : MonoBehaviour {
     private DataBaseManager dbm;
-    private int mazeUid;
+    private int mazeUid = 3;
+    private int distanceSensorId = 2;
+    private int fooTimeStamp = 20200420;
 
     void Start() {
         dbm = new DataBaseManager();
         dbm.ConnectToDB("Rover.db");
+        // Sensor
+        TestSetSensorMatrixById();
+        TestGetSensorMatrixById();
         // Algorithm
         TestCreateExploredMaze();
-        TestUpdateMaze();
         TestGetMazeById();
+        TestUpdateMaze();
         TestUpdateCoverage();
         TestUpdateTimeTaken();
         TestUpdateMoveHistory();
         TestUpdatePoints();
-        // Sensor
-        TestInsertSensor();
-        TestGetSensor();
-        
     }
 
-    void TestCreateExploredMaze() {
-        //int[] nodes = new int[4]{1, 2, 3, 4};
-        //string[, ] edges = new string[4, 3]{
-        //    {"1", "3", "S"}, {"2", "3", "N"}, {"2", "4", "W"}, {"3", "4", "E"}};
-        //mazeUid = provideUid();
-        //int resultCode = dbm.InsertMazeRecord(mazeUid, edges);
-        //Debug.Log("Insert Maze Result:" +
-        //          (resultCode == Constants.RESPONSE_CODE_SUCCESS ? "Success"
-        //           : "Failure"));
-    }
-
-    void TestUpdateMaze() {
-        //string[] edges = new string[3]{"1", "3", "E"};
-        //int resultCode = dbm.UpdateMazeDirection(mazeUid, edges);
-        //Debug.Log("Update Maze Result:" +
-        //          (resultCode == Constants.RESPONSE_CODE_SUCCESS ? "Success"
-        //           : "Failure"));
-    }
-
-    void TestGetMazeById() {
-        //mazeUid = 37887891;
-        //var arr = dbm.GetMazeById(mazeUid);
-
-        //int rowLength = arr.GetLength(0);
-        //int colLength = arr[0].Length;
-
-        //Debug.Log("Get Maze Result:");
-
-        //for (int i = 0; i < rowLength; i++) {
-        //    string str = String.Empty;
-        //    for (int j = 0; j < colLength; j++) {
-        //        str += arr [i]
-        //               [j] +
-        //               " ";
-        //    }
-        //    Debug.Log(str);
-        //}
-    }
-
-    void TestUpdateCoverage() {
-        //int resultCode = dbm.DeleteMazeById(mazeUid);
-        //Debug.Log("Delete Maze Result:" +
-        //          (resultCode == Constants.RESPONSE_CODE_SUCCESS ? "Success"
-        //           : "Failure"));
-    }
-
-    void TestUpdateTimeTaken()
+    #region Sensor Team
+    void TestSetSensorMatrixById()
     {
-        
-    }
+        int[,] matrix = new int[4, 4] {
+            { 1, 1, 1, 1 },
+            { 1, 0, 0, 1 },
+            { 1, 0, 0, 1 },
+            { 1, 1, 1, 1 }
+        };
 
-    void TestUpdateMoveHistory()
-    {
-
-    }
-
-    void TestUpdatePoints()
-    {
-
-    }
-
-    void TestInsertSensor()
-    {
-        int[,] matrix = new int[4, 4] { { 1, 2, 3, 4 }, { 2, 3, 4, 5 }, { 3, 4, 5, 6 }, { 5, 6, 7, 8 } };
-
-        int resultCode = dbm.SetSensorMatrixById(20200420, 10, matrix);
-        Debug.Log("Insert Sensor Result:" +
+        int resultCode = dbm.SetSensorMatrixById(fooTimeStamp, distanceSensorId, matrix);
+        Debug.Log("Set Sensor Result:" +
                   (resultCode == Constants.RESPONSE_CODE_SUCCESS ? "Success"
                    : "Failure"));
     }
 
-    void TestGetSensor()
+    void TestGetSensorMatrixById()
     {
-        int[,] matrix = dbm.GetSensorMatrixById(10, 20200420);
+        int[,] matrix = dbm.GetSensorMatrixById(distanceSensorId, fooTimeStamp);
+        string str = "\n";
         for (int i = 0; i <= matrix.GetUpperBound(0); i++)
         {
-            for(int j = 0; j <= matrix.GetUpperBound(1); j++)
+            for (int j = 0; j <= matrix.GetUpperBound(1); j++)
             {
-                Debug.Log(matrix[i, j] + ",");
+                str += matrix[i, j];
+                if (j != matrix.GetUpperBound(1))
+                {
+                    str += ",";
+                }
             }
+            str += "\n";
         }
+        Debug.Log(str);
+    }
+    #endregion
+
+    #region Algorithm Team
+    void TestCreateExploredMaze() {
+        int[,] exploredMaze = new int[4, 4] {
+            { 1, 1, -1, -1 },
+            { 1, 0, 0, -1 },
+            { 1, 0, 0, 1 },
+            { 1, 1, 1, 1 }
+         };
+        int resultCode = dbm.CreateExploredMaze(mazeUid, exploredMaze);
+        Debug.Log("Create Explored Maze Result:" +
+                  (resultCode == Constants.RESPONSE_CODE_SUCCESS ? "Success"
+                   : "Failure"));
     }
 
-    private int provideUid() {
-        var now = DateTime.Now;
-        var zeroDate = DateTime.MinValue.AddHours(now.Hour)
-                           .AddMinutes(now.Minute)
-                           .AddSeconds(now.Second)
-                           .AddMilliseconds(now.Millisecond);
-        int uniqueId = (int)(zeroDate.Ticks / 10000) % 10000;
-        return uniqueId;
+    void TestGetMazeById()
+    {
+        int[,] storedMaze = dbm.GetMazeById(mazeUid);
+        string str = "\n";
+        for (int i = 0; i <= storedMaze.GetUpperBound(0); i++)
+        {
+            for (int j = 0; j <= storedMaze.GetUpperBound(1); j++)
+            {
+                str += storedMaze[i, j];
+                if (j != storedMaze.GetUpperBound(1))
+                {
+                    str += ",";
+                }
+            }
+            str += "\n";
+        }
+        Debug.Log(str);
     }
+
+    void TestUpdateMaze() {
+        int[,] updatedMaze = new int[4, 4] {
+            { 1, 1, 1, 2 },
+            { 1, 0, 0, 1 },
+            { 1, 0, 0, 1 },
+            { 1, 1, 1, 1 }
+        };
+        int resultCode = dbm.UpdateMaze(updatedMaze);
+        Debug.Log("Update Maze Result:" +
+                  (resultCode == Constants.RESPONSE_CODE_SUCCESS ? "Success"
+                   : "Failure"));
+    }
+
+    void TestUpdateCoverage() {
+        float mazeCoverage = 0.4F;
+        int resultCode = dbm.UpdateCoverage(mazeCoverage);
+        Debug.Log("Update Coverage Result:" +
+                  (resultCode == Constants.RESPONSE_CODE_SUCCESS ? "Success"
+                   : "Failure"));
+    }
+
+    void TestUpdateTimeTaken()
+    {
+        int second = 101;
+        int resultCode = dbm.UpdateTimeTaken(second);
+        Debug.Log("Update Time Taken Result:" +
+                  (resultCode == Constants.RESPONSE_CODE_SUCCESS ? "Success"
+                   : "Failure"));
+    }
+
+    void TestUpdateMoveHistory()
+    {
+        String[] path = new String[5] { "East", "East", "North", "East", "South" };
+        int resultCode = dbm.UpdateMoveHistory(path);
+        Debug.Log("Update Move History Result:" +
+                  (resultCode == Constants.RESPONSE_CODE_SUCCESS ? "Success"
+                   : "Failure"));
+    }
+
+    void TestUpdatePoints()
+    {
+        int points = 999;
+        int resultCode = dbm.UpdatePoints(points);
+        Debug.Log("Update Points Result:" +
+                  (resultCode == Constants.RESPONSE_CODE_SUCCESS ? "Success"
+                   : "Failure"));
+    }
+    #endregion
 }
