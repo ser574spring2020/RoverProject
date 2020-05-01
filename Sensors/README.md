@@ -6,12 +6,25 @@
 - `SensorsComponent.dll` can be found [here](https://github.com/aneeshdalvi/SER574_sensors/tree/master/Assets/Scenes)
 - Copy it into the `Assets` folder of your Unity Project 
 
-## How to run only our component in Unity (for Grader)
+## How to run our component individually in Unity 
 - Open our `Sensors` Unity project
 - Go to `Scenes` folder and add `Sensors_Scene` to the Hierarchy project section of Unity
 - Click on `play` game button at the top in Unity
 - Your game will get started and you will see a `play` button in the game. Click on that button.
-- Go to console and you will see the message "Hello from Sensors Library" 
+- Select the sensor you want to see. Click on `start`
+- You will be redirected to a new scene where you can control the rover and the sensor will be attached to the rover. 
+- Move the rover as you need.
+- Go to console and you will see if obstacle matrix generated as required.
+
+## How to run our component in class project integration
+- Open our `Integration/Class_Project` in Unity project
+- Go to the `MainScreen` and hit `play` 
+- Select any UI or Exp Design button
+- Select the appropriate Sensor to be selected for the Simulation
+- You will move to the respective screen where you will se `Create maze` option.
+- Hit that and a maze will be generated. Click on `Manual` or `Automatic` to see the Sensors in action.
+- After the iteration of exploring maze ends, the sensors logs are updated in the database `rover.db` and `experimental_results.db` also gets updated with the sensorType selected after all the experimenets are over.
+- On the UI screen, a maze is generated using the sensor matrix generated at each step of the exploration.
 
 ## Links
 - [Documents](https://drive.google.com/drive/folders/1kBlclT7c7DjnoQ3Ft-jvjoEezcS963Ue)
