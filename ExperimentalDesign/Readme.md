@@ -7,7 +7,7 @@
 - Copy it into the `Assets` folder of your Unity Project 
 
 ## How to run our component individually in Unity 
-- Open our `Class_Project` Unity project
+- Open our `Class_Project` folder in Unity application.
 - Go to `Scenes` folder and add `ExperimentalDesign`scene to the Hierarchy project section of Unity
 - Click on `play` game button at the top in Unity
 - Your game will get started and you will be options on the screen for selection like algorithm type ,sensor type,maze coverage etc.
