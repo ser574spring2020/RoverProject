@@ -38,6 +38,7 @@ public class AlgorithmsSimulation : MonoBehaviour
     int currentSensor;
     int currentAlgo;
     String robotDirection = "East"; //Default Direction when simulation starts
+    public Slider healthBar;
 
     void Start()
     {
@@ -69,6 +70,7 @@ public class AlgorithmsSimulation : MonoBehaviour
 
     void getNextCommand()
     {
+        healthBar.value = batteryLife;
         mazeCoverageStr= exploration.GetCoverage().ToString();
         pointsScoredStr= exploration.GetPoints().ToString();
         mazeCoverage= Int32.Parse(mazeCoverageStr);
