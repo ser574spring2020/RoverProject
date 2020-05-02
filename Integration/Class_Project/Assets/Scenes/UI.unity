@@ -2218,7 +2218,7 @@ MonoBehaviour:
   sensorData: {fileID: 531963387}
   wallPrefab: {fileID: 8027592862836915392, guid: f7dd51d1e037e4abeaaa5a0586d2a6a6,
     type: 3}
-  robotPrefab: {fileID: 1348762673267017228, guid: 4c6fcb0a8627340aea602c4301b26f24,
+  robotPrefab: {fileID: 3472639910761115542, guid: 4c6fcb0a8627340aea602c4301b26f24,
     type: 3}
   floorPrefab: {fileID: 8027592862836915392, guid: a2b2e34b7cc7247989c7ea916dcc99c7,
     type: 3}

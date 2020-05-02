@@ -3,7 +3,18 @@ guid: 0511975adf7ea48868493bf050dd44ec
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - sensorData: {instanceID: 0}
+  - wallPrefab: {instanceID: 0}
+  - robotPrefab: {fileID: 3472639910761115542, guid: 4c6fcb0a8627340aea602c4301b26f24,
+      type: 3}
+  - floorPrefab: {instanceID: 0}
+  - visitedFloorPrefab: {instanceID: 0}
+  - createMaze: {instanceID: 0}
+  - backButton: {instanceID: 0}
+  - manualButton: {instanceID: 0}
+  - automaticButton: {instanceID: 0}
+  - healthBar: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
