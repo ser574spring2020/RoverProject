@@ -55,16 +55,13 @@ namespace Algorithms
         @param SensorData - Used to compute the next command*/
         public string GetNextCommand(int[,] sensorData, int sensorType, int algorithmType, int experimentType)
         {
-            Debug.Log("Staring Computation");
+            PrintSensorData(sensorData);
             if (experimentType == (int) ExperimentType.Training)
             {
                 Debug.Log("Starting Training");
                 TrainNeuralNetworks(algorithmType, sensorType);
                 return "";
-            }
-
-            if (sensorType == 3)
-                sensorData = RotateSensorData(sensorData, _direction);
+            }    
             exploredMap.ProcessSensor(sensorData);
             String robotCommand;
             switch (algorithmType)

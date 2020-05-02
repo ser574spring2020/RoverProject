@@ -39,6 +39,7 @@ namespace Algorithms
         //saves the sensor reading to the explored map
         public void ProcessSensor(int[,] sensorReading)
         {
+            Exploration.PrintSensorData(sensorReading);
             Vector2Int localRobotPosition = GetSensorRobotPosition(sensorReading);
             for (var x = 0; x < sensorReading.GetLength(0); x++)
             for (var y = 0; y < sensorReading.GetLength(1); y++)
@@ -46,12 +47,12 @@ namespace Algorithms
                 var xMaze = _robotPosition.x + x - localRobotPosition.x;
                 var yMaze = _robotPosition.y + y - localRobotPosition.y;
                 if (sensorReading[x, y] == -1) continue;
-                // Debug.Log(x+","+y+" >>> "+sensorReading[x,y]);
+                Debug.Log(x+","+y+" >>> "+sensorReading[x,y]);
                 if (_mazeMap[xMaze, yMaze] != null) continue;
                 var neighbor = new MazeCell(xMaze, yMaze); // create 
                 _mazeMap[xMaze, yMaze] = neighbor;
                 if (sensorReading[x, y] == 1) neighbor.MakeWall();
-                
+                Debug.Log(x+","+y+" >>> "+sensorReading[x,y]+" >>> Complete");
             }
             _mazeMap[_robotPosition.x, _robotPosition.y].Visit();
         }

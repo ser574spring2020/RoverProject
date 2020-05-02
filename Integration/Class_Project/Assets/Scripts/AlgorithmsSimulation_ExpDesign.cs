@@ -172,6 +172,17 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
         mazeHeight = Int32.Parse(size[1].Trim());
     }
 
+//returns the sensor data and update it on the screen
+    int[,] getSensorData(){
+        int matrixSize = (currentSensor==1 || currentSensor == 5)? 3:5;
+        sensor.Update_Obstacles(robotMain, getMazeData(matrixSize), robotDirection);            
+        int[,] sensorReading = sensor.Get_Obstacle_Matrix();
+        if(currentSensor == 3)
+            sensorReading = Exploration.RotateSensorData(sensorReading,robotDirection);
+        updateUISensorData(sensorReading);
+        return sensorReading;   
+    }
+
     void getNextCommand()
     {
         healthBar.value = batteryLife;
@@ -180,12 +191,7 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
         mazeCoverage = Int32.Parse(mazeCoverageStr);
         pointsScored = Int32.Parse(pointsScoredStr);
         if(checkRunTimeStatus()){
-            int matrixSize = (currentSensor==1 || currentSensor == 5)? 3:5;
-            //Debug.Log(robotMain);
-            sensor.Update_Obstacles(sensor.GetRoverObject(), getMazeData(matrixSize), robotDirection);
-            //updateUISensorData(getMazeData(matrixSize));
-            int[,] sensorReading = sensor.Get_Obstacle_Matrix();
-            updateUISensorData(sensorReading);
+            int [,] sensorReading = getSensorData();
             String robotCommand = exploration.GetNextCommand(sensorReading, currentSensor-1, currentAlgo, PlayerPrefs.GetInt("Experiment"));
             if(robotCommand != ""){
                 moveInDirection(robotCommand);    
