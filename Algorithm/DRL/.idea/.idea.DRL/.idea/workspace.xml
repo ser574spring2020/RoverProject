@@ -35,9 +35,7 @@
       <change beforePath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll.mdb" beforeDir="false" afterPath="$PROJECT_DIR$/DRL/obj/Debug/DRL.dll.mdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/DRL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/DRL.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/DRL.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/DRL.dll.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/SensorsComponent.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/SensorsComponent.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/StreamingAssets/ExperimentalDatabase.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Assets/StreamingAssets/ExperimentalDatabase.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Range.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../Integration/Class_Project/Datasets/Range.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,6 +150,8 @@
       <workItem from="1588249304341" duration="237000" />
       <workItem from="1588273798337" duration="5463000" />
       <workItem from="1588456310057" duration="2400000" />
+      <workItem from="1588460948922" duration="2049000" />
+      <workItem from="1588478684451" duration="5527000" />
     </task>
     <servers />
   </component>
@@ -218,10 +218,15 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="478" y="135" width="953" height="816" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1588235740775" />
-    <state x="0" y="195" width="1290" height="885" key="find.popup" timestamp="1588278951379">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="440" y="176" width="1030" height="855" key="editAsTableFormatDialogDimension" timestamp="1588479195849">
+      <screen x="0" y="0" width="1920" height="1200" />
+    </state>
+    <state x="440" y="176" width="1030" height="855" key="editAsTableFormatDialogDimension/0.0.1920.1200@0.0.1920.1200" timestamp="1588479195849" />
+    <state x="0" y="216" width="1290" height="984" key="find.popup" timestamp="1588484410914">
+      <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="0" y="195" width="1290" height="885" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1588278951379" />
+    <state x="0" y="216" width="1290" height="984" key="find.popup/0.0.1920.1200@0.0.1920.1200" timestamp="1588484410914" />
     <state x="540" y="241" key="run.anything.popup" timestamp="1588235841786">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

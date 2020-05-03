@@ -55,13 +55,13 @@ namespace Algorithms
         @param SensorData - Used to compute the next command*/
         public string GetNextCommand(int[,] sensorData, int sensorType, int algorithmType, int experimentType)
         {
-            PrintSensorData(sensorData);
             if (experimentType == (int) ExperimentType.Training)
             {
                 Debug.Log("Starting Training");
                 TrainNeuralNetworks(algorithmType, sensorType);
                 return "";
-            }    
+            }
+
             exploredMap.ProcessSensor(sensorData);
             String robotCommand;
             switch (algorithmType)
@@ -70,7 +70,15 @@ namespace Algorithms
                     robotCommand = GetCommandFromBackPropagation(sensorData, sensorType);
                     break;
                 case (int) AlgorithmType.RandomDirection:
+                    if (sensorType == 4)
+                    {
+                        robotCommand = GetCommandFromRandomDirectionAlgorithmBumper(sensorData);
+                        if(robotCommand[0]!='R')
+                            ManagePoints(vectorCommands[commands.IndexOf(robotCommand)]);
+                        return robotCommand;
+                    }
                     robotCommand = GetCommandFromRandomDirectionAlgorithm(sensorData);
+                    Debug.Log("Not Break");
                     break;
                 case (int) AlgorithmType.FeedForward:
                     robotCommand = GetCommandFromFeedForward(sensorData, sensorType);
@@ -126,26 +134,76 @@ namespace Algorithms
             return robotCommand;
         }
 
+        String GetCommandFromRandomDirectionAlgorithmBumper(int[,] sensorData)
+        {
+            List<string> possibleDirections = new List<string>();
+            if (sensorData[0, 1] == 0)
+            {
+                possibleDirections.Add("North");
+            }
+            else if (sensorData[1, 2] == 0)
+            {
+                possibleDirections.Add("East");
+            }
+            else if (sensorData[1, 0] == 0)
+            {
+                possibleDirections.Add("West");
+            }
+            else if (sensorData[2, 1] == 0)
+            {
+                possibleDirections.Add("South");
+            }
+            
+            else if (sensorData[0, 1] == 1)
+            {
+                possibleDirections.Add("REast");
+                possibleDirections.Add("RWest");
+            }
+            else if (sensorData[1, 2] == 1)
+            {
+                possibleDirections.Add("RNorth");
+                possibleDirections.Add("RSouth");
+            }
+            else if (sensorData[1, 0] == 1)
+            {
+                possibleDirections.Add("RNorth");
+                possibleDirections.Add("RSouth");
+            }
+            else if (sensorData[2, 1] == 1)
+            {
+                possibleDirections.Add("REast");
+                possibleDirections.Add("RWest");
+            }
+            RandomSystem r = new RandomSystem();
+            int x = r.Next(0, possibleDirections.Count);
+            var robotCommand = possibleDirections[x];
+            return robotCommand;
+        }
+
         //Computes all the available directions
         public List<String> GetAvailableDirections(int[,] sensorData)
         {
             List<string> possibleDirections = new List<string>();
             Vector2Int robotPosition = exploredMap.GetCurrentPosition();
+            //Checking North Cell
             Vector2Int mazeCellPosition = new Vector2Int(robotPosition.x - 1, robotPosition.y);
             MazeCell mazeCell = exploredMap.GetCell(mazeCellPosition);
             if (mazeCell != null)
                 if (!mazeCell.IsWallCell() && !mazeCell.IsVisited())
                     possibleDirections.Add("North");
+            //Checking East Cell
             mazeCellPosition = new Vector2Int(robotPosition.x, robotPosition.y + 1);
             mazeCell = exploredMap.GetCell(mazeCellPosition);
             if (mazeCell != null)
                 if (!mazeCell.IsWallCell() && !mazeCell.IsVisited())
                     possibleDirections.Add("East");
+            //Checking South Cell
             mazeCellPosition = new Vector2Int(robotPosition.x + 1, robotPosition.y);
             mazeCell = exploredMap.GetCell(mazeCellPosition);
             if (mazeCell != null)
                 if (!mazeCell.IsWallCell() && !mazeCell.IsVisited())
                     possibleDirections.Add("South");
+            //Checking West Cell
             mazeCellPosition = new Vector2Int(robotPosition.x, robotPosition.y - 1);
             mazeCell = exploredMap.GetCell(mazeCellPosition);
             if (mazeCell != null)
@@ -243,6 +301,7 @@ namespace Algorithms
                     exploredMap.GetCell(new Vector2Int(xMaze, yMaze)).IsVisited())
                     processedSensorData[x, y] = 4;
             }
+
             processedSensorData[localRobotPosition.x, localRobotPosition.y] = 2;
             return processedSensorData;
         }

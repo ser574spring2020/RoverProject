@@ -89,7 +89,8 @@ public class AlgorithmsSimulation : MonoBehaviour
         if(checkRunTimeStatus()){
             int [,] sensorReading = getSensorData();
             String robotCommand = exploration.GetNextCommand(sensorReading, currentSensor-1, currentAlgo, 1);
-            robotDirection= robotCommand;
+            if(robotCommand=="North"|robotCommand=="East"|robotCommand=="West"|robotCommand=="South")
+                robotDirection = robotCommand;
             moveInDirection(robotCommand);
         }
 
@@ -354,6 +355,27 @@ public class AlgorithmsSimulation : MonoBehaviour
             robot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
             exploringRobot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
         }
+        else if (direction== "RNorth"){
+            robotDirection = "North";
+            robot.transform.Rotate(0.0f, 270f, 0.0f, Space.Self);
+            exploringRobot.transform.Rotate(0.0f, 270f, 0.0f, Space.Self);
+        }
+        else if (direction== "RSouth"){
+            robotDirection = "South";
+            robot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
+            exploringRobot.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
+        }
+        else if (direction== "REast"){
+            robotDirection = "East";
+            robot.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
+            exploringRobot.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
+        }
+        else if (direction== "RWest"){
+            robotDirection = "West";
+            robot.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
+            exploringRobot.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
+        }
+
     }
 
     void move(int x, int y)
