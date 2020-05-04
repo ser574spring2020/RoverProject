@@ -96,8 +96,6 @@ public class AlgorithmsSimulation : MonoBehaviour
             sensor.Update_Maze_Data(getMazeData(matrixSize),robotDirection);
             updateUISensorData(getMazeData(matrixSize));
             int[,] sensorReading = sensor.Get_Obstacle_Matrix();
-            updateUISensorData(sensorReading);
-            String robotCommand = exploration.GetNextCommand(sensorReading, currentSensor);
             updateUISensorData(sensorReading);  
             String robotCommand = exploration.GetNextCommand(sensorReading, currentSensor, currentAlgorithm);
             moveInDirection(robotCommand);

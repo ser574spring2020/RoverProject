@@ -158,7 +158,7 @@ public class AlgorithmsSimulation : MonoBehaviour
         return duration.ToString(@"hh\:mm\:ss");
     }
 
-	//back
+    //back
     //fwd
     //deep
     //random
@@ -259,11 +259,11 @@ public class AlgorithmsSimulation : MonoBehaviour
     {
         sensorData.text= "";
         if(currentSensor == 3 && robotDirection == "South")
-                sensorData.text+="\n\n";
+            sensorData.text+="\n\n";
         for (int i= 0; i <tempData.GetLength(0); i++){
             if(currentSensor == 3 && robotDirection == "East")
                 sensorData.text+="    ";
-            
+
             for (int j= 0; j < tempData.GetLength(1); j++){
                 if(tempData[i, j] == -1)
                 {
@@ -279,10 +279,10 @@ public class AlgorithmsSimulation : MonoBehaviour
             sensorData.text += "\n";
         }
         if(currentSensor == 3 && robotDirection == "North")
-                sensorData.text+="\n\n";
+            sensorData.text+="\n\n";
     }
 
-    
+
 
     void Update()
     {
@@ -375,7 +375,6 @@ public class AlgorithmsSimulation : MonoBehaviour
             robot.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
             exploringRobot.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
         }
-
     }
 
     void move(int x, int y)
