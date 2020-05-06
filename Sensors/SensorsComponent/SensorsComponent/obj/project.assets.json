@@ -25,21 +25,6 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
-      },
-      "NUnit/3.12.0": {
-        "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "2.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/nunit.framework.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/nunit.framework.dll": {}
-        },
-        "build": {
-          "build/NUnit.props": {}
-        }
       }
     }
   },
@@ -186,42 +171,11 @@
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
-    },
-    "NUnit/3.12.0": {
-      "sha512": "3oJTrcUcT9wmweBUwgUf0f1XIYy6RZq2ziV+RM95HMKAJGsHPN2i3MKK1dAPvDPMRLz799Llj4eyu/STB9Q7OA==",
-      "type": "package",
-      "path": "nunit/3.12.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "CHANGES.md",
-        "LICENSE.txt",
-        "NOTICES.txt",
-        "build/NUnit.props",
-        "lib/net35/nunit.framework.dll",
-        "lib/net35/nunit.framework.pdb",
-        "lib/net35/nunit.framework.xml",
-        "lib/net40/nunit.framework.dll",
-        "lib/net40/nunit.framework.pdb",
-        "lib/net40/nunit.framework.xml",
-        "lib/net45/nunit.framework.dll",
-        "lib/net45/nunit.framework.pdb",
-        "lib/net45/nunit.framework.xml",
-        "lib/netstandard1.4/nunit.framework.dll",
-        "lib/netstandard1.4/nunit.framework.pdb",
-        "lib/netstandard1.4/nunit.framework.xml",
-        "lib/netstandard2.0/nunit.framework.dll",
-        "lib/netstandard2.0/nunit.framework.pdb",
-        "lib/netstandard2.0/nunit.framework.xml",
-        "nunit.3.12.0.nupkg.sha512",
-        "nunit.nuspec"
-      ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "NETStandard.Library >= 2.0.3",
-      "NUnit >= 3.12.0"
+      "NETStandard.Library >= 2.0.3"
     ]
   },
   "packageFolders": {
@@ -231,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\adalvi1\\Desktop\\RoverProject\\Sensors\\SensorsComponent\\SensorsComponent\\SensorsComponent.csproj",
+      "projectUniqueName": "C:\\Users\\adalvi1\\Desktop\\SensorsComponent\\SensorsComponent\\SensorsComponent.csproj",
       "projectName": "SensorsComponent",
-      "projectPath": "C:\\Users\\adalvi1\\Desktop\\RoverProject\\Sensors\\SensorsComponent\\SensorsComponent\\SensorsComponent.csproj",
+      "projectPath": "C:\\Users\\adalvi1\\Desktop\\SensorsComponent\\SensorsComponent\\SensorsComponent.csproj",
       "packagesPath": "C:\\Users\\adalvi1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\adalvi1\\Desktop\\RoverProject\\Sensors\\SensorsComponent\\SensorsComponent\\obj\\",
+      "outputPath": "C:\\Users\\adalvi1\\Desktop\\SensorsComponent\\SensorsComponent\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -270,10 +224,6 @@
             "target": "Package",
             "version": "[2.0.3, )",
             "autoReferenced": true
-          },
-          "NUnit": {
-            "target": "Package",
-            "version": "[3.12.0, )"
           }
         },
         "imports": [

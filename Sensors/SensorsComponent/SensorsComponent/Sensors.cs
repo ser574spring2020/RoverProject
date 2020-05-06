@@ -57,7 +57,7 @@ namespace SensorsComponent
             return obstacle_matrix;
         }
         
-        protected void SetSensorType(int value)
+        public void SetSensorType(int value)
         {
             sensorType = value;
         }
