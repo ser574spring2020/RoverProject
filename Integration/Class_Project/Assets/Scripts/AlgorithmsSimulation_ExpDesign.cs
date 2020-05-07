@@ -66,7 +66,7 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
         currentSensor = PlayerPrefs.GetInt("SensorType");
         int expc = expCounter + 1;
         experimentText.text = "Experiment " + ExperimentalID + " is running";
-        statusText.text = "Trail " + expc  + " is running.";
+        statusText.text = "Trial " + expc  + " is running.";
         sensor = SensorsComponent.SensorFactory.GetInstance(currentSensor, robotPrefab);        
 
         createMazeButtonListener();
@@ -240,7 +240,7 @@ public class AlgorithmsSimulation_ExpDesign : MonoBehaviour
             else
             {
                 experimentText.text = "";
-                statusText.text = "Trails are completed.";
+                statusText.text = "Trials are completed.";
             }
         }
     }
